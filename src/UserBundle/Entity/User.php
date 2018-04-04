@@ -1,11 +1,9 @@
 <?php
-// src/AppBundle/Entity/User.php
 
-namespace AppBundle\Entity;
+namespace UserBundle\Entity;
 
-use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+use FOS\UserBundle\Model\User as BaseUser;
 
 /**
  * @ORM\Entity
@@ -23,6 +21,7 @@ class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
+        $this->roles = array('ROLE_GERANT');
         // your own logic
     }
 }

@@ -1,61 +1,49 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="row bg-title">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Data Table</h4> </div>
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
-            <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Table</a></li>
-                <li class="active">Data Table</li>
-            </ol>
-        </div>
-        <!-- /.col-lg-12 -->
+    <h1>Personnes list</h1>
 
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title m-b-0">Data Table</h3>
-                    <p class="text-muted m-b-30">Data table example</p>
-                    <div class="table-responsive">
-                        <table id="myTable" class="table table-striped">
-                            <thead>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>Nom</th>
-                                    <th>Prenom</th>
-                                    <th>Statut</th>
-                                    <th>Numtel</th>
-                                    <th>Numfixe</th>
-                                    <th>Numfax</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {% for personne in personnes %}
-                                    <tr>
-                                        <td><a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.id }}</a></td>
-                                        <td>{{ personne.nom }}</td>
-                                        <td>{{ personne.prenom }}</td>
-                                        <td>{{ personne.statut }}</td>
-                                        <td>{{ personne.numTel }}</td>
-                                        <td>{{ personne.numFixe }}</td>
-                                        <td>{{ personne.numFax }}</td>
-                                        <td>
-                                            <ul>
-                                                <li>
-                                                    <a href="{{ path('personne_show', { 'id': personne.id }) }}">show</a>
-                                                </li>
-                                            </ul>
-                                        </td>
-                                    </tr>
-                                {% endfor %}
-                             </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Statut</th>
+                <th>Numtel</th>
+                <th>Numfixe</th>
+                <th>Numfax</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for personne in personnes %}
+            <tr>
+                <td><a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.id }}</a></td>
+                <td>{{ personne.nom }}</td>
+                <td>{{ personne.prenom }}</td>
+                <td>{{ personne.statut }}</td>
+                <td>{{ personne.numTel }}</td>
+                <td>{{ personne.numFixe }}</td>
+                <td>{{ personne.numFax }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('personne_show', { 'id': personne.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('personne_edit', { 'id': personne.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('personne_new') }}">Create a new personne</a>
+        </li>
+    </ul>
 {% endblock %}

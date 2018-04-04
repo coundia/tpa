@@ -2,7 +2,7 @@ imports:
     - { resource: parameters.yml }
     - { resource: security.yml }
     - { resource: services.yml }
-#    - { resource: "@TpaBundle/Resources/config/services.yml" }
+    - { resource: "@TpaBundle/Resources/config/services.yml" }
 
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
@@ -69,17 +69,9 @@ swiftmailer:
     password: '%mailer_password%'
     spool: { type: memory }
 fos_user:
-    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
     firewall_name: main
-    user_class: AppBundle\Entity\User
+    user_class: UserBundle\Entity\User
     from_email:
-        address: "nanndiaye68@gmail.com"
-        sender_name: "TutoFosUserBundle"
-    registration:
-            form:
-                #name: app_user_registration
-                type: AppBundle\Form\RegistrationType
-    profile:
-                form:
-                    #name: app_user_profile
-                    type: AppBundle\Form\ProfileType
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"

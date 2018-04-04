@@ -11,7 +11,7 @@ use AppBundle\Entity\Personne;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/index", name="homepage")
+     * @Route("/", name="homepage")
      */
     public function indexAction(Request $request)
     {

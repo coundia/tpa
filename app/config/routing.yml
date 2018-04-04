@@ -1,3 +1,13 @@
+tpa:
+    resource: "@TpaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+tpa:
+    resource: "@tpaBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
