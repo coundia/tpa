@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template/plugins/images/pixeladmin-logo.png') }}">
+    <title>TRACABLITE AGRICOLES </title>
+    <!-- Bootstrap Core CSS -->
+    <link href="{{ asset('template/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="{{ asset('template/plugins/bower_components/sidebar-nav/dist/sidebar-nav.css') }}" rel="stylesheet">
+    <!-- toast CSS -->
+    <link href="{{ asset('template/plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
+    <!-- morris CSS -->
+    <link href="{{ asset('template/plugins/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="{{ asset('template/css/animate.css') }}" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="{{ asset('template/css/colors/green-dark.css') }}" id="theme" rel="stylesheet">
+
+    <!-- Page plugins css -->
+    <link href="{{ asset('template/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css') }}" rel="stylesheet">
+    <!-- Color picker plugins css -->
+    <link href="{{ asset('template/plugins/bower_components/jquery-asColorPicker-master/css/asColorPicker.css') }}" rel="stylesheet">
+    <!-- Date picker plugins css -->
+    <link href="{{ asset('template/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" type="text/css" />
+    <!-- Daterange picker plugins css -->
+    <link href="{{ asset('template/plugins/bower_components/timepicker/bootstrap-timepicker.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+
+    <link href="{{ asset('template/plugins/bower_components/datatables/jquery.dataTables.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('template/plugins/bower_components/footable/css/footable.core.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('template/plugins/bower_components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('template/plugins/bower_components/css-chart/css-chart.css') }}" rel="stylesheet">
+
+</head>
+
+<style></style>
+
+<body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="cssload-speeding-wheel"></div>
+</div>
+<div id="wrapper">
+    <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+        <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
+            <div class="top-left-part">
+                <h4 class="" style="text-align: center; color: white">
+                    <strong>Tracabilité des produits agricoles</strong>
+                </h4>
+            </div>
+            <ul class="nav navbar-top-links navbar-left hidden-xs">
+                <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
+                <li>
+                    <form role="search" class="app-search hidden-xs">
+                        <input type="text" placeholder="rechercher..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
+                </li>
+            </ul>
+            <ul class="nav navbar-top-links navbar-right pull-right">
+                <li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-user-following"></i>
+                        <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
+                    </a>
+                    <ul class="dropdown-menu mailbox animated bounceInDown">
+                        <li>
+                            <div class="drop-title"> 4 utilsateres en lignes</div>
+                        </li>
+                        <li>
+                            <div class="message-center">
+                                <a href="#">
+                                    <div class="user-img"> <img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Aly Seck</h5> <span class="mail-desc">Administrateur et gerant</span> <span class="time">9:30 AM</span> </div>
+                                </a>
+                                <a href="#">
+                                    <div class="user-img"> <img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user" class="img-circle"> <span class="profile-status busy pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Birane Diao</h5> <span class="mail-desc">Collecteur</span> <span class="time">9:10 AM</span> </div>
+                                </a>
+                                <a href="#">
+                                    <div class="user-img"> <img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user" class="img-circle"> <span class="profile-status away pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Awa Coly</h5> <span class="mail-desc">Collecteur</span> <span class="time">9:08 AM</span> </div>
+                                </a>
+                                <a href="#">
+                                    <div class="user-img"> <img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user" class="img-circle"> <span class="profile-status offline pull-right"></span> </div>
+                                    <div class="mail-contnet">
+                                        <h5>Moustapha Ndiaye</h5> <span class="mail-desc">Collecteur</span> <span class="time">9:02 AM</span> </div>
+                                </a>
+                            </div>
+                        </li>
+                        <li>
+                            <a class="text-center" href="javascript:void(0);"> <strong>Voir plus</strong> <i class="fa fa-angle-right"></i> </a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-messages -->
+                </li>
+                <!-- /.dropdown -->
+                <li class="dropdown">
+                    <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Aly seck</b> </a>
+                    <ul class="dropdown-menu dropdown-user animated flipInY">
+                        <li><a href=""><i class="ti-user"></i> Mon profile</a></li>
+                        <li><a href=""><i class="fa fa-power-off"></i> Se déconnecter</a></li>
+                        {#<li><a href="{{ path('fos_user_profile_show') }}"><i class="ti-user"></i> Mon profile</a></li>#}
+                        {#<li><a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-power-off"></i> Se déconnecter</a></li>#}
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- .Megamenu -->
+                <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Menu</span> <i class="icon-options-vertical"></i></a>
+                    <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
+                        <li class="col-sm-12 m-t-40 demo-box">
+                            <div class="row">
+                                <div class="col-sm-2">
+                                    <div class="white-box text-center bg-purple"><a href="#" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="b"></i><br/> Production</a></div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="white-box text-center bg-success"><a href="#" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="#"></i><br/>Controle</a></div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="white-box text-center bg-info"><a href="#" target="_blank" class="text-white"><i class="fa fa-product-hunt fa-fw" ></i><br/>Conditionnement</a></div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="white-box text-center bg-inverse"><a href="" target="_blank" class="text-white"><i class="fa fa-users fa-fw" ></i><br/>Rejet/FeedBack</a></div>
+                                </div>
+                                {#<div class="col-sm-2">
+                                    <div class="white-box text-center bg-warning"><a href="#" target="_blank" class="text-white"><i class="fa fa-shopping-cart fa-fw" ></i><br/>Gestion cotisations </a></div>
+                                </div>
+                                <div class="col-sm-2">
+                                    <div class="white-box text-center bg-danger"><a href="#" target="_blank" class="text-white"><i class=" fa fa-shopping-bag fa-fw" data-icon="d"></i><br/>Gestion Barkelous </a></div>
+                                </div>#}
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                {#<!-- /.Megamenu -->#}
+                {#<li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>#}
+                {#<!-- /.dropdown -->#}
+            </ul>
+        </div>
+        <!-- /.navbar-header -->
+        <!-- /.navbar-top-links -->
+        <!-- /.navbar-static-side -->
+    </nav>
+    <!-- Left navbar-header -->
+    <div class="navbar-default sidebar" role="navigation">
+        <div class="sidebar-nav navbar-collapse slimscrollsidebar">
+            <ul class="nav" id="side-menu">
+                <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+                    <!-- input-group -->
+                    <div class="input-group custom-search-form">
+                        <input type="text" class="form-control" placeholder="Rechercher..."> <span class="input-group-btn">
+                <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+                </span> </div>
+                    <!-- /input-group -->
+                </li>
+                <li class="user-pro">
+                    <a href="#" class="waves-effect"><img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> Admin<span class="fa arrow"></span></span>
+                    </a>
+                    <ul class="nav nav-second-level">
+                        <li><a href=""><i class="ti-user"></i> <span class="hide-menu"> Gestion des Utilisateurs</span></a></li>
+                        {#<li><a href=""><i class="fa fa-power-off"></i> Se déconnecter</a></li>#}
+
+                    </ul>
+                </li>
+                {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                {#<li><a href="" class="waves-effect"><i data-icon="P" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Administration<span class="fa arrow"></span></span></a>#}
+                    {#<ul class="nav nav-second-level" >#}
+                        {#<li style="padding: 10px 0 0;">#}
+                        {#<a href="{{ path('homepage') }}" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i><span class="hide-menu">Tableau de bord</span></a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="#" class="waves-effect"><i class="fa fa-fw fa-bank" aria-hidden="true"></i><span class="hide-menu">Résidences</span></a>#}
+                        {#</li>#}
+                        {#<li>#}
+                            {#<a href="#" class="waves-effect"><i class="fa fa-fw fa-list" aria-hidden="true"></i><span class="hide-menu">Membre</span></a>#}
+                        {#</li>#}
+
+                    {#</ul>#}
+
+                </li>
+                <li> <a href="#" class="waves-effect"><i data-icon="B" class="linea-icon linea-ecommerce fa-fw"></i> <span class="hide-menu">Demandes <span class="fa arrow"></span></span></a>
+
+                    <ul class="nav nav-second-level" >
+                        <li>
+                            <a href="#" class="waves-effect"><i class="fa fa-list-ol fa-fw" aria-hidden="true"></i><span class="hide-menu"> Producteur</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="waves-effect"><i class="fa fa-list-ol fa-fw" aria-hidden="true"></i><span class="hide-menu">Exportateur</span></a>
+                        </li>
+                       {# <li>
+                            <a href="#" class="waves-effect"><i class="fa fa-database fa-fw" aria-hidden="true"></i><span class="hide-menu">Menu</span></a>
+                        </li>
+                        <li>
+                            <a href="#" class="waves-effect"><i class="fa fa-file-pdf-o  fa-fw" aria-hidden="true"></i><span class="hide-menu">Menu</span></a>
+                        </li>#}
+                        {#<li><a href="javascript:void(0)" class="waves-effect">Verification<span class="fa arrow"></span></a>#}
+                        {#<ul class="nav nav-third-level">#}
+                        {#<li> <a href="">Basic</a></li>#}
+                        {#<li> <a href="">Alert</a></li>#}
+                        {#<li> <a href="">Billing</a></li>#}
+                        {#<li> <a href="">Reset Pwd</a></li>#}
+                        {#</ul>#}
+                        {#</li>#}
+
+                    </ul>
+
+
+              {#  <li>
+                    <a href="#" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Déconnexion</span></a>
+                </li>#}
+            </ul>
+        </div>
+    </div>
+    <!-- Left navbar-header end -->
+    <!-- Page Content -->
+    <div id="page-wrapper">
+        <div class="container-fluid">
+            {% block body %}
+            {% endblock %}
+        </div>
+        <!-- /.container-fluid -->
+        <footer class="footer text-center"> 2018 &copy; Ndeye Astou</footer>
+    </div>
+    <!-- /#page-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+<!-- jQuery -->
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<script src="{{ asset('template/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="{{ asset('template/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Menu Plugin JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
+<!--slimscroll JavaScript -->
+<script src="{{ asset('template/js/jquery.slimscroll.js') }}"></script>
+<!--Wave Effects -->
+<script src="{{ asset('template/js/waves.js') }}"></script>
+<!--Counter js -->
+<script src="{{ asset('template/plugins/bower_components/waypoints/lib/jquery.waypoints.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/counterup/jquery.counterup.min.js') }}"></script>
+<!--Morris JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/raphael/raphael-min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/morrisjs/morris.js') }}"></script>
+<!-- Custom Theme JavaScript -->
+<script src="{{ asset('template/js/custom.min.js') }}"></script>
+<script src="{{ asset('template/js/dashboard1.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/jquery-sparkline/jquery.charts-sparkline.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/toast-master/js/jquery.toast.js') }}"></script>
+<!-- Plugin JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/moment/moment.js') }}"></script>
+<!-- Clock Plugin JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.js') }}"></script>
+<!-- Color Picker Plugin JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asColor.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js') }}"></script>
+<!-- Date Picker Plugin JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js') }}"></script>
+<!-- Date range Plugin JavaScript -->
+<script src="{{ asset('template/plugins/bower_components/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/datatables/jquery.dataTables.min.js') }}"></script>
+<!-- start - This is for export functionality only -->
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+<script src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+
+
+<script src="{{ asset('template/plugins/bower_components/bootstrap-table/dist/bootstrap-table.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/bootstrap-table/dist/bootstrap-table.ints.js') }}"></script>
+<script src="{{ asset('template/js/footable-init.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/footable/js/footable.all.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/bootstrap-select/bootstrap-select.min.js') }}"></script>
+
+<script src="{{asset('template/plugins/bower_components/flot/excanvas.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot/jquery.flot.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot/jquery.flot.pie.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot/jquery.flot.resize.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot/jquery.flot.time.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot/jquery.flot.stack.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot/jquery.flot.crosshair.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
+<script src="{{ asset('template/js/flot-data.js') }}"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function() {
+        $.toast({
+            heading: 'Bienvenue dans TPA',
+            text: '',
+            position: 'top-right',
+            loaderBg: '#5679d7',
+            icon: 'info',
+            hideAfter: 3500,
+            stack: 6
+        })
+    });
+    // Clock pickers
+    $('#single-input').clockpicker({
+        placement: 'bottom',
+        align: 'left',
+        autoclose: true,
+        'default': 'now'
+    });
+    $('.clockpicker').clockpicker({
+        donetext: 'Done',
+    }).find('input').change(function() {
+        console.log(this.value);
+    });
+    $('#check-minutes').click(function(e) {
+        // Have to stop propagation here
+        e.stopPropagation();
+        input.clockpicker('show').clockpicker('toggleView', 'minutes');
+    });
+    if (/mobile/i.test(navigator.userAgent)) {
+        $('input').prop('readOnly', true);
+    }
+    // Colorpicker
+    $(".colorpicker").asColorPicker();
+    $(".complex-colorpicker").asColorPicker({
+        mode: 'complex'
+    });
+    $(".gradient-colorpicker").asColorPicker({
+        mode: 'gradient'
+    });
+    // Date Picker
+    jQuery('.mydatepicker, #datepicker').datepicker();
+    jQuery('#datepicker-autoclose').datepicker({
+        autoclose: true,
+        todayHighlight: true
+    });
+    jQuery('#date-range').datepicker({
+        toggleActive: true
+    });
+    jQuery('#datepicker-inline').datepicker({
+        todayHighlight: true
+    });
+    // Daterange picker
+    $('.input-daterange-datepicker').daterangepicker({
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse'
+    });
+    $('.input-daterange-timepicker').daterangepicker({
+        timePicker: true,
+        format: 'DD/MM/YYYY h:mm A',
+        timePickerIncrement: 30,
+        timePicker12Hour: true,
+        timePickerSeconds: false,
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse'
+    });
+    $('.input-limit-datepicker').daterangepicker({
+        format: 'DD/MM/YYYY',
+        minDate: '01/01/2018',
+        maxDate: '01/01/2019',
+        buttonClasses: ['btn', 'btn-sm'],
+        applyClass: 'btn-danger',
+        cancelClass: 'btn-inverse',
+        dateLimit: {
+            days: 6
+        }
+    });
+
+    $(document).ready(function() {
+        $('#myTable').DataTable();
+        $(document).ready(function() {
+            var table = $('#example').DataTable({
+                "columnDefs": [{
+                    "visible": false,
+                    "targets": 2
+                }],
+                "order": [
+                    [2, 'asc']
+                ],
+                "displayLength": 25,
+                "drawCallback": function(settings) {
+                    var api = this.api();
+                    var rows = api.rows({
+                        page: 'current'
+                    }).nodes();
+                    var last = null;
+                    api.column(2, {
+                        page: 'current'
+                    }).data().each(function(group, i) {
+                        if (last !== group) {
+                            $(rows).eq(i).before('<tr class="group"><td colspan="5">' + group + '</td></tr>');
+                            last = group;
+                        }
+                    });
+                }
+            });
+            // Order by the grouping
+            $('#example tbody').on('click', 'tr.group', function() {
+                var currentOrder = table.order()[0];
+                if (currentOrder[0] === 2 && currentOrder[1] === 'asc') {
+                    table.order([2, 'desc']).draw();
+                } else {
+                    table.order([2, 'asc']).draw();
+                }
+            });
+        });
+    });
+    $('#example23').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            'copy', 'csv', 'excel', 'pdf', 'print'
+        ]
+    });
+</script>
+<script src="{{ asset('template/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
+</body>
+
+</html>
+
+{#<html>#}
+    {#<head>#}
+        {#<meta charset="UTF-8" />#}
+        {#<title>{% block title %}Welcome!{% endblock %}</title>#}
+        {#{% block stylesheets %}{% endblock %}#}
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+    {#</head>#}
+    {#<body>#}
+        {#{% block body %}{% endblock %}#}
+        {#{% block javascripts %}{% endblock %}#}
+    {#</body>#}
+{#</html>#}
+
+{#<!DOCTYPE html>#}
+{#<html>#}
+    {#<head>#}
+        {#<meta charset="UTF-8" />#}
+        {#<title>{% block title %}Welcome!{% endblock %}</title>#}
+        {#{% block stylesheets %}{% endblock %}#}
+        {#<link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />#}
+    {#</head>#}
+    {#<body>#}
+        {#{% block body %}{% endblock %}#}
+        {#{% block javascripts %}{% endblock %}#}
+    {#</body>#}
+{#</html>#}

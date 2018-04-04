@@ -1,0 +1,12 @@
+personne_index:
+    path:     /
+    defaults: { _controller: "AppBundle:Personne:index" }
+    methods:  GET
+
+personne_show:
+    path:     /{id}/show
+    defaults: { _controller: "AppBundle:Personne:show" }
+    methods:  GET
+
+
+
