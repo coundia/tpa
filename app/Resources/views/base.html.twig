@@ -67,14 +67,15 @@
                 </li>
             </ul>
             <ul class="nav navbar-top-links navbar-right pull-right">
-                <li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-user-following"></i>
+                <li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-user-following"> <b class="hidden-xs">Nouveau</b></i>
                         <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
                     </a>
                     <ul class="dropdown-menu mailbox animated bounceInDown">
-                        <li> <a href="{{ path('fos_user_registration_register') }}">
-                                <div class="drop-title"> Créer un compte</div>
+                        <li> <a href="{{ path('producteur_new') }}">
+                                <div class="drop-title"> DEposer une Demande</div>
                             </a>
                         </li>
+
                         <li>
                            {# <div class="message-center">
                                 <a href="#">
