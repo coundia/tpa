@@ -67,17 +67,17 @@
                 </li>
             </ul>
             <ul class="nav navbar-top-links navbar-right pull-right">
-                <li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-user-following"> <b class="hidden-xs">Nouveau</b></i>
+                {#<li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-user-following"> <b class="hidden-xs">Nouveau</b></i>#}
                         <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
                     </a>
-                    <ul class="dropdown-menu mailbox animated bounceInDown">
+                   {# <ul class="dropdown-menu mailbox animated bounceInDown">
                         <li> <a href="{{ path('producteur_new') }}">
                                 <div class="drop-title"> DEposer une Demande</div>
                             </a>
                         </li>
 
                         <li>
-                           {# <div class="message-center">
+                           #}{# <div class="message-center">
                                 <a href="#">
                                     <div class="user-img"> <img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user" class="img-circle"> <span class="profile-status online pull-right"></span> </div>
                                     <div class="mail-contnet">
@@ -89,12 +89,12 @@
                                         <h5>Aly Seck</h5> <span class="mail-desc">Administrateur et gerant</span> <span class="time">9:30 AM</span> </div>
                                 </a>
 
-                            </div>#}
+                            </div>#}{#
                         </li>
-                        {#<li>
+                        #}{#<li>
                             <a class="text-center" href="javascript:void(0);"> <strong>Voir plus</strong> <i class="fa fa-angle-right"></i> </a>
-                        </li>#}
-                    </ul>
+                        </li>#}{#
+                    </ul>#}
                     <!-- /.dropdown-messages -->
                 </li>
                 <!-- /.dropdown -->
@@ -176,6 +176,7 @@
                     </ul>
                 </li>
                 {% endif %}
+                {% if is_granted('ROLE_PRODUCTEUR') %}
                 <li class="nav-small-cap m-t-10">--- Main Menu</li>
                 {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
                 <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">Production<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right">6</span></span></a>
@@ -208,6 +209,35 @@
                         </li>
                     </ul>
                 </li>
+                {% endif %}
+                {% if is_granted('ROLE_EXPORTATEUR') %}
+                    <li class="nav-small-cap m-t-10">--- Main Menu</li>
+                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">EXPORTATION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right">2</span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="javascript:void(0)" class="waves-effect">Remplir formulaire d'adhésion<span class="fa arrow"></span></a>
+                            </li>
+                            <li><a href="javascript:void(0)" class="waves-effect">Mise à jours des données<span class="fa arrow"></span></a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_CONTROLEUR') %}
+                    <li class="nav-small-cap m-t-10">--- Main Menu</li>
+                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">CONTROLE<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right">2</span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="javascript:void(0)" class="waves-effect">Editer Rapport de controle<span class="fa arrow"></span></a>
+                            </li>
+                            <li><a href="javascript:void(0)" class="waves-effect">Mise à jours des données<span class="fa arrow"></span></a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                {% endif %}
               {#  <li> <a href="#" class="waves-effect"><i data-icon="/" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">UI Elements<span class="fa arrow"></span> <span class="label label-rouded label-info pull-right">13</span> </span></a>
                     <ul class="nav nav-second-level">
                         <li><a href="panels-wells.html">Panels and Wells</a></li>

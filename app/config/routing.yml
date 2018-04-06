@@ -2,7 +2,10 @@ tpa:
     resource: "@TpaBundle/Controller/"
     type:     annotation
     prefix:   /
-
+user:
+    resource: "@UserBundle/Controller/"
+    type:     annotation
+    prefix:   /utilisateur
 #tpa:
 #    resource: "@tpaBundle/Controller/"
 #    type:     annotation

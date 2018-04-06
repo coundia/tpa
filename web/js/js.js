@@ -11,12 +11,12 @@ $(document).ready(function () {
         var next_step = true;
 
         parent_fieldset.find('input[type="text"],input[type="email"]').each(function () {
-           /*  if ($(this).val() == "") {
+             if ($(this).val() == "") {
                 $(this).addClass('input-error');
                 next_step = false;
             } else {
                 $(this).removeClass('input-error');
-            } */
+            } 
         });
 
         if (next_step) {
@@ -35,18 +35,18 @@ $(document).ready(function () {
     });
 
     // submit
-    $('.registration-form').on('submit', function (e) {
+ /*    $('.registration-form').on('submit', function (e) {
 
         $(this).find('input[type="text"],input[type="email"]').each(function () {
-          /*   if ($(this).val() == "") {
+            if ($(this).val() == "") {
                 e.preventDefault();
                 $(this).addClass('input-error');
             } else {
                 $(this).removeClass('input-error');
-            } */
+            } 
         });
 
-    });
+    }); */
 
 
 });
