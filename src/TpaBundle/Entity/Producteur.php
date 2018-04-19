@@ -27,7 +27,12 @@ class Producteur
      * @ORM\Column(name="nom", type="string", length=100)
      */
     private $nom;
-
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date", type="datetime", length=100)
+     */
+    private $date;
     /**
      * @var string
      *
@@ -212,6 +217,92 @@ class Producteur
      * @ORM\Column(name="emailManager", type="string", length=255)
      */
     private $emailManager;
+    //Activités
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="production", type="string", length=255)
+     */
+    private $production;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conditionnement", type="string", length=255)
+     */
+    private $conditionnement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="exportation", type="string", length=255)
+     */
+    private $exportation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prestation", type="string", length=255)
+     */
+    private $prestation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="vulgarisation", type="string", length=255)
+     */
+    private $vulgarisation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="bordChamp", type="string", length=255)
+     */
+    private $bordChamp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="europe", type="string", length=255)
+     */
+    private $europe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regie", type="string", length=255)
+     */
+    private $regie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="enStation", type="string", length=255)
+     */
+    private $enStation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="autre", type="string", length=255)
+     */
+    private $autresr;
+    //gestion de la qualité
+ 
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="gestionInterne", type="string", length=255)
+     */
+    private $gestionInterne;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="consultant", type="string", length=255)
+     */
+    private $consultant;
+
     /**
      * Get id
      *
@@ -917,4 +1008,321 @@ class Producteur
     {
         return $this->emailManager;
     }
+
+    /**
+     * Set production
+     *
+     * @param string $production
+     *
+     * @return Producteur
+     */
+    public function setProduction($production)
+    {
+        $this->production = $production;
+
+        return $this;
+    }
+
+    /**
+     * Get production
+     *
+     * @return string
+     */
+    public function getProduction()
+    {
+        return $this->production;
+    }
+
+    /**
+     * Set conditionnement
+     *
+     * @param string $conditionnement
+     *
+     * @return Producteur
+     */
+    public function setConditionnement($conditionnement)
+    {
+        $this->conditionnement = $conditionnement;
+
+        return $this;
+    }
+
+    /**
+     * Get conditionnement
+     *
+     * @return string
+     */
+    public function getConditionnement()
+    {
+        return $this->conditionnement;
+    }
+
+    /**
+     * Set exportation
+     *
+     * @param string $exportation
+     *
+     * @return Producteur
+     */
+    public function setExportation($exportation)
+    {
+        $this->exportation = $exportation;
+
+        return $this;
+    }
+
+    /**
+     * Get exportation
+     *
+     * @return string
+     */
+    public function getExportation()
+    {
+        return $this->exportation;
+    }
+
+    /**
+     * Set prestation
+     *
+     * @param string $prestation
+     *
+     * @return Producteur
+     */
+    public function setPrestation($prestation)
+    {
+        $this->prestation = $prestation;
+
+        return $this;
+    }
+
+    /**
+     * Get prestation
+     *
+     * @return string
+     */
+    public function getPrestation()
+    {
+        return $this->prestation;
+    }
+
+    /**
+     * Set vulgarisation
+     *
+     * @param string $vulgarisation
+     *
+     * @return Producteur
+     */
+    public function setVulgarisation($vulgarisation)
+    {
+        $this->vulgarisation = $vulgarisation;
+
+        return $this;
+    }
+
+    /**
+     * Get vulgarisation
+     *
+     * @return string
+     */
+    public function getVulgarisation()
+    {
+        return $this->vulgarisation;
+    }
+
+    /**
+     * Set bordChamp
+     *
+     * @param string $bordChamp
+     *
+     * @return Producteur
+     */
+    public function setBordChamp($bordChamp)
+    {
+        $this->bordChamp = $bordChamp;
+
+        return $this;
+    }
+
+    /**
+     * Get bordChamp
+     *
+     * @return string
+     */
+    public function getBordChamp()
+    {
+        return $this->bordChamp;
+    }
+
+    /**
+     * Set europe
+     *
+     * @param string $europe
+     *
+     * @return Producteur
+     */
+    public function setEurope($europe)
+    {
+        $this->europe = $europe;
+
+        return $this;
+    }
+
+    /**
+     * Get europe
+     *
+     * @return string
+     */
+    public function getEurope()
+    {
+        return $this->europe;
+    }
+
+    /**
+     * Set regie
+     *
+     * @param string $regie
+     *
+     * @return Producteur
+     */
+    public function setRegie($regie)
+    {
+        $this->regie = $regie;
+
+        return $this;
+    }
+
+    /**
+     * Get regie
+     *
+     * @return string
+     */
+    public function getRegie()
+    {
+        return $this->regie;
+    }
+
+    /**
+     * Set enStation
+     *
+     * @param string $enStation
+     *
+     * @return Producteur
+     */
+    public function setEnStation($enStation)
+    {
+        $this->enStation = $enStation;
+
+        return $this;
+    }
+
+    /**
+     * Get enStation
+     *
+     * @return string
+     */
+    public function getEnStation()
+    {
+        return $this->enStation;
+    }
+
+    /**
+     * Set autresr
+     *
+     * @param string $autresr
+     *
+     * @return Producteur
+     */
+    public function setAutresr($autresr)
+    {
+        $this->autresr = $autresr;
+
+        return $this;
+    }
+
+    /**
+     * Get autresr
+     *
+     * @return string
+     */
+    public function getAutresr()
+    {
+        return $this->autresr;
+    }
+
+
+
+
+
+    /**
+     * Set gestionInterne
+     *
+     * @param string $gestionInterne
+     *
+     * @return Producteur
+     */
+    public function setGestionInterne($gestionInterne)
+    {
+        $this->gestionInterne = $gestionInterne;
+
+        return $this;
+    }
+
+    /**
+     * Get gestionInterne
+     *
+     * @return string
+     */
+    public function getGestionInterne()
+    {
+        return $this->gestionInterne;
+    }
+
+    /**
+     * Set consultant
+     *
+     * @param string $consultant
+     *
+     * @return Producteur
+     */
+    public function setConsultant($consultant)
+    {
+        $this->consultant = $consultant;
+
+        return $this;
+    }
+
+    /**
+     * Get consultant
+     *
+     * @return string
+     */
+    public function getConsultant()
+    {
+        return $this->consultant;
+    }
+
+    /**
+     * Set date
+     *
+     * @param datetime $date
+     *
+     * @return Producteur
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return date
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
 }

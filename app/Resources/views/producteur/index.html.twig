@@ -39,7 +39,7 @@
                             <th>Fax</th>
                             <th>Email</th>
                             <th>Addresse</th>
-                            <th>Prenomrep</th>
+                          {#  <th>Prenomrep</th>
                             <th>Nomrep</th>
                             <th>Addresserep</th>
                             <th>Fonctionrep</th>
@@ -51,7 +51,7 @@
                             <th>Prenommanager</th>
                             <th>Titremanager</th>
                             <th>Telmanager</th>
-                            <th>Emailmanager</th>
+                            <th>Emailmanager</th>#}
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -75,7 +75,7 @@
                             <td>{{ producteur.fax }}</td>
                             <td>{{ producteur.email }}</td>
                             <td>{{ producteur.addresse }}</td>
-                            <td>{{ producteur.prenomRep }}</td>
+                            {#<td>{{ producteur.prenomRep }}</td>
                             <td>{{ producteur.nomRep }}</td>
                             <td>{{ producteur.addresseRep }}</td>
                             <td>{{ producteur.fonctionRep }}</td>
@@ -87,17 +87,22 @@
                             <td>{{ producteur.prenomManager }}</td>
                             <td>{{ producteur.titreManager }}</td>
                             <td>{{ producteur.telManager }}</td>
-                            <td>{{ producteur.emailManager }}</td>
+                            <td>{{ producteur.emailManager }}</td>#}
                             <td>
-                                <ul>
+
+                                <a href="{{ path('producteur_show', { 'id': producteur.id }) }}"><i> <img src=" {{ asset('images/voir2.png') }}" title="Voir"> </i></a>
+                                <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}"><i> <img src=" {{ asset('images/Edit.png') }}" title="Modifier"> </i></a>
+                                <a href="{{ path('producteur_delete', { 'id': producteur.id }) }}"><i> <img src=" {{ asset('images/delete_16.png') }}" title="Supprimer"> </i></a>
+                            </td>
+                              {#  <ul>
                                     <li>
                                         <a href="{{ path('producteur_show', { 'id': producteur.id }) }}">show</a>
                                     </li>
                                     <li>
                                         <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">edit</a>
                                     </li>
-                                </ul>
-                            </td>
+                                </ul>#}
+
                         </tr>
                     {% endfor %}
                     </tbody>
@@ -109,7 +114,7 @@
 
     <ul>
         <li>
-            <a href="{{ path('producteur_new') }}">Create a new producteur</a>
+            <a href="{{ path('producteur_new') }}">Créer un nouveau Producteur</a>
         </li>
     </ul>
 {% endblock %}

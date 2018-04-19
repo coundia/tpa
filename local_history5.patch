@@ -1,0 +1,619 @@
+Index: src/TpaBundle/Form/ProducteurType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Form/ProducteurType.php	(revision )
++++ src/TpaBundle/Form/ProducteurType.php	(revision )
+@@ -8,7 +8,8 @@
+ use Symfony\Component\Form\Extension\Core\Type\RadioType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\OptionsResolver\OptionsResolver;
+-
++use Symfony\Component\Form\FormEvent;
++use Symfony\Component\Form\FormEvents;
+ class ProducteurType extends AbstractType
+ {
+     /**
+@@ -17,14 +18,18 @@
+     public function buildForm(FormBuilderInterface $builder, array $options)
+     {
+         $builder->add('nom')->add('prenom')->add('statutLegal')->add('ninea')->add('siegeSocial')->add('region')->add('ville')->add('departement')->add('commune')->add('arrondissement')->add('village')->add('numTel')->add('numFixe')->add('fax')->add('email')->add('addresse')->add('prenomRep')->add('nomRep')->add('addresseRep')->add('fonctionRep')->add('mobileRep_')->add('fixeRep')->add('faxeRep')->add('emailRep')->add('nomManager')->add('prenomManager')->add('titreManager')->add('telManager')->add('emailManager')->add('production')->add('conditionnement')->add('exportation')->add('prestation')->add('vulgarisation')->add('bordChamp')->add('europe')->add('regie')->add('enStation')->add('autresr');
+-       /* $builder->add('sgQualite', RadioType::class, array(
+-            // each entry in the array will be an "email" field
+-            'entry_type'   => TextType::class,
+-            // these options are passed to each "email" type
+-            'entry_options'  => array(
+-                'attr'      => array('class' => '')
+-            ),
+-        ));*/
++       /* $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
++            $product = $event->getData();
++            $form = $event->getForm();
++
++            // check if the Product object is "new"
++            // If no data is passed to the form, the data is "null".
++            // This should be considered a new "Product"
++            if (!$product || null === $product->getId()) {
++                $form->add('name', TextType::class);
++            }
++        });*/
++
+ 
+ 
+ 
+Index: src/TpaBundle/Form/SiteProductionType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Form/SiteProductionType.php	(revision )
++++ src/TpaBundle/Form/SiteProductionType.php	(revision )
+@@ -0,0 +1,36 @@
++<?php
++
++namespace TpaBundle\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
++
++class SiteProductionType extends AbstractType
++{
++    /**
++     * {@inheritdoc}
++     */
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder->add('perimetre')->add('localisation')->add('superficie')->add('speculation')->add('regie');
++    }/**
++     * {@inheritdoc}
++     */
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults(array(
++            'data_class' => 'TpaBundle\Entity\SiteProduction'
++        ));
++    }
++
++    /**
++     * {@inheritdoc}
++     */
++    public function getBlockPrefix()
++    {
++        return 'tpabundle_siteproduction';
++    }
++
++
++}
+Index: src/TpaBundle/Form/SiteConditionnementType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Form/SiteConditionnementType.php	(revision )
++++ src/TpaBundle/Form/SiteConditionnementType.php	(revision )
+@@ -0,0 +1,36 @@
++<?php
++
++namespace TpaBundle\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
++
++class SiteConditionnementType extends AbstractType
++{
++    /**
++     * {@inheritdoc}
++     */
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder->add('speculation')->add('site')->add('localisation');
++    }/**
++     * {@inheritdoc}
++     */
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults(array(
++            'data_class' => 'TpaBundle\Entity\SiteConditionnement'
++        ));
++    }
++
++    /**
++     * {@inheritdoc}
++     */
++    public function getBlockPrefix()
++    {
++        return 'tpabundle_siteconditionnement';
++    }
++
++
++}
+Index: src/TpaBundle/Tests/Controller/SiteProductionControllerTest.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Tests/Controller/SiteProductionControllerTest.php	(revision )
++++ src/TpaBundle/Tests/Controller/SiteProductionControllerTest.php	(revision )
+@@ -0,0 +1,55 @@
++<?php
++
++namespace TpaBundle\Tests\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
++
++class SiteProductionControllerTest extends WebTestCase
++{
++    /*
++    public function testCompleteScenario()
++    {
++        // Create a new client to browse the application
++        $client = static::createClient();
++
++        // Create a new entry in the database
++        $crawler = $client->request('GET', '/siteproduction/');
++        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /siteproduction/");
++        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
++
++        // Fill in the form and submit it
++        $form = $crawler->selectButton('Create')->form(array(
++            'tpabundle_siteproduction[field_name]'  => 'Test',
++            // ... other fields to fill
++        ));
++
++        $client->submit($form);
++        $crawler = $client->followRedirect();
++
++        // Check data in the show view
++        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
++
++        // Edit the entity
++        $crawler = $client->click($crawler->selectLink('Edit')->link());
++
++        $form = $crawler->selectButton('Update')->form(array(
++            'tpabundle_siteproduction[field_name]'  => 'Foo',
++            // ... other fields to fill
++        ));
++
++        $client->submit($form);
++        $crawler = $client->followRedirect();
++
++        // Check the element contains an attribute with value equals "Foo"
++        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
++
++        // Delete the entity
++        $client->submit($crawler->selectButton('Delete')->form());
++        $crawler = $client->followRedirect();
++
++        // Check the entity has been delete on the list
++        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
++    }
++
++    */
++}
+Index: src/TpaBundle/Entity/SiteProduction.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Entity/SiteProduction.php	(revision )
++++ src/TpaBundle/Entity/SiteProduction.php	(revision )
+@@ -0,0 +1,213 @@
++<?php
++
++namespace TpaBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * SiteProduction
++ *
++ * @ORM\Table(name="site_production", indexes={@ORM\Index(name="Site_production_id", columns={"id"}), @ORM\Index(name="fk_Producteur_idx", columns={"Producteur_id"})})
++ * @ORM\Entity
++ * @ORM\Entity(repositoryClass="TpaBundle\Repository\SiteProductionRepository")
++ */
++class SiteProduction
++{
++
++    private $product;
++
++    /**
++     * @var int
++     *
++     * @ORM\Column(name="id", type="integer")
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     */
++    private $id;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="perimetre", type="string", length=25)
++     */
++    private $perimetre;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="localisation", type="string", length=50)
++     */
++    private $localisation;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="superficie", type="string", length=25)
++     */
++    private $superficie;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="speculation", type="string", length=50)
++     */
++    private $speculation;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="regie", type="string", length=50)
++     */
++    private $regie;
++
++    /**
++     * @var \SiteProduction
++     *
++     * @ORM\ManyToOne(targetEntity="TpaBundle\Entity\SiteProduction")
++     * @ORM\JoinColumns({
++     *   @ORM\JoinColumn(name="Site_production_id", referencedColumnName="id")
++     * })
++     */
++    private $siteProduction;
++
++    /**
++     * @var \Producteur
++     *
++     * @ORM\ManyToOne(targetEntity="TpaBundle\Entity\Producteur")
++     * @ORM\JoinColumns({
++     *   @ORM\JoinColumn(name="Producteur_id", referencedColumnName="id")
++     * })
++     */
++    private $producteur;
++
++    /**
++     * Get id
++     *
++     * @return int
++     */
++    public function getId()
++    {
++        return $this->id;
++    }
++
++    /**
++     * Set perimetre
++     *
++     * @param string $perimetre
++     *
++     * @return SiteProduction
++     */
++    public function setPerimetre($perimetre)
++    {
++        $this->perimetre = $perimetre;
++
++        return $this;
++    }
++
++    /**
++     * Get perimetre
++     *
++     * @return string
++     */
++    public function getPerimetre()
++    {
++        return $this->perimetre;
++    }
++
++    /**
++     * Set localisation
++     *
++     * @param string $localisation
++     *
++     * @return SiteProduction
++     */
++    public function setLocalisation($localisation)
++    {
++        $this->localisation = $localisation;
++
++        return $this;
++    }
++
++    /**
++     * Get localisation
++     *
++     * @return string
++     */
++    public function getLocalisation()
++    {
++        return $this->localisation;
++    }
++
++    /**
++     * Set superficie
++     *
++     * @param string $superficie
++     *
++     * @return SiteProduction
++     */
++    public function setSuperficie($superficie)
++    {
++        $this->superficie = $superficie;
++
++        return $this;
++    }
++
++    /**
++     * Get superficie
++     *
++     * @return string
++     */
++    public function getSuperficie()
++    {
++        return $this->superficie;
++    }
++
++    /**
++     * Set speculation
++     *
++     * @param string $speculation
++     *
++     * @return SiteProduction
++     */
++    public function setSpeculation($speculation)
++    {
++        $this->speculation = $speculation;
++
++        return $this;
++    }
++
++    /**
++     * Get speculation
++     *
++     * @return string
++     */
++    public function getSpeculation()
++    {
++        return $this->speculation;
++    }
++
++    /**
++     * Set regie
++     *
++     * @param string $regie
++     *
++     * @return SiteProduction
++     */
++    public function setRegie($regie)
++    {
++        $this->regie = $regie;
++
++        return $this;
++    }
++
++    /**
++     * Get regie
++     *
++     * @return string
++     */
++    public function getRegie()
++    {
++        return $this->regie;
++    }
++}
++
+Index: src/TpaBundle/Entity/SiteConditionnement.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Entity/SiteConditionnement.php	(revision )
++++ src/TpaBundle/Entity/SiteConditionnement.php	(revision )
+@@ -0,0 +1,128 @@
++<?php
++
++namespace TpaBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * SiteConditionnement
++ *
++ * @ORM\Table(name="site_conditionnement")
++ * @ORM\Entity(repositoryClass="TpaBundle\Repository\SiteConditionnementRepository")
++ */
++class SiteConditionnement
++{
++    /**
++     * @var int
++     *
++     * @ORM\Column(name="id", type="integer")
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     */
++    private $id;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="speculation", type="string", length=50)
++     */
++    private $speculation;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="site", type="string", length=25)
++     */
++    private $site;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="localisation", type="string", length=30)
++     */
++    private $localisation;
++
++
++    /**
++     * Get id
++     *
++     * @return int
++     */
++    public function getId()
++    {
++        return $this->id;
++    }
++
++    /**
++     * Set speculation
++     *
++     * @param string $speculation
++     *
++     * @return SiteConditionnement
++     */
++    public function setSpeculation($speculation)
++    {
++        $this->speculation = $speculation;
++
++        return $this;
++    }
++
++    /**
++     * Get speculation
++     *
++     * @return string
++     */
++    public function getSpeculation()
++    {
++        return $this->speculation;
++    }
++
++    /**
++     * Set site
++     *
++     * @param string $site
++     *
++     * @return SiteConditionnement
++     */
++    public function setSite($site)
++    {
++        $this->site = $site;
++
++        return $this;
++    }
++
++    /**
++     * Get site
++     *
++     * @return string
++     */
++    public function getSite()
++    {
++        return $this->site;
++    }
++
++    /**
++     * Set localisation
++     *
++     * @param string $localisation
++     *
++     * @return SiteConditionnement
++     */
++    public function setLocalisation($localisation)
++    {
++        $this->localisation = $localisation;
++
++        return $this;
++    }
++
++    /**
++     * Get localisation
++     *
++     * @return string
++     */
++    public function getLocalisation()
++    {
++        return $this->localisation;
++    }
++}
++
+Index: src/TpaBundle/Entity/Producteur.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Entity/Producteur.php	(revision )
++++ src/TpaBundle/Entity/Producteur.php	(revision )
+@@ -12,6 +12,8 @@
+  */
+ class Producteur
+ {
++
++
+     /**
+      * @var int
+      *
+@@ -284,7 +286,7 @@
+      */
+     private $autresr;
+     //gestion de la qualité
+- 
++
+     /**
+      * @var string
+      *
+Index: src/TpaBundle/Repository/SiteProductionRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Repository/SiteProductionRepository.php	(revision )
++++ src/TpaBundle/Repository/SiteProductionRepository.php	(revision )
+@@ -0,0 +1,13 @@
++<?php
++
++namespace TpaBundle\Repository;
++
++/**
++ * SiteProductionRepository
++ *
++ * This class was generated by the Doctrine ORM. Add your own custom
++ * repository methods below.
++ */
++class SiteProductionRepository extends \Doctrine\ORM\EntityRepository
++{
++}
+Index: src/TpaBundle/Repository/SiteConditionnementRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Repository/SiteConditionnementRepository.php	(revision )
++++ src/TpaBundle/Repository/SiteConditionnementRepository.php	(revision )
+@@ -0,0 +1,13 @@
++<?php
++
++namespace TpaBundle\Repository;
++
++/**
++ * SiteConditionnementRepository
++ *
++ * This class was generated by the Doctrine ORM. Add your own custom
++ * repository methods below.
++ */
++class SiteConditionnementRepository extends \Doctrine\ORM\EntityRepository
++{
++}

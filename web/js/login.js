@@ -1,4 +1,3 @@
-<script type="text/javascript">
 $( document ).ready(function() {
     // DOM ready
 
@@ -80,4 +79,3 @@ function testLocalStorageData() {
     localStorage.setItem("PROFILE_NAME", "César Izquierdo Tello");
     localStorage.setItem("PROFILE_REAUTH_EMAIL", "oneaccount@gmail.com");
 }
-</script>

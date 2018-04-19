@@ -1,0 +1,30 @@
+Index: src/TpaBundle/Controller/ProducteurController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Controller/ProducteurController.php	(revision )
++++ src/TpaBundle/Controller/ProducteurController.php	(revision )
+@@ -1,11 +1,11 @@
+ <?php
+ 
+ namespace TpaBundle\Controller;
+-
+ use TpaBundle\Entity\Producteur;
+ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
++use Symfony\Component\HttpFoundation\Request;
+ 
+ /**
+  * Producteur controller.
+@@ -52,7 +52,7 @@
+         }
+ 
+         return $this->render('producteur/new.html.twig', array(
+-            'producteur' => $producteur,
++            'producteurs' => $producteur,
+             'form' => $form->createView(),
+         ));
+     }

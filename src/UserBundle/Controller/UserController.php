@@ -76,11 +76,40 @@ class UserController extends Controller
      */
     public function voirAction(User $utilisateur)
     {
-        //$deleteForm = $this->createDeleteForm($utilisateur);
+        $deleteForm = $this->createDeleteForm($utilisateur);
 
         return $this->render('user/voir.html.twig', array(
             'utilisateurs' => $utilisateur,
             //'delete_form' => $deleteForm->createView(),
         ));
+    }
+    private function createDeleteForm(User $user)
+    {
+        return $this->createFormBuilder()
+            ->setAction($this->generateUrl('user_delete', array('id' => $user->getId())))
+            ->setMethod('DELETE')
+            ->getForm()
+            ;
+    }
+    /**
+     * Finds and displays a user entity.
+     *
+     * @Route("/delete/{id}", name="utilisateur_delete")
+     * @Method("GET")
+     */
+    public function deleteAction(Request $request, User $user)
+    {
+
+        //$form = $this->createDeleteForm($user);
+        //var_dump($user);exit();
+        //$form->handleRequest($request);
+
+        //if ($form->isSubmitted() && $form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($user);
+            $em->flush();
+        //}
+
+        return $this->redirectToRoute('utilisateur_index');
     }
 }

@@ -1,0 +1,2289 @@
+Index: app/Resources/views/default/index.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Resources/views/default/index.html.twig	(revision )
++++ app/Resources/views/default/index.html.twig	(revision )
+@@ -41,9 +41,9 @@
+                         Inscrivez vous ou acceder à votre Compte</p>
+                     <form class="form-inline">
+                         <button type="submit" class="btn btn-success">
+-                            <a href="{{ path('producteur_new') }}">Inscription</button>
++                            <a href="{{ path('producteur_new') }}">Inscription</a></button>
+                         <button type="submit" class="btn btn-success">
+-                            <a href="{{ path('fos_user_security_login') }}">Connexion</button>
++                            <a href="{{ path('fos_user_security_login') }}">Connexion</a></button>
+                     </form>
+                 </div>
+             </div>
+Index: app/Resources/views/siteproduction/new.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Resources/views/siteproduction/new.html.twig	(revision )
++++ app/Resources/views/siteproduction/new.html.twig	(revision )
+@@ -0,0 +1,16 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>Siteproduction creation</h1>
++
++    {{ form_start(form) }}
++        {{ form_widget(form) }}
++        <input type="submit" value="Create" />
++    {{ form_end(form) }}
++
++    <ul>
++        <li>
++            <a href="{{ path('siteproduction_index') }}">Back to the list</a>
++        </li>
++    </ul>
++{% endblock %}
+Index: app/Resources/views/siteproduction/edit.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Resources/views/siteproduction/edit.html.twig	(revision )
++++ app/Resources/views/siteproduction/edit.html.twig	(revision )
+@@ -0,0 +1,21 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>Siteproduction edit</h1>
++
++    {{ form_start(edit_form) }}
++        {{ form_widget(edit_form) }}
++        <input type="submit" value="Edit" />
++    {{ form_end(edit_form) }}
++
++    <ul>
++        <li>
++            <a href="{{ path('siteproduction_index') }}">Back to the list</a>
++        </li>
++        <li>
++            {{ form_start(delete_form) }}
++                <input type="submit" value="Delete">
++            {{ form_end(delete_form) }}
++        </li>
++    </ul>
++{% endblock %}
+Index: app/Resources/views/siteproduction/show.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Resources/views/siteproduction/show.html.twig	(revision )
++++ app/Resources/views/siteproduction/show.html.twig	(revision )
+@@ -0,0 +1,48 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>Siteproduction</h1>
++
++    <table>
++        <tbody>
++            <tr>
++                <th>Id</th>
++                <td>{{ siteProduction.id }}</td>
++            </tr>
++            <tr>
++                <th>Perimetre</th>
++                <td>{{ siteProduction.perimetre }}</td>
++            </tr>
++            <tr>
++                <th>Localisation</th>
++                <td>{{ siteProduction.localisation }}</td>
++            </tr>
++            <tr>
++                <th>Superficie</th>
++                <td>{{ siteProduction.superficie }}</td>
++            </tr>
++            <tr>
++                <th>Speculation</th>
++                <td>{{ siteProduction.speculation }}</td>
++            </tr>
++            <tr>
++                <th>Regie</th>
++                <td>{{ siteProduction.regie }}</td>
++            </tr>
++        </tbody>
++    </table>
++
++    <ul>
++        <li>
++            <a href="{{ path('siteproduction_index') }}">Back to the list</a>
++        </li>
++        <li>
++            <a href="{{ path('siteproduction_edit', { 'id': siteProduction.id }) }}">Edit</a>
++        </li>
++        <li>
++            {{ form_start(delete_form) }}
++                <input type="submit" value="Delete">
++            {{ form_end(delete_form) }}
++        </li>
++    </ul>
++{% endblock %}
+Index: app/Resources/views/siteproduction/index.html.twig
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/Resources/views/siteproduction/index.html.twig	(revision )
++++ app/Resources/views/siteproduction/index.html.twig	(revision )
+@@ -0,0 +1,47 @@
++{% extends 'base.html.twig' %}
++
++{% block body %}
++    <h1>Siteproductions list</h1>
++
++    <table>
++        <thead>
++            <tr>
++                <th>Id</th>
++                <th>Perimetre</th>
++                <th>Localisation</th>
++                <th>Superficie</th>
++                <th>Speculation</th>
++                <th>Regie</th>
++                <th>Actions</th>
++            </tr>
++        </thead>
++        <tbody>
++        {% for siteProduction in siteProductions %}
++            <tr>
++                <td><a href="{{ path('siteproduction_show', { 'id': siteProduction.id }) }}">{{ siteProduction.id }}</a></td>
++                <td>{{ siteProduction.perimetre }}</td>
++                <td>{{ siteProduction.localisation }}</td>
++                <td>{{ siteProduction.superficie }}</td>
++                <td>{{ siteProduction.speculation }}</td>
++                <td>{{ siteProduction.regie }}</td>
++                <td>
++                    <ul>
++                        <li>
++                            <a href="{{ path('siteproduction_show', { 'id': siteProduction.id }) }}">show</a>
++                        </li>
++                        <li>
++                            <a href="{{ path('siteproduction_edit', { 'id': siteProduction.id }) }}">edit</a>
++                        </li>
++                    </ul>
++                </td>
++            </tr>
++        {% endfor %}
++        </tbody>
++    </table>
++
++    <ul>
++        <li>
++            <a href="{{ path('siteproduction_new') }}">Create a new siteProduction</a>
++        </li>
++    </ul>
++{% endblock %}
+Index: src/TpaBundle/Form/ProducteurType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Form/ProducteurType.php	(revision )
++++ src/TpaBundle/Form/ProducteurType.php	(revision )
+@@ -8,7 +8,8 @@
+ use Symfony\Component\Form\Extension\Core\Type\RadioType;
+ use Symfony\Component\Form\FormBuilderInterface;
+ use Symfony\Component\OptionsResolver\OptionsResolver;
+-
++use Symfony\Component\Form\FormEvent;
++use Symfony\Component\Form\FormEvents;
+ class ProducteurType extends AbstractType
+ {
+     /**
+@@ -17,14 +18,18 @@
+     public function buildForm(FormBuilderInterface $builder, array $options)
+     {
+         $builder->add('nom')->add('prenom')->add('statutLegal')->add('ninea')->add('siegeSocial')->add('region')->add('ville')->add('departement')->add('commune')->add('arrondissement')->add('village')->add('numTel')->add('numFixe')->add('fax')->add('email')->add('addresse')->add('prenomRep')->add('nomRep')->add('addresseRep')->add('fonctionRep')->add('mobileRep_')->add('fixeRep')->add('faxeRep')->add('emailRep')->add('nomManager')->add('prenomManager')->add('titreManager')->add('telManager')->add('emailManager')->add('production')->add('conditionnement')->add('exportation')->add('prestation')->add('vulgarisation')->add('bordChamp')->add('europe')->add('regie')->add('enStation')->add('autresr');
+-       /* $builder->add('sgQualite', RadioType::class, array(
+-            // each entry in the array will be an "email" field
+-            'entry_type'   => TextType::class,
+-            // these options are passed to each "email" type
+-            'entry_options'  => array(
+-                'attr'      => array('class' => '')
+-            ),
+-        ));*/
++       /* $builder->addEventListener(FormEvents::PRE_SET_DATA, function (FormEvent $event) {
++            $product = $event->getData();
++            $form = $event->getForm();
++
++            // check if the Product object is "new"
++            // If no data is passed to the form, the data is "null".
++            // This should be considered a new "Product"
++            if (!$product || null === $product->getId()) {
++                $form->add('name', TextType::class);
++            }
++        });*/
++
+ 
+ 
+ 
+Index: src/TpaBundle/Form/SiteProductionType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Form/SiteProductionType.php	(revision )
++++ src/TpaBundle/Form/SiteProductionType.php	(revision )
+@@ -0,0 +1,36 @@
++<?php
++
++namespace TpaBundle\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
++
++class SiteProductionType extends AbstractType
++{
++    /**
++     * {@inheritdoc}
++     */
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder->add('perimetre')->add('localisation')->add('superficie')->add('speculation')->add('regie');
++    }/**
++     * {@inheritdoc}
++     */
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults(array(
++            'data_class' => 'TpaBundle\Entity\SiteProduction'
++        ));
++    }
++
++    /**
++     * {@inheritdoc}
++     */
++    public function getBlockPrefix()
++    {
++        return 'tpabundle_siteproduction';
++    }
++
++
++}
+Index: src/TpaBundle/Form/SiteConditionnementType.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Form/SiteConditionnementType.php	(revision )
++++ src/TpaBundle/Form/SiteConditionnementType.php	(revision )
+@@ -0,0 +1,36 @@
++<?php
++
++namespace TpaBundle\Form;
++
++use Symfony\Component\Form\AbstractType;
++use Symfony\Component\Form\FormBuilderInterface;
++use Symfony\Component\OptionsResolver\OptionsResolver;
++
++class SiteConditionnementType extends AbstractType
++{
++    /**
++     * {@inheritdoc}
++     */
++    public function buildForm(FormBuilderInterface $builder, array $options)
++    {
++        $builder->add('speculation')->add('site')->add('localisation');
++    }/**
++     * {@inheritdoc}
++     */
++    public function configureOptions(OptionsResolver $resolver)
++    {
++        $resolver->setDefaults(array(
++            'data_class' => 'TpaBundle\Entity\SiteConditionnement'
++        ));
++    }
++
++    /**
++     * {@inheritdoc}
++     */
++    public function getBlockPrefix()
++    {
++        return 'tpabundle_siteconditionnement';
++    }
++
++
++}
+Index: src/TpaBundle/Tests/Controller/SiteProductionControllerTest.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Tests/Controller/SiteProductionControllerTest.php	(revision )
++++ src/TpaBundle/Tests/Controller/SiteProductionControllerTest.php	(revision )
+@@ -0,0 +1,55 @@
++<?php
++
++namespace TpaBundle\Tests\Controller;
++
++use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
++
++class SiteProductionControllerTest extends WebTestCase
++{
++    /*
++    public function testCompleteScenario()
++    {
++        // Create a new client to browse the application
++        $client = static::createClient();
++
++        // Create a new entry in the database
++        $crawler = $client->request('GET', '/siteproduction/');
++        $this->assertEquals(200, $client->getResponse()->getStatusCode(), "Unexpected HTTP status code for GET /siteproduction/");
++        $crawler = $client->click($crawler->selectLink('Create a new entry')->link());
++
++        // Fill in the form and submit it
++        $form = $crawler->selectButton('Create')->form(array(
++            'tpabundle_siteproduction[field_name]'  => 'Test',
++            // ... other fields to fill
++        ));
++
++        $client->submit($form);
++        $crawler = $client->followRedirect();
++
++        // Check data in the show view
++        $this->assertGreaterThan(0, $crawler->filter('td:contains("Test")')->count(), 'Missing element td:contains("Test")');
++
++        // Edit the entity
++        $crawler = $client->click($crawler->selectLink('Edit')->link());
++
++        $form = $crawler->selectButton('Update')->form(array(
++            'tpabundle_siteproduction[field_name]'  => 'Foo',
++            // ... other fields to fill
++        ));
++
++        $client->submit($form);
++        $crawler = $client->followRedirect();
++
++        // Check the element contains an attribute with value equals "Foo"
++        $this->assertGreaterThan(0, $crawler->filter('[value="Foo"]')->count(), 'Missing element [value="Foo"]');
++
++        // Delete the entity
++        $client->submit($crawler->selectButton('Delete')->form());
++        $crawler = $client->followRedirect();
++
++        // Check the entity has been delete on the list
++        $this->assertNotRegExp('/Foo/', $client->getResponse()->getContent());
++    }
++
++    */
++}
+Index: src/TpaBundle/Entity/Producteur.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Entity/Producteur.php	(revision )
++++ src/TpaBundle/Entity/Producteur.php	(revision )
+@@ -12,6 +12,8 @@
+  */
+ class Producteur
+ {
++
++
+     /**
+      * @var int
+      *
+Index: src/TpaBundle/Entity/SiteProduction.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Entity/SiteProduction.php	(revision )
++++ src/TpaBundle/Entity/SiteProduction.php	(revision )
+@@ -0,0 +1,213 @@
++<?php
++
++namespace TpaBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * SiteProduction
++ *
++ * @ORM\Table(name="site_production", indexes={@ORM\Index(name="Site_production_id", columns={"id"}), @ORM\Index(name="fk_Producteur_idx", columns={"Producteur_id"})})
++ * @ORM\Entity
++ * @ORM\Entity(repositoryClass="TpaBundle\Repository\SiteProductionRepository")
++ */
++class SiteProduction
++{
++
++    private $product;
++
++    /**
++     * @var int
++     *
++     * @ORM\Column(name="id", type="integer")
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     */
++    private $id;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="perimetre", type="string", length=25)
++     */
++    private $perimetre;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="localisation", type="string", length=50)
++     */
++    private $localisation;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="superficie", type="string", length=25)
++     */
++    private $superficie;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="speculation", type="string", length=50)
++     */
++    private $speculation;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="regie", type="string", length=50)
++     */
++    private $regie;
++
++    /**
++     * @var \SiteProduction
++     *
++     * @ORM\ManyToOne(targetEntity="TpaBundle\Entity\SiteProduction")
++     * @ORM\JoinColumns({
++     *   @ORM\JoinColumn(name="Site_production_id", referencedColumnName="id")
++     * })
++     */
++    private $siteProduction;
++
++    /**
++     * @var \Producteur
++     *
++     * @ORM\ManyToOne(targetEntity="TpaBundle\Entity\Producteur")
++     * @ORM\JoinColumns({
++     *   @ORM\JoinColumn(name="Producteur_id", referencedColumnName="id")
++     * })
++     */
++    private $producteur;
++
++    /**
++     * Get id
++     *
++     * @return int
++     */
++    public function getId()
++    {
++        return $this->id;
++    }
++
++    /**
++     * Set perimetre
++     *
++     * @param string $perimetre
++     *
++     * @return SiteProduction
++     */
++    public function setPerimetre($perimetre)
++    {
++        $this->perimetre = $perimetre;
++
++        return $this;
++    }
++
++    /**
++     * Get perimetre
++     *
++     * @return string
++     */
++    public function getPerimetre()
++    {
++        return $this->perimetre;
++    }
++
++    /**
++     * Set localisation
++     *
++     * @param string $localisation
++     *
++     * @return SiteProduction
++     */
++    public function setLocalisation($localisation)
++    {
++        $this->localisation = $localisation;
++
++        return $this;
++    }
++
++    /**
++     * Get localisation
++     *
++     * @return string
++     */
++    public function getLocalisation()
++    {
++        return $this->localisation;
++    }
++
++    /**
++     * Set superficie
++     *
++     * @param string $superficie
++     *
++     * @return SiteProduction
++     */
++    public function setSuperficie($superficie)
++    {
++        $this->superficie = $superficie;
++
++        return $this;
++    }
++
++    /**
++     * Get superficie
++     *
++     * @return string
++     */
++    public function getSuperficie()
++    {
++        return $this->superficie;
++    }
++
++    /**
++     * Set speculation
++     *
++     * @param string $speculation
++     *
++     * @return SiteProduction
++     */
++    public function setSpeculation($speculation)
++    {
++        $this->speculation = $speculation;
++
++        return $this;
++    }
++
++    /**
++     * Get speculation
++     *
++     * @return string
++     */
++    public function getSpeculation()
++    {
++        return $this->speculation;
++    }
++
++    /**
++     * Set regie
++     *
++     * @param string $regie
++     *
++     * @return SiteProduction
++     */
++    public function setRegie($regie)
++    {
++        $this->regie = $regie;
++
++        return $this;
++    }
++
++    /**
++     * Get regie
++     *
++     * @return string
++     */
++    public function getRegie()
++    {
++        return $this->regie;
++    }
++}
++
+Index: src/TpaBundle/Entity/SiteConditionnement.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Entity/SiteConditionnement.php	(revision )
++++ src/TpaBundle/Entity/SiteConditionnement.php	(revision )
+@@ -0,0 +1,128 @@
++<?php
++
++namespace TpaBundle\Entity;
++
++use Doctrine\ORM\Mapping as ORM;
++
++/**
++ * SiteConditionnement
++ *
++ * @ORM\Table(name="site_conditionnement")
++ * @ORM\Entity(repositoryClass="TpaBundle\Repository\SiteConditionnementRepository")
++ */
++class SiteConditionnement
++{
++    /**
++     * @var int
++     *
++     * @ORM\Column(name="id", type="integer")
++     * @ORM\Id
++     * @ORM\GeneratedValue(strategy="AUTO")
++     */
++    private $id;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="speculation", type="string", length=50)
++     */
++    private $speculation;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="site", type="string", length=25)
++     */
++    private $site;
++
++    /**
++     * @var string
++     *
++     * @ORM\Column(name="localisation", type="string", length=30)
++     */
++    private $localisation;
++
++
++    /**
++     * Get id
++     *
++     * @return int
++     */
++    public function getId()
++    {
++        return $this->id;
++    }
++
++    /**
++     * Set speculation
++     *
++     * @param string $speculation
++     *
++     * @return SiteConditionnement
++     */
++    public function setSpeculation($speculation)
++    {
++        $this->speculation = $speculation;
++
++        return $this;
++    }
++
++    /**
++     * Get speculation
++     *
++     * @return string
++     */
++    public function getSpeculation()
++    {
++        return $this->speculation;
++    }
++
++    /**
++     * Set site
++     *
++     * @param string $site
++     *
++     * @return SiteConditionnement
++     */
++    public function setSite($site)
++    {
++        $this->site = $site;
++
++        return $this;
++    }
++
++    /**
++     * Get site
++     *
++     * @return string
++     */
++    public function getSite()
++    {
++        return $this->site;
++    }
++
++    /**
++     * Set localisation
++     *
++     * @param string $localisation
++     *
++     * @return SiteConditionnement
++     */
++    public function setLocalisation($localisation)
++    {
++        $this->localisation = $localisation;
++
++        return $this;
++    }
++
++    /**
++     * Get localisation
++     *
++     * @return string
++     */
++    public function getLocalisation()
++    {
++        return $this->localisation;
++    }
++}
++
+Index: src/TpaBundle/Controller/SiteProductionController.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Controller/SiteProductionController.php	(revision )
++++ src/TpaBundle/Controller/SiteProductionController.php	(revision )
+@@ -0,0 +1,136 @@
++<?php
++
++namespace TpaBundle\Controller;
++
++use TpaBundle\Entity\SiteProduction;
++use Symfony\Bundle\FrameworkBundle\Controller\Controller;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
++use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;use Symfony\Component\HttpFoundation\Request;
++
++/**
++ * Siteproduction controller.
++ *
++ * @Route("siteproduction")
++ */
++class SiteProductionController extends Controller
++{
++    /**
++     * Lists all siteProduction entities.
++     *
++     * @Route("/", name="siteproduction_index")
++     * @Method("GET")
++     */
++    public function indexAction()
++    {
++        $em = $this->getDoctrine()->getManager();
++
++        $siteProductions = $em->getRepository('TpaBundle:SiteProduction')->findAll();
++
++        return $this->render('siteproduction/index.html.twig', array(
++            'siteProductions' => $siteProductions,
++        ));
++    }
++
++    /**
++     * Creates a new siteProduction entity.
++     *
++     * @Route("/new", name="siteproduction_new")
++     * @Method({"GET", "POST"})
++     */
++    public function newAction(Request $request)
++    {
++        $siteProduction = new Siteproduction();
++        $form = $this->createForm('TpaBundle\Form\SiteProductionType', $siteProduction);
++        $form->handleRequest($request);
++
++        if ($form->isSubmitted() && $form->isValid()) {
++            $em = $this->getDoctrine()->getManager();
++            $em->persist($siteProduction);
++            $em->flush();
++
++            return $this->redirectToRoute('siteproduction_show', array('id' => $siteProduction->getId()));
++        }
++
++        return $this->render('siteproduction/new.html.twig', array(
++            'siteProduction' => $siteProduction,
++            'form' => $form->createView(),
++        ));
++    }
++
++    /**
++     * Finds and displays a siteProduction entity.
++     *
++     * @Route("/{id}", name="siteproduction_show")
++     * @Method("GET")
++     */
++    public function showAction(SiteProduction $siteProduction)
++    {
++        $deleteForm = $this->createDeleteForm($siteProduction);
++
++        return $this->render('siteproduction/show.html.twig', array(
++            'siteProduction' => $siteProduction,
++            'delete_form' => $deleteForm->createView(),
++        ));
++    }
++
++    /**
++     * Displays a form to edit an existing siteProduction entity.
++     *
++     * @Route("/{id}/edit", name="siteproduction_edit")
++     * @Method({"GET", "POST"})
++     */
++    public function editAction(Request $request, SiteProduction $siteProduction)
++    {
++        $deleteForm = $this->createDeleteForm($siteProduction);
++        $editForm = $this->createForm('TpaBundle\Form\SiteProductionType', $siteProduction);
++        $editForm->handleRequest($request);
++
++        if ($editForm->isSubmitted() && $editForm->isValid()) {
++            $this->getDoctrine()->getManager()->flush();
++
++            return $this->redirectToRoute('siteproduction_edit', array('id' => $siteProduction->getId()));
++        }
++
++        return $this->render('siteproduction/edit.html.twig', array(
++            'siteProduction' => $siteProduction,
++            'edit_form' => $editForm->createView(),
++            'delete_form' => $deleteForm->createView(),
++        ));
++    }
++
++    /**
++     * Deletes a siteProduction entity.
++     *
++     * @Route("/{id}", name="siteproduction_delete")
++     * @Method("DELETE")
++     */
++    public function deleteAction(Request $request, SiteProduction $siteProduction)
++    {
++        $form = $this->createDeleteForm($siteProduction);
++        $form->handleRequest($request);
++
++        if ($form->isSubmitted() && $form->isValid()) {
++            $em = $this->getDoctrine()->getManager();
++            $em->remove($siteProduction);
++            $em->flush();
++        }
++
++        return $this->redirectToRoute('siteproduction_index');
++    }
++
++    /**
++     * Creates a form to delete a siteProduction entity.
++     *
++     * @param SiteProduction $siteProduction The siteProduction entity
++     *
++     * @return \Symfony\Component\Form\Form The form
++     */
++    private function createDeleteForm(SiteProduction $siteProduction)
++    {
++        return $this->createFormBuilder()
++            ->setAction($this->generateUrl('siteproduction_delete', array('id' => $siteProduction->getId())))
++            ->setMethod('DELETE')
++            ->getForm()
++        ;
++    }
++}
+Index: src/TpaBundle/Repository/SiteProductionRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Repository/SiteProductionRepository.php	(revision )
++++ src/TpaBundle/Repository/SiteProductionRepository.php	(revision )
+@@ -0,0 +1,13 @@
++<?php
++
++namespace TpaBundle\Repository;
++
++/**
++ * SiteProductionRepository
++ *
++ * This class was generated by the Doctrine ORM. Add your own custom
++ * repository methods below.
++ */
++class SiteProductionRepository extends \Doctrine\ORM\EntityRepository
++{
++}
+Index: src/TpaBundle/Repository/SiteConditionnementRepository.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- src/TpaBundle/Repository/SiteConditionnementRepository.php	(revision )
++++ src/TpaBundle/Repository/SiteConditionnementRepository.php	(revision )
+@@ -0,0 +1,13 @@
++<?php
++
++namespace TpaBundle\Repository;
++
++/**
++ * SiteConditionnementRepository
++ *
++ * This class was generated by the Doctrine ORM. Add your own custom
++ * repository methods below.
++ */
++class SiteConditionnementRepository extends \Doctrine\ORM\EntityRepository
++{
++}
+Index: var/cache/dev/twig/48/489c97bc45eac0d3fe64e374c875fa943bc5ca8ac1fa0d8e9d56106db4b0c95c.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/twig/48/489c97bc45eac0d3fe64e374c875fa943bc5ca8ac1fa0d8e9d56106db4b0c95c.php	(revision )
++++ var/cache/dev/twig/48/489c97bc45eac0d3fe64e374c875fa943bc5ca8ac1fa0d8e9d56106db4b0c95c.php	(revision )
+@@ -86,12 +86,12 @@
+                             <a href=\"";
+         // line 44
+         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("producteur_new");
+-        echo "\">Inscription</button>
++        echo "\">Inscription</a></button>
+                         <button type=\"submit\" class=\"btn btn-success\">
+                             <a href=\"";
+         // line 46
+         echo $this->env->getExtension('Symfony\Bridge\Twig\Extension\RoutingExtension')->getPath("fos_user_security_login");
+-        echo "\">Connexion</button>
++        echo "\">Connexion</a></button>
+                     </form>
+                 </div>
+             </div>
+@@ -164,27 +164,9 @@
+ <!-- contact -->
+ /*  <div class=\"contact wowload fadeIn\">
+ 
+-    <div class=\"container\">
+-        <h2 class=\"text-center\">Contact us</h2>
+-        <div class=\"row\">
+-            <div class=\"col-sm-6 col-sm-offset-3\">
+-                <form>
+-                    <div class=\"form-group\">
+-                        <input id=\"name\" name=\"name\" type=\"text\" class=\"form-control\" placeholder=\"Name\">
+-                    </div>
+-                    <div class=\"form-group\">
+-                        <input id=\"email\" name=\"email\" type=\"email\" class=\"form-control\" placeholder=\"Email address\">
+-                    </div>
+-                    <div class=\"form-group\">
+-                        <textarea id=\"message\" name=\"message\" class=\"form-control\" placeholder=\"Your Message\" rows=\"5\"></textarea>
+-                    </div>
+-                    <button type=\"submit\" class=\"btn btn-warning\"><i class=\"fa fa-send-o\"></i> Submit</button>
+-                </form>
+-
+-            </div>
+-        </div>
+-    </div>
+-</div> */
++    ";
++        // line 125
++        echo "</div> */
+ <!-- contact -->
+ 
+ 
+@@ -259,7 +241,7 @@
+ 
+     public function getDebugInfo()
+     {
+-        return array (  230 => 151,  226 => 150,  222 => 149,  217 => 147,  213 => 146,  209 => 145,  151 => 90,  147 => 89,  143 => 88,  121 => 71,  93 => 46,  88 => 44,  79 => 38,  60 => 22,  54 => 19,  50 => 18,  46 => 17,  42 => 16,  25 => 1,);
++        return array (  212 => 151,  208 => 150,  204 => 149,  199 => 147,  195 => 146,  191 => 145,  169 => 125,  151 => 90,  147 => 89,  143 => 88,  121 => 71,  93 => 46,  88 => 44,  79 => 38,  60 => 22,  54 => 19,  50 => 18,  46 => 17,  42 => 16,  25 => 1,);
+     }
+ 
+     /** @deprecated since 1.27 (to be removed in 2.0). Use getSourceContext() instead */
+@@ -315,9 +297,9 @@
+                         Inscrivez vous ou acceder à votre Compte</p>
+                     <form class=\"form-inline\">
+                         <button type=\"submit\" class=\"btn btn-success\">
+-                            <a href=\"{{ path('producteur_new') }}\">Inscription</button>
++                            <a href=\"{{ path('producteur_new') }}\">Inscription</a></button>
+                         <button type=\"submit\" class=\"btn btn-success\">
+-                            <a href=\"{{ path('fos_user_security_login') }}\">Connexion</button>
++                            <a href=\"{{ path('fos_user_security_login') }}\">Connexion</a></button>
+                     </form>
+                 </div>
+             </div>
+@@ -376,7 +358,7 @@
+ <!-- contact -->
+ /*  <div class=\"contact wowload fadeIn\">
+ 
+-    <div class=\"container\">
++    {#<div class=\"container\">
+         <h2 class=\"text-center\">Contact us</h2>
+         <div class=\"row\">
+             <div class=\"col-sm-6 col-sm-offset-3\">
+@@ -395,7 +377,7 @@
+ 
+             </div>
+         </div>
+-    </div>
++    </div>#}
+ </div> */
+ <!-- contact -->
+ 
+Index: var/cache/dev/profiler/34/59/3f5934
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/profiler/34/59/3f5934	(revision )
++++ var/cache/dev/profiler/34/59/3f5934	(revision )
+@@ -0,0 +1,0 @@
+Index: var/cache/dev/profiler/94/b3/74b394
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/profiler/94/b3/74b394	(revision )
++++ var/cache/dev/profiler/94/b3/74b394	(revision )
+@@ -0,0 +1,0 @@
+Index: var/cache/dev/profiler/e5/61/1861e5
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/profiler/e5/61/1861e5	(revision )
++++ var/cache/dev/profiler/e5/61/1861e5	(revision )
+@@ -0,0 +1,0 @@
+Index: var/cache/dev/profiler/fe/22/b922fe
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/profiler/fe/22/b922fe	(revision )
++++ var/cache/dev/profiler/fe/22/b922fe	(revision )
+@@ -0,0 +1,0 @@
+Index: var/cache/dev/profiler/index.csv
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/profiler/index.csv	(revision )
++++ var/cache/dev/profiler/index.csv	(revision )
+@@ -3,3 +3,7 @@
+ 48bbe6,127.0.0.1,GET,http://127.0.0.1:8001/js/tableau.js.js,1523548343,,404
+ 557ec3,127.0.0.1,GET,http://127.0.0.1:8001/js/tableau.js.js,1523548351,aade98,200
+ aade98,127.0.0.1,GET,http://127.0.0.1:8001/js/tableau.js.js,1523548354,,404
++74b394,127.0.0.1,GET,http://127.0.0.1:8001/,1523612702,,200
++1861e5,127.0.0.1,GET,http://127.0.0.1:8001/producteur/new,1523612717,,200
++b922fe,127.0.0.1,GET,http://127.0.0.1:8001/js/tableau.js.js,1523612722,3f5934,200
++3f5934,127.0.0.1,GET,http://127.0.0.1:8001/js/tableau.js.js,1523612722,,404
+Index: var/cache/dev/appDevDebugProjectContainer.php
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/appDevDebugProjectContainer.php	(revision )
++++ var/cache/dev/appDevDebugProjectContainer.php	(revision )
+@@ -2793,7 +2793,7 @@
+         $r = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $p, array(), $a);
+         $r->setOptions(array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'));
+ 
+-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($o, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['fos_user.user_provider.username']) ? $this->services['fos_user.user_provider.username'] : $this->getFosUser_UserProvider_UsernameService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $q, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, ${($_ = isset($this->services['security.authentication.session_strategy']) ? $this->services['security.authentication.session_strategy'] : $this->getSecurity_Authentication_SessionStrategyService()) && false ?: '_'}, $p, 'main', new \Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler(new \UserBundle\Redirection\AfterLoginRedirection($e, ${($_ = isset($this->services['security.authorization_checker']) ? $this->services['security.authorization_checker'] : $this->get('security.authorization_checker')) && false ?: '_'}), array('login_path' => '/login', 'always_use_default_target_path' => false, 'default_target_path' => '/home', 'target_path_parameter' => '_target_path', 'use_referer' => false), 'main'), $r, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, ${($_ = isset($this->services['security.csrf.token_manager']) ? $this->services['security.csrf.token_manager'] : $this->get('security.csrf.token_manager')) && false ?: '_'}), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5acf800128a2f8.72781935', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $o, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $p, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $p, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', 'security.request_matcher.a64d671f18e5575531d76c1d1154fdc4476cb8a79c02ed7a3469178c6d7b96b5ed4e60db', true, false, 'fos_user.user_provider.username', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
++        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($o, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => ${($_ = isset($this->services['fos_user.user_provider.username']) ? $this->services['fos_user.user_provider.username'] : $this->getFosUser_UserProvider_UsernameService()) && false ?: '_'}), 'main', $a, $c, $d), 2 => $q, 3 => new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, ${($_ = isset($this->services['security.authentication.session_strategy']) ? $this->services['security.authentication.session_strategy'] : $this->getSecurity_Authentication_SessionStrategyService()) && false ?: '_'}, $p, 'main', new \Symfony\Component\Security\Http\Authentication\CustomAuthenticationSuccessHandler(new \UserBundle\Redirection\AfterLoginRedirection($e, ${($_ = isset($this->services['security.authorization_checker']) ? $this->services['security.authorization_checker'] : $this->get('security.authorization_checker')) && false ?: '_'}), array('login_path' => '/login', 'always_use_default_target_path' => false, 'default_target_path' => '/home', 'target_path_parameter' => '_target_path', 'use_referer' => false), 'main'), $r, array('check_path' => '/login_check', 'use_forward' => false, 'require_previous_session' => true, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'csrf_token_id' => 'authenticate', 'post_only' => true), $a, $c, ${($_ = isset($this->services['security.csrf.token_manager']) ? $this->services['security.csrf.token_manager'] : $this->get('security.csrf.token_manager')) && false ?: '_'}), 4 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '5ad082fa387e01.63006628', $a, $g), 5 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, ${($_ = isset($this->services['debug.security.access.decision_manager']) ? $this->services['debug.security.access.decision_manager'] : $this->getDebug_Security_Access_DecisionManagerService()) && false ?: '_'}, $o, $g)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $d, $p, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $p, '/login', false), NULL, NULL, $a, false), new \Symfony\Bundle\SecurityBundle\Security\FirewallConfig('main', 'security.user_checker', 'security.request_matcher.a64d671f18e5575531d76c1d1154fdc4476cb8a79c02ed7a3469178c6d7b96b5ed4e60db', true, false, 'fos_user.user_provider.username', 'main', 'security.authentication.form_entry_point.main', NULL, NULL, array(0 => 'logout', 1 => 'form_login', 2 => 'anonymous')));
+     }
+ 
+     /**
+@@ -3973,7 +3973,7 @@
+      */
+     protected function getCache_Annotations_RecorderInnerService($lazyLoad = true)
+     {
+-        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lhUgMAtOhg', 0, 't9dwNM5VpJxrsFyGFCj-HU', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
++        return $this->services['cache.annotations.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('lhUgMAtOhg', 0, 'cNNoYOIS72MMskWPQSi540', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+     }
+ 
+     /**
+@@ -3999,7 +3999,7 @@
+      */
+     protected function getCache_Serializer_RecorderInnerService($lazyLoad = true)
+     {
+-        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('+SAaC23F1S', 0, 't9dwNM5VpJxrsFyGFCj-HU', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
++        return $this->services['cache.serializer.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('+SAaC23F1S', 0, 'cNNoYOIS72MMskWPQSi540', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+     }
+ 
+     /**
+@@ -4009,7 +4009,7 @@
+      */
+     protected function getCache_System_RecorderInnerService($lazyLoad = true)
+     {
+-        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('GREyq4u2k9', 0, 't9dwNM5VpJxrsFyGFCj-HU', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
++        return $this->services['cache.system.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('GREyq4u2k9', 0, 'cNNoYOIS72MMskWPQSi540', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+     }
+ 
+     /**
+@@ -4029,7 +4029,7 @@
+      */
+     protected function getCache_Validator_RecorderInnerService($lazyLoad = true)
+     {
+-        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('1EDyLaUw-+', 0, 't9dwNM5VpJxrsFyGFCj-HU', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
++        return $this->services['cache.validator.recorder_inner'] = \Symfony\Component\Cache\Adapter\AbstractAdapter::createSystemCache('1EDyLaUw-+', 0, 'cNNoYOIS72MMskWPQSi540', (__DIR__.'/pools'), ${($_ = isset($this->services['monolog.logger.cache']) ? $this->services['monolog.logger.cache'] : $this->get('monolog.logger.cache', ContainerInterface::NULL_ON_INVALID_REFERENCE)) && false ?: '_'});
+     }
+ 
+     /**
+@@ -4312,7 +4312,7 @@
+      */
+     protected function getSecurity_Authentication_Provider_Anonymous_MainService()
+     {
+-        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5acf800128a2f8.72781935');
++        return $this->services['security.authentication.provider.anonymous.main'] = new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('5ad082fa387e01.63006628');
+     }
+ 
+     /**
+Index: var/cache/dev/appDevDebugProjectContainer.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/appDevDebugProjectContainer.xml	(revision )
++++ var/cache/dev/appDevDebugProjectContainer.xml	(revision )
+@@ -6,7 +6,7 @@
+     <parameter key="kernel.environment">dev</parameter>
+     <parameter key="kernel.debug">true</parameter>
+     <parameter key="kernel.name">app</parameter>
+-    <parameter key="kernel.cache_dir">C:/wamp64/www/TPA/var/cache/dev</parameter>
++    <parameter key="kernel.cache_dir">C:\wamp64\www\TPA\var\cache\dev</parameter>
+     <parameter key="kernel.logs_dir">C:\wamp64\www\TPA\var\logs</parameter>
+     <parameter key="kernel.bundles" type="collection">
+       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
+@@ -143,14 +143,14 @@
+       <parameter>twig</parameter>
+     </parameter>
+     <parameter key="validator.mapping.cache.prefix"></parameter>
+-    <parameter key="validator.mapping.cache.file">C:/wamp64/www/TPA/var/cache/dev/validation.php</parameter>
++    <parameter key="validator.mapping.cache.file">C:\wamp64\www\TPA\var\cache\dev/validation.php</parameter>
+     <parameter key="validator.translation_domain">validators</parameter>
+     <parameter key="translator.logging">true</parameter>
+     <parameter key="profiler_listener.only_exceptions">false</parameter>
+     <parameter key="profiler_listener.only_master_requests">false</parameter>
+-    <parameter key="profiler.storage.dsn">file:C:/wamp64/www/TPA/var/cache/dev/profiler</parameter>
++    <parameter key="profiler.storage.dsn">file:C:\wamp64\www\TPA\var\cache\dev/profiler</parameter>
+     <parameter key="debug.error_handler.throw_at">-1</parameter>
+-    <parameter key="debug.container.dump">C:/wamp64/www/TPA/var/cache/dev/appDevDebugProjectContainer.xml</parameter>
++    <parameter key="debug.container.dump">C:\wamp64\www\TPA\var\cache\dev/appDevDebugProjectContainer.xml</parameter>
+     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
+     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
+     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
+@@ -244,7 +244,7 @@
+     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
+     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
+     <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
+-    <parameter key="swiftmailer.spool.default.memory.path">C:/wamp64/www/TPA/var/cache/dev/swiftmailer/spool/default</parameter>
++    <parameter key="swiftmailer.spool.default.memory.path">C:\wamp64\www\TPA\var\cache\dev/swiftmailer/spool/default</parameter>
+     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
+     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
+     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
+@@ -363,7 +363,7 @@
+     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
+     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
+     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
+-    <parameter key="doctrine.orm.proxy_dir">C:/wamp64/www/TPA/var/cache/dev/doctrine/orm/Proxies</parameter>
++    <parameter key="doctrine.orm.proxy_dir">C:\wamp64\www\TPA\var\cache\dev/doctrine/orm/Proxies</parameter>
+     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
+     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
+     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
+@@ -707,8 +707,8 @@
+       <tag name="monolog.logger" channel="cache"/>
+       <argument></argument>
+       <argument>0</argument>
+-      <argument>t9dwNM5VpJxrsFyGFCj-HU</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>cNNoYOIS72MMskWPQSi540</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+     </service>
+@@ -717,7 +717,7 @@
+       <tag name="monolog.logger" channel="cache"/>
+       <argument></argument>
+       <argument>0</argument>
+-      <argument>t9dwNM5VpJxrsFyGFCj-HU</argument>
++      <argument>cNNoYOIS72MMskWPQSi540</argument>
+       <call method="setLogger">
+         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       </call>
+@@ -737,7 +737,7 @@
+       <tag name="monolog.logger" channel="cache"/>
+       <argument></argument>
+       <argument>0</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <call method="setLogger">
+         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       </call>
+@@ -803,7 +803,7 @@
+     <service id="session.flash_bag" class="Symfony\Component\HttpFoundation\Session\Flash\FlashBag" public="false"/>
+     <service id="session.attribute_bag" class="Symfony\Component\HttpFoundation\Session\Attribute\AttributeBag" public="false"/>
+     <service id="session.storage.mock_file" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage" public="false">
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/sessions</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/sessions</argument>
+       <argument>MOCKSESSID</argument>
+       <argument type="service" id="session.storage.metadata_bag"/>
+     </service>
+@@ -1067,7 +1067,7 @@
+     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
+     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
+       <argument type="service" id="file_locator"/>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev</argument>
+     </service>
+     <service id="templating.finder" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
+       <argument type="service" id="kernel"/>
+@@ -1102,7 +1102,7 @@
+       </call>
+     </service>
+     <service id="1_1f3de076b598daf67d63b040cccf896c863ebaed90350d65f21f8592edbc44c4" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/validation.php</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/validation.php</argument>
+       <argument type="service" id="cache.validator"/>
+       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
+     </service>
+@@ -1145,7 +1145,7 @@
+     <service id="validator.mapping.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\ValidatorCacheWarmer" public="false">
+       <tag name="kernel.cache_warmer"/>
+       <argument type="service" id="validator.builder"/>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/validation.php</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/validation.php</argument>
+       <argument type="service" id="cache.validator"/>
+     </service>
+     <service id="validator.mapping.cache.symfony" class="Symfony\Component\Validator\Mapping\Cache\Psr6Cache" public="false">
+@@ -1210,7 +1210,7 @@
+         </argument>
+       </argument>
+       <argument type="collection">
+-        <argument key="cache_dir">C:/wamp64/www/TPA/var/cache/dev/translations</argument>
++        <argument key="cache_dir">C:\wamp64\www\TPA\var\cache\dev/translations</argument>
+         <argument key="debug">true</argument>
+         <argument key="resource_files" type="collection">
+           <argument key="af" type="collection">
+@@ -1795,7 +1795,7 @@
+       </call>
+     </service>
+     <service id="profiler.storage" class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
+-      <argument>file:C:/wamp64/www/TPA/var/cache/dev/profiler</argument>
++      <argument>file:C:\wamp64\www\TPA\var\cache\dev/profiler</argument>
+     </service>
+     <service id="profiler_listener" class="Symfony\Component\HttpKernel\EventListener\ProfilerListener">
+       <tag name="kernel.event_subscriber"/>
+@@ -1829,7 +1829,7 @@
+       <tag name="data_collector" template="@WebProfiler/Collector/logger.html.twig" id="logger" priority="300"/>
+       <tag name="monolog.logger" channel="profiler"/>
+       <argument type="service" id="monolog.logger.profiler" on-invalid="ignore"/>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/appDevDebugProjectContainer</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/appDevDebugProjectContainer</argument>
+     </service>
+     <service id="data_collector.time" class="Symfony\Component\HttpKernel\DataCollector\TimeDataCollector" public="false">
+       <tag name="data_collector" template="@WebProfiler/Collector/time.html.twig" id="time" priority="330"/>
+@@ -2447,7 +2447,7 @@
+       <argument type="service" id="service_container"/>
+       <argument>C:\wamp64\www\TPA/app/config/routing_dev.yml</argument>
+       <argument type="collection">
+-        <argument key="cache_dir">C:/wamp64/www/TPA/var/cache/dev</argument>
++        <argument key="cache_dir">C:\wamp64\www\TPA\var\cache\dev</argument>
+         <argument key="debug">true</argument>
+         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
+         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
+@@ -2485,7 +2485,7 @@
+       <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
+     </service>
+     <service id="2_36e82db3b4f410f5935284d420fd62863c9f9b594f996fe682ae5322c86b08b2" class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" public="false">
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/annotations.php</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/annotations.php</argument>
+       <argument type="service" id="cache.annotations"/>
+       <factory class="Symfony\Component\Cache\Adapter\PhpArrayAdapter" method="create"/>
+     </service>
+@@ -2513,7 +2513,7 @@
+     <service id="annotations.cache_warmer" class="Symfony\Bundle\FrameworkBundle\CacheWarmer\AnnotationsCacheWarmer" public="false">
+       <tag name="kernel.cache_warmer"/>
+       <argument type="service" id="annotations.reader"/>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/annotations.php</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/annotations.php</argument>
+       <argument type="service" id="cache.annotations"/>
+     </service>
+     <service id="annotations.cache" class="Symfony\Component\Cache\DoctrineProvider" public="false">
+@@ -3144,12 +3144,12 @@
+     </service>
+     <service id="security.authentication.listener.anonymous.main" class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
+       <argument type="service" id="security.token_storage"/>
+-      <argument>5acf800128a2f8.72781935</argument>
++      <argument>5ad082fa387e01.63006628</argument>
+       <argument type="service" id="monolog.logger.security" on-invalid="null"/>
+       <argument type="service" id="security.authentication.manager"/>
+     </service>
+     <service id="security.authentication.provider.anonymous.main" class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
+-      <argument>5acf800128a2f8.72781935</argument>
++      <argument>5ad082fa387e01.63006628</argument>
+     </service>
+     <service id="security.exception_listener.main" class="Symfony\Component\Security\Http\Firewall\ExceptionListener" public="false">
+       <argument type="service" id="security.token_storage"/>
+@@ -3218,7 +3218,7 @@
+           <argument>form_div_layout.html.twig</argument>
+         </argument>
+         <argument key="autoescape">name</argument>
+-        <argument key="cache">C:/wamp64/www/TPA/var/cache/dev/twig</argument>
++        <argument key="cache">C:\wamp64\www\TPA\var\cache\dev/twig</argument>
+         <argument key="charset">UTF-8</argument>
+         <argument key="paths" type="collection"/>
+         <argument key="date" type="collection">
+@@ -3957,7 +3957,7 @@
+         <argument type="service" id="doctrine.orm.default_metadata_driver"/>
+       </call>
+       <call method="setProxyDir">
+-        <argument>C:/wamp64/www/TPA/var/cache/dev/doctrine/orm/Proxies</argument>
++        <argument>C:\wamp64\www\TPA\var\cache\dev/doctrine/orm/Proxies</argument>
+       </call>
+       <call method="setProxyNamespace">
+         <argument>Proxies</argument>
+@@ -4799,7 +4799,7 @@
+     <service id="cache.app.recorder_inner" class="Symfony\Component\Cache\Adapter\FilesystemAdapter" public="false" lazy="true">
+       <argument>t1y8EKZMHI</argument>
+       <argument>0</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <call method="setLogger">
+         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       </call>
+@@ -4807,32 +4807,32 @@
+     <service id="cache.system.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
+       <argument>GREyq4u2k9</argument>
+       <argument>0</argument>
+-      <argument>t9dwNM5VpJxrsFyGFCj-HU</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>cNNoYOIS72MMskWPQSi540</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+     </service>
+     <service id="cache.validator.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
+       <argument>1EDyLaUw-+</argument>
+       <argument>0</argument>
+-      <argument>t9dwNM5VpJxrsFyGFCj-HU</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>cNNoYOIS72MMskWPQSi540</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+     </service>
+     <service id="cache.serializer.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
+       <argument>+SAaC23F1S</argument>
+       <argument>0</argument>
+-      <argument>t9dwNM5VpJxrsFyGFCj-HU</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>cNNoYOIS72MMskWPQSi540</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+     </service>
+     <service id="cache.annotations.recorder_inner" class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false" lazy="true">
+       <argument>lhUgMAtOhg</argument>
+       <argument>0</argument>
+-      <argument>t9dwNM5VpJxrsFyGFCj-HU</argument>
+-      <argument>C:/wamp64/www/TPA/var/cache/dev/pools</argument>
++      <argument>cNNoYOIS72MMskWPQSi540</argument>
++      <argument>C:\wamp64\www\TPA\var\cache\dev/pools</argument>
+       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
+       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
+     </service>
+Index: var/cache/dev/appDevDebugProjectContainer.php.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/appDevDebugProjectContainer.php.meta	(revision )
++++ var/cache/dev/appDevDebugProjectContainer.php.meta	(revision )
+@@ -1,1 +1,1 @@
+-a:102:{i:0;C:50:"Symfony\Component\Config\Resource\ComposerResource":51:{a:1:{s:24:"C:\wamp64\www\TPA\vendor";i:1522876841;}}i:1;C:46:"Symfony\Component\Config\Resource\FileResource":43:{s:35:"C:\wamp64\www\TPA\app\AppKernel.php";}i:2;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";}i:3;C:46:"Symfony\Component\Config\Resource\FileResource":55:{s:47:"C:\wamp64\www\TPA\src\UserBundle\UserBundle.php";}i:4;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\TpaBundle\TpaBundle.php";}i:5;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":101:{a:2:{i:0;s:75:"Symfony\Component\Validator\DependencyInjection\AddConstraintValidatorsPass";i:1;b:1;}}i:6;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":102:{a:2:{i:0;s:76:"Symfony\Component\Validator\DependencyInjection\AddValidatorInitializersPass";i:1;b:1;}}i:7;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass";i:1;b:1;}}i:8;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":89:{a:2:{i:0;s:63:"Symfony\Component\Serializer\DependencyInjection\SerializerPass";i:1;b:1;}}i:9;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\PropertyInfo\DependencyInjection\PropertyInfoPass";i:1;b:1;}}i:10;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":94:{a:2:{i:0;s:68:"Symfony\Component\Workflow\DependencyInjection\ValidateWorkflowsPass";i:1;b:1;}}i:11;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":77:{a:2:{i:0;s:51:"Symfony\Component\Form\DependencyInjection\FormPass";i:1;b:1;}}i:12;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":86:{a:2:{i:0;s:60:"Symfony\Component\Config\DependencyInjection\ConfigCachePass";i:1;b:1;}}i:13;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\config_dev.yml";}i:14;C:46:"Symfony\Component\Config\Resource\FileResource":47:{s:39:"C:\wamp64\www\TPA\app\config\config.yml";}i:15;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\parameters.yml";}i:16;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\security.yml";}i:17;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\services.yml";}i:18;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":146:{a:3:{i:0;a:1:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";N;}i:1;s:19:"AppBundle\AppBundle";i:2;s:32:"8cc14572e7493c54e9f386c2bc4b3d60";}}i:19;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":184:{a:3:{i:0;a:1:{s:64:"C:\wamp64\www\TPA\src\AppBundle\Controller\DefaultController.php";N;}i:1;s:38:"AppBundle\Controller\DefaultController";i:2;s:32:"84836bb2f53325008a00b3df95bb0c9a";}}i:20;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":186:{a:3:{i:0;a:1:{s:65:"C:\wamp64\www\TPA\src\AppBundle\Controller\PersonneController.php";N;}i:1;s:39:"AppBundle\Controller\PersonneController";i:2;s:32:"7ce82045db2bf81891804544062c417e";}}i:21;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":162:{a:3:{i:0;a:1:{s:53:"C:\wamp64\www\TPA\src\AppBundle\Form\PersonneType.php";N;}i:1;s:27:"AppBundle\Form\PersonneType";i:2;s:32:"37c2f230731c21b77dc3b0c8117485ff";}}i:22;C:46:"Symfony\Component\Config\Resource\GlobResource":114:{a:4:{i:0;s:31:"C:\wamp64\www\TPA\src\AppBundle";i:1;s:2:"/*";i:2;b:1;i:3;s:32:"3e854251a0c2cc631d0184d16cd31889";}}i:23;C:46:"Symfony\Component\Config\Resource\GlobResource":123:{a:4:{i:0;s:42:"C:\wamp64\www\TPA\src\AppBundle\Controller";i:1;s:0:"";i:2;b:1;i:3;s:32:"d69a646a4c40d1960f5b129320e79ee4";}}i:24;C:46:"Symfony\Component\Config\Resource\FileResource":69:{s:61:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config\services.yml";}i:25;C:57:"Symfony\Component\HttpKernel\Config\EnvParametersResource":57:{a:2:{s:6:"prefix";s:9:"SYMFONY__";s:9:"variables";a:0:{}}}i:26;C:50:"Symfony\Component\Config\Resource\ComposerResource":51:{a:1:{s:24:"C:\wamp64\www\TPA\vendor";i:1522876841;}}i:27;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.yml";i:1;b:0;}}i:28;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.xml";i:1;b:0;}}i:29;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation";i:1;b:0;}}i:30;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.yml";i:1;b:0;}}i:31;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.xml";i:1;b:0;}}i:32;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation";i:1;b:0;}}i:33;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.yml";i:1;b:0;}}i:34;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.xml";i:1;b:0;}}i:35;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation";i:1;b:0;}}i:36;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/translations";i:1;b:0;}}i:37;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/translations";i:1;b:0;}}i:38;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/TwigBundle/translations";i:1;b:0;}}i:39;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/MonologBundle/translations";i:1;b:0;}}i:40;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/translations";i:1;b:0;}}i:41;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/translations";i:1;b:0;}}i:42;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":97:{a:2:{i:0;s:71:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/translations";i:1;b:0;}}i:43;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\AppBundle/Resources/translations";i:1;b:0;}}i:44;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/AppBundle/translations";i:1;b:0;}}i:45;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\src\UserBundle/Resources/translations";i:1;b:0;}}i:46;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/UserBundle/translations";i:1;b:0;}}i:47;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/translations";i:1;b:0;}}i:48;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\TpaBundle/Resources/translations";i:1;b:0;}}i:49;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/TpaBundle/translations";i:1;b:0;}}i:50;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":82:{a:2:{i:0;s:56:"C:\wamp64\www\TPA\app/Resources/DebugBundle/translations";i:1;b:0;}}i:51;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/translations";i:1;b:0;}}i:52;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/translations";i:1;b:0;}}i:53;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":92:{a:2:{i:0;s:66:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/translations";i:1;b:0;}}i:54;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/translations";i:1;b:0;}}i:55;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":70:{a:2:{i:0;s:44:"C:\wamp64\www\TPA\app/Resources/translations";i:1;b:0;}}i:56;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/views";i:1;b:0;}}i:57;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views";i:1;b:1;}}i:58;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/views";i:1;b:0;}}i:59;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":116:{a:2:{i:0;s:90:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views";i:1;b:1;}}i:60;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/TwigBundle/views";i:1;b:0;}}i:61;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":112:{a:2:{i:0;s:86:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views";i:1;b:1;}}i:62;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/MonologBundle/views";i:1;b:0;}}i:63;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\vendor\symfony\monolog-bundle/Resources/views";i:1;b:0;}}i:64;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/views";i:1;b:0;}}i:65;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\symfony\swiftmailer-bundle/Resources/views";i:1;b:1;}}i:66;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/views";i:1;b:0;}}i:67;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":91:{a:2:{i:0;s:65:"C:\wamp64\www\TPA\vendor\doctrine\doctrine-bundle/Resources/views";i:1;b:1;}}i:68;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/views";i:1;b:0;}}i:69;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":96:{a:2:{i:0;s:70:"C:\wamp64\www\TPA\vendor\sensio\framework-extra-bundle/Resources/views";i:1;b:0;}}i:70;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/AppBundle/views";i:1;b:0;}}i:71;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\AppBundle/Resources/views";i:1;b:0;}}i:72;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/UserBundle/views";i:1;b:0;}}i:73;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\src\UserBundle/Resources/views";i:1;b:1;}}i:74;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/views";i:1;b:1;}}i:75;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\vendor\friendsofsymfony\user-bundle/Resources/views";i:1;b:1;}}i:76;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/TpaBundle/views";i:1;b:0;}}i:77;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\TpaBundle/Resources/views";i:1;b:1;}}i:78;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":75:{a:2:{i:0;s:49:"C:\wamp64\www\TPA\app/Resources/DebugBundle/views";i:1;b:0;}}i:79;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":113:{a:2:{i:0;s:87:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views";i:1;b:1;}}i:80;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/views";i:1;b:0;}}i:81;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":119:{a:2:{i:0;s:93:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views";i:1;b:1;}}i:82;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/views";i:1;b:0;}}i:83;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\sensio\distribution-bundle/Resources/views";i:1;b:0;}}i:84;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/views";i:1;b:0;}}i:85;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\vendor\sensio\generator-bundle/Resources/views";i:1;b:0;}}i:86;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/views";i:1;b:0;}}i:87;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle/Resources/views";i:1;b:0;}}i:88;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":63:{a:2:{i:0;s:37:"C:\wamp64\www\TPA\app/Resources/views";i:1;b:1;}}i:89;C:46:"Symfony\Component\Config\Resource\GlobResource":140:{a:4:{i:0;s:57:"C:\wamp64\www\TPA\src\AppBundle\Resources\config\doctrine";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"3f0425a2b8e6dbf5ce9b71f7debc42ae";}}i:90;C:46:"Symfony\Component\Config\Resource\GlobResource":132:{a:4:{i:0;s:49:"C:\wamp64\www\TPA\src\UserBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"ab94411553a519de168032a7150d3423";}}i:91;C:46:"Symfony\Component\Config\Resource\GlobResource":122:{a:4:{i:0;s:39:"C:\wamp64\www\TPA\src\UserBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"e1a72e68dbbc1f48d24df74394a991ec";}}i:92;C:46:"Symfony\Component\Config\Resource\GlobResource":131:{a:4:{i:0;s:48:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"60ce1d6a8701abd07b8f95dc76f252ef";}}i:93;C:46:"Symfony\Component\Config\Resource\GlobResource":121:{a:4:{i:0;s:38:"C:\wamp64\www\TPA\src\TpaBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"456cdf986d0bed005999664c2756fd98";}}i:94;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":92:{a:2:{i:0;s:66:"Sensio\Bundle\DistributionBundle\DependencyInjection\Configuration";i:1;b:0;}}i:95;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":90:{a:2:{i:0;s:64:"Symfony\Bundle\WebServerBundle\DependencyInjection\Configuration";i:1;b:0;}}i:96;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":146:{a:3:{i:0;a:1:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";N;}i:1;s:19:"AppBundle\AppBundle";i:2;s:32:"8cc14572e7493c54e9f386c2bc4b3d60";}}i:97;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":184:{a:3:{i:0;a:1:{s:64:"C:\wamp64\www\TPA\src\AppBundle\Controller\DefaultController.php";N;}i:1;s:38:"AppBundle\Controller\DefaultController";i:2;s:32:"84836bb2f53325008a00b3df95bb0c9a";}}i:98;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":186:{a:3:{i:0;a:1:{s:65:"C:\wamp64\www\TPA\src\AppBundle\Controller\PersonneController.php";N;}i:1;s:39:"AppBundle\Controller\PersonneController";i:2;s:32:"7ce82045db2bf81891804544062c417e";}}i:99;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":162:{a:3:{i:0;a:1:{s:53:"C:\wamp64\www\TPA\src\AppBundle\Form\PersonneType.php";N;}i:1;s:27:"AppBundle\Form\PersonneType";i:2;s:32:"37c2f230731c21b77dc3b0c8117485ff";}}i:100;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":196:{a:3:{i:0;a:1:{s:70:"C:\wamp64\www\TPA\src\UserBundle\Redirection\AfterLoginRedirection.php";N;}i:1;s:44:"UserBundle\Redirection\AfterLoginRedirection";i:2;s:32:"91b6461581a23f629613b0fad3703382";}}i:101;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":158:{a:3:{i:0;a:1:{s:51:"C:\wamp64\www\TPA\src\AppBundle\Entity\Personne.php";N;}i:1;s:25:"AppBundle\Entity\Personne";i:2;s:32:"c2e41d7f1791277a93af11dfd5e38420";}}}
+\ No newline at end of file
++a:97:{i:0;C:50:"Symfony\Component\Config\Resource\ComposerResource":51:{a:1:{s:24:"C:\wamp64\www\TPA\vendor";i:1522876841;}}i:1;C:46:"Symfony\Component\Config\Resource\FileResource":43:{s:35:"C:\wamp64\www\TPA\app\AppKernel.php";}i:2;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";}i:3;C:46:"Symfony\Component\Config\Resource\FileResource":55:{s:47:"C:\wamp64\www\TPA\src\UserBundle\UserBundle.php";}i:4;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\TpaBundle\TpaBundle.php";}i:5;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":101:{a:2:{i:0;s:75:"Symfony\Component\Validator\DependencyInjection\AddConstraintValidatorsPass";i:1;b:1;}}i:6;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":102:{a:2:{i:0;s:76:"Symfony\Component\Validator\DependencyInjection\AddValidatorInitializersPass";i:1;b:1;}}i:7;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass";i:1;b:1;}}i:8;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":89:{a:2:{i:0;s:63:"Symfony\Component\Serializer\DependencyInjection\SerializerPass";i:1;b:1;}}i:9;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\PropertyInfo\DependencyInjection\PropertyInfoPass";i:1;b:1;}}i:10;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":94:{a:2:{i:0;s:68:"Symfony\Component\Workflow\DependencyInjection\ValidateWorkflowsPass";i:1;b:1;}}i:11;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":77:{a:2:{i:0;s:51:"Symfony\Component\Form\DependencyInjection\FormPass";i:1;b:1;}}i:12;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":86:{a:2:{i:0;s:60:"Symfony\Component\Config\DependencyInjection\ConfigCachePass";i:1;b:1;}}i:13;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\config_dev.yml";}i:14;C:46:"Symfony\Component\Config\Resource\FileResource":47:{s:39:"C:\wamp64\www\TPA\app\config\config.yml";}i:15;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\parameters.yml";}i:16;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\security.yml";}i:17;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\services.yml";}i:18;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":146:{a:3:{i:0;a:1:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";N;}i:1;s:19:"AppBundle\AppBundle";i:2;s:32:"8cc14572e7493c54e9f386c2bc4b3d60";}}i:19;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":184:{a:3:{i:0;a:1:{s:64:"C:\wamp64\www\TPA\src\AppBundle\Controller\DefaultController.php";N;}i:1;s:38:"AppBundle\Controller\DefaultController";i:2;s:32:"84836bb2f53325008a00b3df95bb0c9a";}}i:20;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":186:{a:3:{i:0;a:1:{s:65:"C:\wamp64\www\TPA\src\AppBundle\Controller\PersonneController.php";N;}i:1;s:39:"AppBundle\Controller\PersonneController";i:2;s:32:"7ce82045db2bf81891804544062c417e";}}i:21;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":162:{a:3:{i:0;a:1:{s:53:"C:\wamp64\www\TPA\src\AppBundle\Form\PersonneType.php";N;}i:1;s:27:"AppBundle\Form\PersonneType";i:2;s:32:"37c2f230731c21b77dc3b0c8117485ff";}}i:22;C:46:"Symfony\Component\Config\Resource\GlobResource":114:{a:4:{i:0;s:31:"C:\wamp64\www\TPA\src\AppBundle";i:1;s:2:"/*";i:2;b:1;i:3;s:32:"3e854251a0c2cc631d0184d16cd31889";}}i:23;C:46:"Symfony\Component\Config\Resource\GlobResource":123:{a:4:{i:0;s:42:"C:\wamp64\www\TPA\src\AppBundle\Controller";i:1;s:0:"";i:2;b:1;i:3;s:32:"d69a646a4c40d1960f5b129320e79ee4";}}i:24;C:46:"Symfony\Component\Config\Resource\FileResource":69:{s:61:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config\services.yml";}i:25;C:57:"Symfony\Component\HttpKernel\Config\EnvParametersResource":57:{a:2:{s:6:"prefix";s:9:"SYMFONY__";s:9:"variables";a:0:{}}}i:26;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.yml";i:1;b:0;}}i:27;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.xml";i:1;b:0;}}i:28;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation";i:1;b:0;}}i:29;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.yml";i:1;b:0;}}i:30;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.xml";i:1;b:0;}}i:31;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation";i:1;b:0;}}i:32;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.yml";i:1;b:0;}}i:33;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.xml";i:1;b:0;}}i:34;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation";i:1;b:0;}}i:35;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/translations";i:1;b:0;}}i:36;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/translations";i:1;b:0;}}i:37;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/TwigBundle/translations";i:1;b:0;}}i:38;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/MonologBundle/translations";i:1;b:0;}}i:39;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/translations";i:1;b:0;}}i:40;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/translations";i:1;b:0;}}i:41;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":97:{a:2:{i:0;s:71:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/translations";i:1;b:0;}}i:42;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\AppBundle/Resources/translations";i:1;b:0;}}i:43;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/AppBundle/translations";i:1;b:0;}}i:44;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\src\UserBundle/Resources/translations";i:1;b:0;}}i:45;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/UserBundle/translations";i:1;b:0;}}i:46;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/translations";i:1;b:0;}}i:47;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\TpaBundle/Resources/translations";i:1;b:0;}}i:48;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/TpaBundle/translations";i:1;b:0;}}i:49;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":82:{a:2:{i:0;s:56:"C:\wamp64\www\TPA\app/Resources/DebugBundle/translations";i:1;b:0;}}i:50;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/translations";i:1;b:0;}}i:51;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/translations";i:1;b:0;}}i:52;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":92:{a:2:{i:0;s:66:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/translations";i:1;b:0;}}i:53;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/translations";i:1;b:0;}}i:54;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":70:{a:2:{i:0;s:44:"C:\wamp64\www\TPA\app/Resources/translations";i:1;b:0;}}i:55;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/views";i:1;b:0;}}i:56;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views";i:1;b:1;}}i:57;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/views";i:1;b:0;}}i:58;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":116:{a:2:{i:0;s:90:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views";i:1;b:1;}}i:59;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/TwigBundle/views";i:1;b:0;}}i:60;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":112:{a:2:{i:0;s:86:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views";i:1;b:1;}}i:61;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/MonologBundle/views";i:1;b:0;}}i:62;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\vendor\symfony\monolog-bundle/Resources/views";i:1;b:0;}}i:63;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/views";i:1;b:0;}}i:64;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\symfony\swiftmailer-bundle/Resources/views";i:1;b:1;}}i:65;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/views";i:1;b:0;}}i:66;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":91:{a:2:{i:0;s:65:"C:\wamp64\www\TPA\vendor\doctrine\doctrine-bundle/Resources/views";i:1;b:1;}}i:67;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/views";i:1;b:0;}}i:68;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":96:{a:2:{i:0;s:70:"C:\wamp64\www\TPA\vendor\sensio\framework-extra-bundle/Resources/views";i:1;b:0;}}i:69;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/AppBundle/views";i:1;b:0;}}i:70;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\AppBundle/Resources/views";i:1;b:0;}}i:71;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/UserBundle/views";i:1;b:0;}}i:72;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\src\UserBundle/Resources/views";i:1;b:1;}}i:73;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/views";i:1;b:1;}}i:74;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\vendor\friendsofsymfony\user-bundle/Resources/views";i:1;b:1;}}i:75;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/TpaBundle/views";i:1;b:0;}}i:76;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\TpaBundle/Resources/views";i:1;b:1;}}i:77;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":75:{a:2:{i:0;s:49:"C:\wamp64\www\TPA\app/Resources/DebugBundle/views";i:1;b:0;}}i:78;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":113:{a:2:{i:0;s:87:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views";i:1;b:1;}}i:79;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/views";i:1;b:0;}}i:80;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":119:{a:2:{i:0;s:93:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views";i:1;b:1;}}i:81;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/views";i:1;b:0;}}i:82;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\sensio\distribution-bundle/Resources/views";i:1;b:0;}}i:83;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/views";i:1;b:0;}}i:84;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\vendor\sensio\generator-bundle/Resources/views";i:1;b:0;}}i:85;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/views";i:1;b:0;}}i:86;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle/Resources/views";i:1;b:0;}}i:87;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":63:{a:2:{i:0;s:37:"C:\wamp64\www\TPA\app/Resources/views";i:1;b:1;}}i:88;C:46:"Symfony\Component\Config\Resource\GlobResource":140:{a:4:{i:0;s:57:"C:\wamp64\www\TPA\src\AppBundle\Resources\config\doctrine";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"3f0425a2b8e6dbf5ce9b71f7debc42ae";}}i:89;C:46:"Symfony\Component\Config\Resource\GlobResource":132:{a:4:{i:0;s:49:"C:\wamp64\www\TPA\src\UserBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"ab94411553a519de168032a7150d3423";}}i:90;C:46:"Symfony\Component\Config\Resource\GlobResource":122:{a:4:{i:0;s:39:"C:\wamp64\www\TPA\src\UserBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"e1a72e68dbbc1f48d24df74394a991ec";}}i:91;C:46:"Symfony\Component\Config\Resource\GlobResource":131:{a:4:{i:0;s:48:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"60ce1d6a8701abd07b8f95dc76f252ef";}}i:92;C:46:"Symfony\Component\Config\Resource\GlobResource":121:{a:4:{i:0;s:38:"C:\wamp64\www\TPA\src\TpaBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"c08192a6ace03544d6780e0e9f34ac8c";}}i:93;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":92:{a:2:{i:0;s:66:"Sensio\Bundle\DistributionBundle\DependencyInjection\Configuration";i:1;b:0;}}i:94;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":90:{a:2:{i:0;s:64:"Symfony\Bundle\WebServerBundle\DependencyInjection\Configuration";i:1;b:0;}}i:95;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":196:{a:3:{i:0;a:1:{s:70:"C:\wamp64\www\TPA\src\UserBundle\Redirection\AfterLoginRedirection.php";N;}i:1;s:44:"UserBundle\Redirection\AfterLoginRedirection";i:2;s:32:"91b6461581a23f629613b0fad3703382";}}i:96;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":158:{a:3:{i:0;a:1:{s:51:"C:\wamp64\www\TPA\src\AppBundle\Entity\Personne.php";N;}i:1;s:25:"AppBundle\Entity\Personne";i:2;s:32:"c2e41d7f1791277a93af11dfd5e38420";}}}
+\ No newline at end of file
+Index: var/cache/dev/appDevDebugProjectContainer.xml.meta
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/cache/dev/appDevDebugProjectContainer.xml.meta	(revision )
++++ var/cache/dev/appDevDebugProjectContainer.xml.meta	(revision )
+@@ -1,1 +1,1 @@
+-a:102:{i:0;C:50:"Symfony\Component\Config\Resource\ComposerResource":51:{a:1:{s:24:"C:\wamp64\www\TPA\vendor";i:1522876841;}}i:1;C:46:"Symfony\Component\Config\Resource\FileResource":43:{s:35:"C:\wamp64\www\TPA\app\AppKernel.php";}i:2;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";}i:3;C:46:"Symfony\Component\Config\Resource\FileResource":55:{s:47:"C:\wamp64\www\TPA\src\UserBundle\UserBundle.php";}i:4;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\TpaBundle\TpaBundle.php";}i:5;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":101:{a:2:{i:0;s:75:"Symfony\Component\Validator\DependencyInjection\AddConstraintValidatorsPass";i:1;b:1;}}i:6;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":102:{a:2:{i:0;s:76:"Symfony\Component\Validator\DependencyInjection\AddValidatorInitializersPass";i:1;b:1;}}i:7;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass";i:1;b:1;}}i:8;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":89:{a:2:{i:0;s:63:"Symfony\Component\Serializer\DependencyInjection\SerializerPass";i:1;b:1;}}i:9;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\PropertyInfo\DependencyInjection\PropertyInfoPass";i:1;b:1;}}i:10;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":94:{a:2:{i:0;s:68:"Symfony\Component\Workflow\DependencyInjection\ValidateWorkflowsPass";i:1;b:1;}}i:11;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":77:{a:2:{i:0;s:51:"Symfony\Component\Form\DependencyInjection\FormPass";i:1;b:1;}}i:12;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":86:{a:2:{i:0;s:60:"Symfony\Component\Config\DependencyInjection\ConfigCachePass";i:1;b:1;}}i:13;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\config_dev.yml";}i:14;C:46:"Symfony\Component\Config\Resource\FileResource":47:{s:39:"C:\wamp64\www\TPA\app\config\config.yml";}i:15;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\parameters.yml";}i:16;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\security.yml";}i:17;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\services.yml";}i:18;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":146:{a:3:{i:0;a:1:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";N;}i:1;s:19:"AppBundle\AppBundle";i:2;s:32:"8cc14572e7493c54e9f386c2bc4b3d60";}}i:19;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":184:{a:3:{i:0;a:1:{s:64:"C:\wamp64\www\TPA\src\AppBundle\Controller\DefaultController.php";N;}i:1;s:38:"AppBundle\Controller\DefaultController";i:2;s:32:"84836bb2f53325008a00b3df95bb0c9a";}}i:20;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":186:{a:3:{i:0;a:1:{s:65:"C:\wamp64\www\TPA\src\AppBundle\Controller\PersonneController.php";N;}i:1;s:39:"AppBundle\Controller\PersonneController";i:2;s:32:"7ce82045db2bf81891804544062c417e";}}i:21;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":162:{a:3:{i:0;a:1:{s:53:"C:\wamp64\www\TPA\src\AppBundle\Form\PersonneType.php";N;}i:1;s:27:"AppBundle\Form\PersonneType";i:2;s:32:"37c2f230731c21b77dc3b0c8117485ff";}}i:22;C:46:"Symfony\Component\Config\Resource\GlobResource":114:{a:4:{i:0;s:31:"C:\wamp64\www\TPA\src\AppBundle";i:1;s:2:"/*";i:2;b:1;i:3;s:32:"3e854251a0c2cc631d0184d16cd31889";}}i:23;C:46:"Symfony\Component\Config\Resource\GlobResource":123:{a:4:{i:0;s:42:"C:\wamp64\www\TPA\src\AppBundle\Controller";i:1;s:0:"";i:2;b:1;i:3;s:32:"d69a646a4c40d1960f5b129320e79ee4";}}i:24;C:46:"Symfony\Component\Config\Resource\FileResource":69:{s:61:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config\services.yml";}i:25;C:57:"Symfony\Component\HttpKernel\Config\EnvParametersResource":57:{a:2:{s:6:"prefix";s:9:"SYMFONY__";s:9:"variables";a:0:{}}}i:26;C:50:"Symfony\Component\Config\Resource\ComposerResource":51:{a:1:{s:24:"C:\wamp64\www\TPA\vendor";i:1522876841;}}i:27;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.yml";i:1;b:0;}}i:28;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.xml";i:1;b:0;}}i:29;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation";i:1;b:0;}}i:30;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.yml";i:1;b:0;}}i:31;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.xml";i:1;b:0;}}i:32;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation";i:1;b:0;}}i:33;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.yml";i:1;b:0;}}i:34;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.xml";i:1;b:0;}}i:35;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation";i:1;b:0;}}i:36;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/translations";i:1;b:0;}}i:37;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/translations";i:1;b:0;}}i:38;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/TwigBundle/translations";i:1;b:0;}}i:39;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/MonologBundle/translations";i:1;b:0;}}i:40;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/translations";i:1;b:0;}}i:41;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/translations";i:1;b:0;}}i:42;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":97:{a:2:{i:0;s:71:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/translations";i:1;b:0;}}i:43;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\AppBundle/Resources/translations";i:1;b:0;}}i:44;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/AppBundle/translations";i:1;b:0;}}i:45;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\src\UserBundle/Resources/translations";i:1;b:0;}}i:46;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/UserBundle/translations";i:1;b:0;}}i:47;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/translations";i:1;b:0;}}i:48;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\TpaBundle/Resources/translations";i:1;b:0;}}i:49;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/TpaBundle/translations";i:1;b:0;}}i:50;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":82:{a:2:{i:0;s:56:"C:\wamp64\www\TPA\app/Resources/DebugBundle/translations";i:1;b:0;}}i:51;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/translations";i:1;b:0;}}i:52;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/translations";i:1;b:0;}}i:53;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":92:{a:2:{i:0;s:66:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/translations";i:1;b:0;}}i:54;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/translations";i:1;b:0;}}i:55;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":70:{a:2:{i:0;s:44:"C:\wamp64\www\TPA\app/Resources/translations";i:1;b:0;}}i:56;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/views";i:1;b:0;}}i:57;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views";i:1;b:1;}}i:58;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/views";i:1;b:0;}}i:59;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":116:{a:2:{i:0;s:90:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views";i:1;b:1;}}i:60;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/TwigBundle/views";i:1;b:0;}}i:61;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":112:{a:2:{i:0;s:86:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views";i:1;b:1;}}i:62;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/MonologBundle/views";i:1;b:0;}}i:63;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\vendor\symfony\monolog-bundle/Resources/views";i:1;b:0;}}i:64;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/views";i:1;b:0;}}i:65;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\symfony\swiftmailer-bundle/Resources/views";i:1;b:1;}}i:66;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/views";i:1;b:0;}}i:67;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":91:{a:2:{i:0;s:65:"C:\wamp64\www\TPA\vendor\doctrine\doctrine-bundle/Resources/views";i:1;b:1;}}i:68;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/views";i:1;b:0;}}i:69;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":96:{a:2:{i:0;s:70:"C:\wamp64\www\TPA\vendor\sensio\framework-extra-bundle/Resources/views";i:1;b:0;}}i:70;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/AppBundle/views";i:1;b:0;}}i:71;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\AppBundle/Resources/views";i:1;b:0;}}i:72;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/UserBundle/views";i:1;b:0;}}i:73;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\src\UserBundle/Resources/views";i:1;b:1;}}i:74;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/views";i:1;b:1;}}i:75;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\vendor\friendsofsymfony\user-bundle/Resources/views";i:1;b:1;}}i:76;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/TpaBundle/views";i:1;b:0;}}i:77;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\TpaBundle/Resources/views";i:1;b:1;}}i:78;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":75:{a:2:{i:0;s:49:"C:\wamp64\www\TPA\app/Resources/DebugBundle/views";i:1;b:0;}}i:79;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":113:{a:2:{i:0;s:87:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views";i:1;b:1;}}i:80;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/views";i:1;b:0;}}i:81;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":119:{a:2:{i:0;s:93:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views";i:1;b:1;}}i:82;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/views";i:1;b:0;}}i:83;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\sensio\distribution-bundle/Resources/views";i:1;b:0;}}i:84;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/views";i:1;b:0;}}i:85;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\vendor\sensio\generator-bundle/Resources/views";i:1;b:0;}}i:86;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/views";i:1;b:0;}}i:87;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle/Resources/views";i:1;b:0;}}i:88;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":63:{a:2:{i:0;s:37:"C:\wamp64\www\TPA\app/Resources/views";i:1;b:1;}}i:89;C:46:"Symfony\Component\Config\Resource\GlobResource":140:{a:4:{i:0;s:57:"C:\wamp64\www\TPA\src\AppBundle\Resources\config\doctrine";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"3f0425a2b8e6dbf5ce9b71f7debc42ae";}}i:90;C:46:"Symfony\Component\Config\Resource\GlobResource":132:{a:4:{i:0;s:49:"C:\wamp64\www\TPA\src\UserBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"ab94411553a519de168032a7150d3423";}}i:91;C:46:"Symfony\Component\Config\Resource\GlobResource":122:{a:4:{i:0;s:39:"C:\wamp64\www\TPA\src\UserBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"e1a72e68dbbc1f48d24df74394a991ec";}}i:92;C:46:"Symfony\Component\Config\Resource\GlobResource":131:{a:4:{i:0;s:48:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"60ce1d6a8701abd07b8f95dc76f252ef";}}i:93;C:46:"Symfony\Component\Config\Resource\GlobResource":121:{a:4:{i:0;s:38:"C:\wamp64\www\TPA\src\TpaBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"456cdf986d0bed005999664c2756fd98";}}i:94;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":92:{a:2:{i:0;s:66:"Sensio\Bundle\DistributionBundle\DependencyInjection\Configuration";i:1;b:0;}}i:95;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":90:{a:2:{i:0;s:64:"Symfony\Bundle\WebServerBundle\DependencyInjection\Configuration";i:1;b:0;}}i:96;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":146:{a:3:{i:0;a:1:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";N;}i:1;s:19:"AppBundle\AppBundle";i:2;s:32:"8cc14572e7493c54e9f386c2bc4b3d60";}}i:97;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":184:{a:3:{i:0;a:1:{s:64:"C:\wamp64\www\TPA\src\AppBundle\Controller\DefaultController.php";N;}i:1;s:38:"AppBundle\Controller\DefaultController";i:2;s:32:"84836bb2f53325008a00b3df95bb0c9a";}}i:98;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":186:{a:3:{i:0;a:1:{s:65:"C:\wamp64\www\TPA\src\AppBundle\Controller\PersonneController.php";N;}i:1;s:39:"AppBundle\Controller\PersonneController";i:2;s:32:"7ce82045db2bf81891804544062c417e";}}i:99;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":162:{a:3:{i:0;a:1:{s:53:"C:\wamp64\www\TPA\src\AppBundle\Form\PersonneType.php";N;}i:1;s:27:"AppBundle\Form\PersonneType";i:2;s:32:"37c2f230731c21b77dc3b0c8117485ff";}}i:100;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":196:{a:3:{i:0;a:1:{s:70:"C:\wamp64\www\TPA\src\UserBundle\Redirection\AfterLoginRedirection.php";N;}i:1;s:44:"UserBundle\Redirection\AfterLoginRedirection";i:2;s:32:"91b6461581a23f629613b0fad3703382";}}i:101;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":158:{a:3:{i:0;a:1:{s:51:"C:\wamp64\www\TPA\src\AppBundle\Entity\Personne.php";N;}i:1;s:25:"AppBundle\Entity\Personne";i:2;s:32:"c2e41d7f1791277a93af11dfd5e38420";}}}
+\ No newline at end of file
++a:97:{i:0;C:50:"Symfony\Component\Config\Resource\ComposerResource":51:{a:1:{s:24:"C:\wamp64\www\TPA\vendor";i:1522876841;}}i:1;C:46:"Symfony\Component\Config\Resource\FileResource":43:{s:35:"C:\wamp64\www\TPA\app\AppKernel.php";}i:2;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";}i:3;C:46:"Symfony\Component\Config\Resource\FileResource":55:{s:47:"C:\wamp64\www\TPA\src\UserBundle\UserBundle.php";}i:4;C:46:"Symfony\Component\Config\Resource\FileResource":53:{s:45:"C:\wamp64\www\TPA\src\TpaBundle\TpaBundle.php";}i:5;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":101:{a:2:{i:0;s:75:"Symfony\Component\Validator\DependencyInjection\AddConstraintValidatorsPass";i:1;b:1;}}i:6;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":102:{a:2:{i:0;s:76:"Symfony\Component\Validator\DependencyInjection\AddValidatorInitializersPass";i:1;b:1;}}i:7;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\Console\DependencyInjection\AddConsoleCommandPass";i:1;b:1;}}i:8;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":89:{a:2:{i:0;s:63:"Symfony\Component\Serializer\DependencyInjection\SerializerPass";i:1;b:1;}}i:9;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":93:{a:2:{i:0;s:67:"Symfony\Component\PropertyInfo\DependencyInjection\PropertyInfoPass";i:1;b:1;}}i:10;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":94:{a:2:{i:0;s:68:"Symfony\Component\Workflow\DependencyInjection\ValidateWorkflowsPass";i:1;b:1;}}i:11;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":77:{a:2:{i:0;s:51:"Symfony\Component\Form\DependencyInjection\FormPass";i:1;b:1;}}i:12;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":86:{a:2:{i:0;s:60:"Symfony\Component\Config\DependencyInjection\ConfigCachePass";i:1;b:1;}}i:13;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\config_dev.yml";}i:14;C:46:"Symfony\Component\Config\Resource\FileResource":47:{s:39:"C:\wamp64\www\TPA\app\config\config.yml";}i:15;C:46:"Symfony\Component\Config\Resource\FileResource":51:{s:43:"C:\wamp64\www\TPA\app\config\parameters.yml";}i:16;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\security.yml";}i:17;C:46:"Symfony\Component\Config\Resource\FileResource":49:{s:41:"C:\wamp64\www\TPA\app\config\services.yml";}i:18;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":146:{a:3:{i:0;a:1:{s:45:"C:\wamp64\www\TPA\src\AppBundle\AppBundle.php";N;}i:1;s:19:"AppBundle\AppBundle";i:2;s:32:"8cc14572e7493c54e9f386c2bc4b3d60";}}i:19;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":184:{a:3:{i:0;a:1:{s:64:"C:\wamp64\www\TPA\src\AppBundle\Controller\DefaultController.php";N;}i:1;s:38:"AppBundle\Controller\DefaultController";i:2;s:32:"84836bb2f53325008a00b3df95bb0c9a";}}i:20;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":186:{a:3:{i:0;a:1:{s:65:"C:\wamp64\www\TPA\src\AppBundle\Controller\PersonneController.php";N;}i:1;s:39:"AppBundle\Controller\PersonneController";i:2;s:32:"7ce82045db2bf81891804544062c417e";}}i:21;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":162:{a:3:{i:0;a:1:{s:53:"C:\wamp64\www\TPA\src\AppBundle\Form\PersonneType.php";N;}i:1;s:27:"AppBundle\Form\PersonneType";i:2;s:32:"37c2f230731c21b77dc3b0c8117485ff";}}i:22;C:46:"Symfony\Component\Config\Resource\GlobResource":114:{a:4:{i:0;s:31:"C:\wamp64\www\TPA\src\AppBundle";i:1;s:2:"/*";i:2;b:1;i:3;s:32:"3e854251a0c2cc631d0184d16cd31889";}}i:23;C:46:"Symfony\Component\Config\Resource\GlobResource":123:{a:4:{i:0;s:42:"C:\wamp64\www\TPA\src\AppBundle\Controller";i:1;s:0:"";i:2;b:1;i:3;s:32:"d69a646a4c40d1960f5b129320e79ee4";}}i:24;C:46:"Symfony\Component\Config\Resource\FileResource":69:{s:61:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config\services.yml";}i:25;C:57:"Symfony\Component\HttpKernel\Config\EnvParametersResource":57:{a:2:{s:6:"prefix";s:9:"SYMFONY__";s:9:"variables";a:0:{}}}i:26;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.yml";i:1;b:0;}}i:27;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation.xml";i:1;b:0;}}i:28;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\AppBundle/Resources/config/validation";i:1;b:0;}}i:29;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.yml";i:1;b:0;}}i:30;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation.xml";i:1;b:0;}}i:31;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\src\UserBundle/Resources/config/validation";i:1;b:0;}}i:32;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.yml";i:1;b:0;}}i:33;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation.xml";i:1;b:0;}}i:34;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\src\TpaBundle/Resources/config/validation";i:1;b:0;}}i:35;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/translations";i:1;b:0;}}i:36;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/translations";i:1;b:0;}}i:37;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/TwigBundle/translations";i:1;b:0;}}i:38;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/MonologBundle/translations";i:1;b:0;}}i:39;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/translations";i:1;b:0;}}i:40;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/translations";i:1;b:0;}}i:41;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":97:{a:2:{i:0;s:71:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/translations";i:1;b:0;}}i:42;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\AppBundle/Resources/translations";i:1;b:0;}}i:43;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/AppBundle/translations";i:1;b:0;}}i:44;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\src\UserBundle/Resources/translations";i:1;b:0;}}i:45;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/UserBundle/translations";i:1;b:0;}}i:46;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":84:{a:2:{i:0;s:58:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/translations";i:1;b:0;}}i:47;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\src\TpaBundle/Resources/translations";i:1;b:0;}}i:48;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":80:{a:2:{i:0;s:54:"C:\wamp64\www\TPA\app/Resources/TpaBundle/translations";i:1;b:0;}}i:49;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":82:{a:2:{i:0;s:56:"C:\wamp64\www\TPA\app/Resources/DebugBundle/translations";i:1;b:0;}}i:50;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/translations";i:1;b:0;}}i:51;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/translations";i:1;b:0;}}i:52;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":92:{a:2:{i:0;s:66:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/translations";i:1;b:0;}}i:53;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":86:{a:2:{i:0;s:60:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/translations";i:1;b:0;}}i:54;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":70:{a:2:{i:0;s:44:"C:\wamp64\www\TPA\app/Resources/translations";i:1;b:0;}}i:55;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/FrameworkBundle/views";i:1;b:0;}}i:56;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\FrameworkBundle/Resources/views";i:1;b:1;}}i:57;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/SecurityBundle/views";i:1;b:0;}}i:58;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":116:{a:2:{i:0;s:90:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\SecurityBundle/Resources/views";i:1;b:1;}}i:59;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/TwigBundle/views";i:1;b:0;}}i:60;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":112:{a:2:{i:0;s:86:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\TwigBundle/Resources/views";i:1;b:1;}}i:61;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/MonologBundle/views";i:1;b:0;}}i:62;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":89:{a:2:{i:0;s:63:"C:\wamp64\www\TPA\vendor\symfony\monolog-bundle/Resources/views";i:1;b:0;}}i:63;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/SwiftmailerBundle/views";i:1;b:0;}}i:64;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\symfony\swiftmailer-bundle/Resources/views";i:1;b:1;}}i:65;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":78:{a:2:{i:0;s:52:"C:\wamp64\www\TPA\app/Resources/DoctrineBundle/views";i:1;b:0;}}i:66;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":91:{a:2:{i:0;s:65:"C:\wamp64\www\TPA\vendor\doctrine\doctrine-bundle/Resources/views";i:1;b:1;}}i:67;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\app/Resources/SensioFrameworkExtraBundle/views";i:1;b:0;}}i:68;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":96:{a:2:{i:0;s:70:"C:\wamp64\www\TPA\vendor\sensio\framework-extra-bundle/Resources/views";i:1;b:0;}}i:69;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/AppBundle/views";i:1;b:0;}}i:70;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\AppBundle/Resources/views";i:1;b:0;}}i:71;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\app/Resources/UserBundle/views";i:1;b:0;}}i:72;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":74:{a:2:{i:0;s:48:"C:\wamp64\www\TPA\src\UserBundle/Resources/views";i:1;b:1;}}i:73;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":77:{a:2:{i:0;s:51:"C:\wamp64\www\TPA\app/Resources/FOSUserBundle/views";i:1;b:1;}}i:74;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":95:{a:2:{i:0;s:69:"C:\wamp64\www\TPA\vendor\friendsofsymfony\user-bundle/Resources/views";i:1;b:1;}}i:75;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\app/Resources/TpaBundle/views";i:1;b:0;}}i:76;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":73:{a:2:{i:0;s:47:"C:\wamp64\www\TPA\src\TpaBundle/Resources/views";i:1;b:1;}}i:77;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":75:{a:2:{i:0;s:49:"C:\wamp64\www\TPA\app/Resources/DebugBundle/views";i:1;b:0;}}i:78;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":113:{a:2:{i:0;s:87:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\DebugBundle/Resources/views";i:1;b:1;}}i:79;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":81:{a:2:{i:0;s:55:"C:\wamp64\www\TPA\app/Resources/WebProfilerBundle/views";i:1;b:0;}}i:80;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":119:{a:2:{i:0;s:93:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebProfilerBundle/Resources/views";i:1;b:1;}}i:81;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":88:{a:2:{i:0;s:62:"C:\wamp64\www\TPA\app/Resources/SensioDistributionBundle/views";i:1;b:0;}}i:82;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":93:{a:2:{i:0;s:67:"C:\wamp64\www\TPA\vendor\sensio\distribution-bundle/Resources/views";i:1;b:0;}}i:83;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":85:{a:2:{i:0;s:59:"C:\wamp64\www\TPA\app/Resources/SensioGeneratorBundle/views";i:1;b:0;}}i:84;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":90:{a:2:{i:0;s:64:"C:\wamp64\www\TPA\vendor\sensio\generator-bundle/Resources/views";i:1;b:0;}}i:85;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":79:{a:2:{i:0;s:53:"C:\wamp64\www\TPA\app/Resources/WebServerBundle/views";i:1;b:0;}}i:86;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":117:{a:2:{i:0;s:91:"C:\wamp64\www\TPA\vendor\symfony\symfony\src\Symfony\Bundle\WebServerBundle/Resources/views";i:1;b:0;}}i:87;C:55:"Symfony\Component\Config\Resource\FileExistenceResource":63:{a:2:{i:0;s:37:"C:\wamp64\www\TPA\app/Resources/views";i:1;b:1;}}i:88;C:46:"Symfony\Component\Config\Resource\GlobResource":140:{a:4:{i:0;s:57:"C:\wamp64\www\TPA\src\AppBundle\Resources\config\doctrine";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"3f0425a2b8e6dbf5ce9b71f7debc42ae";}}i:89;C:46:"Symfony\Component\Config\Resource\GlobResource":132:{a:4:{i:0;s:49:"C:\wamp64\www\TPA\src\UserBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"ab94411553a519de168032a7150d3423";}}i:90;C:46:"Symfony\Component\Config\Resource\GlobResource":122:{a:4:{i:0;s:39:"C:\wamp64\www\TPA\src\UserBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"e1a72e68dbbc1f48d24df74394a991ec";}}i:91;C:46:"Symfony\Component\Config\Resource\GlobResource":131:{a:4:{i:0;s:48:"C:\wamp64\www\TPA\src\TpaBundle\Resources\config";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"60ce1d6a8701abd07b8f95dc76f252ef";}}i:92;C:46:"Symfony\Component\Config\Resource\GlobResource":121:{a:4:{i:0;s:38:"C:\wamp64\www\TPA\src\TpaBundle\Entity";i:1;s:2:"/*";i:2;b:0;i:3;s:32:"c08192a6ace03544d6780e0e9f34ac8c";}}i:93;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":92:{a:2:{i:0;s:66:"Sensio\Bundle\DistributionBundle\DependencyInjection\Configuration";i:1;b:0;}}i:94;C:56:"Symfony\Component\Config\Resource\ClassExistenceResource":90:{a:2:{i:0;s:64:"Symfony\Bundle\WebServerBundle\DependencyInjection\Configuration";i:1;b:0;}}i:95;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":196:{a:3:{i:0;a:1:{s:70:"C:\wamp64\www\TPA\src\UserBundle\Redirection\AfterLoginRedirection.php";N;}i:1;s:44:"UserBundle\Redirection\AfterLoginRedirection";i:2;s:32:"91b6461581a23f629613b0fad3703382";}}i:96;C:57:"Symfony\Component\Config\Resource\ReflectionClassResource":158:{a:3:{i:0;a:1:{s:51:"C:\wamp64\www\TPA\src\AppBundle\Entity\Personne.php";N;}i:1;s:25:"AppBundle\Entity\Personne";i:2;s:32:"c2e41d7f1791277a93af11dfd5e38420";}}}
+\ No newline at end of file
+Index: var/sessions/dev/sess_8g869ka8u1ucneqa2mpbct3bh6
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- var/sessions/dev/sess_8g869ka8u1ucneqa2mpbct3bh6	(revision )
++++ var/sessions/dev/sess_8g869ka8u1ucneqa2mpbct3bh6	(revision )
+@@ -0,0 +1,1 @@
++_sf2_attributes|a:1:{s:26:"_csrf/tpabundle_producteur";s:43:"T0gwu7qU5N4Wy3S3T-I6CPwjoglWkn4J4ZL5uWxJhww";}_sf2_flashes|a:0:{}_sf2_meta|a:3:{s:1:"u";i:1523612723;s:1:"c";i:1523612717;s:1:"l";s:1:"0";}
+\ No newline at end of file
+Index: web/js/Enfant.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/js/Enfant.js	(revision )
++++ web/js/Enfant.js	(revision )
+@@ -0,0 +1,580 @@
++
++function ajoutEnfant(nbEnfant){
++	//alert(nbEnfant);
++	
++	$('#tabEnfants').html('');
++	var element='<div id="tabsEnfants" class="tabsEnfants"> <ul>';
++	var contenu ='';
++	
++	for(var i=1; i<= nbEnfant; i++){
++		 var onglet=('<li ><a href="#onglet-'+i+'">Enfant'+i+'</a></li>');	 
++		
++		  contenu +=( '<div id="onglet-'+i+'">'+
++				 '<table id="styleEnf">'+  
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1">Sexe'+i+'</label>'+
++			                  '</div>'+   
++			                  '<div class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2"><select id="sexe_'+i+'"><option value="M" >M</option><option value"F">F</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div   class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_sexe_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4">Poids(kgs)</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><input type="number" min=0 id="poids_'+i+'"></input></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_poids_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1">Cri</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2"><select id="cri_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_cri_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4">Taille(cm)</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><input type="number" min=0 id="taille_'+i+'"></input></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_taille_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       
++			       
++			       '</tr>'+
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1">Sat</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2"><select id="sat_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_sat_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4">Vitamine K</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><select id="vitk_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_vitk_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       
++			       
++			       
++			       
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1" title="Malformation">Malf</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2" ><select id="malf_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_malf_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4" title="Maintien Temperature">Maintien T&ordm;</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><select id="mt_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_mt_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1" title="Mise au Soin Precoce">MSP</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2" ><select id="msp_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_msp_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4" title="Soin du Cordon">Soin Cordon</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><select id="sc_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_sc_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			      	   
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1" title="Reanimation">Reanim</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2" ><select id="reanim_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_reanim_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4" title="">Collyre</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><select id="collyre_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_collyre_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1" title="">VPO</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2" ><select id="vpo_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_vpo_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4" title="Anti Tuberculeux">antiTuberculeux</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><select id="antiT_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_antiT_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1" title="">BCG</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2" ><select id="bcg_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Note <input id="n_bcg_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv4">'+
++		                 '<label 	 class="styleLabel4" title="Anti H&eacute;patique">AntiH&eacute;patique</label>'+
++		              '</div>'+   
++		              '<div  class="styleEnfDiv5">'+
++		                 '<label class="styleLabel5"><select id="anti_hepa_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++		              '</div>'+ 
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_anti_hepa_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		      '</td>'+
++			       '</tr>'+
++			       
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			                  '<div class="styleEnfDiv1">'+
++			                     '<label  class="styleLabel1" title="Autre Vaccins">Autres</label>'+
++			                  '</div>'+   
++			                  '<div  class="styleEnfDiv2">'+
++			                     '<label   class="styleLabel2" ><select id="autre_vacc_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                  '</div>'+ 
++			                  '<div  class="styleEnfDiv3">'+
++			                     '<label  class="styleLabel3">Type <input id="type_autre_vacc_'+i+'" type="text"></input></label>'+
++			                  '</div>'+ 
++			          '</td>'+
++			          '<td  class="antecedent_go">'+
++		              '<div   class="styleEnfDiv6">'+
++		                 '<label  class="styleLabel6">Note <input id="n_autre_vacc_'+i+'" type="text"></input></label>'+
++		              '</div>'+ 
++		              '</td>'+
++			       
++		         '</tr>'+ 
++		         '<tr >'+
++		          '<td  class="antecedent_go">'+
++		                  '<div class="div1">'+
++		                     '<label  class="label1" title="Perimetre">P&eacute;rim&eacute;tres:</label>'+
++		                  '</div>'+   
++		                  '<div  class="div2">'+
++		                     '<label   class="label2" title="Perimetre Cranien">Cranien</label>'+
++		                  '</div>'+ 
++		                  '<div  class="div3">'+
++		                     '<label   class="label3" ><input type="number" min=0 id="cranien_'+i+'"></input></label>'+
++		                  '</div>'+ 
++		                  '<div  class="div4">'+
++		                     '<label   class="label4" title="Perimetre Brachial">Brachial</label>'+
++		                  '</div>'+ 
++		                  '<div  class="div5">'+
++		                     '<label   class="label5" ><input type="number" min=0 id="brachial_'+i+'"></input></label>'+
++		                  '</div>'+ 
++		          '</td>'+
++		          '<td  class="antecedent_go">'+
++		            '<div  class="div6">'+
++                     '<label   class="label6" title="Perimetre Cephalique">C&eacute;phalique</label>'+
++                   '</div>'+ 
++                   '<div  class="div7">'+
++                     '<label   class="label7" ><input type="number" min=0 id="cephalique_'+i+'"></input></label>'+
++                   '</div>'+
++	                '<div   class="div8">'+
++	                 '<label  class="label8">Note <input id="n_perim_'+i+'" type="text"></input></label>'+
++	                '</div>'+ 
++	              '</td>'+
++		       
++	         '</tr>'+ 
++	         
++
++		       '<tr >'+
++		          '<td  class="antecedent_go">'+
++		                  '<div class="diva1">'+
++		                     '<label  class="labela1" title="Apgar">Apgar:</label>'+
++		                  '</div>'+   
++		                  '<div  class="diva2">'+
++		                     '<label   class="labela2" title="Agar 1">1&nbsp;&nbsp;&nbsp;'+
++		                         '<select id="apgar1_'+i+'">'+  
++		                              '<option>1/10</option>'+
++		                              '<option>2/10</option>'+
++		                              '<option>3/10</option>'+
++		                              '<option>4/10</option>'+
++		                              '<option>5/10</option>'+
++		                              '<option>6/10</option>'+
++		                              '<option>7/10</option>'+
++		                              '<option>8/10</option>'+
++		                              '<option>9/10</option>'+
++		                              '<option>10/10</option>'+
++		                          '</select>'+
++		                     '</label>'+
++		                  '</div>'+ 
++		                  '<div  class="diva3">'+
++		                     '<label   class="labela3" title="Agar 5">5&nbsp;&nbsp;&nbsp;'+
++		                         '<select id="apgar5_'+i+'">'+  
++		                              '<option>1/10</option>'+
++		                              '<option>2/10</option>'+
++		                              '<option>3/10</option>'+
++		                              '<option>4/10</option>'+
++		                              '<option>5/10</option>'+
++		                              '<option>6/10</option>'+
++		                              '<option>7/10</option>'+
++		                              '<option>8/10</option>'+
++		                              '<option>9/10</option>'+
++		                              '<option>10/10</option>'+
++		                          '</select>'+
++		                     '</label>'+
++		                  '</div>'+
++		                   
++		          '</td>'+
++		          '<td  class="antecedent_go">'+
++	                '<div   class="diva4">'+
++	                 '<label  class="labela4">Note <input id="n_apgar_'+i+'" type="text"></input></label>'+
++	                '</div>'+ 
++	              '</td>'+
++		       
++	         '</tr>'+ 
++		         '<tr >'+
++		          '<td  class="antecedent_go">'+
++	              '<div   class="">'+
++	              '<label  id="consult_j1_j2label">Consultation J1J2 <textarea class=" consult_j1_j2" id="consj1j2_'+i+'" type=""></textarea></label>'+
++	              '</div>'+ 
++	              '</td>'+
++		       
++	         '</tr>'+ 
++	         
++		     
++			    ' </table>'+
++			   
++	    '</div>'
++		);	
++		 
++		 
++		element+=onglet;
++	}
++	element+="</ul>"+contenu+" </div>  <script> $('#tabsEnfants').tabs(); </script>";
++	
++	
++	$('#tabEnfants').html(element);
++	
++	 // $(function() {
++	   // $('#tabEnfants').tabs();
++	//    $('#tabsEnfants').tabs();
++	 // });
++	//setTimeout("$('#tabsEnfants').tabs(), 3000");
++
++
++}
++
++
++//nouveau ne
++
++function ajoutNouveauNe(nbEnfants){
++	
++	
++	$('#tabNouveauNe').html('');
++	var elem='<div id="tabsNouveauNe"    class="tabsNv"> <ul>';
++	var cont ='';
++	
++	for(var i=1; i<= nbEnfants; i++){
++		 var ong=('<li ><a href="#nv_onglet-'+i+'">Nouveau N&eacute;'+i+'</a></li>');	 
++		
++		  cont +=( '<div id="nv_onglet-'+i+'">'+
++				 '<table id="styleNv">'+  
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+ 
++			                  '<div  class="nvDiv1">'+
++			                      '<label  class="nvDiv1label">Vivant et bien portant&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="viv_bien_portant_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			                   '</div>'+ 
++			                  
++			                   '<div class="nvDiv2">'+
++			                       '<label class="nvDiv2label"> Note</label>'+
++		                        ' </div>'+	
++		                         '<div class="nvDiv3">'+
++			                         '<label class="nvDiv3label"><input id="n_viv_bien_portant_'+i+'" type="text"></input> </label>'+
++		                         '</div>'+         
++			          '</td>'+
++			       '</tr>'+
++			       '<tr >'+
++			       '<td  class="antecedent_go">'+ 
++	                  '<div  class="nvDiv1">'+
++	                      '<label  class="nvDiv1label">Vivant avec mal formation&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="viv_mal_form_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++	                   '</div>'+ 
++	                  
++	                   '<div class="nvDiv2">'+
++	                       '<label class="nvDiv2label"> Note</label>'+
++                     ' </div>'+	
++                      '<div class="nvDiv3">'+
++	                         '<label class="nvDiv3label"><input id="n_viv_mal_form_'+i+'" type="text"></input> </label>'+
++                      '</div>'+         
++	          '</td>'+
++			       '</tr>'+			     			       
++			       '</tr>'+
++			       '<tr >'+
++			       '<td  class="antecedent_go">'+ 
++	                  '<div  class="nvDiv1">'+
++	                      '<label  class="nvDiv1label">Malade&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="malade_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++	                   '</div>'+ 
++	                  
++	                   '<div class="nvDiv2">'+
++	                       '<label class="nvDiv2label"> Note</label>'+
++                     ' </div>'+	
++                      '<div class="nvDiv3">'+
++	                         '<label class="nvDiv3label"><input id="n_malade_'+i+'" type="text"></input> </label>'+
++                      '</div>'+         
++	          '</td>'+
++			       '</tr>'+
++		     
++			       '<tr >'+
++			          '<td  class="antecedent_go">'+
++			          '<div class="nvDiv1" >'+
++				       '<label  class="nvDiv1label">D&eacute;ced&eacute;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select id="decede_'+i+'"><option value="Non">Non</option><option value="Oui">Oui</option></select></label>'+
++			       '</div>'+
++	        
++			       '<div class=" nvDateDiv1" >'+
++				       '<label class="nvDateLabel1">Date</label>'+
++			       '</div>'+
++			      ' <div class="nvDateDiv2 ">'+
++				       '<label class="nvDateLabel2 "> <input class="dateCalendar" id="date_deces_'+i+'" type="text"></input>  </label>'+
++			      
++			       '</div>'+
++			   '<div class=" nvHeureDiv1">'+
++				       '<label class=" nvHeureDiv1label">Heure</label>'+
++			       '</div>'+
++			       '<div class=" nvHeureDiv2">'+
++				       '<label class=" nvHeureDiv2label" > <input class="heure_dece" id="heure_deces_'+i+'" type="text"></input>  </label>'+
++			       '</div>'+
++			        '<div class="nvCauseDiv">'+
++				       '<label class="nvCauseLabel" >cause <input id="cause_deces_'+i+'" type="text"></input> </label>'+
++			       '</div> '+
++			          '</td>'+
++			       '</tr>'+		     
++			    ' </table>'+
++			   
++	    '</div>'
++		);	
++		 
++		 
++		elem+=ong;
++	}
++	elem+="</ul>"+cont+" </div>  <script> $('#tabsNouveauNe').tabs();$('.heure_dece').chungTimePicker({});$('.dateCalendar').datepicker(" +
++			"$.datepicker.regional['fr'] = {" +
++			"closeText: 'Fermer'," +
++			"changeYear: true," +
++			"	yearRange: 'c-80:c'," +
++			"prevText: '&#x3c;Préc'," +
++			"nextText: 'Suiv&#x3e;'," +
++			"currentText: 'Courant'," +
++			"monthNames: ['Janvier','Fevrier','Mars','Avril','Mai','Juin'," +
++			"'Juillet','Aout','Septembre','Octobre','Novembre','Decembre']," +
++	        "monthNamesShort: ['Jan','Fev','Mar','Avr','Mai','Juin'," +
++			"'Jul','Aout','Sep','Oct','Nov','Dec']," +
++			"dayNames: ['Dimanche','Lundi','Mardi','Mercredi','Jeudi','Vendredi','Samedi']," +
++			"dayNamesShort: ['Dim','Lun','Mar','Mer','Jeu','Ven','Sam']," +
++			"dayNamesMin: ['Di','Lu','Ma','Me','Je','Ve','Sa']," +
++	         "weekHeader: 'Sm'," +
++			"dateFormat: 'dd/mm/yy',"+
++			"firstDay: 1,"+
++			"isRTL: false,"+
++			"showMonthAfterYear: false,"+
++			"yearRange: '1900:2050',"+
++			"showAnim : 'bounce',"+
++			"changeMonth: true,"+
++			"changeYear: true,"+
++			"	yearSuffix: '',"+
++			"maxDate: 0"+
++			"}"+
++			");</script>";
++
++
++	$('#tabNouveauNe').html(elem);
++	
++
++
++}
++
++
++//$('.BbAttendu').toggle(false);
++function getBbAttendu(val){ 
++
++	if(val=='0'){
++		
++		$('.BbAttendu').fadeIn();
++		ajoutEnfant( $('#nombre_bb').val()); 
++		ajoutNouveauNe( $('#nombre_bb').val());
++		$('#nombre_bb').keyup(function () {
++			ajoutEnfant( $('#nombre_bb').val()); 
++			ajoutNouveauNe( $('#nombre_bb').val()); 
++		}).change(function () {
++			ajoutEnfant( $('#nombre_bb').val());  
++			ajoutNouveauNe( $('#nombre_bb').val()); 
++		});	
++		
++	}	
++	else
++	{
++		$('.BbAttendu').fadeOut();
++		ajoutEnfant( val);
++		ajoutNouveauNe( val);
++	}
++		
++}
++
++
++
++function getEnf(nombre_bb){
++	  var indice=1;
++	  for(indice=1;indice<=nombre_bb;indice++){
++	   //alert(tempArray['sexe_1']);
++	   $('.tabsEnfants #sexe_'+indice).val(tempArray['sexe_'+indice]);
++	   $('.tabsEnfants #n_sexe_'+indice).val(tempArray['n_sexe_'+indice]);
++	   $('.tabsEnfants #poids_'+indice).val(tempArray['poids_'+indice]);
++	   $('.tabsEnfants #n_poids_'+indice).val(tempArray['n_poids_'+indice]);
++	   $('.tabsEnfants #cri_'+indice).val(tempArray['cri_'+indice]);
++	   $('.tabsEnfants #n_cri_'+indice).val(tempArray['n_cri_'+indice]);
++	   $('.tabsEnfants #taille_'+indice).val(tempArray['taille_'+indice]);
++	   $('.tabsEnfants #n_taille_'+indice).val(tempArray['n_taille_'+indice]);
++	   $('.tabsEnfants #malf_'+indice).val(tempArray['malf_'+indice]);
++	   $('.tabsEnfants #n_malf_'+indice).val(tempArray['n_malf_'+indice]);
++	   $('.tabsEnfants #sat_'+indice).val(tempArray['sat_'+indice]);
++	   $('.tabsEnfants #n_sat_'+indice).val(tempArray['n_sat_'+indice]);
++	   $('.tabsEnfants #vitk_'+indice).val(tempArray['vitk_'+indice]);
++	   $('.tabsEnfants #n_vitk_'+indice).val(tempArray['n_vitk_'+indice]);
++	   $('.tabsEnfants #mt_'+indice).val(tempArray['mt_'+indice]);
++	   $('.tabsEnfants #n_mt_'+indice).val(tempArray['n_mt_'+indice]);
++	   $('.tabsEnfants #msp_'+indice).val(tempArray['msp_'+indice]);
++	   $('.tabsEnfants #n_msp_'+indice).val(tempArray['n_msp_'+indice]);
++	   $('.tabsEnfants #sc_'+indice).val(tempArray['sc_'+indice]);
++	   $('.tabsEnfants #n_sc_'+indice).val(tempArray['n_sc_'+indice]);
++	   $('.tabsEnfants #reanim_'+indice).val(tempArray['reanim_'+indice]);
++	   $('.tabsEnfants #n_reanim_'+indice).val(tempArray['n_reanim_'+indice]);
++	   $('.tabsEnfants #collyre_'+indice).val(tempArray['collyre_'+indice]);
++	   $('.tabsEnfants #n_collyre_'+indice).val(tempArray['n_collyre_'+indice]);
++	   $('.tabsEnfants #vpo_'+indice).val(tempArray['vpo_'+indice]);
++	   $('.tabsEnfants #n_vpo_'+indice).val(tempArray['n_vpo_'+indice]);
++	   $('.tabsEnfants #antiT_'+indice).val(tempArray['antiT_'+indice]);
++	   $('.tabsEnfants #n_antiT_'+indice).val(tempArray['n_antiT_'+indice]);
++	   $('.tabsEnfants #bcg_'+indice).val(tempArray['bcg_'+indice]);
++	   $('.tabsEnfants #n_bcg_'+indice).val(tempArray['n_bcg_'+indice]);
++	   $('.tabsEnfants #anti_hepa_'+indice).val(tempArray['anti_hepa_'+indice]);
++	   $('.tabsEnfants #n_anti_hepa_'+indice).val(tempArray['n_anti_hepa_'+indice]);
++	   $('.tabsEnfants #autre_vacc_'+indice).val(tempArray['autre_vacc_'+indice]);
++	   $('.tabsEnfants #type_autre_vacc_'+indice).val(tempArray['type_autre_vacc_'+indice]);
++	   $('.tabsEnfants #n_autre_vacc_'+indice).val(tempArray['n_autre_vacc_'+indice]);
++	   $('.tabsEnfants #cranien_'+indice).val(tempArray['cranien_'+indice]);
++	   $('.tabsEnfants #cephalique_'+indice).val(tempArray['cephalique_'+indice]);
++	   $('.tabsEnfants #brachial_'+indice).val(tempArray['brachial_'+indice]);
++	   $('.tabsEnfants #n_perim_'+indice).val(tempArray['n_perim_'+indice]);
++	   $('.tabsEnfants #apgar1_'+indice).val(tempArray['apgar1_'+indice]);
++	   $('.tabsEnfants #apgar5_'+indice).val(tempArray['apgar5_'+indice]);
++	   $('.tabsEnfants #n_apgar_'+indice).val(tempArray['n_apgar_'+indice]);
++	   $('.tabsEnfants #consj1j2_'+indice).val(tempArray['consj1j2_'+indice]);
++	   
++	   
++
++	   
++	   
++        }
++}
++
++
++function getnv(nombr){
++	  var ind=1;
++	  for(ind=1;ind<=nombr;ind++){
++	   //alert(tempArray['sexe_1']);
++	  
++	   
++	   
++	   
++	   $('.tabsNv #viv_bien_portant_'+ind).val(nvArray['viv_bien_portant_'+ind]);
++	   $('.tabsNv #n_viv_bien_portant_'+ind).val(nvArray['n_viv_bien_portant_'+ind]);
++	   $('.tabsNv #viv_mal_form_'+ind).val(nvArray['viv_mal_form_'+ind]);
++	   $('.tabsNv #n_viv_mal_form_'+ind).val(nvArray['n_viv_mal_form_'+ind]);
++	   $('.tabsNv #malade_'+ind).val(nvArray['malade_'+ind]);
++	   $('.tabsNv #n_malade_'+ind).val(nvArray['n_malade_'+ind]);
++	   $('.tabsNv #decede_'+ind).val(nvArray['decede_'+ind]);
++	   $('.tabsNv #date_deces_'+ind).val(nvArray['date_deces_'+ind]);
++	   $('.tabsNv #heure_deces_'+ind).val(nvArray['heure_deces_'+ind]);
++	   $('.tabsNv #cause_deces_'+ind).val(nvArray['cause_deces_'+ind]);
++   
++	   
++      }
++}
+Index: web/css/Enfant.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- web/css/Enfant.css	(revision )
++++ web/css/Enfant.css	(revision )
+@@ -0,0 +1,267 @@
++@CHARSET "ISO-8859-1";
++
++
++/*pour le table et les tr td*/
++#styleEnf {
++    width: 100%;
++	   
++}
++#styleEnf tr{
++    width: 100%;
++   
++}
++#styleEnf td{
++   /* width: 50%; */
++	 
++}
++/*pour les div*/
++#styleEnf .styleEnfDiv1{
++    width: 10%;
++	 float: left;
++}
++#styleEnf .styleEnfDiv2{
++    width: 15%;
++	 float: left;
++	margin-right:5%;
++
++}
++#styleEnf .styleEnfDiv3{
++    width: 60%;
++	 float: left;
++
++	
++}
++#styleEnf .styleEnfDiv4{
++    width: 19%;
++	 float: left;
++}
++#styleEnf .styleEnfDiv5{
++    width: 12%;
++	 float: left;
++
++}
++#styleEnf .styleEnfDiv6{
++    width: 60%;
++	 float: right;
++	margin-left:5%;
++}
++#styleEnf .styleEnfDivcons{
++     min-width: 300px;
++	 float: left;
++
++}
++/*pour les label de chaque div*/
++ #styleEnf .styleEnfDiv1 .styleLabel1 {
++     width: 90%;
++	height: 30px;
++	text-align: left;
++
++}
++#styleEnf .styleEnfDiv2 .styleLabel2{
++     width: 90%;
++	height: 30px;
++	text-align: left;
++
++}
++
++
++#styleEnf .styleEnfDiv3 .styleLabel3{
++     width: 100%;
++	height: 30px;
++	text-align: left;
++    margin-left:5%
++}
++
++#styleEnf .styleEnfDiv4 .styleLabel4{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++
++}
++#styleEnf .styleEnfDiv5 .styleLabel5{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++
++}
++#styleEnf .styleEnfDiv6 .styleLabel6{
++     width: 95%;
++	height: 30px;
++	text-align: right;
++ margin-left:5%
++}
++ #consult_j1_j2label {
++   width: 93%;
++  
++}
++  #consult_j1_j2label .consult_j1_j2 {
++   width: 340px;
++   height:150px;
++  	  box-shadow: 1px 1px 2px rgba(204, 204, 204, 0.8);
++}
++
++
++
++
++/* style pour les div de perimetre */
++
++
++#styleEnf .div1{
++    width: 20%;
++	 float: left;
++
++}
++
++#styleEnf .div2{
++    width: 20%;
++	 float: left;
++ margin-left:3%;
++}
++
++#styleEnf .div3{
++    width: 15%;
++	 float: left;
++    
++}
++#styleEnf .div4{
++    width: 25%;
++	 float: left;
++ margin-left:-3%;
++}
++#styleEnf .div5{
++    width: 13%;
++	 float: left;
++
++}
++#styleEnf .div6{
++    width: 19%;
++	 float: left;
++
++}
++#styleEnf .div7{
++    width: 12%;
++	 float: left;
++
++}
++#styleEnf .div8{
++   width: 60%;
++	 float: right;
++	margin-left:5%;
++
++}
++/* pour les label de perimetre*/
++#styleEnf .div1 .label1{
++     width: 89%;
++	height: 30px;
++	text-align: left;
++
++}
++#styleEnf .div2 .label2{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++ margin-left:12%
++}
++
++#styleEnf .div3 .label3{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++
++}
++
++
++#styleEnf .div4 .label4{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++    margin-left:40%;
++}
++#styleEnf .div5 .label5{
++     width: 100%;
++	height: 30px;
++	text-align: left;
++
++}
++
++#styleEnf .div6 .label6{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++
++}
++
++#styleEnf .div7 .label7{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++
++}
++#styleEnf .div8 .label8{
++    width: 95%;
++	height: 30px;
++	text-align: right;
++ margin-left:5%
++
++}
++
++
++
++/* style pour les div de  l'apgar*/
++
++
++#styleEnf .diva1{
++    width: 20%;
++	 float: left;
++
++}
++
++#styleEnf .diva2{
++    width: 35%;
++	 float: left;
++	 margin-left:5%;
++
++}
++
++#styleEnf .diva3{
++    width: 30%;
++	 float: left;
++     margin-left:3%;
++}
++#styleEnf .diva4{
++  width: 60%;
++	 float: right;
++	margin-left:5%;
++
++}
++/* pour les label de perimetre*/
++#styleEnf .diva1 .labela1{
++     width: 90%;
++	height: 30px;
++	text-align: left;
++
++}
++#styleEnf .diva2 .labela2{
++     width: 90%;
++	height: 30px;
++	text-align: left;
++	
++}
++
++#styleEnf .diva3 .labela3{
++     width: 95%;
++	height: 30px;
++	text-align: left;
++	margin-left:5%;
++
++}
++
++
++#styleEnf .diva4 .labela4{
++        width: 95%;
++	height: 30px;
++	text-align: right;
++ margin-left:5%
++
++   
++}
+\ No newline at end of file

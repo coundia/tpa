@@ -1,0 +1,238 @@
+{#{% extends 'base.html.twig' %}#}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
+    <title>Multi-step Form - Bootsnipp.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {#<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">#}
+    <link href="{{ asset('css/css.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+    {#    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+        <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>#}
+</head>
+<body>
+
+<div style="height:40px;"></div>
+<div class="assessment-container container">
+    <div class="row">
+        <div class="col-md-6 form-box">
+            {{ form_start(edit_form,{'attr':{'role':'form','class':'registration-form'}}) }}
+            {#<form role="form" class="registration-form" action="javascript:void(0);">#}
+            <fieldset>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>Production/Exportation de fruits et légumes frais</h3>
+                        <p>Identification de l'opérateur
+                        </p>
+                    </div>
+                </div>
+                <div class="form-bottom">
+
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(edit_form.nom) }}
+                            {{ form_widget(edit_form.nom,{'attr':{'class':'form-control','placeholder':'Firstname'}}) }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(edit_form.prenom) }}
+                            {{ form_widget(edit_form.prenom,{'attr':{'class':'form-control','placeholder':'Lastname'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:3px;">
+                        <div class="row">
+                            <div class="form-group col-md-3 col-sm-3">
+                                {{ form_errors(edit_form.statutLegal) }}
+                                {{ form_widget(edit_form.statutLegal,{'attr':{'class':'form-control','placeholder':'StatutLegal'}}) }}
+                                {# <select class="form-control">
+                                     <option>00</option>
+                                     <option>00</option>
+                                     <option>00</option>
+                                     <option>00</option>
+                                     <option>00</option>
+                                 </select>#}
+                            </div>
+                            <div class="form-group col-md-9 col-sm-9">
+                                {{ form_errors(edit_form.addresse) }}
+                                {{ form_widget(edit_form.addresse,{'attr':{'class':'form-control','placeholder':'Addresse'}}) }}
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                {{ form_errors(edit_form.ninea) }}
+                                {{ form_widget(edit_form.ninea,{'attr':{'class':'','placeholder':'Ninea'}}) }}
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                {{ form_errors(edit_form.siegeSocial) }}
+                                {{ form_widget(edit_form.siegeSocial,{'attr':{'class':'','placeholder':'Siege'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.region) }}
+                        {{ form_widget(edit_form.region,{'attr':{'class':'','placeholder':'Region'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.departement) }}
+                        {{ form_errors(edit_form.departement) }}
+                        {{ form_widget(edit_form.departement,{'attr':{'class':'','placeholder':'Departement'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.ville) }}
+                        {{ form_widget(edit_form.ville,{'attr':{'class':'','placeholder':'Ville'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.commune) }}
+                        {{ form_widget(edit_form.commune,{'attr':{'class':'','placeholder':'Commune'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.arrondissement) }}
+                        {{ form_widget(edit_form.arrondissement,{'attr':{'class':'','placeholder':'Arrondissement'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.village) }}
+                        {{ form_widget(edit_form.village,{'attr':{'class':'','placeholder':'Village'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.numTel) }}
+                        {{ form_widget(edit_form.numTel,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.numFixe) }}
+                        {{ form_widget(edit_form.numFixe,{'attr':{'class':'','placeholder':'Fixe'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.fax) }}
+                        {{ form_widget(edit_form.fax,{'attr':{'class':'','placeholder':'Faxe'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.email) }}
+                        {{ form_widget(edit_form.email,{'attr':{'class':'','placeholder':'Email'}}) }}
+                    </div>
+                    <button type="button" class="btn btn-next">Suivant</button>
+
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span> Production/Exportation de fruits et légumes frais</h3>
+                        <p>Représentant légal
+                        </p>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(edit_form.nomRep) }}
+                            {{ form_widget(edit_form.nomRep,{'attr':{'class':'','placeholder':'Representant'}}) }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(edit_form.prenomRep) }}
+                            {{ form_widget(edit_form.prenomRep,{'attr':{'class':'','placeholder':'Prenom'}}) }}
+                        </div>
+
+                    </div>
+                    {#  <div class="form-group">
+                          <input type="date" class="form-control" id="pref_date">
+                      </div>#}
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.addresseRep) }}
+                        {{ form_widget(edit_form.addresseRep,{'attr':{'class':'','placeholder':'Addresse'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.mobileRep_) }}
+                        {{ form_widget(edit_form.mobileRep_,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.fixeRep) }}
+                        {{ form_widget(edit_form.fixeRep,{'attr':{'class':'','placeholder':'Fixe'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.mobileRep_) }}
+                        {{ form_widget(edit_form.mobileRep_,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.emailRep) }}
+                        {{ form_widget(edit_form.emailRep,{'attr':{'class':'','placeholder':'Email'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.faxeRep) }}
+                        {{ form_widget(edit_form.faxeRep,{'attr':{'class':'','placeholder':'Faxe'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.fonctionRep) }}
+                        {{ form_widget(edit_form.fonctionRep,{'attr':{'class':'','placeholder':'Fonction'}}) }}
+                    </div>
+                    <button type="button" class="btn btn-previous">Précedent</button>
+                    <button type="button" class="btn btn-next">Suivant</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span> Production/Exportation de fruits et légumes frais</h3>
+                        <p>Responsable ou Manager
+                        </p>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(edit_form.nomManager) }}
+                            {{ form_widget(edit_form.nomManager,{'attr':{'class':'','placeholder':'Nom Manager'}}) }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(edit_form.prenomManager) }}
+                            {{ form_widget(edit_form.prenomManager,{'attr':{'class':'','placeholder':'Prenom Manager'}}) }}
+                        </div>
+
+                    </div>
+                    {#  <div class="form-group">
+                          <input type="date" class="form-control" id="pref_date">
+                      </div>#}
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.titreManager) }}
+                        {{ form_widget(edit_form.titreManager,{'attr':{'class':'','placeholder':'Titre'}}) }}
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(edit_form.telManager) }}
+                        {{ form_widget(edit_form.telManager,{'attr':{'class':'','placeholder':'Telephone'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(edit_form.emailManager) }}
+                        {{ form_widget(edit_form.emailManager,{'attr':{'class':'','placeholder':'Email'}}) }}
+                    </div>
+                    {#<div class="form-group">
+                        {{ form_errors(form.faxeRep) }}
+                        {{ form_widget(form.fixeRep,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.fonctionRep) }}
+                        {{ form_widget(form.fonctionRep,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>#}
+                    <button type="button" class="btn btn-previous">Précedent</button>
+                    <button class="btn btn-success" type="submit" >Soumettre
+                    </button>
+                    {{ form_start(delete_form) }}
+                    <button class="btn btn-success" type="submit" >Supprimer
+                    </button>{{ form_end(delete_form) }}
+                </div>
+            </fieldset>
+            {{ form_end(edit_form) }}
+            {#</form>#}
+        </div>
+    </div>
+
+
+</div>
+<script src="{{ asset('js/js.js') }}"></script>
+
+</body>
+</html>
+
+

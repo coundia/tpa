@@ -6,10 +6,11 @@
     <title>Google style login extended (with HTML5 LocalStorage) - Bootsnipp.com</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="{{ asset('css/login.css') }}" rel="stylesheet">
-    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link href="{{ asset('bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+   {# <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>#}
 </head>
 <body>
 <!--
@@ -19,7 +20,7 @@
 <div class="container">
     <div class="card card-container">
         <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+        <img id="profile-img" class="profile-img-card" src="{{ asset('images/User.png') }}" />
         <p id="profile-name" class="profile-name-card"></p>
         <form action="{{ path("fos_user_security_check") }}" method="post">
             {% if csrf_token %}
@@ -36,8 +37,8 @@
             </div>
             <button type="submit" id="_submit" name="_submit" class="btn btn-lg btn-primary btn-block btn-signin" >Sign in</button>
         </form><!-- /form -->
-        <a href="#" class="forgot-password">
-            Forgot the password?
+        <a href="{{ path('producteur_new') }}" class="forgot-password">
+            S'inscrire?
         </a>
     </div><!-- /card-container -->
 </div><!-- /container -->

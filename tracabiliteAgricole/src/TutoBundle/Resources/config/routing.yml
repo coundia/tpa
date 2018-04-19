@@ -1,0 +1,18 @@
+tuto_homepage:
+    path:     /
+    defaults: { _controller: TutoBundle:Default:index }
+
+
+   
+base_plat:
+    path:     /base-plat
+    defaults: { _controller: TutoBundle:Plat:base}
+
+
+menu_page:
+    path:     /menu-page
+    defaults: { _controller: TutoBundle:Plat:menu}
+
+ajout_plat:
+    path:     /ajout-plat
+    defaults: { _controller: TutoBundle:Plat:ajout}

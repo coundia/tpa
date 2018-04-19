@@ -1,144 +1,104 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Producteur</h1>
 
-    <table>
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ producteur.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ producteur.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ producteur.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Statutlegal</th>
-                <td>{{ producteur.statutLegal }}</td>
-            </tr>
-            <tr>
-                <th>Ninea</th>
-                <td>{{ producteur.ninea }}</td>
-            </tr>
-            <tr>
-                <th>Siegesocial</th>
-                <td>{{ producteur.siegeSocial }}</td>
-            </tr>
-            <tr>
-                <th>Region</th>
-                <td>{{ producteur.region }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ producteur.ville }}</td>
-            </tr>
-            <tr>
-                <th>Departement</th>
-                <td>{{ producteur.departement }}</td>
-            </tr>
-            <tr>
-                <th>Commune</th>
-                <td>{{ producteur.commune }}</td>
-            </tr>
-            <tr>
-                <th>Arrondissement</th>
-                <td>{{ producteur.arrondissement }}</td>
-            </tr>
-            <tr>
-                <th>Village</th>
-                <td>{{ producteur.village }}</td>
-            </tr>
-            <tr>
-                <th>Numtel</th>
-                <td>{{ producteur.numTel }}</td>
-            </tr>
-            <tr>
-                <th>Numfixe</th>
-                <td>{{ producteur.numFixe }}</td>
-            </tr>
-            <tr>
-                <th>Fax</th>
-                <td>{{ producteur.fax }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ producteur.email }}</td>
-            </tr>
-            <tr>
-                <th>Addresse</th>
-                <td>{{ producteur.addresse }}</td>
-            </tr>
-            <tr>
-                <th>Prenomrep</th>
-                <td>{{ producteur.prenomRep }}</td>
-            </tr>
-            <tr>
-                <th>Nomrep</th>
-                <td>{{ producteur.nomRep }}</td>
-            </tr>
-            <tr>
-                <th>Addresserep</th>
-                <td>{{ producteur.addresseRep }}</td>
-            </tr>
-            <tr>
-                <th>Fonctionrep</th>
-                <td>{{ producteur.fonctionRep }}</td>
-            </tr>
-            <tr>
-                <th>Mobilerep_</th>
-                <td>{{ producteur.mobileRep }}</td>
-            </tr>
-            <tr>
-                <th>Fixerep</th>
-                <td>{{ producteur.fixeRep }}</td>
-            </tr>
-            <tr>
-                <th>Faxerep</th>
-                <td>{{ producteur.faxeRep }}</td>
-            </tr>
-            <tr>
-                <th>Emailrep</th>
-                <td>{{ producteur.emailRep }}</td>
-            </tr>
-            <tr>
-                <th>Nommanager</th>
-                <td>{{ producteur.nomManager }}</td>
-            </tr>
-            <tr>
-                <th>Prenommanager</th>
-                <td>{{ producteur.prenomManager }}</td>
-            </tr>
-            <tr>
-                <th>Titremanager</th>
-                <td>{{ producteur.titreManager }}</td>
-            </tr>
-            <tr>
-                <th>Telmanager</th>
-                <td>{{ producteur.telManager }}</td>
-            </tr>
-            <tr>
-                <th>Emailmanager</th>
-                <td>{{ producteur.emailManager }}</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Data Table</h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Table</a></li>
+                <li class="active">Data Table</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Table Producteur</h3>
+                <p class="text-muted m-b-30">Liste des producteurs inscrits</p>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+                            <th>Prenom</th>
+                            <th>Statutlegal</th>
+                            <th>Ninea</th>
+                            <th>Siegesocial</th>
+                            <th>Region</th>
+                            <th>Ville</th>
+                            <th>Departement</th>
+                            <th>Commune</th>
+                            <th>Arrondissement</th>
+                            <th>Village</th>
+                            <th>Numtel</th>
+                            <th>Numfixe</th>
+                            <th>Fax</th>
+                            <th>Email</th>
+                            <th>Addresse</th>
+                            <th>Prenomrep</th>
+                            <th>Nomrep</th>
+                            <th>Addresserep</th>
+                            <th>Fonctionrep</th>
+                            <th>Mobilerep_</th>
+                            <th>Fixerep</th>
+                            <th>Faxerep</th>
+                            <th>Emailrep</th>
+                            <th>Nommanager</th>
+                            <th>Prenommanager</th>
+                            <th>Titremanager</th>
+                            <th>Telmanager</th>
+                            <th>Emailmanager</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for producteur in producteur %}
+                            <tr>
+                                <td>{{ producteur.nom }}</td>
+                                <td>{{ producteur.prenom }}</td>
+                                <td>{{ producteur.statutLegal }}</td>
+                                <td>{{ producteur.ninea }}</td>
+                                <td>{{ producteur.siegeSocial }}</td>
+                                <td>{{ producteur.region }}</td>
+                                <td>{{ producteur.ville }}</td>
+                                <td>{{ producteur.departement }}</td>
+                                <td>{{ producteur.commune }}</td>
+                                <td>{{ producteur.arrondissement }}</td>
+                                <td>{{ producteur.village }}</td>
+                                <td>{{ producteur.numTel }}</td>
+                                <td>{{ producteur.numFixe }}</td>
+                                <td>{{ producteur.fax }}</td>
+                                <td>{{ producteur.email }}</td>
+                                <td>{{ producteur.addresse }}</td>
+                                <td>{{ producteur.prenomRep }}</td>
+                                <td>{{ producteur.nomRep }}</td>
+                                <td>{{ producteur.addresseRep }}</td>
+                                <td>{{ producteur.fonctionRep }}</td>
+                                <td>{{ producteur.mobileRep }}</td>
+                                <td>{{ producteur.fixeRep }}</td>
+                                <td>{{ producteur.faxeRep }}</td>
+                                <td>{{ producteur.emailRep }}</td>
+                                <td>{{ producteur.nomManager }}</td>
+                                <td>{{ producteur.prenomManager }}</td>
+                                <td>{{ producteur.titreManager }}</td>
+                                <td>{{ producteur.telManager }}</td>
+                                <td>{{ producteur.emailManager }}</td>
+                            </tr>
+                        {% endfor %}
 
-    <ul>
-        <li>
-            <a href="{{ path('producteur_index') }}">Back to the list</a>
-        </li>
-        <li>
-            <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">Edit</a>
-        </li>
-        <li>
-            {{ form_start(delete_form) }}
-                <input type="submit" value="Delete">
-            {{ form_end(delete_form) }}
-        </li>
-    </ul>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- /.row -->
+    <!-- .right-sidebar -->
 {% endblock %}
+

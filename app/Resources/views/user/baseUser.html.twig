@@ -1,24 +1,64 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
-    <title>Multi-step Form - Bootsnipp.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    {#<link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">#}
-    <link href="{{ asset('css/css.css') }}" rel="stylesheet">
 
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-</head>
-<body>
 
-<div style="height:40px;"></div>
-<div class="assessment-container container">
+<div class="col-md-6">
+    <div class="white-box">
+        <h3 class="box-title m-b-0">Sample Forms with Right icon</h3>
+        <p class="text-muted m-b-30 font-13"> Bootstrap Elements </p>
+        <div class="row">
+            <div class="col-sm-12 col-xs-12">
+
+                <form action="{{ path("fos_user_registration_register") }}" method="post">
+                <div class="form-group">
+                    <label for="exampleInputuname">User Name</label>
+                    <div class="input-group">
+
+                        <input type="text" class="form-control" id="exampleInputuname" placeholder="Username">
+                        <div class="input-group-addon"><i class="ti-user"></i></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <div class="input-group">
+                        <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+                        <div class="input-group-addon"><i class="ti-email"></i></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputpwd1">Password</label>
+                    <div class="input-group">
+                        <input type="password" class="form-control" id="exampleInputpwd1" placeholder="Enter pwd">
+                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputpwd2">Confirm Password</label>
+                    <div class="input-group">
+                        {{ form_widget(form.secondpassword,{'attr':{'class':'input-group-addon', 'type':'text','placeholder':'Enter pwd'}}) }}
+                        <input type="password" class="form-control" id="exampleInputpwd2" placeholder="Enter pwd">
+                        <div class="input-group-addon"><i class="ti-lock"></i></div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="checkbox checkbox-success">
+                        <input id="checkbox2" type="checkbox">
+                        <label for="checkbox2"> Remember me </label>
+                    </div>
+                </div>
+                <div class="text-right">
+                    <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
+                    <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+                </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{#<div class="assessment-container container">
     <div class="row">
         <div class="col-md-6 form-box">
             {{ form_start(form,{'attr':{'role':'form','class':'registration-form'}}) }}
-            {#<form role="form" class="registration-form" action="javascript:void(0);">#}
+            #}{#<form role="form" class="registration-form" action="javascript:void(0);">#}{#
             <fieldset>
                 <div class="form-top">
                     <div class="form-top-left">
@@ -41,13 +81,13 @@
             </fieldset>
 
             {{ form_end(form) }}
-            {#</form>#}
+            #}{#</form>#}{#
         </div>
     </div>
 
 
-</div>
-<script src="{{ asset('js/js.js') }}"></script>
+</div>#}
+
 {#<script type="text/javascript">
     $(document).ready(function () {
         $('.registration-form fieldset:first-child').fadeIn('slow');
@@ -102,8 +142,6 @@
 
     });
 </script>#}
-</body>
-</html>
 
 {#  <h1>Producteur creation</h1>
 

@@ -1,0 +1,240 @@
+
+{% block body %}
+    <div class="row">
+        <div class="col-md-6 form-box">
+            {{ form_start(form,{'attr':{'role':'form','class':'registration-form'}}) }}
+            {#<form role="form" class="registration-form" action="javascript:void(0);">#}
+            <fieldset>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span>Production/Exportation de fruits et légumes frais</h3>
+                        <p>Identification de l'opérateur
+                        </p>
+                    </div>
+                </div>
+                <div class="form-bottom">
+
+                    <div class="row">
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(form.nom) }}
+                            {{ form_widget(form.nom,{'attr':{'class':'form-control','placeholder':'Firstname'}}) }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(form.prenom) }}
+                            {{ form_widget(form.prenom,{'attr':{'class':'form-control','placeholder':'Lastname'}}) }}
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-bottom:3px;">
+                        <div class="row">
+                            <div class="form-group col-md-3 col-sm-3">
+                                {{ form_errors(form.statutLegal) }}
+                                {{ form_widget(form.statutLegal,{'attr':{'class':'form-control','placeholder':'StatutLegal'}}) }}
+                            </div>
+                            <div class="form-group col-md-9 col-sm-9">
+                                {{ form_errors(form.addresse) }}
+                                {{ form_widget(form.addresse,{'attr':{'class':'form-control','placeholder':'Addresse'}}) }}
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                {{ form_errors(form.ninea) }}
+                                {{ form_widget(form.ninea,{'attr':{'class':'','placeholder':'Ninea'}}) }}
+                            </div>
+                            <div class="form-group col-md-6 col-sm-6">
+                                {{ form_errors(form.siegeSocial) }}
+                                {{ form_widget(form.siegeSocial,{'attr':{'class':'','placeholder':'Siege'}}) }}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.region) }}
+                        {{ form_widget(form.region,{'attr':{'class':'','placeholder':'Region'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.departement) }}
+                        {{ form_errors(form.departement) }}
+                        {{ form_widget(form.departement,{'attr':{'class':'','placeholder':'Departement'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.ville) }}
+                        {{ form_widget(form.ville,{'attr':{'class':'','placeholder':'Ville'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.commune) }}
+                        {{ form_widget(form.commune,{'attr':{'class':'','placeholder':'Commune'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.arrondissement) }}
+                        {{ form_widget(form.arrondissement,{'attr':{'class':'','placeholder':'Arrondissement'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.village) }}
+                        {{ form_widget(form.village,{'attr':{'class':'','placeholder':'Village'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.numTel) }}
+                        {{ form_widget(form.numTel,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.numFixe) }}
+                        {{ form_widget(form.numFixe,{'attr':{'class':'','placeholder':'Fixe'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.fax) }}
+                        {{ form_widget(form.fax,{'attr':{'class':'','placeholder':'Faxe'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.email) }}
+                        {{ form_widget(form.email,{'attr':{'class':'','placeholder':'Email'}}) }}
+                    </div>
+                    <button type="button" class="btn btn-next">Suivant</button>
+
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span> Production/Exportation de fruits et légumes frais</h3>
+                        <p>Représentant légal
+                        </p>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(form.nomRep) }}
+                            {{ form_widget(form.nomRep,{'attr':{'class':'','placeholder':'Representant'}}) }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(form.prenomRep) }}
+                            {{ form_widget(form.prenomRep,{'attr':{'class':'','placeholder':'Prenom'}}) }}
+                        </div>
+
+                    </div>
+                    {#  <div class="form-group">
+                          <input type="date" class="form-control" id="pref_date">
+                      </div>#}
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.addresseRep) }}
+                        {{ form_widget(form.addresseRep,{'attr':{'class':'','placeholder':'Addresse'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.mobileRep_) }}
+                        {{ form_widget(form.mobileRep_,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.fixeRep) }}
+                        {{ form_widget(form.fixeRep,{'attr':{'class':'','placeholder':'Fixe'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.mobileRep_) }}
+                        {{ form_widget(form.mobileRep_,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.emailRep) }}
+                        {{ form_widget(form.emailRep,{'attr':{'class':'','placeholder':'Email'}}) }}
+                    </div>
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.faxeRep) }}
+                        {{ form_widget(form.faxeRep,{'attr':{'class':'','placeholder':'Faxe'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.fonctionRep) }}
+                        {{ form_widget(form.fonctionRep,{'attr':{'class':'','placeholder':'Fonction'}}) }}
+                    </div>
+                    <button type="button" class="btn btn-previous">Précedent</button>
+                    <button type="button" class="btn btn-next">Next</button>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="form-top">
+                    <div class="form-top-left">
+                        <h3><span><i class="fa fa-calendar-check-o" aria-hidden="true"></i></span> Production/Exportation de fruits et légumes frais</h3>
+                        <p>Responsable ou Manager
+                        </p>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                    <div class="form-group">
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(form.nomManager) }}
+                            {{ form_widget(form.nomManager,{'attr':{'class':'','placeholder':'Nom Manager'}}) }}
+                        </div>
+                        <div class="form-group col-md-6 col-sm-6">
+                            {{ form_errors(form.prenomManager) }}
+                            {{ form_widget(form.prenomManager,{'attr':{'class':'','placeholder':'Prenom Manager'}}) }}
+                        </div>
+
+                    </div>
+                    {#  <div class="form-group">
+                          <input type="date" class="form-control" id="pref_date">
+                      </div>#}
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.titreManager) }}
+                        {{ form_widget(form.titreManager,{'attr':{'class':'','placeholder':'Titre'}}) }}
+                    </div>
+
+                    <div class="form-group col-md-6 col-sm-6">
+                        {{ form_errors(form.telManager) }}
+                        {{ form_widget(form.telManager,{'attr':{'class':'','placeholder':'Telephone'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.emailManager) }}
+                        {{ form_widget(form.emailManager,{'attr':{'class':'','placeholder':'Email'}}) }}
+                    </div>
+                    {#<div class="form-group">
+                        {{ form_errors(form.faxeRep) }}
+                        {{ form_widget(form.fixeRep,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>
+                    <div class="form-group">
+                        {{ form_errors(form.fonctionRep) }}
+                        {{ form_widget(form.fonctionRep,{'attr':{'class':'','placeholder':'Mobile'}}) }}
+                    </div>#}
+                    <button type="button" class="btn btn-previous">Previous</button>
+                    <button class="btn btn-success" type="submit" >Submit
+                    </button>
+                </div>
+            </fieldset>
+            {{ form_end(form) }}
+            {#</form>#}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">With Icon</h3>
+                <p class="text-muted m-b-30 font-13"> This is the Icon wizrd without validation.</p>
+                <div id="exampleBasic2" class="wizard">
+                    <ul class="wizard-steps" role="tablist">
+                        <li class="active" role="tab">
+                            <h4><span><i class="ti-user"></i></span>Account</h4> </li>
+                        <li role="tab">
+                            <h4><span><i class="ti-credit-card"></i></span>Billing</h4> </li>
+                        <li role="tab">
+                            <h4><span><i class="ti-check"></i></span>Confirmation</h4> </li>
+                    </ul>
+                    <div class="wizard-content">
+                        <div class="wizard-pane active" role="tabpanel">Raw denim you probably haven't heard of them jean shorts Austin. Nesciunt tofu stumptown aliqua, retro synth master cleanse. Mustache cliche tempor, williamsburg carles vegan helvetica. Reprehenderit butcher retro keffiyeh dreamcatcher synth. Cosby sweater eu banh mi, qui irure terry richardson ex squid. Aliquip placeat salvia cillum iphone. Seitan aliquip quis cardigan american apparel, butcher voluptate nisi qui.</div>
+                        <div class="wizard-pane" role="tabpanel">Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</div>
+                        <div class="wizard-pane" role="tabpanel">Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork. Williamsburg banh mi whatever gluten-free, carles pitchfork biodiesel fixie etsy retro mlkshk vice blog. Scenester cred you probably haven't heard of them, vinyl craft beer blog stumptown. Pitchfork sustainable tofu synth chambray yr.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+{#  <h1>Producteur creation</h1>
+
+  {{ form_start(form) }}
+      {{ form_widget(form) }}
+      <input type="submit" value="Create" />
+  {{ form_end(form) }}
+
+  <ul>
+      <li>
+          <a href="{{ path('producteur_index') }}">Back to the list</a>
+      </li>
+  </ul>#}
+

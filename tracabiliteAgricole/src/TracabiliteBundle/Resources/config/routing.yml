@@ -1,0 +1,67 @@
+home_page:
+    path:     /
+    defaults: { _controller: TracabiliteBundle:Tracabilite:index }
+
+
+
+produit:
+    path:     /produit
+    defaults: { _controller: TracabiliteBundle:Tracabilite:produit}
+
+
+
+saisi_intrant:
+    path:     /saisi-intrant
+    defaults: { _controller: TracabiliteBundle:Tracabilite:saisiIntrant}
+
+
+
+base_traca:
+    path:     /acceuil-tracabilite
+    defaults: { _controller: TracabiliteBundle:Tracabilite:base}
+
+
+
+calendrier_culturel:
+    path:     /calendrier-culturel
+    defaults: { _controller: TracabiliteBundle:Tracabilite:calendrierCulturel}
+
+
+
+suivi_production:
+    path:     /suivi-production
+    defaults: { _controller: TracabiliteBundle:Tracabilite:suiviProduction}
+
+
+
+edit:
+    path:     /edit
+    defaults: { _controller: TracabiliteBundle:User:edit}
+
+
+
+
+recolte:
+    path:     /recolte
+    defaults: { _controller: TracabiliteBundle:Tracabilite:recolte}
+
+
+
+controle_cond:
+    path:     /controle-conditionnement
+    defaults: { _controller: TracabiliteBundle:Tracabilite:controleConditionnement}
+
+
+
+exportation:
+    path:     /exportation
+    defaults: { _controller: TracabiliteBundle:Tracabilite:exportation}
+
+
+
+rejet:
+    path:     /rejet
+    defaults: { _controller: TracabiliteBundle:Tracabilite:rejet}
+
+
+

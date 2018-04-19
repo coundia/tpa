@@ -1,26 +1,51 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <h1>Liste des Utilisateurs</h1>
-    <table>
-        <thead>
-        <tr>
-            <th>Username</th>
-            <th>email</th>
-            <th>Roles</th>
-            <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        {% for user in users %}
-            <tr>
-                <td>{{ user.username }}</td>
-                <td>{{ user.email }}</td>
-                <td>{% for role in user.roles %}
-                        {{ role }},
-                    {% endfor %}</td>
-                <td></td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+            <div class="row bg-title">
+                <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                    <h4 class="page-title">Data Table</h4> </div>
+                <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+                    <ol class="breadcrumb">
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Table</a></li>
+                        <li class="active">Data Table</li>
+                    </ol>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+        <div class="row">
+            <div class="col-sm-12">
+            <div class="white-box">
+            <h3 class="box-title m-b-0">Table Utilisateurs</h3>
+            <p class="text-muted m-b-30">
+                <p class="text-muted m-b-30" align="right"><a href="{{ path('utilisateur_new') }}"><i> <img src=" {{ asset('images/aj.gif') }}" title="Nouvel Utilisateur">Nouvel Utilisateur </i></a></p></p>
+            <div class="table-responsive">
+                    <table id="myTable" class="table table-striped">
+
+                        <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>email</th>
+                            <th>Roles</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <td>{{ user.username }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>{% for role in user.roles %}
+                                        {{ role }},
+                                    {% endfor %}</td>
+                                <td>
+                               <a href="{{ path('utilisateur_edit', { 'id': user.id }) }}"><i> <img src=" {{ asset('images/Edit.png') }}" title="Supprimer"> </i></a>
+                               <a href="{{ path('utilisateur_delete', { 'id': user.id }) }}"><i> <img src=" {{ asset('images/delete_16.png') }}" title="Supprimer"> </i></a></td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+            </div>
+            </div>
+        </div>
 {% endblock %}
