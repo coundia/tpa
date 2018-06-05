@@ -112,4 +112,19 @@ class UserController extends Controller
 
         return $this->redirectToRoute('utilisateur_index');
     }
+    /**
+     * @Route("/active/{id}", name="utilisateur_activer")
+     */
+    public function enableUsersAction(Request $request, User $user)
+    {
+
+        $userManager = $this->get('fos_user.user_manager');
+            $user = $userManager->findUserBy(array('id' => $user->getId()));
+
+            $user->setEnabled(1);
+        //var_dump($user); exit();
+            $userManager->updateUser($user);
+        return $this->redirectToRoute('utilisateur_index');
+    }
+
 }

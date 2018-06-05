@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Data Table</h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Table</a></li>
+                <li class="active">Data Table</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Table Producteur</h3>
+                <p class="text-muted m-b-30">Liste des producteurs inscrits</p>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+
+                           {#  <th>Prenomrep</th>
+                              <th>Nomrep</th>
+                              <th>Addresserep</th>
+                              <th>Fonctionrep</th>
+                              <th>Mobilerep_</th>
+                              <th>Fixerep</th>
+                              <th>Faxerep</th>
+                              <th>Emailrep</th>
+                              <th>Nommanager</th>
+                              <th>Prenommanager</th>
+                              <th>Titremanager</th>
+                              <th>Telmanager</th>
+                              <th>Emailmanager</th>#}
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for producteur in prod %}
+                            <tr>
+                                <td><a href="{{ path('producteur_maj') }}"></a></td>
+                                <td>{{ producteur.nom }}</td>
+
+
+                                <td>
+
+                                </td>
+                                {# <ul>
+                                      <li>
+                                          <a href="{{ path('producteur_show', { 'id': producteur.id }) }}">show</a>
+                                      </li>
+                                      <li>
+                                          <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">edit</a>
+                                      </li>
+                                  </ul>#}
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}

@@ -1,9 +1,25 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <h1>Demandes list</h1>
-
-    <table>
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Data Table</h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Table</a></li>
+                <li class="active">Data Table</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Table Demande</h3>
+            <p class="text-muted m-b-30">Liste des producteurs inscrits</p>
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped">
         <thead>
             <tr>
                 <th>Id</th>
@@ -31,7 +47,11 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
 
     <ul>
         <li>

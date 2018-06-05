@@ -1,3 +1,4 @@
+{#
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>Edition Utilisateur</h1>
@@ -9,5 +10,57 @@
         <li>
             <a href="{{ path('utilisateur_index') }}">Back to the list</a>
         </li>
+    </ul>
+{% endblock %}#}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Modifier utilisateur</h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+         {#   <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Forms</a></li>
+                <li class="active">Form Wizard</li>
+            </ol>#}
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="col-md-6">
+        <div class="white-box">
+            <h3 class="box-title m-b-0"></h3>
+            <p class="text-muted m-b-30 font-13"> </p>
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    {% form_theme edit_form '/bootstrap_3_layout.html.twig' %}
+                    {{ form_start(edit_form,{'attr':{'role':'form','class':'registration-form'}}) }}
+
+
+                    <div class="text-right">
+                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Envoyer</button>
+                        <button type="submit" class="btn btn-inverse waves-effect waves-light">  <a href="{{ path('utilisateur_index') }}">Annuler</a></button>
+                    </div>
+                    {{ form_end(edit_form) }}
+                    {#</form>#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="white-box">
+            <h2 class="box-title m-b-0">
+                <li>
+                    <a href="{{ path('utilisateur_index') }}">Retour à la liste</a>
+                </li>
+
+            </h2>
+
+        </div>
+    </div>
+
+    <ul>
+
     </ul>
 {% endblock %}

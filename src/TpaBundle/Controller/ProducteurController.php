@@ -3,6 +3,7 @@
 namespace TpaBundle\Controller;
 use Symfony\Component\Validator\Constraints\DateTime;
 use TpaBundle\Entity\CalendrierProduction;
+use TpaBundle\Entity\Certificat;
 use TpaBundle\Entity\gestionQualite;
 use TpaBundle\Entity\Producteur;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -30,13 +31,39 @@ class ProducteurController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $producteurs = $em->getRepository('TpaBundle:Producteur')->findAll();
+        $producteurs = $em->getRepository('TpaBundle:Producteur')->getproducteur();
+
+        var_dump($producteurs);exit();
+
 
         return $this->render('producteur/index.html.twig', array(
             'producteurs' => $producteurs,
         ));
     }
+    /**
+     *
+     * @Route("/listeProducteur", name="liste_producteur")
+     */
+    public function listerAction()
+    {
+        $prod=$this->getDoctrine()->getRepository(Producteur::class)->findAllOrderedByName();
+        return $this->render('producteur/listeProducteur.html.twig', array(
+            'prod' => $prod,
+        ));
+    }
+    /**
+     *
+     * @Route("/lister", name="producteur_maj")
+     */
 
+    public function majAction()
+    {
+
+        return $this->render('producteur/maj.html.twig');
+
+
+
+    }
     /**
      * Creates a new producteur entity.
      *
@@ -59,8 +86,9 @@ class ProducteurController extends Controller
             $em = $this->getDoctrine()->getManager();
             $em->persist($producteur);
             $em->flush();
-
-            for ($i=1;$i<=5;$i++){
+        var_dump($request->get('qualiteNon'));exit();
+            $nb_spec=($request->get('nb_spec'));
+            for ($i=1;$i<=$nb_spec;$i++){
                 $site=new SiteProduction();
                 if ($request->get('perimetre_'.$i)=="")
                     break;
@@ -73,7 +101,9 @@ class ProducteurController extends Controller
                 $em->persist($site);
                 $em->flush();
             }
-            for ($i=1;$i<=4;$i++){
+
+            //var_dump($nb_spec);exit();
+            for ($i=1;$i<=$nb_spec;$i++){
                 $calendrier=new CalendrierProduction();
                 if ($request->get('spec_'.$i)=="")
                     break;
@@ -87,7 +117,7 @@ class ProducteurController extends Controller
                 $em->persist($calendrier);
                 $em->flush();
             }
-            for ($i=1;$i<=4;$i++){
+            for ($i=1;$i<=$nb_spec;$i++){
                 $siteCond=new SiteConditionnement();
                 if ($request->get('speculation_'.$i)=="")
                     break;
@@ -98,7 +128,17 @@ class ProducteurController extends Controller
                 $em->persist($siteCond);
                 $em->flush();
             }
-
+            for ($i=1;$i<=8;$i++){
+                $certificat=new Certificat();
+                if ($request->get('num_'.$i)=="")
+                    break;
+                $certificat->setNumeroCert($request->get('num_'.$i));
+                $certificat->setDateCert($request->get('date_cert_'.$i));
+                $certificat->setCertificat($request->get('certificat_'.$i));
+                $certificat->setProducteur($producteur);
+                $em->persist($certificat);
+                $em->flush();
+            }
             return $this->redirectToRoute('producteur_index', array('id' => $producteur->getId()));
         }
 
@@ -116,6 +156,7 @@ class ProducteurController extends Controller
      */
     public function showAction(Producteur $producteur)
     {
+
         $deleteForm = $this->createDeleteForm($producteur);
 
         return $this->render('producteur/show.html.twig', array(
@@ -123,6 +164,8 @@ class ProducteurController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
+
 
     /**
      * Displays a form to edit an existing producteur entity.

@@ -5,6 +5,7 @@ namespace TpaBundle\Form;
 use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
 use Symfony\Component\Form\Extension\Core\Type\RadioType;
@@ -19,7 +20,15 @@ class ProducteurType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('statutLegal')->add('ninea')->add('siegeSocial')->add('ville')->add('departement')->add('commune')->add('arrondissement')->add('village')->add('numTel')->add('numFixe')->add('fax')->add('email')->add('addresse')->add('prenomRep')->add('nomRep')->add('addresseRep')->add('fonctionRep')->add('mobileRep_')->add('fixeRep')->add('faxeRep')->add('emailRep')->add('nomManager')->add('prenomManager')->add('titreManager')->add('telManager')->add('emailManager')->add('production')->add('conditionnement')->add('exportation')->add('prestation')->add('vulgarisation')->add('bordChamp')->add('europe')->add('regie')->add('enStation')->add('autresr');
+        $builder->add('nom')
+            ->add('prenom')
+            ->add('statutLegal')
+            ->add('ninea')
+            ->add('siegeSocial')
+            ->add('ville')
+            ->add('departement')
+            ->add('commune')
+            ->add('arrondissement')->add('village')->add('numTel')->add('numFixe')->add('fax')->add('email')->add('addresse')->add('prenomRep')->add('nomRep')->add('addresseRep')->add('fonctionRep')->add('mobileRep_')->add('fixeRep')->add('faxeRep')->add('emailRep')->add('nomManager')->add('prenomManager')->add('titreManager')->add('telManager')->add('emailManager')->add('notePproduction')->add('conditionnement',CheckboxType::class)->add('exportation',CheckboxType::class)->add('notePprestation')->add('vulgarisation',CheckboxType::class)->add('bordChamp',CheckboxType::class)->add('europe',CheckboxType::class)->add('regie',CheckboxType::class)->add('enStation',CheckboxType::class)->add('autresr',CheckboxType::class)->add('noteExportation')->add('noteCond');
         $builder->add('region', ChoiceType::class, array(
            'choices'=>array(
                'Dakar'=>'Dakar',

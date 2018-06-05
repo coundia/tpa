@@ -24,104 +24,104 @@ class Producteur
     /**
      * @var string
      *
-     * @ORM\Column(name="nom", type="string", length=100)
+     * @ORM\Column(name="nom", type="string", length=100, nullable=true)
      */
     private $nom;
     /**
      * @var string
      *
-     * @ORM\Column(name="date", type="datetime", length=100)
+     * @ORM\Column(name="date", type="datetime", length=100, nullable=true)
      */
     private $date;
     /**
      * @var string
      *
-     * @ORM\Column(name="prenom", type="string", length=100)
+     * @ORM\Column(name="prenom", type="string", length=100, nullable=true)
      */
     private $prenom;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="statutLegal", type="string", length=255)
+     * @ORM\Column(name="statutLegal", type="string", length=255, nullable=true)
      */
     private $statutLegal;
     /**
      * @var string
      *
-     * @ORM\Column(name="ninea", type="string", length=255)
+     * @ORM\Column(name="ninea", type="string", length=255, nullable=true)
      */
     private $ninea;
     /**
      * @var string
      *
-     * @ORM\Column(name="siegeSocial", type="string", length=255)
+     * @ORM\Column(name="siegeSocial", type="string", length=255, nullable=true)
      */
     private $siegeSocial;
     /**
      * @var string
      *
-     * @ORM\Column(name="region", type="string", length=255)
+     * @ORM\Column(name="region", type="string", length=255, nullable=true)
      */
     private $region;
     /**
      * @var string
      *
-     * @ORM\Column(name="ville", type="string", length=255)
+     * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
     private $ville;
     /**
      * @var string
      *
-     * @ORM\Column(name="departement", type="string", length=255)
+     * @ORM\Column(name="departement", type="string", length=255, nullable=true)
      */
     private $departement;
     /**
      * @var string
      *
-     * @ORM\Column(name="commune", type="string", length=255)
+     * @ORM\Column(name="commune", type="string", length=255, nullable=true)
      */
     private $commune;
     /**
      * @var string
      *
-     * @ORM\Column(name="arrondissement", type="string", length=255)
+     * @ORM\Column(name="arrondissement", type="string", length=255, nullable=true)
      */
     private $arrondissement;
     /**
      * @var string
      *
-     * @ORM\Column(name="village", type="string", length=255)
+     * @ORM\Column(name="village", type="string", length=255, nullable=true)
      */
     private $village;
     /**
      * @var string
      *
-     * @ORM\Column(name="numTel", type="string", length=255)
+     * @ORM\Column(name="numTel", type="string", length=255, nullable=true)
      */
     private $numTel;
     /**
      * @var string
      *
-     * @ORM\Column(name="numFixe", type="string", length=255)
+     * @ORM\Column(name="numFixe", type="string", length=255, nullable=true)
      */
     private $numFixe;
     /**
      * @var string
      *
-     * @ORM\Column(name="fex", type="string", length=255)
+     * @ORM\Column(name="fex", type="string", length=255, nullable=true)
      */
     private $fax;
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
     /**
      * @var string
      *
-     * @ORM\Column(name="addresse", type="string", length=255)
+     * @ORM\Column(name="addresse", type="string", length=255, nullable=true)
      */
     private $addresse;
 //    Partie du representant legal
@@ -129,56 +129,56 @@ class Producteur
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomRep", type="string", length=255)
+     * @ORM\Column(name="prenomRep", type="string", length=255, nullable=true)
      */
     private $prenomRep;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="nomRep", type="string", length=255)
+     * @ORM\Column(name="nomRep", type="string", length=255, nullable=true)
      */
     private $nomRep;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="addresseRep", type="string", length=255)
+     * @ORM\Column(name="addresseRep", type="string", length=255, nullable=true)
      */
     private $addresseRep;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fonctionRep", type="string", length=255)
+     * @ORM\Column(name="fonctionRep", type="string", length=255, nullable=true)
      */
     private $fonctionRep;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="mobileRep", type="string", length=255)
+     * @ORM\Column(name="mobileRep", type="string", length=255, nullable=true)
      */
     private $mobileRep_;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="fixeRep", type="string", length=255)
+     * @ORM\Column(name="fixeRep", type="string", length=255, nullable=true)
      */
     private $fixeRep;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="faxeRep", type="string", length=255)
+     * @ORM\Column(name="faxeRep", type="string", length=255, nullable=true)
      */
     private $faxeRep;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="emailRep", type="string", length=255)
+     * @ORM\Column(name="emailRep", type="string", length=255, nullable=true)
      */
     private $emailRep;
 //    Partie responsable manager
@@ -186,35 +186,35 @@ class Producteur
     /**
      * @var string
      *
-     * @ORM\Column(name="nomManager", type="string", length=255)
+     * @ORM\Column(name="nomManager", type="string", length=255, nullable=true)
      */
     private $nomManager;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prenomManager", type="string", length=255)
+     * @ORM\Column(name="prenomManager", type="string", length=255, nullable=true)
      */
     private $prenomManager;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="titreManager", type="string", length=255)
+     * @ORM\Column(name="titreManager", type="string", length=255, nullable=true)
      */
     private $titreManager;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="telManager", type="string", length=255)
+     * @ORM\Column(name="telManager", type="string", length=255, nullable=true)
      */
     private $telManager;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="emailManager", type="string", length=255)
+     * @ORM\Column(name="emailManager", type="string", length=255, nullable=true)
      */
     private $emailManager;
     //Activités
@@ -222,70 +222,81 @@ class Producteur
     /**
      * @var string
      *
-     * @ORM\Column(name="production", type="string", length=255)
+     * @ORM\Column(name="noteProduction", type="string", length=255, nullable=true)
      */
-    private $production;
-
+    private $notePproduction;
     /**
      * @var string
      *
-     * @ORM\Column(name="conditionnement", type="string", length=255)
+     * @ORM\Column(name="noteExportation", type="string", length=255, nullable=true)
+     */
+    private $noteExportation;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noteCond", type="string", length=255, nullable=true)
+     */
+    private $noteCond;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conditionnement", type="string", length=255, nullable=true)
      */
     private $conditionnement;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="exportation", type="string", length=255)
+     * @ORM\Column(name="exportation", type="string", length=255, nullable=true)
      */
     private $exportation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="prestation", type="string", length=255)
+     * @ORM\Column(name="notePrestation", type="string", length=255, nullable=true)
      */
-    private $prestation;
+    private $notePprestation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="vulgarisation", type="string", length=255)
+     * @ORM\Column(name="vulgarisation", type="string", length=255, nullable=true)
      */
     private $vulgarisation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="bordChamp", type="string", length=255)
+     * @ORM\Column(name="bordChamp", type="string", length=255, nullable=true)
      */
     private $bordChamp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="europe", type="string", length=255)
+     * @ORM\Column(name="europe", type="string", length=255, nullable=true)
      */
     private $europe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="regie", type="string", length=255)
+     * @ORM\Column(name="regie", type="string", length=255, nullable=true)
      */
     private $regie;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="enStation", type="string", length=255)
+     * @ORM\Column(name="enStation", type="string", length=255, nullable=true)
      */
     private $enStation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="autre", type="string", length=255)
+     * @ORM\Column(name="autre", type="string", length=255, nullable=true)
      */
     private $autresr;
     //gestion de la qualité
@@ -293,13 +304,13 @@ class Producteur
     /**
      * @var string
      *
-     * @ORM\Column(name="gestionInterne", type="string", length=255)
+     * @ORM\Column(name="gestionInterne", type="string", length=255, nullable=true)
      */
     private $gestionInterne;
     /**
      * @var string
      *
-     * @ORM\Column(name="consultant", type="string", length=255)
+     * @ORM\Column(name="consultant", type="string", length=255, nullable=true)
      */
     private $consultant;
 
@@ -1010,27 +1021,27 @@ class Producteur
     }
 
     /**
-     * Set production
+     * Set noteProduction
      *
-     * @param string $production
+     * @param string $noteProduction
      *
      * @return Producteur
      */
-    public function setProduction($production)
+    public function setProduction($noteProduction)
     {
-        $this->production = $production;
+        $this->production = $noteProduction;
 
         return $this;
     }
 
     /**
-     * Get production
+     * Get noteProduction
      *
      * @return string
      */
     public function getProduction()
     {
-        return $this->production;
+        return $this->noteProduction;
     }
 
     /**
@@ -1325,4 +1336,100 @@ class Producteur
         return $this->date;
     }
 
+
+    /**
+     * Set notePproduction
+     *
+     * @param string $notePproduction
+     *
+     * @return Producteur
+     */
+    public function setNotePproduction($notePproduction)
+    {
+        $this->notePproduction = $notePproduction;
+
+        return $this;
+    }
+
+    /**
+     * Get notePproduction
+     *
+     * @return string
+     */
+    public function getNotePproduction()
+    {
+        return $this->notePproduction;
+    }
+
+    /**
+     * Set noteExportation
+     *
+     * @param string $noteExportation
+     *
+     * @return Producteur
+     */
+    public function setNoteExportation($noteExportation)
+    {
+        $this->noteExportation = $noteExportation;
+
+        return $this;
+    }
+
+    /**
+     * Get noteExportation
+     *
+     * @return string
+     */
+    public function getNoteExportation()
+    {
+        return $this->noteExportation;
+    }
+
+    /**
+     * Set noteCond
+     *
+     * @param string $noteCond
+     *
+     * @return Producteur
+     */
+    public function setNoteCond($noteCond)
+    {
+        $this->noteCond = $noteCond;
+
+        return $this;
+    }
+
+    /**
+     * Get noteCond
+     *
+     * @return string
+     */
+    public function getNoteCond()
+    {
+        return $this->noteCond;
+    }
+
+    /**
+     * Set notePprestation
+     *
+     * @param string $notePprestation
+     *
+     * @return Producteur
+     */
+    public function setNotePprestation($notePprestation)
+    {
+        $this->notePprestation = $notePprestation;
+
+        return $this;
+    }
+
+    /**
+     * Get notePprestation
+     *
+     * @return string
+     */
+    public function getNotePprestation()
+    {
+        return $this->notePprestation;
+    }
 }

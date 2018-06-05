@@ -22,7 +22,8 @@ class UserType extends AbstractType
                         'ROLE_EXPORTATEUR' => 'ROLE_EXPORTATEUR',
                         'ROLE_CLIENT' => 'ROLE_CLIENT',
                         'ROLE_CONTROLEUR' => 'ROLE_CONTROLEUR',
-                        'ROLE_USER' => 'ROLE_USER'
+                        'ROLE_USER' => 'ROLE_USER',
+                        'ROLE_DPV' => 'ROLE_DPV'
                     ) ,
                 'multiple' => true,
                 'required' => true,

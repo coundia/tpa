@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<div class="row bg-title">
+    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+        <h4 class="page-title">Form Wizard</h4> </div>
+    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+        <ol class="breadcrumb">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Forms</a></li>
+            <li class="active">Form Wizard</li>
+        </ol>
+    </div>
+</div>
+    <!-- /.col-lg-12 -->
+</div>
+<div class="panel panel-success block5">
+    <div class="panel-heading"> Calendrier de production
+        <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+    </div>
+    <div class="panel-wrapper collapse in" aria-expanded="true">
+        <div class="panel-body">
+
+            <div class="col-md-6">
+                <div class="form-group ">
+                    <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
+                    <input id="nb_spec" name ="nb_spec" type="number">
+                    <span class="help-block"> </span> </div>
+            </div>
+            <table id="mainTable3" class="table editable-table table-bordered table-striped m-b-0">
+
+            </table>
+        </div>
+    </div>
+</div>
+    <div class="panel panel-success block5">
+        <div class="panel-heading"> Calendrier de production
+            <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
+        </div>
+        <div class="panel-wrapper collapse in" aria-expanded="true">
+            <div class="panel-body">
+
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

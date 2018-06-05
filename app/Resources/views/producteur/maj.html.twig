@@ -1,0 +1,230 @@
+{% extends 'base.html.twig' %}
+
+{#{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Data Table</h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Table</a></li>
+                <li class="active">Data Table</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Table Producteur</h3>
+                <p class="text-muted m-b-30">Liste des producteurs inscrits</p>
+                <div class="table-responsive">
+                    <table id="myTable" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nom</th>
+
+                            #}{#  <th>Prenomrep</th>
+                              <th>Nomrep</th>
+                              <th>Addresserep</th>
+                              <th>Fonctionrep</th>
+                              <th>Mobilerep_</th>
+                              <th>Fixerep</th>
+                              <th>Faxerep</th>
+                              <th>Emailrep</th>
+                              <th>Nommanager</th>
+                              <th>Prenommanager</th>
+                              <th>Titremanager</th>
+                              <th>Telmanager</th>
+                              <th>Emailmanager</th>#}{#
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for producteur in prod %}
+                            <tr>
+                                <td><a href="{{ path('producteur_maj') }}"></a></td>
+                                <td>{{ producteur.nom }}</td>
+
+
+                                <td>
+
+                                </td>
+                                #}{#  <ul>
+                                      <li>
+                                          <a href="{{ path('producteur_show', { 'id': producteur.id }) }}">show</a>
+                                      </li>
+                                      <li>
+                                          <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">edit</a>
+                                      </li>
+                                  </ul>#}{#
+
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %}#}
+
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title"></h4> </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel-group wiz-aco" id="accordion" role="tablist" aria-multiselectable="true">
+
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-primary">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                IDENTIFICATION DE L'OPERATEUR
+                            </a>
+                        </h4> </div>
+                    <div id="collapseOne" class="panel-collapse collapse in panel-body" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+
+
+
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Représentant Légal
+                            </a>
+                        </h4> </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Responsable ou Manager
+                            </a>
+                        </h4> </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Activité de Production
+                            </a>
+                        </h4> </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Site de Production
+                            </a>
+                        </h4> </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingSix">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                Calendrier de Production
+                            </a>
+                        </h4> </div>
+                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                        <div class="panel-body">
+                            {# <div class="col-md-6">
+                                 <div class="form-group ">
+                                     <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
+                                     <input id="nb_spec" name ="nb_spec" type="number">
+                                     <span class="help-block"> </span> </div>
+                             </div>#}
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingSeven">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                Site de Conditionnement
+                            </a>
+                        </h4> </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                        <div class="panel-body">
+
+                            <table id="mainTable2" class="table editable-table table-bordered table-striped m-b-0">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingHeight">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseHeight" aria-expanded="false" aria-controls="collapseHeight">
+                                Certification Privée détenue
+                            </a>
+                        </h4> </div>
+                    <div id="collapseHeight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHeight">
+                        <div class="panel-body">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingNine">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                                Gestion de la Qualité
+                            </a>
+                        </h4> </div>
+                    <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+                        <div class="panel-body">
+
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel" >
+                    <button class="btn btn-success  col-sm-2"  type="submit" align="center" >SOUMETTTRE
+                    </button></div>
+
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -14,6 +14,7 @@
     <link href="{{ asset('template/plugins/bower_components/jquery-datatables-editable/datatables.css') }}" rel="stylesheet">
     <!-- Menu CSS -->
     <link href="{{ asset('template/plugins/bower_components/sidebar-nav/dist/sidebar-nav.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/bootstrap-table/dist/bootstrap-table.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css') }}" rel="stylesheet">
     <!-- toast CSS -->
     <link href="{{ asset('template/plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
@@ -49,7 +50,12 @@
 
 </head>
 
-<style></style>
+<style>
+    .file-field.big .file-path-wrapper {
+        height: 3.2rem; }
+    .file-field.big .file-path-wrapper .file-path {
+        height: 3rem; }
+</style>
 
 <body>
 <!-- Preloader -->
@@ -176,10 +182,10 @@
                         <a href="#" class="waves-effect"><img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> Admin<span class="fa arrow"></span></span>
                         </a>
                         <ul class="nav nav-second-level">
-                            <li><a href="{{ path('utilisateur_new') }}"><i class="ti-user"></i> <span class="hide-menu"> Profile</span></a></li>
-                            <li><a href=""><i class="fa fa-power-off"></i> Se déconnecter</a></li>
+                         {#   <li><a href="{{ path('utilisateur_new') }}"><i class="ti-user"></i> <span class="hide-menu"> Profile</span></a></li>
+                            <li><a href=""><i class="fa fa-power-off"></i> Se déconnecter</a></li>#}
                             <li><a href="{{ path('utilisateur_index') }}"><i class="fa fa-power-off"></i> Utilisateurs</a></li>
-                            <li><a href=""><i class="fa fa-power-off"></i> Demandes</a></li>
+                            {#<li><a href=""><i class="fa fa-power-off"></i> Demandes</a></li>#}
                         </ul>
                     </li>
                 {% endif %}
@@ -193,7 +199,7 @@
                                     {#<li> <a href="inbox.html">Saisir Intrat</a></li>#}
                                 </ul>
                             </li>
-                            <li><a href="{{ path('calendrier') }}" class="waves-effect">Calendrier Cultural<span class="fa arrow"></span></a>
+                            <li><a href="{{ path('liste_producteur') }}" class="waves-effect">Calendrier Cultural<span class="fa arrow"></span></a>
                                 {#  <ul class="nav nav-third-level">
                                       <li> <a href="inbox.html">Controle</a></li>
                                       <li> <a href="inbox-detail.html">Conditionnement</a></li>
@@ -222,9 +228,9 @@
                     {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">EXPORTATION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)" class="waves-effect">Remplir formulaire d'adhésion<span class="fa arrow"></span></a>
+                            <li><a href="" class="waves-effect">Remplir formulaire d'adhésion<span class="fa arrow"></span></a>
                             </li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Mise à jours des données<span class="fa arrow"></span></a>
+                            <li><a href="{{ path('producteur_maj') }}" class="waves-effect">Mise à jours des données<span class="fa arrow"></span></a>
                             </li>
 
 
@@ -236,9 +242,23 @@
                     {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">CONTROLE<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)" class="waves-effect">Editer Rapport de controle<span class="fa arrow"></span></a>
+                            <li><a href="{{ path('rapportControle') }}" class="waves-effect">Editer Rapport de controle<span class="fa arrow"></span></a>
                             </li>
                             <li><a href="javascript:void(0)" class="waves-effect">Mise à jours des données<span class="fa arrow"></span></a>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                {% endif %}
+                {% if is_granted('ROLE_DPV') %}
+                    <li class="nav-small-cap m-t-10"></li>
+                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">CONTROLE<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="javascript:void(0)" class="waves-effect">Rapports inspections opérateurs<span class="fa arrow"></span></a>
+                            </li>
+                            <li><a href="javascript:void(0)" class="waves-effect">Inspections des etablissements d'exportation<span class="fa arrow"></span></a>
                             </li>
 
 
@@ -614,7 +634,9 @@
 
 
 <script src="{{ asset('js/tableau.js') }}"></script>
+<script src="{{ asset('template/js/jasny-bootstrap.js') }}"></script>
 <script src="{{ asset('js/siteProduction.js') }}"></script>
+<script src="{{ asset('js/representant.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 
 

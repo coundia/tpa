@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Form;
+namespace TpaBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -13,14 +13,14 @@ class PersonneType extends AbstractType
      */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $builder->add('nom')->add('prenom')->add('statut')->add('numTel')->add('numFixe')->add('numFax');
+        $builder->add('nom')->add('prenom')->add('mobile')->add('fixe')->add('faxe')->add('email');
     }/**
      * {@inheritdoc}
      */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\Personne'
+            'data_class' => 'TpaBundle\Entity\Personne'
         ));
     }
 
@@ -29,7 +29,7 @@ class PersonneType extends AbstractType
      */
     public function getBlockPrefix()
     {
-        return 'appbundle_personne';
+        return 'tpabundle_personne';
     }
 
 

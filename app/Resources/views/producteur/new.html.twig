@@ -3,21 +3,14 @@
 {% block body %}
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Form Wizard</h4> </div>
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
-            <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Forms</a></li>
-                <li class="active">Form Wizard</li>
-            </ol>
-        </div>
-        <!-- /.col-lg-12 -->
+            <h4 class="page-title"></h4> </div>
+
     </div>
 
     <div class="row">
         <div class="col-sm-12">
             <div class="panel-group wiz-aco" id="accordion" role="tablist" aria-multiselectable="true">
-                {{ form_start(form,{'attr':{'role':'form'}}) }}
+                {{ form_start(form,{'attr':{'role':'form','novalidate': 'novalidate'}}) }}
                 <div class="panel panel-success">
                     <div class="panel-heading" role="tab" id="headingOne">
                         <h4 class="panel-primary">
@@ -33,14 +26,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label class="control-label">Nom</label>
-                                        {{ form_widget(form.nom,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.nom ,{'attr':{'class':'form-control recupNom'}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Prénom</label>
-                                        {{ form_widget(form.prenom,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.prenom,{'attr':{'class':'form-control recupPrenom'}}) }}
                                          <span class="help-block">  </span> </div>
                                 </div>
                                 <div class="col-md-6">
@@ -52,7 +45,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Addresse</label>
-                                        {{ form_widget(form.addresse,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.addresse,{'attr':{'class':'form-control recupAddr'}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
                                 <div class="col-md-6">
@@ -106,30 +99,37 @@
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Mobile</label>
-                                        {{ form_widget(form.numTel,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.numTel,{'attr':{'class':'form-control recupMobile'}}) }}
                                         <span class="help-block">  </span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Fixe</label>
-                                        {{ form_widget(form.numFixe,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.numFixe,{'attr':{'class':'form-control recupFixe'}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Fax</label>
-                                        {{ form_widget(form.fax,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.fax,{'attr':{'class':'form-control recupFaxe'}}) }}
                                         <span class="help-block">  </span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Email</label>
-                                        {{ form_widget(form.email,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.email,{'attr':{'class':'form-control recupMail'}}) }}
                                         <span class="help-block">  </span> </div>
                                 </div>
-                                <div class="col-md-6">
-
+                                <div class="col-md-2">
+                                    <div class="form-group ">
+                                        <h5 class="m-t-30 m-b-10">Etes vous le représentant légal ?</h5>
+                                        <select class="selectpicker repLegal" data-style="form-control">
+                                            <option>Non</option>
+                                            <option>Oui</option>
+                                        </select>
+                                    </div>
                                 </div>
+
 
                                 <!--/span-->
                             </div>
@@ -147,22 +147,23 @@
                         </h4> </div>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
                         <div class="panel-body">
+
                             <div class="col-md-6">
                                 <div class="form-group ">
-                                    <label class="control-label">Prénom Représentant</label>
-                                    {{ form_widget(form.prenomRep,{'attr':{'class':'form-control'}}) }}
+                                    <label class="control-label">Nom du Représentant</label>
+                                    {{ form_widget(form.nomRep,{'attr':{'class':'form-control setNom'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
-                                    <label class="control-label">Nom du Représentant</label>
-                                    {{ form_widget(form.nomRep,{'attr':{'class':'form-control'}}) }}
+                                    <label class="control-label">Prénom Représentant</label>
+                                    {{ form_widget(form.prenomRep,{'attr':{'class':'form-control setPrenom'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Adresse du Représentant</label>
-                                    {{ form_widget(form.addresseRep,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.addresseRep,{'attr':{'class':'form-control setAddr'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
@@ -174,25 +175,25 @@
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Téléphone Mobile</label>
-                                    {{ form_widget(form.mobileRep_,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.mobileRep_,{'attr':{'class':'form-control setMobile'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Téléphone Fixe du Représentant</label>
-                                    {{ form_widget(form.fixeRep,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.fixeRep,{'attr':{'class':'form-control setFixe'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Faxe du Representant </label>
-                                    {{ form_widget(form.faxeRep,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.faxeRep,{'attr':{'class':'form-control setFaxe'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Mail du Representant </label>
-                                    {{ form_widget(form.emailRep,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.emailRep,{'attr':{'class':'form-control setMail'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                         </div>
@@ -253,66 +254,107 @@
                         </h4> </div>
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
                         <div class="panel-body">
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Production</label>
-                                    {{ form_widget(form.production,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Exportation</label>
-                                    {{ form_widget(form.exportation,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Prestation</label>
-                                    {{ form_widget(form.prestation,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Vulgarisation</label>
-                                    {{ form_widget(form.vulgarisation,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Bord de Champ</label>
-                                    {{ form_widget(form.bordChamp,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Europe</label>
-                                    {{ form_widget(form.europe,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Régie</label>
-                                    {{ form_widget(form.regie,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2 col-md-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Conditionnement</label>
-                                    {{ form_widget(form.conditionnement,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2 col-md-2">
-                                <div class="form-group ">
-                                    <label class="control-label">En Station</label>
-                                    {{ form_widget(form.enStation,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="form-group  col-sm-2 col-md-2">
-                                <div class="form-group ">
-                                    <label class="control-label">Autre</label>
-                                    {{ form_widget(form.autresr,{'attr':{'class':'form-control'}}) }}
-                                    <span class="help-block">  </span> </div>
-                            </div>
+                            <table id="" style="width: 100%;">
+                                <tr><td>     <h3 class="box-title m-b-0">Production</h3></td></tr>
+                                <tr style="width: 100%;">
+
+
+
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.vulgarisation,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> Vulgarisation </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.regie,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> Régie </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note </label>
+                                            {{ form_widget(form.notePproduction,{'attr':{'class':'form-control'}}) }}
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr><td></td></tr>
+                                <tr><td>     <h3 class="box-title m-b-0">Conditionnement</h3></td></tr>
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.bordChamp,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> Bord de Champs</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.enStation,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> En Station </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note </label>
+                                            {{ form_widget(form.noteCond,{'attr':{'class':'form-control'}}) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr><td>     <h3 class="box-title m-b-0">Exportation</h3></td></tr>
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.europe,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> Europe</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.autresr,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> Autres </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note </label>
+                                            {{ form_widget(form.noteExportation,{'attr':{'class':'form-control'}}) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr><td>     <h3 class="box-title m-b-0" >Prestation</h3></td></tr>
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.exportation,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0"> Exportation</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ form_widget(form.conditionnement,{'attr':{'class':'form-control'}}) }}
+                                            <label for="checkbox0">Conditionnement </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note </label>
+                                            {{ form_widget(form.notePprestation,{'attr':{'class':'form-control'}}) }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
                         </div>
                     </div>
                 </div>
@@ -325,6 +367,12 @@
                         </h4> </div>
                     <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
                         <div class="panel-body">
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
+                                    <input id="nb_spec" name ="nb_spec" type="number">
+                                    <span class="help-block"> </span> </div>
+                            </div>
                             <table id="mainTable" class="table editable-table table-bordered table-striped m-b-0">
 
                             </table>
@@ -340,11 +388,14 @@
                         </h4> </div>
                     <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                         <div class="panel-body">
-
+                           {# <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
+                                    <input id="nb_spec" name ="nb_spec" type="number">
+                                    <span class="help-block"> </span> </div>
+                            </div>#}
 
                             <table id="mainTable1" class="table editable-table table-bordered table-striped m-b-0">
-
-
 
 
                             </table>
@@ -376,11 +427,151 @@
                         </h4> </div>
                     <div id="collapseHeight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHeight">
                         <div class="panel-body">
+                            <div class="col-sm-6">
+                                <div class="white-box">
 
-                            {#  <div class="form-group col-md-6 col-sm-6">
-                             r     {{ form_errors(form.email) }}
-                                  {{ form_widget(form.email,{'attr':{'class':'','placeholder':'Email'}}) }}
-                              </div>#}
+
+                                    <table id="certificat" class="table mainTableC table-bordered">
+
+                                      <tr>
+                                            <td colspan="3" style="border-spacing: 0; color: red; border:purple ; "> </td>
+                                            <td> N° duCertificat </td>
+                                            <td>Date dernière certification </td>
+                                            <td>Dated'expiration</td>
+                                            <td>Déposer certificat</td>
+                                        </tr>
+                                        <tr>
+                                            <td rowspan="2" > GLOBALGAP </td>
+                                            <td> Option 1 </td>
+                                            <td><input  type="checkbox" name="opt1">  </td>
+                                            <td> <input type="text"  name="num_1"></td>
+                                            <td> <input type="text" name="date_cert_1"> </td>
+                                            <td> <input type="text" name="date_exp_1"> </td>
+
+                                            <td>
+                                                <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_1">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Option 2  </td>
+                                            <td> <input type="checkbox" name="opt2">  </td>
+                                            <td> <input type="text" name="num_2"></td>
+                                            <td> <input type="text" name="date_cert_2"> </td>
+                                            <td> <input type="text" name="date_exp_2"> </td>
+                                            <td>   <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_2">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> Tesco Nature's Choice </td>
+                                            <td> <input type="text" name="num_3"></td>
+                                            <td> <input type="text" name="date_cert_3"> </td>
+                                            <td> <input type="text" name="date_exp_3"> </td>
+                                            <td>   <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_3">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> Agriculture Biologique </td>
+                                            <td> <input type="text" name="num_4"></td>
+                                            <td> <input type="text" name="date_cert_4"> </td>
+                                            <td> <input type="text" name="date_exp_4"> </td>
+                                            <td>  <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_4">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div> </td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> BRC</td>
+                                            <td> <input type="text" name="num_5"></td>
+                                            <td> <input type="text" name="date_cert_5"> </td>
+                                            <td> <input type="text" name="date_exp_5"> </td>
+                                            <td>   <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_5">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> IFS</td>
+                                            <td> <input type="text" name="num_6"></td>
+                                            <td> <input type="text" name="date_cert_6"> </td>
+                                            <td> <input type="text" name="date_exp_6"> </td>
+                                            <td>   <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_6">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> IS0 22000</td>
+                                            <td> <input type="text" name="num_7"></td>
+                                            <td> <input type="text" name="date_cert_7"> </td>
+                                            <td> <input type="text" name="date_exp_7"> </td>
+                                            <td>   <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_7">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div></td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="3"> Autres (à préciser)</td>
+                                            <td> <input type="text" name="num_8"></td>
+                                            <td> <input type="text" name="date_cert_8"> </td>
+                                            <td> <input type="text" name="date_exp_8"> </td>
+                                            <td>   <div class="file-field big">
+                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                                        <input type="file" multiple name="certificat_8">
+                                                    </a>
+                                                    {#<div class="file-path-wrapper">
+                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                    </div>#}
+                                                </div> </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -393,46 +584,71 @@
                         </h4> </div>
                     <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
                         <div class="panel-body">
-                           {# <div class="row">
-                                <div class="col-lg-2 col-md-2 col-xs-6">
-                                    <label class="control-label">Système de gestion de la qualité</label>
-                                    <label class="radio-inline p-0">
-                                        <div class="radio radio-info">
-                                            <input type="radio" name="gestQualiteOui" id="radio1" >
-                                            <label for="radio1">Oui</label>
+                            <table id="" style="width: 100%;">
+                                <tr><td>     <h3 class="box-title m-b-0">Système de gestion de la qualité</h3></td></tr>
+                                <tr style="width: 100%;">
+
+
+
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input type="checkbox" name="qualiteOui">
+                                            <label for="qualiteOui">Oui</label>
                                         </div>
-                                    </label>
-                                    <label class="radio-inline">
-                                        <div class="radio radio-info">
-                                            <input type="radio" name="gestQualiteNon" id="radio2" >
-                                            <label for="radio2">Non</label>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input type="checkbox" name="qualiteNon">
+                                            <label for="qualiteNon"> Non </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="noteQualite"> Note </label>
+                                            <input type="text" name="noteQualite">
+
                                         </div>
 
-                                    </label>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-xs-6">
-                                    <div class="checkbox">
-                                        <input id="checkbox0" name="gestionInterne" type="checkbox">
-                                        <label for="checkbox0"> Gestion en interne </label>
-                                    </div>
-                                    <div class="checkbox">
-                                        <input id="checkbox1" name ="consultant" type="checkbox">
-                                        <label for="checkbox1"> Consultant </label>
-                                    </div>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-xs-6">
-                                    <div class="checkbox">
-                                        <input id="checkbox3" name="autre" type="checkbox">
-                                        <label for="checkbox3"> Autre </label>
-                                    </div>
-                                    <div class="text">
-                                        <label for="text"> Note Autres </label>
-                                        <input id="text" name="noteAutre" type="text">
+                                    </td>
+                                </tr>
+                                <tr><td></td></tr>
 
-                                    </div>
-                                </div>
-                                <!--/span-->
-                            </div>#}
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                           <input type="checkbox" name="gstionInterne">
+                                            <label for="gstionInterne"> Gestion Interne</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                           <input type="checkbox" name="consultant">
+                                            <label for="consultant"> Consultant</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 20%;">
+                                        <div>
+                                            <label for="autre"> Autres</label>
+                                            <input type="checkbox" name="autre">
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+                                        <div>
+                                            <label for="note">Notes</label>
+                                            <input type="text" name="note">
+                                        </div>
+                                    </td>
+                                </tr>
+
+
+
+                            </table>
+
+
                         </div>
                     </div>
                 </div>

@@ -9,10 +9,10 @@
                 <th>Id</th>
                 <th>Nom</th>
                 <th>Prenom</th>
-                <th>Statut</th>
-                <th>Numtel</th>
-                <th>Numfixe</th>
-                <th>Numfax</th>
+                <th>Mobile</th>
+                <th>Fixe</th>
+                <th>Faxe</th>
+                <th>Email</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -22,10 +22,10 @@
                 <td><a href="{{ path('personne_show', { 'id': personne.id }) }}">{{ personne.id }}</a></td>
                 <td>{{ personne.nom }}</td>
                 <td>{{ personne.prenom }}</td>
-                <td>{{ personne.statut }}</td>
-                <td>{{ personne.numTel }}</td>
-                <td>{{ personne.numFixe }}</td>
-                <td>{{ personne.numFax }}</td>
+                <td>{{ personne.mobile }}</td>
+                <td>{{ personne.fixe }}</td>
+                <td>{{ personne.faxe }}</td>
+                <td>{{ personne.email }}</td>
                 <td>
                     <ul>
                         <li>

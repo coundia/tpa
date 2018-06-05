@@ -1,5 +1,5 @@
-
-function ajoutSite(){
+var nb_specs;
+function ajoutSite(nb_sp){
 
 
     $('#mainTable').html('');
@@ -17,7 +17,7 @@ function ajoutSite(){
     ;
     // var contenu ='';
 
-    for(var i=1; i<= 5; i++){
+    for(var i=1; i<= nb_sp; i++){
         // var onglet=('<li ><a href="#onglet-'+i+'">Enfant'+i+'</a></li>');
 
         element+=(   '<tbody>'+
@@ -44,7 +44,7 @@ function ajoutSite(){
 
 
 }
-function ajoutCalendar(){
+function ajoutCalendar(nb_sp){
 
 
     $('#mainTable1').html('');
@@ -61,7 +61,7 @@ function ajoutCalendar(){
     ;
     // var contenu ='';
 
-    for(var i=1; i<= 4; i++){
+    for(var i=1; i<= nb_sp; i++){
         // var onglet=('<li ><a href="#onglet-'+i+'">Enfant'+i+'</a></li>');
 
         element+=(   '<tbody>'+
@@ -72,8 +72,8 @@ function ajoutCalendar(){
             '<td > ' +
                 ' <div class="col-md-4">'+
                 '<div class="form-group" >'+
-                '<div class="input-group date datetimepicker7" id="">'+
-                '  <input type="text" class="form-control" name="date_debut_'+i+'" />'+
+                '<div class="input-group  " id="datetimepicker6">'+
+                '  <input type="text" class="form-control" name="date_debut_'+i+'" placeholder="Date début"/>'+
                 ' <span class="input-group-addon">'+
                 // '<span class="glyphicon glyphicon-calendar"></span>'+
                 ' </span>'+
@@ -82,8 +82,8 @@ function ajoutCalendar(){
             '</div>'+
             ' <div class="col-md-4">'+
             '   <div class="form-group">'+
-            '<div class="input-group date datetimepicker7 " >'+
-            '  <input type="text" class="form-control" name="date_fin_'+i+'"  />'+
+            '<div class="input-group " id="datetimepicker7 " >'+
+            '  <input type="text" class="form-control" name="date_fin_'+i+'" placeholder="Date fin" />'+
             ' <span class="input-group-addon">'+
             // '<span class="glyphicon glyphicon-calendar"></span>'+
             ' </span>'+
@@ -92,23 +92,26 @@ function ajoutCalendar(){
                 '</div>'+
                 '</td>'+
             '</tr>'+
-            '<tbody>'
+            '<tbody>'+
+                '<script> $(\'#datetimepicker7\').datepicker( );' +
+            '</script>;'
+             /*   '<script>' +
+            '        setTimeout($(function () {\n' +
+            '            $(\'#datetimepicker6\').datepicker;\n' +
+            '            $(\'#datetimepicker7\').datepicker({\n' +
+            '                useCurrent: false //Important! See issue #1075\n' +
+            '            });\n' +
+            '            $(\'#datetimepicker6\').on("dp.change", function (e) {\n' +
+            '                $(\'#datetimepicker7\').data("DateTimePicker").minDate(e.date);\n' +
+            '            });\n' +
+            '            $(\'#datetimepicker7\').on("dp.change", function (e) {\n' +
+            '                $(\'#datetimepicker6\').data("DateTimePicker").maxDate(e.date);\n' +
+            '            });\n' +
+            '            // element+=contenu;\n' +
+            '        }),3000);'+
+                '   </script>'*/
         );
 
-        setTimeout($(function () {
-            $('#datetimepicker6').datepicker;
-            $('.datetimepicker7').datepicker({
-                useCurrent: false //Important! See issue #1075
-            });
-            $('#datetimepicker6').on("dp.change", function (e) {
-                $('.datetimepicker7').data("DateTimePicker").minDate(e.date);
-            });
-            $('.datetimepicker7').on("dp.change", function (e) {
-                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
-            });
-
-            // element+=contenu;
-        }),3000);
     }
 
 
@@ -127,7 +130,7 @@ function ajoutCalendar(){
 
 
 }
-function ajoutSiteCond(){
+function ajoutSiteCond(nb_sp){
 
 
     $('#mainTable2').html('');
@@ -143,7 +146,7 @@ function ajoutSiteCond(){
     ;
     // var contenu ='';
 
-    for(var i=1; i<= 5; i++){
+    for(var i=1; i<= nb_sp; i++){
         // var onglet=('<li ><a href="#onglet-'+i+'">Enfant'+i+'</a></li>');
 
         element+=(   '<tbody>'+
@@ -170,6 +173,17 @@ function ajoutSiteCond(){
 
 
 }
-ajoutSite( );
-ajoutCalendar();
-ajoutSiteCond();
+
+
+
+
+
+$('#nb_spec').keyup(function () {
+    ajoutSite($('#nb_spec').val() );
+    ajoutCalendar($('#nb_spec').val());
+    ajoutSiteCond($('#nb_spec').val());
+}).change(function () {
+    ajoutSite($('#nb_spec').val() );
+    ajoutCalendar($('#nb_spec').val());
+    ajoutSiteCond($('#nb_spec').val());
+});

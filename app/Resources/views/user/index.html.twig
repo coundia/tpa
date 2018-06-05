@@ -39,7 +39,9 @@
                                     {% endfor %}</td>
                                 <td>
                                <a href="{{ path('utilisateur_edit', { 'id': user.id }) }}"><i> <img src=" {{ asset('images/Edit.png') }}" title="Supprimer"> </i></a>
-                               <a href="{{ path('utilisateur_delete', { 'id': user.id }) }}"><i> <img src=" {{ asset('images/delete_16.png') }}" title="Supprimer"> </i></a></td>
+                               <a href="{{ path('utilisateur_delete', { 'id': user.id }) }}"><i> <img src=" {{ asset('images/delete_16.png') }}" title="Supprimer"> </i></a>
+                               <a href="{{ path('utilisateur_activer', { 'id': user.id }) }}"><i> <img src=" {{ asset('images/5.png') }}" title="Activer"> </i></a>
+                                </td>
                             </tr>
                         {% endfor %}
                         </tbody>
