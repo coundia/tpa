@@ -1,0 +1,93 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% form_theme form '/bootstrap_3_horizontal_layout.html.twig' %}
+    <h1 class="text-center">Fiche de conditionnement</h1>
+    <br><br>
+<div class="container">
+ {{ form_start(form) }}  
+             <div class="row justify-content-start">
+                    <div class="col-6">
+                        {{ form_row(form.campagne) }}
+                    </div>
+                     <div class="col-6">
+                        {{ form_row(form.campagne) }}
+                    </div>
+                
+                </div> 
+   
+     {% for l in form.lot %}
+         <div class="row justify-content-center">
+            <div class="col-10">
+                {{ form_row(l.codeLot) }}
+            </div>
+           
+        </div>
+        <br><br>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Numéro lot de récolte</th>
+            <th scope="col">Nombre Cageots</th>
+            <th scope="col">Poids brut</th>
+            <th scope="col">Poids net</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+                
+                    <td> {{ form_widget(l.nLotRecolte) }} </td>
+                    <td> {{ form_widget(l.nombreCageots) }} </td>
+                    <td> {{ form_widget(l.poidsBrut) }} </td>
+                    <td> {{ form_widget(l.poidsNet) }} </td>
+                </tr>
+         </tbody>
+    </table>
+{% endfor %}
+    <br><br>
+        <table class="table">
+        <thead class="thead-dark">
+            <tr>
+            <th scope="col">Calibre</th>
+            <th scope="col">Nombre Cartons</th>
+            <th scope="col">Poids Net</th>
+            <th scope="col">Numéro Palette</th>
+            </tr>
+        </thead>
+        <tbody>
+        
+                {% for tag in form.detailslot %}
+                <tr>
+                
+                    <td> {{ form_widget(tag.calibre, {attr: {onchange: "totauxcalibres(this.value)"} } ) }} </td>
+                    <td> {{ form_widget(tag.nombreCarton, {attr: {onchange: "nombreCartons(this.value)"} }) }} </td>
+                    <td> {{ form_widget(tag.poidsNet, {attr: {onchange: "poidsnet(this.value)"} }) }} </td>
+                    <td> {{ form_widget(tag.nPalette) }} </td>
+                </tr>
+                {% endfor %}
+                 <tr>
+                
+                    <td> <div class="input-group">
+                            <div class="input-group-prepend">
+                            <span class="input-group-text" id="inputGroupPrepend2">Total : </span>
+                            </div>
+                            <input id="totaux" type="text" class="form-control" id="validationDefaultUsername" placeholder="Username" aria-describedby="inputGroupPrepend2" required>
+                         </div>
+                     </td>
+                    <td>
+                            <input id="nombrecarton" type="text" class="form-control" id="validationDefaultUsername" placeholder="Cartons" aria-describedby="inputGroupPrepend1" required>
+                            
+                    </td>
+                    <td>
+                       <input id="poids" type="text" class="form-control" id="validationDefaultUsername" placeholder="Kgs" aria-describedby="inputGroupPrepend1" required>
+                    </td>
+                    <td> <input type="text" id="disabledTextInput" class="form-control"  disabled> </td>
+                </tr>
+        
+        </tbody>
+        </table>
+        <input type="submit" value="Enregistrer" class="btn btn-primary mb-2" />
+  {{ form_end(form) }}
+</div>
+   
+{% endblock %}

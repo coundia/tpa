@@ -1,0 +1,86 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<div class="row">
+
+<div class="col-sm-12">
+<div class="white-box">
+
+
+<div class="table-responsive">
+            <h1 class="text-center">Campagnes list</h1>
+            <a href="{{ path('campagne_new') }}" class="btn btn-primary">Creer campagne</a>
+
+            <br><br>
+   
+    <table id="myTable" class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Identifiant</th> 
+                <th scope="col">Campagne</th>
+                <th scope="col">Variete</th>
+                <th scope="col">Nordre</th>
+                <th scope="col">Zone production</th>
+                <th scope="col">Code parcelle</th>
+                <th scope="col">Nom chauffeur</th>
+                <th scope="col">Nom responsable parcelle</th>
+               <!-- <th scope="col">Date reception</th> -->
+                <th scope="col">Réception</th>
+                <th scope="col">Conditionnement</th>
+                <th scope="col">Palettisation</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for campagne in campagnes %}
+            <tr>
+                <td><a href="{{ path('campagne_show', { 'identifiant': campagne.identifiant }) }}">{{ campagne.identifiant }}</a></td>
+                <td>{{ campagne.campagne }}</td>
+                <td>{{ campagne.variete }}</td>
+                <td>{{ campagne.nOrdre }}</td>
+                <td>{{ campagne.zoneProduction.localisation }}</td>
+                <td>{{ campagne.codeParcelle }}</td>
+                <td>{{ campagne.nomChauffeur }}</td>
+                <td>{{ campagne.nomResponsableParcelle }}</td>
+                <td class="text-center">
+                   {% if listes[campagne.identifiant]==true %}
+                        <span class="badge badge-secondary"><a style="color:white;" >Terminé</a> </span> 
+                    {% else %}
+                             <span class="badge badge-danger"><a style="color:white;" href="{{ path('registrereception_new', { 'id': campagne.identifiant }) }}">En cours</a>  </span>
+                    {% endif %}
+                </td>
+                <td class="text-center"> 
+                    {% if listes1[campagne.identifiant]==true %}
+                        <span  class="badge badge-secondary"><a style="color:white;" >Terminé</a> </span> 
+                    {% else %}
+                             <span class="badge badge-danger"><a style="color:white;" href="{{ path('detaillot_new', { 'id': campagne.identifiant }) }}">En cours</a> </span>
+                    {% endif %}
+                 </td>
+                <td class="text-center"> 
+                    {% if listes2[campagne.identifiant]==true %}
+                        <span class="badge badge-secondary">Terminé</span> 
+                    {% else %}
+                             <span class="badge badge-danger"><a style="color:white;" href="{{ path('registrepalettisation_new', { 'id': campagne.identifiant }) }}">En cours</a> </span>
+                    {% endif %}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+</div> 
+</div>
+</div>
+
+   
+{% endblock %}

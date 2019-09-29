@@ -1,0 +1,74 @@
+<?php
+
+namespace NosFormulairesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * DetailLot
+ *
+ * @ORM\Table(name="detail_lot", indexes={@ORM\Index(name="FK5qbslk1ioudummgell60ha644478", columns={"id_lot"}), @ORM\Index(name="FK5qbslk1ioudummg", columns={"id_campagne"})})
+ * @ORM\Entity
+ */
+class DetailLot
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="identifiant", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $identifiant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="calibre", type="string", length=100, nullable=false)
+     */
+    private $calibre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nombre_carton", type="integer", nullable=false)
+     */
+    private $nombreCarton;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="poids_net", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $poidsNet;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="n_palette", type="integer", nullable=false)
+     */
+    private $nPalette;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="identifiant")
+     * })
+     */
+    private $idCampagne;
+
+    /**
+     * @var \Lot
+     *
+     * @ORM\ManyToOne(targetEntity="Lot")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_lot", referencedColumnName="identifiant")
+     * })
+     */
+    private $idLot;
+
+
+}
+

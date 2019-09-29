@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        {#    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                <h4 class="page-title">Data Table</h4> </div>#}
+        {#<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Table</a></li>
+                <li class="active">Data Table</li>
+            </ol>
+        </div>#}
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="white-box">
+                <h3 class="box-title m-b-0">Table Demande</h3>
+                <p class="text-muted m-b-30">DEMANDE D’INSPECTION DE MANGUES 2019</p>
+                <div class="table-responsive">
+                    <table id="" class="table table-striped">
+                        <thead>
+                        <tr>
+                            <th>Nom</th>
+                            <th>Libellée</th>
+                         {#   <th>Datedepot</th>
+                            <th>Actions</th>#}
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <form method="post" action="{{ path('demande_inspection' )}}">
+                        {#{% for demande in demandes %}#}
+                            <tr>
+                                <td>Dénomination de l’entreprise </td>
+                                <td><input type="text" name="nomEntreprise"></td>
+
+
+                            </tr>
+                        <tr>
+                                <td>Prénom et Nom du demandeure </td>
+                            <td><input type="text" name="PrenomNOm"></td>
+
+
+                            </tr>
+                        <tr>
+                                <td>Numéro de Téléphone </td>
+                            <td><input type="text" name="NumTelephone"></td>
+
+
+                            </tr>
+                        <tr>
+                                <td>Date de l’appel  </td>
+                            <td><input type="date" name="DateAppel"></td>
+
+
+                            </tr>
+                        <tr>
+                                <td>Zone de provenance du produit  </td>
+                            <td><input type="text" name="ZoneProvenance"></td>
+
+
+                            </tr>
+                        <tr>
+                                <td rowspan="3">Propriétaire (s) verger (s)   </td>
+                            <td><input type="text" name="ProprieteVerger_"></td>
+
+                            </tr>
+                            <tr>
+                                <td><input type="text" name="ProprieteVerger_1"></td>
+                            </tr><tr>
+                                <td><input type="text" name="ProprieteVerger_2"></td>
+                            </tr>
+                        <tr>
+                                <td>Lieu de conditionnement    </td>
+                            <td><input type="text" name="LieuConditionnement"></td>
+
+
+                            </tr>
+                        <tr>
+                                <td>Date de conditionnement     </td>
+                            <td><input type="date" name="DateConditionnement"></td>
+
+
+                            </tr>
+                        <tr>   <td align="center"><input type="submit" name="submit" ></td></tr>
+                        {#{% endfor %}#}
+                        </form>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <ul>
+
+    </ul>
+{% endblock %}

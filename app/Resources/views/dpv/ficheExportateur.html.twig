@@ -1,0 +1,357 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">RAPPORT D'INSPECTION EXPORT MANGUE</div>
+                <div class="panel-wrapper collapse in" aria-expanded="true">
+                    <div class="panel-body">
+                        <form action="{{ path('inspection_exportation_mangue') }}" method="post" class="form-horizontal">
+                            <div class="form-body">
+                                {#<h3 class="box-title">Person Info</h3>#}
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">site de Conditionnement</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="site_condtionnement"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div> <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">dénomination de l'entreprise</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="denomEntreprise"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">prénom et nom inspecter/controleur</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="prenomNomInspecteur"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">date inspection</label>
+                                            <div class="col-md-9">
+                                                <input type="date" class="form-control" placeholder="" name="dateInspection"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">lieu inspection</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="lieuInspection"> <span class="help-block"> </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">personne rencontré</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="personneRencontre"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">fonction </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""name="fonctionPersonneRencotre"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">variétés</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="variete"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">catégories</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="categorie"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">quantité déclarée</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control" placeholder="" name="qteDeclare"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">nb du colis</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control" placeholder="" name="nbColis"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+
+
+
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">type de transport</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="typeTransport">
+                                                    <option value="route">ROUTE</option>
+                                                    <option value="air">AIR</option>
+                                                    <option value="mer">MER</option>
+                                                </select> <span class="help-block"> Selectionner un type </span> </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">taille de l'echantillon</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control" placeholder="" name="tailleEchantillon"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">nb du colis controlés</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control" placeholder="" name="nbColisControle"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">nb de mangue controlé/colis</label>
+                                            <div class="col-md-9">
+                                                <input type="number" class="form-control" placeholder="" name="nbMangueControle"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <h3 class="box-title">CONTROLE DOCUMENTAIRE</h3>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">registre de recetion des mangues</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" data-placeholder="Choose a Category" tabindex="1" name="registreReceptionMangue">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">décaration supplémentaire</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" data-placeholder="Choose a Category" tabindex="1" name="declarationSupplementaire">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                   {# <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Commentaires</label>
+                                            <div class="col-md-9">
+                                                <textarea class="form-control" rows="5" placeholder=""> </textarea> </div>
+                                        </div>
+                                    </div>#}
+                                    <!--/span-->
+                                </div>
+                                <h3 class="box-title">CONTROLE D'IDENTITE</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">marque des colis</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="marqueColis"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">conformité</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="conformiteMarqueColis">
+                                                    <option value="oui">OUI</option>
+                                                    <option value="non">NON</option>
+                                                    <option value="à vérifier">A VERIFIER</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">numéro du lot</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="numeroLot"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">conformité</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="conformiteNumLot">
+                                                    <option value="oui">OUI</option>
+                                                    <option value="non">NON</option>
+                                                    <option value="à vérifier">A VERIFIER</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">numéro des palettes inspectés</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" name="numPalette"> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">conformité</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control"name="conformiteNumPalette">
+                                                    <option value="oui">OUI</option>
+                                                    <option value="non">NON</option>
+                                                    <option value="à vérifier">A VERIFIER</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+
+                                    <!--/span-->
+                                </div>
+                                <h3 class="box-title">CONTROLE PHYTOSANITAIRE</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">maturité</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="maturite">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">piqure de mouche des fruits/larve dans le fruit</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="piqureMoucheFruit">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">pourriture pédonculaire</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="pourriturePedonculaire">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">charancon du noyaux</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="charanconNoyaux">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">trace d'anthracnose</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="traceArthrocnose">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">marquage NIMP15</label>
+                                            <div class="col-md-9">
+                                                <select class="form-control" name="marquageNIMP15">
+                                                    <option value="conforme">conforme</option>
+                                                    <option value="pas conforme">pas conforme</option>
+                                                    <option value="à vérifier">à vérifier</option>
+                                                </select>  </div>
+                                        </div>
+                                    </div>
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <h3 class="box-title">CONTROLE SANITAIRE</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">état sanitaire général</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""name="etatSanitaireGeneral"> <span class="help-block">  </span> </div>
+                                    </div>
+                                 
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3">Commentaires</label>
+                                        <div class="col-md-9">
+                                            <textarea class="form-control" rows="5" placeholder=""name="commentaire"> </textarea> </div>
+                                    </div>
+                                </div>
+                                <!--/row-->
+                            </div>
+                            <div class="form-actions">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <button type="submit" class="btn btn-success">Envoyer</button>
+                                                <button type="button" class="btn btn-default">Annuler</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6"> </div>
+                                </div>
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+
+
+

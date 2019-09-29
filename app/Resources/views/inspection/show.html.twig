@@ -1,0 +1,96 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br/> <br/>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+            <a href="{{ path('fiche_exportateur') }}" class="btn btn-danger">Inspecter</a>
+
+            <a href="{{ path('inspection_index') }}" class="btn btn-primary">Retour à la liste</a>
+        </div>
+    </div>
+
+{% for demandeinspection in demandeinspection %}
+    <h1 class="text-center">Demande de Monsieur/Madame {{demandeinspection.NomPrenomDemandeur}}</h1>
+{% endfor %}
+    <table class="table">
+        {% for demandeinspection in demandeinspection %}
+        <tbody>
+
+        <tr>
+            <th>Id</th>
+            <td>{{ demandeinspection.id }}</td>
+
+        </tr>
+
+        <tr>
+            <th>Date d'appel</th>
+            <td>{% if demandeinspection.dateAppel %}{{ demandeinspection.dateAppel|date('Y-m-d ') }}{% endif %}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+
+
+
+
+
+    <div class="panel panel-primary">
+        {#<div class="panel-heading">Les certificats</div>#}
+        <div class="panel-body">
+            <div class="row">
+                {% for demandeinspection in demandeinspection %}
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            {#<img class="img-rounded" src="{{ asset('uploads/brochures/' ~ certificat.certificat) }}" width="140" height="140"> #}
+                            <div class="caption">
+                               <table>
+                                   <tr>
+                                       <td>
+                                           <p><b>Nom entreprise:</b> {{demandeinspection.NomEntreprise}}</p>
+                                       </td></tr>
+                                       <tr><td>  <p><b>Numero du demandeur :</b> {{demandeinspection.NumTelDemandeur}}</p></td>
+                                       </tr>
+                                   <tr>
+                                 <td>     <p><b>Zone de provenance du produit :</b> {{demandeinspection.ZoneProvenance}}</p></td>
+                                   </tr>
+                                   <tr><td>
+                                           <p><b>Proprietaire 2: </b>{{demandeinspection.Proprietaire1}}</p></td></tr>
+                                   <tr><td>    <p><b>Proprietaire 3: </b>{{demandeinspection.Proprietaire2}}</p></td></tr>
+                             <tr><td>            <p><b>Lieu de conditionnement :</b> {{demandeinspection.LieuCond}}</p></td></tr>
+
+                             <tr>
+                                 <td>     <p><b>Date de conditionnement : </b>{{demandeinspection.DateCond}}</p></td>
+                             </tr>  </table>
+                                {#<h3>{{certificat.numeroCert}}</h3>#}
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        {#<li>
+            <a href="{{ path('demande_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">Edit</a>
+        </li>#}
+        {# <li>
+             {{ form_start(delete_form) }}
+                 <input type="submit" value="Delete">
+             {{ form_end(delete_form) }}
+         </li>#}
+    </ul>
+{% endblock %}

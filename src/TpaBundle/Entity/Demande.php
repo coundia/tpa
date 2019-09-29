@@ -7,48 +7,57 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Demande
  *
- * @ORM\Table(name="demande")
- * @ORM\Entity(repositoryClass="TpaBundle\Repository\DemandeRepository")
+ * @ORM\Table(name="demande", indexes={@ORM\Index(name="producteur_id", columns={"producteur_id"})})
+ * @ORM\Entity
  */
 class Demande
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="typeDemande", type="string", length=100)
+     * @ORM\Column(name="typeDemande", type="string", length=100, nullable=true)
      */
-    private $typeDemande;
+    private $typedemande;
 
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="dateDepot", type="datetime")
+     * @ORM\Column(name="dateDepot", type="datetime", nullable=true)
      */
-    private $dateDepot;
+    private $datedepot;
+
     /**
-     * Many Users have Many Groups.
-     * @ORM\ManyToMany(targetEntity="TpaBundle\Entity\Producteur")
-     * @ORM\JoinTable(name="deposerDemande",
-     *      joinColumns={@ORM\JoinColumn(name="demande_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="producteur_id", referencedColumnName="id")}
-     *      )
+     * @var integer
+     *
+     * @ORM\Column(name="statut", type="integer", nullable=false)
+     */
+    private $statut = '0';
+
+    /**
+     * @var \Producteur
+     *
+     * @ORM\ManyToOne(targetEntity="Producteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
+     * })
      */
     private $producteur;
+
 
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -56,88 +65,95 @@ class Demande
     }
 
     /**
-     * Set typeDemande
+     * Set typedemande
      *
-     * @param string $typeDemande
+     * @param string $typedemande
      *
      * @return Demande
      */
-    public function setTypeDemande($typeDemande)
+    public function setTypedemande($typedemande)
     {
-        $this->typeDemande = $typeDemande;
+        $this->typedemande = $typedemande;
 
         return $this;
     }
 
     /**
-     * Get typeDemande
+     * Get typedemande
      *
      * @return string
      */
-    public function getTypeDemande()
+    public function getTypedemande()
     {
-        return $this->typeDemande;
+        return $this->typedemande;
     }
 
     /**
-     * Set dateDepot
+     * Set datedepot
      *
-     * @param \DateTime $dateDepot
+     * @param \DateTime $datedepot
      *
      * @return Demande
      */
-    public function setDateDepot($dateDepot)
+    public function setDatedepot($datedepot)
     {
-        $this->dateDepot = $dateDepot;
+        $this->datedepot = $datedepot;
 
         return $this;
     }
 
     /**
-     * Get dateDepot
+     * Get datedepot
      *
      * @return \DateTime
      */
-    public function getDateDepot()
+    public function getDatedepot()
     {
-        return $this->dateDepot;
-    }
-    /**
-     * Constructor
-     */
-    public function __construct()
-    {
-        $this->producteur = new \Doctrine\Common\Collections\ArrayCollection();
+        return $this->datedepot;
     }
 
     /**
-     * Add producteur
+     * Set statut
      *
-     * @param \TpaBundle\Entity\Producteur $producteur
+     * @param integer $statut
      *
      * @return Demande
      */
-    public function addProducteur(\TpaBundle\Entity\Producteur $producteur)
+    public function setStatut($statut)
     {
-        $this->producteur[] = $producteur;
+        $this->statut = $statut;
 
         return $this;
     }
 
     /**
-     * Remove producteur
+     * Get statut
+     *
+     * @return integer
+     */
+    public function getStatut()
+    {
+        return $this->statut;
+    }
+
+    /**
+     * Set producteur
      *
      * @param \TpaBundle\Entity\Producteur $producteur
+     *
+     * @return Demande
      */
-    public function removeProducteur(\TpaBundle\Entity\Producteur $producteur)
+    public function setProducteur(\TpaBundle\Entity\Producteur $producteur = null)
     {
-        $this->producteur->removeElement($producteur);
+        $this->producteur = $producteur;
+
+        return $this;
     }
 
     /**
      * Get producteur
      *
-     * @return \Doctrine\Common\Collections\Collection
+     * @return \TpaBundle\Entity\Producteur
      */
     public function getProducteur()
     {

@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<div class="row">
+
+<div class="col-sm-12">
+<div class="white-box">
+<h1  class="box-title m-b-0 text-center">Les fiches exportations</h1>
+<div class="table-responsive">
+
+            <a class="btn btn-danger" href="{{ path('ficheexportation_new') }}">Créer</a> <br/><br/>
+        
+    <table  id="myTable" class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Numero exporation</th>
+                <th>Date exportation</th>
+                <th>Moyen utilise</th>
+                <th>Pays exportation</th>
+                <th>Nom compagnie</th>
+                <th>Variete</th>
+                <th>Statut</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ficheExportation in ficheExportations %}
+            <tr>
+                <td><a href="{{ path('ficheexportation_show', { 'id': ficheExportation.id }) }}">{{ ficheExportation.id }}</a></td>
+                <td>{{ ficheExportation.numeroExporation }}</td>
+                <td>{% if ficheExportation.dateExportation %}{{ ficheExportation.dateExportation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ficheExportation.moyenUtilise }}</td>
+                <td>{{ ficheExportation.paysExportation }}</td>
+                <td>{{ ficheExportation.nomCompagnie }}</td>
+                <td>{{ ficheExportation.variete }}</td>
+                <td>
+                    {% if ficheExportation.statut==0 %}
+                        <a  class="btn btn-danger" href="{{ path('accuserreception_new', { 'id': ficheExportation.id }) }}">En cours</a> 
+                    {% else %}
+                        <a  class="btn btn-primary" href="#">Réceptionner</a> 
+                    {% endif %}
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+ </div>   
+  </div> 
+</div>
+    
+{% endblock %}

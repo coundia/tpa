@@ -1,5 +1,7 @@
 {% extends 'base.html.twig' %}
+
 {% block body %}
+
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <h4 class="page-title">Data Table</h4> </div>
@@ -21,52 +23,313 @@
                     <table id="myTable" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Nom</th>
-
-                           {#  <th>Prenomrep</th>
-                              <th>Nomrep</th>
-                              <th>Addresserep</th>
-                              <th>Fonctionrep</th>
-                              <th>Mobilerep_</th>
-                              <th>Fixerep</th>
-                              <th>Faxerep</th>
-                              <th>Emailrep</th>
-                              <th>Nommanager</th>
-                              <th>Prenommanager</th>
-                              <th>Titremanager</th>
-                              <th>Telmanager</th>
-                              <th>Emailmanager</th>#}
-                            <th>Actions</th>
+                            <th>Prenom</th>
+                            {#              <th>Statutlegal</th>
+                                          <th>Ninea</th>
+                                          <th>Siegesocial</th>
+                                          <th>Region</th>
+                                          <th>Ville</th>
+                                          <th>Departement</th>
+                                          <th>Commune</th>
+                                          <th>Arrondissement</th>
+                                          <th>Village</th>
+                                          <th>Numtel</th>
+                                          <th>Numfixe</th>
+                                          <th>Fax</th>
+                                          <th>Email</th>
+                                          <th>Addresse</th>
+                                          <th>Prenomrep</th>
+                                          <th>Nomrep</th>
+                                          <th>Addresserep</th>
+                                          <th>Fonctionrep</th>
+                                          <th>Mobilerep_</th>
+                                          <th>Fixerep</th>
+                                          <th>Faxerep</th>
+                                          <th>Emailrep</th>
+                                          <th>Nommanager</th>
+                                          <th>Prenommanager</th>
+                                          <th>Titremanager</th>
+                                          <th>Telmanager</th>
+                                          <th>Emailmanager</th>
+                                          <th>Actions</th>#}
                         </tr>
                         </thead>
                         <tbody>
-                        {% for producteur in prod %}
-                            <tr>
-                                <td><a href="{{ path('producteur_maj') }}"></a></td>
-                                <td>{{ producteur.nom }}</td>
 
+                        <tr>
+                            <td>{{ producteur.nom}}</td>
+                            <td>{{ producteur.prenom }}</td>
+                            {#   <td>{{ producteur.statutLegal }}</td>
+                               <td>{{ producteur.ninea }}</td>
+                               <td>{{ producteur.siegeSocial }}</td>
+                               <td>{{ producteur.region }}</td>
+                               <td>{{ producteur.ville }}</td>
+                               <td>{{ producteur.departement }}</td>
+                               <td>{{ producteur.commune }}</td>
+                               <td>{{ producteur.arrondissement }}</td>
+                               <td>{{ producteur.village }}</td>
+                               <td>{{ producteur.numTel }}</td>
+                               <td>{{ producteur.numFixe }}</td>
+                               <td>{{ producteur.fax }}</td>
+                               <td>{{ producteur.email }}</td>
+                               <td>{{ producteur.addresse }}</td>
+                               <td>{{ producteur.prenomRep }}</td>
+                               <td>{{ producteur.nomRep }}</td>
+                               <td>{{ producteur.addresseRep }}</td>
+                               <td>{{ producteur.fonctionRep }}</td>
+                               <td>{{ producteur.mobileRep }}</td>
+                               <td>{{ producteur.fixeRep }}</td>
+                               <td>{{ producteur.faxeRep }}</td>
+                               <td>{{ producteur.emailRep }}</td>
+                               <td>{{ producteur.nomManager }}</td>
+                               <td>{{ producteur.prenomManager }}</td>
+                               <td>{{ producteur.titreManager }}</td>
+                               <td>{{ producteur.telManager }}</td>
+                               <td>{{ producteur.emailManager }}</td>#}
+                        </tr>
 
-                                <td>
-
-                                </td>
-                                {# <ul>
-                                      <li>
-                                          <a href="{{ path('producteur_show', { 'id': producteur.id }) }}">show</a>
-                                      </li>
-                                      <li>
-                                          <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">edit</a>
-                                      </li>
-                                  </ul>#}
-
-                            </tr>
-                        {% endfor %}
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
     </div>
+    <div class="panel panel-success">
+        <div class="panel-heading" role="tab" id="headingHeight">
+            <h4 class="panel-primary">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseHeight" aria-expanded="false" aria-controls="collapseHeight">
+                    Certification Privée détenue
+                </a>
+            </h4> </div>
+        <div id="collapseHeight" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingHeight">
+            <div class="panel-body">
+                <div class="col-sm-6">
+                    <div class="white-box">
 
 
+                        <table id="certificat" class="table mainTableC table-bordered">
+
+                            <tr>
+                                <td colspan="3" style="border-spacing: 0; color: red; border:purple ; "> </td>
+                                <td> N° duCertificat </td>
+                                <td>Date dernière certification </td>
+                                <td>Dated'expiration</td>
+                                <td>Déposer certificat</td>
+                            </tr>
+                            <tr>
+                                <td rowspan="2" > GLOBALGAP </td>
+                                <td> Option 1 </td>
+                                <td><input  type="checkbox" name="opt1">  </td>
+                                <td> <input type="text"  name="num_1"></td>
+                                <td> <input type="text" name="date_cert_1"> </td>
+                                <td> <input type="text" name="date_exp_1"> </td>
+
+                                <td>
+                                    <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_1">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Option 2  </td>
+                                <td> <input type="checkbox" name="opt2">  </td>
+                                <td> <input type="text" name="num_2"></td>
+                                <td> <input type="text" name="date_cert_2"> </td>
+                                <td> <input type="text" name="date_exp_2"> </td>
+                                <td>   <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_2">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> Tesco Nature's Choice </td>
+                                <td> <input type="text" name="num_3"></td>
+                                <td> <input type="text" name="date_cert_3"> </td>
+                                <td> <input type="text" name="date_exp_3"> </td>
+                                <td>   <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_3">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> Agriculture Biologique </td>
+                                <td> <input type="text" name="num_4"></td>
+                                <td> <input type="text" name="date_cert_4"> </td>
+                                <td> <input type="text" name="date_exp_4"> </td>
+                                <td>  <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_4">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div> </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> BRC</td>
+                                <td> <input type="text" name="num_5"></td>
+                                <td> <input type="text" name="date_cert_5"> </td>
+                                <td> <input type="text" name="date_exp_5"> </td>
+                                <td>   <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_5">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> IFS</td>
+                                <td> <input type="text" name="num_6"></td>
+                                <td> <input type="text" name="date_cert_6"> </td>
+                                <td> <input type="text" name="date_exp_6"> </td>
+                                <td>   <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_6">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> IS0 22000</td>
+                                <td> <input type="text" name="num_7"></td>
+                                <td> <input type="text" name="date_cert_7"> </td>
+                                <td> <input type="text" name="date_exp_7"> </td>
+                                <td>   <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_7">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"> Autres (à préciser)</td>
+                                <td> <input type="text" name="num_8"></td>
+                                <td> <input type="text" name="date_cert_8"> </td>
+                                <td> <input type="text" name="date_exp_8"> </td>
+                                <td>   <div class="file-field big">
+                                        <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                            {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
+                                            <input type="file" multiple name="certificat_8">
+                                        </a>
+                                        {#<div class="file-path-wrapper">
+                                            <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                        </div>#}
+                                    </div> </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel panel-success">
+        <div class="panel-heading" role="tab" id="headingNine">
+            <h4 class="panel-primary">
+                <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
+                    Gestion de la Qualité
+                </a>
+            </h4> </div>
+        <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
+            <div class="panel-body">
+                <table id="" style="width: 100%;">
+                    <tr><td>     <h3 class="box-title m-b-0">Système de gestion de la qualité</h3></td></tr>
+                    <tr style="width: 100%;">
+
+
+
+                        <td class="" style="width: 30%; ">
+
+                            <div class="checkbox checkbox-success">
+                                <input type="checkbox" name="qualiteOui">
+                                <label for="qualiteOui">Oui</label>
+                            </div>
+                        </td>
+                        <td class="" style="width: 30%; ">
+
+                            <div class="checkbox checkbox-success">
+                                <input type="checkbox" name="qualiteNon">
+                                <label for="qualiteNon"> Non </label>
+                            </div>
+                        </td>
+                        <td class="" style="width: 40%; ">
+                            <div>
+                                <label for="noteQualite"> Note </label>
+                                <input type="text" name="noteQualite">
+
+                            </div>
+
+                        </td>
+                    </tr>
+                    <tr><td></td></tr>
+
+                    <tr style="width: 100%;">
+
+                        <td class="" style="width: 30%; ">
+                            <div class="checkbox checkbox-success">
+                                <input type="checkbox" name="gstionInterne">
+                                <label for="gstionInterne"> Gestion Interne</label>
+                            </div>
+                        </td>
+                        <td class="" style="width: 30%; ">
+
+                            <div class="checkbox checkbox-success">
+                                <input type="checkbox" name="consultant">
+                                <label for="consultant"> Consultant</label>
+                            </div>
+                        </td>
+                        <td class="" style="width: 20%;">
+                            <div>
+                                <label for="autre"> Autres</label>
+                                <input type="checkbox" name="autre">
+                            </div>
+                        </td>
+                        <td class="" style="width: 30%; ">
+                            <div>
+                                <label for="note">Notes</label>
+                                <input type="text" name="note">
+                            </div>
+                        </td>
+                    </tr>
+
+
+
+                </table>
+
+
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+    <!-- .right-sidebar -->
 {% endblock %}
+

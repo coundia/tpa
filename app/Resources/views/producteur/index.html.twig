@@ -22,23 +22,10 @@
                 <table id="myTable" class="table table-striped">
                     <thead>
                         <tr>
-                            <th>Id</th>
                             <th>Nom</th>
                             <th>Prenom</th>
-                            <th>Statutlegal</th>
-                            <th>Ninea</th>
-                            <th>Siegesocial</th>
-                            <th>Region</th>
-                            <th>Ville</th>
-                            <th>Departement</th>
-                            <th>Commune</th>
-                            <th>Arrondissement</th>
-                            <th>Village</th>
-                            <th>Numtel</th>
-                            <th>Numfixe</th>
-                            <th>Fax</th>
+                            <th>Numéro Téléphone</th>
                             <th>Email</th>
-                            <th>Addresse</th>
                           {#  <th>Prenomrep</th>
                             <th>Nomrep</th>
                             <th>Addresserep</th>
@@ -58,50 +45,16 @@
                     <tbody>
                     {% for producteur in producteurs %}
                         <tr>
-                            <td><a href="{{ path('producteur_show', { 'id': producteur.id }) }}">{{ producteur.id }}</a></td>
+
                             <td>{{ producteur.nom }}</td>
                             <td>{{ producteur.prenom }}</td>
-                            <td>{{ producteur.statutLegal }}</td>
-                            <td>{{ producteur.ninea }}</td>
-                            <td>{{ producteur.siegeSocial }}</td>
-                            <td>{{ producteur.region }}</td>
-                            <td>{{ producteur.ville }}</td>
-                            <td>{{ producteur.departement }}</td>
-                            <td>{{ producteur.commune }}</td>
-                            <td>{{ producteur.arrondissement }}</td>
-                            <td>{{ producteur.village }}</td>
                             <td>{{ producteur.numTel }}</td>
-                            <td>{{ producteur.numFixe }}</td>
-                            <td>{{ producteur.fax }}</td>
                             <td>{{ producteur.email }}</td>
-                            <td>{{ producteur.addresse }}</td>
-                            {#<td>{{ producteur.prenomRep }}</td>
-                            <td>{{ producteur.nomRep }}</td>
-                            <td>{{ producteur.addresseRep }}</td>
-                            <td>{{ producteur.fonctionRep }}</td>
-                            <td>{{ producteur.mobileRep }}</td>
-                            <td>{{ producteur.fixeRep }}</td>
-                            <td>{{ producteur.faxeRep }}</td>
-                            <td>{{ producteur.emailRep }}</td>
-                            <td>{{ producteur.nomManager }}</td>
-                            <td>{{ producteur.prenomManager }}</td>
-                            <td>{{ producteur.titreManager }}</td>
-                            <td>{{ producteur.telManager }}</td>
-                            <td>{{ producteur.emailManager }}</td>#}
                             <td>
+                                <a href="{{ path('producteur_show', { 'id': producteur.id }) }}">show</a>
+                                <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">edit</a>
 
-                                <a href="{{ path('producteur_show', { 'id': producteur.id }) }}"><i> <img src=" {{ asset('images/voir2.png') }}" title="Voir"> </i></a>
-                                <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}"><i> <img src=" {{ asset('images/Edit.png') }}" title="Modifier"> </i></a>
-                                <a href="{{ path('producteur_delete', { 'id': producteur.id }) }}"><i> <img src=" {{ asset('images/delete_16.png') }}" title="Supprimer"> </i></a>
                             </td>
-                              {#  <ul>
-                                    <li>
-                                        <a href="{{ path('producteur_show', { 'id': producteur.id }) }}">show</a>
-                                    </li>
-                                    <li>
-                                        <a href="{{ path('producteur_edit', { 'id': producteur.id }) }}">edit</a>
-                                    </li>
-                                </ul>#}
 
                         </tr>
                     {% endfor %}

@@ -1,0 +1,68 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Personne
+ *
+ * @ORM\Table(name="personne")
+ * @ORM\Entity
+ */
+class Personne
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom", type="string", length=255, nullable=false)
+     */
+    private $nom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenom", type="string", length=255, nullable=false)
+     */
+    private $prenom;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="num_tel", type="string", length=255, nullable=false)
+     */
+    private $numTel;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="num_fixe", type="string", length=255, nullable=false)
+     */
+    private $numFixe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="num_fax", type="string", length=255, nullable=false)
+     */
+    private $numFax;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="statut", type="string", length=255, nullable=false)
+     */
+    private $statut;
+
+
+}
+

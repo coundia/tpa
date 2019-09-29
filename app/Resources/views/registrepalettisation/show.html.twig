@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registrepalettisation</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ registrePalettisation.id }}</td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{% if registrePalettisation.date %}{{ registrePalettisation.date|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Npalette</th>
+                <td>{{ registrePalettisation.nPalette }}</td>
+            </tr>
+            <tr>
+                <th>Nbrecartons</th>
+                <td>{{ registrePalettisation.nbreCartons }}</td>
+            </tr>
+            <tr>
+                <th>Codelot</th>
+                <td>{{ registrePalettisation.codeLot.codeLot }}</td>
+            </tr>
+            <tr>
+                <th>Totalcartons</th>
+                <td>{{ registrePalettisation.totalCartons }}</td>
+            </tr>
+            <tr>
+                <th>Heureentreechfroide</th>
+                <td>{{ registrePalettisation.heureEntreeChFroide }}</td>
+            </tr>
+            <tr>
+                <th>Heuresortiechfroide</th>
+                <td>{{ registrePalettisation.heureSortieChFroide }}</td>
+            </tr>
+            <tr>
+                <th>Destinataire</th>
+                <td>{{ registrePalettisation.destinataire }}</td>
+            </tr>
+            <tr>
+                <th>Parckingliste</th>
+                <td>{{ registrePalettisation.parckingListe }}</td>
+            </tr>
+            <tr>
+                <th>Paragraphe</th>
+                <td>{{ registrePalettisation.paragraphe }}</td>
+            </tr>
+            <tr>
+                <th>Produitcalibre</th>
+                <td>{{ registrePalettisation.produitCalibre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registrepalettisation_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('registrepalettisation_edit', { 'id': registrePalettisation.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

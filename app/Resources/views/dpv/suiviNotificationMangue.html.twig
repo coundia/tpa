@@ -1,0 +1,131 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">FICHE SUIVI EXPORTATION MANGUE</div>
+                <div class="panel-wrapper collapse in" aria-expanded="true">
+                    <div class="panel-body">
+                        <form action="{{ path('inspection_exportation_mangue') }}" method="post" class="form-horizontal">
+                            <div class="form-body">
+                                {#<h3 class="box-title">Person Info</h3>#}
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Date</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="date"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Référence notification</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="referenceNotification"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Exportateur</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="exportateur"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Numéro enregistrement</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="numeroEnregistrement"> <span class="help-block"> </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Motif notification</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="motifNotification"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Quantité </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""name="quantite"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">référence de certificat phytosanitaire</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="refCertifPhyto"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">référence de la fiche d'inspection</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder="" name="refFichInspection"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <table id="suiviNotifiation" class="table editable-table table-bordered table-striped m-b-0">
+
+                                    </table>
+                                </div>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Equipe d'investigation </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""name="equipeInvestig"> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <table id="" class="table editable-table table-bordered table-striped m-b-0">
+                                        <thead>
+
+                                                                      <tr>
+                                                                               <th>Résultats investigations</th>
+                                                                              <th>Mesures correctives préconisées</th>
+                                                                                <th>Responsable de la mise en œuvre</th>
+
+                                                                           </tr>
+                                                                       </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td >Saphietou SABALY </td>
+                                            <td >Abdoulaye NDIAYE  </td>
+                                            <td >Emile Victor COLY </td>
+                                            </tr>
+                                        <tr>
+                                            <td > CBCQ</td>
+                                            <td > CDLQ</td>
+                                            <td > Directeur</td>
+                                        </tr>
+                                        <tr>
+                                            <td > <textarea  class="form-control" style="margin: 0px; width: 100%; outline: none; " name="respMiseOeuvre_3"  ></textarea></td>
+                                            <td > <textarea  class="form-control" style="margin: 0px; width: 100%; outline: none; " name="respMiseOeuvre_3"  ></textarea></td>
+                                            <td > <textarea  class="form-control" style="margin: 0px; width: 100%; outline: none; " name="respMiseOeuvre_3"  ></textarea></td>
+                                        </tr>
+                                        <tbody>
+                                    </table>
+                                </div>
+                                <hr class="m-t-0 m-b-40">
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+{% endblock %}
+
+
+
+

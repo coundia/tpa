@@ -24,35 +24,35 @@ class gestionQualite
     /**
      * @var string
      *
-     * @ORM\Column(name="systemGesQual", type="string", length=3)
+     * @ORM\Column(name="systemGesQual", type="string", length=3, nullable=true)
      */
     private $systemGesQual;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="gestionInterne", type="string", length=3)
+     * @ORM\Column(name="gestionInterne", type="string", length=3, nullable=true)
      */
     private $gestionInterne;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="consultant", type="string", length=3)
+     * @ORM\Column(name="consultant", type="string", length=3, nullable=true)
      */
     private $consultant;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="autre", type="string", length=3)
+     * @ORM\Column(name="autre", type="string", length=3, nullable=true)
      */
     private $autre;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="noteAutre", type="string", length=25)
+     * @ORM\Column(name="noteAutre", type="string", length=25, nullable=true)
      */
     private $noteAutre;
 

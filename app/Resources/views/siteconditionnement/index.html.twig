@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Siteconditionnements list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Producteurid</th>
+                <th>Speculation</th>
+                <th>Sitecond</th>
+                <th>Lacalisation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for siteConditionnement in siteConditionnements %}
+            <tr>
+                <td><a href="{{ path('siteconditionnement_show', { 'id': siteConditionnement.id }) }}">{{ siteConditionnement.id }}</a></td>
+                <td>{{ siteConditionnement.producteurId }}</td>
+                <td>{{ siteConditionnement.speculation }}</td>
+                <td>{{ siteConditionnement.sitecond }}</td>
+                <td>{{ siteConditionnement.lacalisation }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('siteconditionnement_show', { 'id': siteConditionnement.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('siteconditionnement_edit', { 'id': siteConditionnement.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('siteconditionnement_new') }}">Create a new siteConditionnement</a>
+        </li>
+    </ul>
+{% endblock %}

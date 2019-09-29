@@ -7,128 +7,51 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SiteConditionnement
  *
- * @ORM\Table(name="site_conditionnement")
- * @ORM\Entity(repositoryClass="TpaBundle\Repository\SiteConditionnementRepository")
+ * @ORM\Table(name="site_conditionnement", indexes={@ORM\Index(name="IDX_31D134D1AB9BB300", columns={"producteur_id"})})
+ * @ORM\Entity
  */
 class SiteConditionnement
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Producteur")
-     * @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
-     */
-    private $producteur;
-
-    /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="speculation", type="string", length=50)
+     * @ORM\Column(name="speculation", type="string", length=50, nullable=true)
      */
     private $speculation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="siteCond", type="string", length=255)
+     * @ORM\Column(name="siteCond", type="string", length=255, nullable=true)
      */
-    private $siteCond;
+    private $sitecond;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="lacalisation", type="string", length=50)
+     * @ORM\Column(name="lacalisation", type="string", length=50, nullable=true)
      */
     private $lacalisation;
 
-
     /**
-     * Get id
+     * @var \Producteur
      *
-     * @return int
+     * @ORM\ManyToOne(targetEntity="Producteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
+     * })
      */
-    public function getId()
-    {
-        return $this->id;
-    }
+    private $producteur;
 
-    /**
-     * Set speculation
-     *
-     * @param string $speculation
-     *
-     * @return SiteConditionnement
-     */
-    public function setSpeculation($speculation)
-    {
-        $this->speculation = $speculation;
 
-        return $this;
-    }
-
-    /**
-     * Get speculation
-     *
-     * @return string
-     */
-    public function getSpeculation()
-    {
-        return $this->speculation;
-    }
-
-    /**
-     * Set siteCond
-     *
-     * @param string $siteCond
-     *
-     * @return SiteConditionnement
-     */
-    public function setSiteCond($siteCond)
-    {
-        $this->siteCond = $siteCond;
-
-        return $this;
-    }
-
-    /**
-     * Get siteCond
-     *
-     * @return string
-     */
-    public function getSiteCond()
-    {
-        return $this->siteCond;
-    }
-
-    /**
-     * Set lacalisation
-     *
-     * @param string $lacalisation
-     *
-     * @return SiteConditionnement
-     */
-    public function setLacalisation($lacalisation)
-    {
-        $this->lacalisation = $lacalisation;
-
-        return $this;
-    }
-
-    /**
-     * Get lacalisation
-     *
-     * @return string
-     */
-    public function getLacalisation()
-    {
-        return $this->lacalisation;
-    }
 }
 

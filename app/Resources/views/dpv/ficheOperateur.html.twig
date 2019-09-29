@@ -1,0 +1,672 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+<style>
+    	<style>
+	
+    border-collapse: collapse;
+}
+
+th{
+    font-weight: normal;
+}
+
+td, th{
+    border : 1px solid black;
+    padding: 10px 15px;
+}
+
+
+</style>
+</style>
+    <div class="row">
+        <div class="col-sm-12">
+            <form  method="post" action="{{ path('fiche_inspection_operateur') }}" >
+            <h4 class="box-title m-b-0 m-t-40"></h4>
+            <p class="text-muted m-b-30 font-13"> </p>
+            <div class="panel-group wiz-aco" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Inspection de la station de conditionnement
+                            </a>
+                        </h4> </div>
+                    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+                            <div class="col-sm-12">
+                                {#<form action="{{ path('fiche_inspection_operateur') }}" method="post">#}
+                                <div class="white-box">
+                                    <table id="mainTableControle" class=" mainTables table editable-table table-bordered table-striped m-b-0">
+                                        {#<table class="table  table-bordered" id="editable-datatable">#}
+                                        <thead>
+                                        <tr>
+                                            <th>Rubriques</th>
+                                            <th>../20</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Existence des tables de travail</td>
+                                            <td id="note_1" onchange=" recuperer();">0 </td>
+
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="tableTravailOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="tableTravailNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Existence des chambres froides</td>
+                                            <td id="note_2" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="chambreOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="chambreNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Système de controle des températures</td>
+                                            <td id="note_3" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="temperatureOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="temperatureNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Conformité tempèrature avec cahier de charges</td>
+                                            <td id="note_4" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="conformiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="conformiteNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        {#<tr>
+                                            <td>Unité traitement des palettes, emballage en bois</td>
+                                            <td id="note_5" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="emballageOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="emballageNon" class="styled"><label></label></div></td>
+
+                                        </tr>#}
+                                        <tr>
+                                            <td>Unité traitement des palettes, emballage en bois</td>
+                                            <td id="note_5" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="emballageOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="emballageNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Existence de sanitaire fonctionnel</td>
+                                            <td id="note_6" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="sanitaireOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="sanitaireNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Existence affiches sur la sécurité</td>
+                                            <td id="note_7" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="securiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="securiteNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Disponibilité et accessibilité boite pharmacie</td>
+                                            <td id="note_8" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="pharmacieOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="pharmacieNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td> Existence d'installation de lavage à la main</td>
+                                            <td id="note_9" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="lavageOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="lavageNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Conformité des installations</td>
+                                            <td id="note_10" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="installationOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="installationNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>Respect de la marche en avant</td>
+                                            <td id="note_11" onchange=" recuperer();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="marcheEnAvantOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="marcheEnAvantNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th><strong>TOTAL</strong></th>
+
+                                            <th></th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                   {# <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+
+                                            <td><div class=""><label>Sites de Conditonnement</label><input type="text" name="conditionnement" class="styled"></div></td>
+                                        </tr>
+                                        <tr>
+
+                                            <th>Rubriques</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+                                            <th>../20</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Existence des tables de travail</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="tableTravailOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="tableTravailNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_1" class=""><label></label></div></td>
+
+
+                                        </tr>
+
+                                        <tr>
+                                            <td>Existence des chambres froides</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="chambreOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="chambreNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_2" class=""><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Système de controle des températures</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="temperatureOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="temperatureNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_3" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Conformité tempèrature avec cahier de charges</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="conformiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="conformiteNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_4" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Unité traitement des palettes, emballage en bois</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="emballageOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="emballageNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_5" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Existence de sanitaire fonctionnel</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="sanitaireOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="sanitaireNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_6" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Existence affiches sur la sécurité</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="securiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="securiteNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_7" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Disponibilité et accessibilité boite pharmacie</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="pharmacieOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="pharmacieNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_8" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td> Existence d'installation de lavage à la main</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="lavageOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="lavageNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_9" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Conformité des installations</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="installationOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="installationNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_10" class=""><label></label></div></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Respect de la marche en avant</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="marcheEnAvantOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="marcheEnAvantNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note_11" class=""><label></label></div></td>
+
+                                        </tr>
+                                        </tbody>
+                                    </table>#}
+
+                                </div>
+                      {#              <div class="panel" >
+                                        <button class="btn btn-success  col-sm-2"  type="submit" align="center" >SOUMETTTRE
+                                        </button></div>#}
+
+                                {#</form>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                           Inspection du système de controle
+                            </a>
+                        </h4> </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+                            <div class="col-sm-12">
+                                <div class="white-box">
+                                    <table id="mainTable" class="table editable-table table-bordered table-striped m-b-0">
+                                        {#<table class="table  table-bordered" id="editable-datatable">#}
+                                        <thead>
+                                        <tr>
+                                            <th>Rubriques</th>
+                                            <th>../15</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Cahier de charges de la qualité pour le conditionnement</td>
+                                            <td id="notes_1" onchange=" recuperers();">0 </td>
+
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="qualiteCondOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="qualiteCondNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Documentation ou archive d'un autocontrole</td>
+                                            <td id="notes_2" onchange=" recuperers();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="docArchiveOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="docArchiveNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Matériel et Outils pour l'autocontrole</td>
+                                            <td id="notes_3" onchange=" recuperers();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="MaterielAutoControleOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="MaterielAutoControleNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th><strong>TOTAL</strong></th>
+
+                                            <th></th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+
+                                {#    <table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+
+                                            <th>Rubriques</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+                                            <th>../15</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Cahier de charges de la qualité pour le conditionnement</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="qualiteCondOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="qualiteCondNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note1" class=""><label></label></div></td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td>Documentation ou archive d'un autocontrole</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="docArchiveOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="docArchiveNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note2" class=""><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Matériel et Outils pour l'autocontrole</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="MaterielAutoControleOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="MaterielAutoControleNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="note3" class=""><label></label></div></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                             Inspection du personnel
+                            </a>
+                        </h4> </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+
+                            <div class="col-sm-12">
+                                <div class="white-box">
+
+
+                                    <table id="mainTableResponsable" class=" mainTabless table editable-table table-bordered table-striped m-b-0">
+                                        {#<table class="table  table-bordered" id="editable-datatable">#}
+                                        <thead>
+                                        <tr>
+                                            <th>Rubriques</th>
+                                            <th>../15</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Recrutement d'un responsable qualité</td>
+                                            <td id="notess_1" onchange=" recupere();">0 </td>
+
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="responsableQualiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="responsableQualiteNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Niveau de qualification du responsable qualité</td>
+                                            <td id="notess_2" onchange=" recupere();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="NiveauRespOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="NiveauRespNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+
+
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th><strong>TOTAL</strong></th>
+
+                                            <th></th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    {#<table class="table table-condensed">
+                                        <thead>
+                                        <tr>
+
+                                            <th>Rubriques</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+                                            <th>../15</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr>
+                                            <td>Recrutement d'un responsable qualité</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="responsableQualiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="responsableQualiteNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="noteResp" class=""><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Niveau de qualification du responsable qualité</td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="NiveauRespOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="NiveauRespNon" class="styled"><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="noteNiveauResp" class=""><label></label></div></td>
+                                        </tr>
+
+                                        </tbody>
+                                    </table>#}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default"o>
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Système d'enregistrement
+                            </a>
+                        </h4> </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+
+                            <div class="col-sm-12">
+                                <div class="white-box">
+                                    <table id="mainTableSystem" class=" mainTablesss table editable-table table-bordered table-striped m-b-0">
+                                        {#<table class="table  table-bordered" id="editable-datatable">#}
+                                        <thead>
+                                        <tr>
+                                            <th>Rubriques</th>
+                                            <th>../15</th>
+                                            <th>Oui</th>
+                                            <th>Non</th>
+
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>Disponibilité support d'enregistrement?</td>
+                                            <td id="notesss_1" onchange=" recuperec();">0 </td>
+
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportEnregOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportEnregNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Support Enregistrement à jours </td>
+                                            <td id="notesss_2" onchange=" recuperec();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportAjourOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportAjourNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Conformité marquage sur emballage conditionnement </td>
+                                            <td id="notesss_3" onchange=" recuperec();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="marquageEmbOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="marquageEmbNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Conformité unité de traitement en bois à la NIMP 15 </td>
+                                            <td id="notesss_4" onchange=" recuperec();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="uniteTraitementNTMPOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="uniteTraitementNTMPNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Palettes et Emballages en bois traités </td>
+                                            <td id="notesss_5" onchange=" recuperec();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Palettes et Emballages en bois traités </td>
+                                            <td id="notesss_6" onchange=" recuperec();">0 </td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteOui" class="styled"><label></label></div></td>
+                                            <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteNon" class="styled"><label></label></div></td>
+
+                                        </tr>
+
+
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th><strong>TOTAL</strong></th>
+
+                                            <th></th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    {#  <table class="table table-condensed">
+                                          <thead>
+                                          <tr>
+
+                                              <th>Rubriques</th>
+                                              <th>Oui</th>
+                                              <th>Non</th>
+                                              <th>../20</th>
+                                          </tr>
+                                          </thead>
+                                          <tbody>
+
+                                          <tr>
+                                              <td>Disponibilité support d'enregistrement?</td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportEnregOui" class="styled"><label></label></div></td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportEnregNon" class="styled"><label></label></div></td>
+                                              <td><div class="number "><input type="number" name="note2" class=""><label></label></div></td>
+
+                                          </tr>
+                                          <tr>
+                                              <td>Support Enregistrement à jours </td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportAjourOui" class="styled"><label></label></div></td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="supportAjourNon" class="styled"><label></label></div></td>
+                                              <td><div class="number "><input type="number" name="note3" class=""><label></label></div></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Conformité marquage sur emballage conditionnement </td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="marquageEmbOui" class="styled"><label></label></div></td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="marquageEmbNon" class="styled"><label></label></div></td>
+                                              <td><div class="number "><input type="number" name="note3" class=""><label></label></div></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Conformité unité de traitement en bois à la NIMP 15</td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="uniteTraitementNTMPOui" class="styled"><label></label></div></td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="uniteTraitementNTMPNon" class="styled"><label></label></div></td>
+                                              <td><div class="number "><input type="number" name="note3" class=""><label></label></div></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Palettes et Emballages en bois traités</td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteOui" class="styled"><label></label></div></td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteNon" class="styled"><label></label></div></td>
+                                              <td><div class="number "><input type="number" name="note3" class=""><label></label></div></td>
+                                          </tr>
+                                          <tr>
+                                              <td>Palettes et Emballages en bois traités</td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteOui" class="styled"><label></label></div></td>
+                                              <td><div class="checkbox checkbox-success"><input type="checkbox" name="paletteEmbTraiteNon" class="styled"><label></label></div></td>
+                                              <td><div class="number "><input type="number" name="note3" class=""><label></label></div></td>
+                                          </tr>
+                                          </tbody>
+                                      </table>#}
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    {# <div class="panel" >
+                         <button class="btn btn-success  col-sm-2"  type="submit" align="center" >SOUMETTTRE
+                         </button></div>#}
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Certificat obtenues
+                            </a>
+                        </h4> </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+
+                            <div class="col-sm-12">
+                                <div class="white-box">
+
+                                    <table >
+                                        <thead>
+                                        <tr>
+
+                                            <th>Rubriques</th>
+                                            <th>Tesco</th>
+                                            <th>Bio</th>
+                                            <th>Global GAP</th>
+                                            <th>../40</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        <tr>
+                                                 <td>Type de certificat obtenu</td>
+                                                 <td><div class="text"><input type="text" name="type_1" class="styled"><label></label></div></td>
+                                                            <td><div class="text"><input type="text" name="type_2" class="styled"><label></label></div></td>
+                                                 <td rowspan="2"><div class="text"><input type="text" name="type_3" class="styled"></div></td>
+                                                 <td rowspan="2"><div class="text"><input type="text" name="note_cert" class="styled"></div></td>
+                                        </tr>
+                                        <tr >
+                                            <td>Produit(s) Certifié(s)</td>
+                                            <td><div class="text"><input type="text" name="produit_1" class="styled"><label></label></div></td>
+                                            <td><div class="text"><input type="text" name="produit_2" class="styled"><label></label></div></td>
+                                         
+                                          
+                                        </tr>
+                                      
+                                     {#   <tr>
+                                            <td><div class="text"><input type="text" name="produit_10" class="styled"><label></label></div></td>
+                                            <td><div class="text"><input type="text" name="produit_11" class="styled"><label></label></div></td>
+                                            <td><div class="text "><input type="text" name="produit_12" class=""><label></label></div></td>
+                                            <td><div class="number "><input type="number" name="notes_5" class=""><label></label></div></td>
+                                        </tr>#}
+                                  {#      <tr>
+                                        <td><div class="text"><input type="text" name="produit_13" class="styled"><label></label></div></td>
+                                        <td><div class="text"><input type="text" name="produit_14" class="styled"><label></label></div></td>
+                                        <td><div class="text "><input type="text" name="produit_15" class=""><label></label></div></td>
+                                        <td><div class="number "><input type="number" name="notes_6" class=""><label></label></div></td>
+                                        </tr>#}
+                                        
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+                <input type="hidden" id="note_td_1" name="notetd_1" >
+                <input type="hidden" id="note_td_2" name="notetd_2" >
+                <input type="hidden" id="note_td_3" name="notetd_3" >
+                <input type="hidden" id="note_td_4" name="notetd_4" >
+                <input type="hidden" id="note_td_5" name="notetd_5" >
+                <input type="hidden" id="note_td_6" name="notetd_6" >
+                <input type="hidden" id="note_td_7" name="notetd_7" >
+                <input type="hidden" id="note_td_8" name="notetd_8" >
+                <input type="hidden" id="note_td_9" name="notetd_9" >
+                <input type="hidden" id="note_td_10" name="notetd_10" >
+                <input type="hidden" id="note_td_11" name="notetd_11" >
+
+
+                <input type="hidden" id="notes_td_1" name="notestd_1" >
+                <input type="hidden" id="notes_td_2" name="notestd_2" >
+                <input type="hidden" id="notes_td_3" name="notestd_3" >
+
+
+
+
+                <input type="hidden" id="notess_td_1" name="notesstd_1" >
+                <input type="hidden" id="notess_td_2" name="notesstd_2" >
+
+
+
+                <input type="hidden" id="notesss_td_1" name="notessstd_1" >
+                <input type="hidden" id="notesss_td_2" name="notessstd_2" >
+                <input type="hidden" id="notesss_td_3" name="notessstd_3" >
+                <input type="hidden" id="notesss_td_4" name="notessstd_4" >
+                <input type="hidden" id="notesss_td_5" name="notessstd_5" >
+                <input type="hidden" id="notesss_td_6" name="notessstd_6" >
+                {#<input type="hidden" id="note_td_12" name="notetd_12" >#}
+
+
+            </form>
+        </div>
+    </div>
+
+
+
+{% endblock %}
+
+
+
+

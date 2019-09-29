@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Detaillots list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Calibre</th>
+                <th>Nombrecarton</th>
+                <th>Poidsnet</th>
+                <th>Npalette</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for detailLot in detailLots %}
+            <tr>
+                <td><a href="{{ path('detaillot_show', { 'identifiant': detailLot.identifiant }) }}">{{ detailLot.identifiant }}</a></td>
+                <td>{{ detailLot.calibre }}</td>
+                <td>{{ detailLot.nombreCarton }}</td>
+                <td>{{ detailLot.poidsNet }}</td>
+                <td>{{ detailLot.nPalette }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('detaillot_show', { 'identifiant': detailLot.identifiant }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('detaillot_edit', { 'identifiant': detailLot.identifiant }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('detaillot_new') }}">Create a new detailLot</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Calendrierproduction</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ calendrierProduction.id }}</td>
+            </tr>
+            <tr>
+                <th>Speculation</th>
+                <td>{{ calendrierProduction.speculation }}</td>
+            </tr>
+            <tr>
+                <th>Surfacecultive</th>
+                <td>{{ calendrierProduction.surfacecultive }}</td>
+            </tr>
+            <tr>
+                <th>Datedebut</th>
+                <td>{{ calendrierProduction.dateDebut }}</td>
+            </tr>
+            <tr>
+                <th>Datefin</th>
+                <td>{{ calendrierProduction.dateFin }}</td>
+            </tr>
+            <tr>
+                <th>Destination</th>
+                <td>{{ calendrierProduction.destination }}</td>
+            </tr>
+            <tr>
+                <th>Producteurid</th>
+                <td>{{ calendrierProduction.producteurId }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('calendrierproduction_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('calendrierproduction_edit', { 'id': calendrierProduction.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

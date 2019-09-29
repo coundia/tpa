@@ -23,6 +23,7 @@ class UserType extends AbstractType
                         'ROLE_CLIENT' => 'ROLE_CLIENT',
                         'ROLE_CONTROLEUR' => 'ROLE_CONTROLEUR',
                         'ROLE_USER' => 'ROLE_USER',
+                        'ROLE_INSPECTEUR'=>'ROLE_INSPECTEUR',
                         'ROLE_DPV' => 'ROLE_DPV'
                     ) ,
                 'multiple' => true,

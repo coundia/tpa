@@ -1,0 +1,911 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">RAPPORT D'INSPECTION EXPORT MANGUE</div>
+                <div class="panel-wrapper collapse in" aria-expanded="true">
+                    <div class="panel-body">
+                        <form action="#" class="form-horizontal">
+                            <div class="form-body">
+                                {#<h3 class="box-title">Person Info</h3>#}
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">dénomination de l'entreprise</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">station de conditionnement</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">adresse</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">date</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""> <span class="help-block"> </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">heure début controle</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">heure fin controle </label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control" placeholder=""> <span class="help-block">  </span> </div>
+                                        </div>
+                                    </div>
+
+                                    <!--/span-->
+
+
+
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+
+                                    <!--/span-->
+                                </div>
+                                <!--/row-->
+                                <div class="row">
+                                    <h3 class="box-title">PRODUCTION</h3>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-8">liste des producteurs associés</label>
+                                                <div class="col-md-2">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">Existence de contrat eavc les producteurs</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">Existence de contrat avec les pisteurs</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">Cartographie des zones de production</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">Disponibilité et qualification du chef de production</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">registre de suivi des activités de production</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">preuve de formation/sensibilisation des producteurs associés</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">preuve de formation des des pisteurs et du personnel de récolte</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-6">disponibilité matériel de récolte</label>
+                                                <div class="col-md-4">
+                                                    {#<input type="text" class="form-control"> #}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">résultat evaluation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label class="control-label col-md-3">observation</label>
+                                                <div class="col-md-9">
+                                                    <input type="text" class="form-control"> </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <h3 class="box-title">STATION DE CONDITIONNEMENT</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Existence de contrat de prestation</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="box-title">PERSONNEL</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Existence de contrat de prestation</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Existence de contrat de prestation</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Existence de contrat de prestation</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Existence de contrat de prestation</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--/row-->
+                                <h3 class="box-title">INFRASTRUCTURES</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <!--/row-->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Agencement des batiments et des locaux parraport au poste de travail</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Eclairage générales des liux de travail</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilité de table de travail</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Eclairage de la chaine tri et conditionnement</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilité de chambre froide</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Fournisseur de traitement des palettes NIMP15</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="box-title">ENVIRONNEMENT ET HYGIENE</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Existence de contrat de prestation</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilté de sanitaire (hommes et femmes)</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div><div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilité de point d'eau propre</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilité de corbeille/poubelles</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Dispositif de gestion des rebus (écart de tri et déchets)</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="box-title">ASPECT ORGANNISATIONNEL</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Conditions de stockage des emballages</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="box-title">SYSTEME D'AUTOCONTROLE</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilité de registre de réception des mangues </label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Disponibilité de la documentation du système de contrôle qualité </label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-6">Système d’identification et de traçabilité</label>
+                                            <div class="col-md-4">
+                                                {#<input type="text" class="form-control"> #}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h3 class="box-title">CERTIFICATION PRIVEEE</h3>
+                                <hr class="m-t-0 m-b-40">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Noms </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Nom </label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">Nom</label>
+                                            <div class="col-md-4">
+                                                <input type="text" class="form-control"> 
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">résultat evaluation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3">observation</label>
+                                            <div class="col-md-9">
+                                                <input type="text" class="form-control"> </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-actions">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-offset-3 col-md-9">
+                                                    <button type="submit" class="btn btn-success">Enregistrer</button>
+                                                    <button type="button" class="btn btn-default" >Annuler</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6"> </div>
+                                    </div>
+                                </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+
+

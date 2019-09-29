@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Data Table</h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Table</a></li>
+                <li class="active">Data Table</li>
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <h3 class="box-title m-b-0">Table Demande</h3>
+            <p class="text-muted m-b-30">Liste des producteurs inscrits</p>
+            <div class="table-responsive">
+                <table id="myTable" class="table table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Typedemande</th>
+                <th>Datedepot</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for demande in demandes %}
+            <tr>
+                <td><a href="{{ path('demande_show', { 'id': demande.id }) }}">{{ demande.id }}</a></td>
+                <td>{{ demande.typeDemande }}</td>
+                <td>{% if demande.dateDepot %}{{ demande.dateDepot|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                            <a  class="btn btn-danger" href="{{ path('demande_show', { 'id': demande.id }) }}">Détails</a>                       
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <ul>
+        <li>
+            <a href="{{ path('demande_new') }}">Create a new demande</a>
+        </li>
+    </ul>
+{% endblock %}

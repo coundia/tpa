@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Calendrierproductions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Speculation</th>
+                <th>Surfacecultive</th>
+                <th>Datedebut</th>
+                <th>Datefin</th>
+                <th>Destination</th>
+                <th>Producteurid</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for calendrierProduction in calendrierProductions %}
+            <tr>
+                <td><a href="{{ path('calendrierproduction_show', { 'id': calendrierProduction.id }) }}">{{ calendrierProduction.id }}</a></td>
+                <td>{{ calendrierProduction.speculation }}</td>
+                <td>{{ calendrierProduction.surfacecultive }}</td>
+                <td>{{ calendrierProduction.dateDebut }}</td>
+                <td>{{ calendrierProduction.dateFin }}</td>
+                <td>{{ calendrierProduction.destination }}</td>
+                <td>{{ calendrierProduction.producteurId }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('calendrierproduction_show', { 'id': calendrierProduction.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('calendrierproduction_edit', { 'id': calendrierProduction.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('calendrierproduction_new') }}">Create a new calendrierProduction</a>
+        </li>
+    </ul>
+{% endblock %}

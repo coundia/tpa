@@ -1,0 +1,71 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Lot
+ *
+ * @ORM\Table(name="lot", indexes={@ORM\Index(name="FK5qbslk1ioudummgell60ha65585587", columns={"id_campagne"})})
+ * @ORM\Entity
+ */
+class Lot
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="identifiant", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $identifiant;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="code_lot", type="string", length=50, nullable=false)
+     */
+    private $codeLot;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="n_lot_recolte", type="string", length=50, nullable=false)
+     */
+    private $nLotRecolte;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nombre_cageots", type="integer", nullable=false)
+     */
+    private $nombreCageots;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="poids_brut", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $poidsBrut;
+
+    /**
+     * @var float
+     *
+     * @ORM\Column(name="poids_net", type="float", precision=10, scale=0, nullable=false)
+     */
+    private $poidsNet;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="identifiant")
+     * })
+     */
+    private $idCampagne;
+
+
+}
+

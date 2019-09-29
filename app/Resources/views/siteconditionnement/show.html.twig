@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Siteconditionnement</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ siteConditionnement.id }}</td>
+            </tr>
+            <tr>
+                <th>Producteurid</th>
+                <td>{{ siteConditionnement.producteurId }}</td>
+            </tr>
+            <tr>
+                <th>Speculation</th>
+                <td>{{ siteConditionnement.speculation }}</td>
+            </tr>
+            <tr>
+                <th>Sitecond</th>
+                <td>{{ siteConditionnement.sitecond }}</td>
+            </tr>
+            <tr>
+                <th>Lacalisation</th>
+                <td>{{ siteConditionnement.lacalisation }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('siteconditionnement_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('siteconditionnement_edit', { 'id': siteConditionnement.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

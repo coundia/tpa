@@ -1,0 +1,123 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * RegistrePalettisation
+ *
+ * @ORM\Table(name="registre_palettisation", indexes={@ORM\Index(name="FK5qbslk1ioudummgell60ha6", columns={"id_campagne"}), @ORM\Index(name="FK5qbslk1ioudummgell60ha6hhgfd", columns={"code_lot"})})
+ * @ORM\Entity
+ */
+class RegistrePalettisation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date", nullable=false)
+     */
+    private $date;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="n_palette", type="integer", nullable=false)
+     */
+    private $nPalette;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="nbre_cartons", type="integer", nullable=false)
+     */
+    private $nbreCartons;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="total_cartons", type="integer", nullable=false)
+     */
+    private $totalCartons;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="heure_entree_ch_froide", type="integer", nullable=false)
+     */
+    private $heureEntreeChFroide;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="heure_sortie_ch_froide", type="integer", nullable=false)
+     */
+    private $heureSortieChFroide;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destinataire", type="string", length=100, nullable=false)
+     */
+    private $destinataire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="parcking_liste", type="string", length=100, nullable=false)
+     */
+    private $parckingListe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="paragraphe", type="string", length=100, nullable=false)
+     */
+    private $paragraphe;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="produit_calibre", type="string", length=100, nullable=false)
+     */
+    private $produitCalibre;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="statut", type="integer", nullable=true)
+     */
+    private $statut = '0';
+
+    /**
+     * @var \Lot
+     *
+     * @ORM\ManyToOne(targetEntity="Lot")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="code_lot", referencedColumnName="identifiant")
+     * })
+     */
+    private $codeLot;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campagne", referencedColumnName="identifiant")
+     * })
+     */
+    private $idCampagne;
+
+
+}
+

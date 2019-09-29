@@ -1,0 +1,68 @@
+<?php
+
+namespace NosFormulairesBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * SiteProduction
+ *
+ * @ORM\Table(name="site_production")
+ * @ORM\Entity
+ */
+class SiteProduction
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="perimetre", type="string", length=50, nullable=true)
+     */
+    private $perimetre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="localisation", type="string", length=100, nullable=true)
+     */
+    private $localisation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="superficie", type="string", length=50, nullable=true)
+     */
+    private $superficie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="speculation", type="string", length=100, nullable=true)
+     */
+    private $speculation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regie", type="string", length=100, nullable=true)
+     */
+    private $regie;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="producteur_id", type="integer", nullable=true)
+     */
+    private $producteurId;
+
+
+}
+

@@ -1,0 +1,236 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Exportation
+ *
+ * @ORM\Table(name="exportation")
+ * @ORM\Entity
+ */
+class Exportation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="denomEntreprise", type="string", length=255, nullable=true)
+     */
+    private $denomentreprise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="prenoNomInspecteur", type="string", length=255, nullable=true)
+     */
+    private $prenonominspecteur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="dateInspection", type="string", length=255, nullable=true)
+     */
+    private $dateinspection;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieuInspection", type="string", length=255, nullable=true)
+     */
+    private $lieuinspection;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="personneRencontre", type="string", length=255, nullable=true)
+     */
+    private $personnerencontre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="fonctionpersonneRencontre", type="string", length=255, nullable=true)
+     */
+    private $fonctionpersonnerencontre;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="variete", type="string", length=255, nullable=true)
+     */
+    private $variete;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="categorie", type="string", length=255, nullable=true)
+     */
+    private $categorie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="qteDeclare", type="string", length=255, nullable=true)
+     */
+    private $qtedeclare;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nbColis", type="string", length=255, nullable=true)
+     */
+    private $nbcolis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="typeTransport", type="string", length=255, nullable=true)
+     */
+    private $typetransport;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tailleEchantillon", type="string", length=255, nullable=true)
+     */
+    private $tailleechantillon;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nbColiControle", type="string", length=255, nullable=true)
+     */
+    private $nbcolicontrole;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nbMangueControle", type="string", length=255, nullable=true)
+     */
+    private $nbmanguecontrole;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="registreReceptionMangue", type="string", length=255, nullable=true)
+     */
+    private $registrereceptionmangue;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="declarationSupp", type="string", length=255, nullable=true)
+     */
+    private $declarationsupp;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marqueColis", type="string", length=255, nullable=true)
+     */
+    private $marquecolis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conformiteColis", type="string", length=255, nullable=true)
+     */
+    private $conformitecolis;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numeroLot", type="string", length=255, nullable=true)
+     */
+    private $numerolot;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conformiteLot", type="string", length=255, nullable=true)
+     */
+    private $conformitelot;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numeroPalette", type="string", length=255, nullable=true)
+     */
+    private $numeropalette;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="conformitePalette", type="string", length=255, nullable=true)
+     */
+    private $conformitepalette;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="maturite", type="string", length=255, nullable=true)
+     */
+    private $maturite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="piqureMoucheFruit", type="string", length=255, nullable=true)
+     */
+    private $piquremouchefruit;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pourriturePendonculaire", type="string", length=255, nullable=true)
+     */
+    private $pourriturependonculaire;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="charanconNoyaux", type="string", length=255, nullable=true)
+     */
+    private $charanconnoyaux;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="traceArthrocnose", type="string", length=255, nullable=true)
+     */
+    private $tracearthrocnose;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="marquageNIMP15", type="string", length=255, nullable=true)
+     */
+    private $marquagenimp15;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="etatSanitaireGeneral", type="string", length=255, nullable=true)
+     */
+    private $etatsanitairegeneral;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="commentaire", type="string", length=255, nullable=true)
+     */
+    private $commentaire;
+
+
+}
+

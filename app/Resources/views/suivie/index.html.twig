@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="container-fluid">
+    <h1  class="text-center">Lots list</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Identifiant</th>
+                <th>Codelot</th>
+                <th>Nlotrecolte</th>
+                <th>Nombrecageots</th>
+                <th>Poidsbrut</th>
+                <th>Poidsnet</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for lot in suivies %}
+            <tr>
+                <td><a href="{{ path('lot_show', { 'identifiant': lot.identifiant }) }}">{{ lot.identifiant }}</a></td>
+                <td>{{ lot.codeLot }}</td>
+                <td>{{ lot.nLotRecolte }}</td>
+                <td>{{ lot.nombreCageots }}</td>
+                <td>{{ lot.poidsBrut }}</td>
+                <td>{{ lot.poidsNet }}</td>
+                <td>
+                    {% if choix==true %}
+                        <div class="d-inline p-2 bg-primary text-white">Livrée</div>
+                    {% else %}
+                            <div class="d-inline p-2 bg-dark text-white">En cours</div>
+                    {% endif %}
+                </td>
+                 <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>Date</th>
+                        <th>Npalette</th>
+                        <th>Nbrecartons</th>
+                        <th>Totalcartons</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for registrePalettisation in listes[lot.identifiant] %}
+                        <tr>
+                            <td><a href="{{ path('registrepalettisation_show', { 'id': registrePalettisation.id }) }}">{{ registrePalettisation.id }}</a></td>
+                            <td>{% if registrePalettisation.date %}{{ registrePalettisation.date|date('Y-m-d') }}{% endif %}</td>
+                            <td>{{ registrePalettisation.nPalette }}</td>
+                            <td>{{ registrePalettisation.nbreCartons }}</td>
+                            <td>{{ registrePalettisation.totalCartons }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

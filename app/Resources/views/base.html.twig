@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('template/plugins/images/pixeladmin-logo.png') }}">
-    <title>TRACABLITE AGRICOLES </title>
+    <title>Système de Gestion intégré des Exportions </title>
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('template/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/plugins/bower_components/jquery-datatables-editable/datatables.css') }}" rel="stylesheet">
@@ -20,13 +20,17 @@
     <link href="{{ asset('template/plugins/bower_components/toast-master/css/jquery.toast.css') }}" rel="stylesheet">
     <!-- morris CSS -->
     <link href="{{ asset('template/plugins/bower_components/morrisjs/morris.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/custom-select/custom-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/switchery/dist/switchery.min.css') }}" rel="stylesheet">
     <!-- animation CSS -->
     <link href="{{ asset('template/css/animate.css') }}" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="{{ asset('template/css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/Enfant.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/metisMenu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/morris.css') }}" rel="stylesheet">
     <!-- color CSS -->
-    <link href="{{ asset('template/css/colors/default-dark.css') }}" id="theme" rel="stylesheet">
+    <link href="{{ asset('template/css/colors/green.css') }}" id="theme" rel="stylesheet">
 
     <!-- Page plugins css -->
     <link href="{{ asset('template/plugins/bower_components/clockpicker/dist/jquery-clockpicker.min.css') }}" rel="stylesheet">
@@ -44,7 +48,10 @@
     <link href="{{ asset('template/plugins/bower_components/footable/css/footable.core.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('template/plugins/bower_components/bootstrap-select/bootstrap-select.min.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('template/plugins/bower_components/css-chart/css-chart.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css') }}" rel="stylesheet">
     <link href="{{ asset('template/plugins/bower_components/jquery-wizard-master/css/wizard.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/multiselect/css/multi-select.css') }}" rel="stylesheet">
+    <link href="{{ asset('template/plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.css') }}" rel="stylesheet">
     <link href="{{ asset('template/plugins/bower_components/jquery-wizard-master/libs/formvalidation/formValidation.min.css') }}" rel="stylesheet">
     <!-- FormValidation plugin and the class supports validating Bootstrap form -->
 
@@ -68,16 +75,10 @@
         <div class="navbar-header"> <a class="navbar-toggle hidden-sm hidden-md hidden-lg " href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i class="ti-menu"></i></a>
             <div class="top-left-part">
                 <h4 class="" style="text-align: center; color: white">
-                    <strong>Tracabilité des produits agricoles</strong>
+                    <strong>Système de Gestion intégré des Exportions Agricoles</strong>
                 </h4>
             </div>
-            <ul class="nav navbar-top-links navbar-left hidden-xs">
-                <li><a href="javascript:void(0)" class="open-close hidden-xs waves-effect waves-light"><i class="icon-arrow-left-circle ti-menu"></i></a></li>
-                <li>
-                    <form role="search" class="app-search hidden-xs">
-                        <input type="text" placeholder="rechercher..." class="form-control"> <a href=""><i class="fa fa-search"></i></a> </form>
-                </li>
-            </ul>
+           
             <ul class="nav navbar-top-links navbar-right pull-right">
                 {#<li class="dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><i class="icon-user-following"> <b class="hidden-xs">Nouveau</b></i>#}
                 <div class="notify"><span class="heartbit"></span><span class="point"></span></div>
@@ -130,32 +131,7 @@
                     <!-- /.dropdown-user -->
                 </li>
                 <!-- .Megamenu -->
-                <li class="mega-dropdown"> <a class="dropdown-toggle waves-effect waves-light" data-toggle="dropdown" href="#"><span class="hidden-xs">Menu</span> <i class="icon-options-vertical"></i></a>
-                    <ul class="dropdown-menu mega-dropdown-menu animated bounceInDown">
-                        <li class="col-sm-12 m-t-40 demo-box">
-                            <div class="row">
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-purple"><a href="#" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="b"></i><br/> Production</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-success"><a href="#" target="_blank" class="text-white"><i class="linea-icon linea-basic fa-fw" data-icon="#"></i><br/>Controle</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-info"><a href="#" target="_blank" class="text-white"><i class="fa fa-product-hunt fa-fw" ></i><br/>Conditionnement</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-inverse"><a href="" target="_blank" class="text-white"><i class="fa fa-users fa-fw" ></i><br/>Rejet/FeedBack</a></div>
-                                </div>
-                                {#<div class="col-sm-2">
-                                    <div class="white-box text-center bg-warning"><a href="#" target="_blank" class="text-white"><i class="fa fa-shopping-cart fa-fw" ></i><br/>Gestion cotisations </a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="white-box text-center bg-danger"><a href="#" target="_blank" class="text-white"><i class=" fa fa-shopping-bag fa-fw" data-icon="d"></i><br/>Gestion Barkelous </a></div>
-                                </div>#}
-                            </div>
-                        </li>
-                    </ul>
-                </li>
+                
                 {#<!-- /.Megamenu -->#}
                 {#<li class="right-side-toggle"> <a class="waves-effect waves-light" href="javascript:void(0)"><i class="ti-settings"></i></a></li>#}
                 {#<!-- /.dropdown -->#}
@@ -169,56 +145,145 @@
     <div class="navbar-default sidebar" role="navigation">
         <div class="sidebar-nav navbar-collapse slimscrollsidebar">
             <ul class="nav" id="side-menu">
-                <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                    <!-- input-group -->
-                    <div class="input-group custom-search-form">
-                        <input type="text" class="form-control" placeholder="Rechercher..."> <span class="input-group-btn">
-                <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-                </span> </div>
-                    <!-- /input-group -->
-                </li>
+              
+
                 {% if is_granted('ROLE_ADMIN') %}
-                    <li class="user-pro">
-                        <a href="#" class="waves-effect"><img src="{{ asset('template/plugins/images/pixeladmin-logo.png') }}" alt="user-img" class="img-circle"> <span class="hide-menu"> Admin<span class="fa arrow"></span></span>
-                        </a>
+                    <li class="nav-small-cap m-t-10"></li>
+                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    <li>
+                        <a href="inbox.html" class="waves-effect"><i data-icon=")" class="ti-desktop"></i> <span class="hide-menu">DPV<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
-                         {#   <li><a href="{{ path('utilisateur_new') }}"><i class="ti-user"></i> <span class="hide-menu"> Profile</span></a></li>
-                            <li><a href=""><i class="fa fa-power-off"></i> Se déconnecter</a></li>#}
-                            <li><a href="{{ path('utilisateur_index') }}"><i class="fa fa-power-off"></i> Utilisateurs</a></li>
-                            {#<li><a href=""><i class="fa fa-power-off"></i> Demandes</a></li>#}
+
+                            {#<li><a href="{{ path('word') }}"><i class="fa-file"></i> Demande d'hadésion</a></li>#}
+                            <li><a href="{{ path('utilisateur_index') }}"><i class="ti-user"></i> Utilisateurs</a></li>
+                            {#<li><a href="{{ path('email_send') }}"><i class="ti-user"></i> Envoi Email</a></li>#}
+
+                             <li><a href="javascript:void(0)" class="waves-effect">Les demandes<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="{{ path('demande_index') }}">
+                                        {#<i class="fa-file"></i>#}
+                                        Demande en cours</a></li>
+                                    <li><a href="{{ path('demande_valider', { 'statut': 1 }) }}">
+                                         {#<i class="fa-file"></i>#}
+                                        Demande validés</a></li>
+                                    <li><a href="{{ path('demande_valider', { 'statut': 2 }) }}">
+                                         {#<i class="fa-file"></i>#}
+                                        Demande rejeté</a></li>
+                                    {#<li><a href="{{ path('inspection_index') }}"><i class="fa-file"></i>Demande d'inspection</a></li>#}
+                                </ul>
+
+                            </li>
+
+                            
                         </ul>
                     </li>
+                     {#<li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">REPORTING<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
+                        <ul class="nav nav-second-level">
+                            <li><a href="{{ path('rapportControle') }}" class="waves-effect">Reporting<span class="fa arrow"></span></a>
+                            </li>
+
+                        </ul>
+                    </li>#}
                 {% endif %}
+                
+                
+                
+                {% if is_granted('ROLE_CONTROLEUR') %}
+                    <li class="nav-small-cap m-t-10"></li>
+                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    
+                    
+                    <li>
+               <a href="inbox.html" class="waves-effect"><i data-icon=")" class="ti-folder"></i> <span class="hide-menu">CONTROLE<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="{{ path('fiche_operateur') }}">
+                                         {#<i class="fa-file"></i>#} 
+                                    Fiche Inspection Opérateur</a></li>
+                                    <li><a href="{{ path('fiche_exportateur') }}">
+                                        {#<i class="fa-file"></i>#}
+                                        Rapport d'inspection</a></li>
+                                    <li><a href="{{ path('fiche_evaluation_exportateur') }}">
+                                         {#<i class="fa-file"></i>#}
+                                        Fiche Evaluation Exportation mangue</a></li>
+                                    <li><a href="{{ path('inspection_index') }}" class="waves-effect">fiche demande d'inspection</a>
+                               
+                            </li>
+                                    {#<li><a href="{{ path('accuserreception') }}"><i class="fa-file"></i> Accuse de reception</a></li>#}
+                                </ul>
+                            </li>
+                  
+                {% endif %}
+                
+                
+                
+                
+                
+                   {% if is_granted('ROLE_INSPECTEUR') %}
+                    <li class="nav-small-cap m-t-10"></li>
+                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    
+                    
+                    <li>
+                         <a href="inbox.html" class="waves-effect"><i data-icon=")" class="ti-folder"></i> <span class="hide-menu">RAPPORT D'INSPECTION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li><a href="{{ path('rapport_inspection_index') }}">
+                                         {#<i class="fa-file"></i>#} 
+                                        En cours</a></li>
+                                    <li><a href="{{ path('inspection_validee') }}">
+                                        {#<i class="fa-file"></i>#}
+                                        Validée</a></li>
+                                   <li><a href="{{ path('inspection_rejetee') }}">
+                                        {#<i class="fa-file"></i>#}
+                                       Rejétée</a></li>
+                            </li>
+                                    {#<li><a href="{{ path('accuserreception') }}"><i class="fa-file"></i> Accuse de reception</a></li>#}
+                                </ul>
+                            </li>
+                  
+                {% endif %}
+                
+                
+                
+                
+                
+                
+                
+
                 {% if is_granted('ROLE_PRODUCTEUR') %}
                     <li class="nav-small-cap m-t-10"></li>
                     {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
-                    <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">PRODUCTION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
+                    <li>
+                     <a href="inbox.html" class="waves-effect"><i data-icon=")" class="ti-folder"></i> <span class="hide-menu">PRODUCTION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="javascript:void(0)" class="waves-effect">Saisie Intrat<span class="fa arrow"></span></a>
+                            <li><a href="" class="waves-effect">Campagne<span class="fa arrow"></span></a>
                                 <ul class="nav nav-third-level">
-                                    {#<li> <a href="inbox.html">Saisir Intrat</a></li>#}
+                                    <li> <a href="{{ path('campagne_new') }}">Nouvelle campagne</a></li>
+                                    <li> <a href="{{ path('campagne_index') }}">Liste des campagnes</a></li>
+                                    <li><a href="{{ path('fiche_inspection') }}" class="waves-effect">demande inspection</a> </li>
+                                    {#<li> <a href="{{ path('campagne_show') }}">Visualiser une campagne</a></li>#}
+
+
+
                                 </ul>
                             </li>
-                            <li><a href="{{ path('liste_producteur') }}" class="waves-effect">Calendrier Cultural<span class="fa arrow"></span></a>
-                                {#  <ul class="nav nav-third-level">
-                                      <li> <a href="inbox.html">Controle</a></li>
-                                      <li> <a href="inbox-detail.html">Conditionnement</a></li>
-                                      <li> <a href="compose.html">Feedback</a></li>
-                                  </ul>#}
+                            <li><a href="" class="waves-effect">Lot<span class="fa arrow"></span></a>
+                                  <ul class="nav nav-third-level">
+                                      <li> <a href="{{ path('lot_new') }}">Créer un lot</a></li>
+                                      <li> <a href="{{ path('lot_index') }}">Liste des lots</a></li>
+
+                                  </ul>
                             </li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Suivi Production<span class="fa arrow"></span></a>
-                                {#  <ul class="nav nav-third-level">
-                                      <li> <a href="inbox.html">Controle</a></li>
-                                      <li> <a href="inbox-detail.html">Conditionnement</a></li>
-                                      <li> <a href="compose.html">Feedback</a></li>
-                                  </ul>#}
+                            <li><a href="{{ path('detaillot_index') }}" class="waves-effect">Détail des lots<span class="fa arrow"></span></a>
+                                  <ul class="nav nav-third-level">
+                                      <li> <a href="{{ path('detaillot_new') }}">Nouveau</a></li>
+                                      <li> <a href="{{ path('lot_index') }}">Liste details lots</a></li>
+                                  </ul>
                             </li>
-                            <li><a href="javascript:void(0)" class="waves-effect">Gestion Récolte<span class="fa arrow"></span></a>
-                                {#  <ul class="nav nav-third-level">
-                                      <li> <a href="inbox.html">Controle</a></li>
-                                      <li> <a href="inbox-detail.html">Conditionnement</a></li>
-                                      <li> <a href="compose.html">Feedback</a></li>
-                                  </ul>#}
+                            <li><a href="javascript:void(0)" class="waves-effect">Registre<span class="fa arrow"></span></a>
+                                  <ul class="nav nav-third-level">
+                                      <li> <a href="{{ path('registrepalettisation_new') }}">Registre de palettisation</a></li>
+                                      <li> <a href="{{ path('registrereception_new') }}">Registre de reception</a></li>
+                                  </ul>
                             </li>
                         </ul>
                     </li>
@@ -226,20 +291,25 @@
                 {% if is_granted('ROLE_EXPORTATEUR') %}
                     <li class="nav-small-cap m-t-10"></li>
                     {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
-                    <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">EXPORTATION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
+           <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="ti-folder"></i> <span class="hide-menu">EXPORTATION<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
-                            <li><a href="" class="waves-effect">Remplir formulaire d'adhésion<span class="fa arrow"></span></a>
-                            </li>
                             <li><a href="{{ path('producteur_maj') }}" class="waves-effect">Mise à jours des données<span class="fa arrow"></span></a>
                             </li>
-
-
+                            <li><a href="{{ path('suivi_notification_mangue') }}" class="waves-effect">Suivi Notification Mangues</a>
+                            </li>
+                            <li><a href="{{ path('ficheexportation_index') }}" class="waves-effect">Fiche d'exportation</a> </li>
+                            <li><a href="{{ path('fiche_inspection') }}" class="waves-effect">demande inspection</a> </li>
+                            <li><a href="{{ path('essai') }}" class="waves-effect">Gestion des rejets</a> </li>
+                            {#<li><a href="{{ path('liste_rejet', { 'numero': 2 }) }}" class="waves-effect">Liste des rejets</a> </li>#}
                         </ul>
                     </li>
                 {% endif %}
-                {% if is_granted('ROLE_CONTROLEUR') %}
+
+
+
+               {# {% if is_granted('ROLE_CONTROLEUR') %}
                     <li class="nav-small-cap m-t-10"></li>
-                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    #}{#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}{#
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">CONTROLE<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="{{ path('rapportControle') }}" class="waves-effect">Editer Rapport de controle<span class="fa arrow"></span></a>
@@ -250,21 +320,22 @@
 
                         </ul>
                     </li>
-                {% endif %}
-                {% if is_granted('ROLE_DPV') %}
+                {% endif %}#}
+             {#   {% if is_granted('ROLE_DPV') %}
                     <li class="nav-small-cap m-t-10"></li>
-                    {#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}
+                    #}{#<li><a href="index.html" class="waves-effect"><i class="linea-icon linea-basic fa-fw" data-icon="v"></i> <span class="hide-menu">Dashboard</span></a></li>#}{#
                     <li><a href="inbox.html" class="waves-effect"><i data-icon=")" class="linea-icon linea-basic fa-fw"></i> <span class="hide-menu">CONTROLE<span class="fa arrow"></span><span class="label label-rouded label-danger pull-right"></span></span></a>
                         <ul class="nav nav-second-level">
                             <li><a href="javascript:void(0)" class="waves-effect">Rapports inspections opérateurs<span class="fa arrow"></span></a>
                             </li>
                             <li><a href="javascript:void(0)" class="waves-effect">Inspections des etablissements d'exportation<span class="fa arrow"></span></a>
                             </li>
-
+                            <li><a href="{{ path('liste_rejet', { 'numero': 1 }) }}" class="waves-effect">Liste des exportations</a> </li>
+                            <li><a href="{{ path('liste_rejet', { 'numero': 2 }) }}" class="waves-effect">Liste des rejets</a> </li>
 
                         </ul>
                     </li>
-                {% endif %}
+                {% endif %}#}
 
 
             </ul>
@@ -290,6 +361,11 @@
 <script src="{{ asset('template/plugins/bower_components/jquery/dist/jquery.min.js') }}"></script>
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script src="{{ asset('assets/jquery.js') }}"></script>
+<script src="{{ asset('assets/metisMenu.js') }}"></script>
+<script src="{{ asset('assets/raphael.js') }}"></script>
+<script src="{{ asset('assets/morris.js') }}"></script>
+<script src="{{ asset('assets/morris-data.js') }}"></script>
+<script src="{{ asset('assets/sb-admin-2.js') }}"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="{{ asset('template/bootstrap/dist/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/jquery-wizard-master/dist/jquery-wizard.min.js') }}"></script>
@@ -297,6 +373,8 @@
 <script src="{{ asset('template/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js') }}"></script>
 <!--slimscroll JavaScript -->
 <script src="{{ asset('template/js/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/switchery/dist/switchery.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/custom-select/custom-select.min.js') }}"></script>
 <!--Wave Effects -->
 <script src="{{ asset('template/js/waves.js') }}"></script>
 <!--Counter js -->
@@ -340,11 +418,14 @@
 <script src="{{ asset('template/plugins/bower_components/bootstrap-table/dist/bootstrap-table.ints.js') }}"></script>
 <script src="{{ asset('template/js/footable-init.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/footable/js/footable.all.min.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/bootstrap-select/bootstrap-select.min.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/datatables/media/js/jquery.dataTables.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/datatables/dataTables.bootstrap.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/tiny-editable/mindmup-editabletable.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/tiny-editable/numeric-input-example.js') }}"></script>
+<script src="{{ asset('template/plugins/bower_components/bower_components/multiselect/js/jquery.multi-select.js') }}"></script>
 
 <script src="{{asset('template/plugins/bower_components/flot/excanvas.min.js') }}"></script>
 <script src="{{asset('js/jquery.timepicker.js') }}"></script>
@@ -359,6 +440,7 @@
 <script src="{{ asset('template/js/flot-data.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/jquery-wizard-master/libs/formvalidation/formValidation.min.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/jquery-wizard-master/libs/formvalidation/bootstrap.min.js') }}"></script>
+
 
 <script type="text/javascript">
     (function() {
@@ -439,7 +521,7 @@
             templates: {
                 buttons: function() {
                     var options = this.options;
-                    return '<div class="panel-footer"><ul class="pager">' + '<li class="previous">' + '<a href="#' + this.id + '" data-wizard="back" role="button">' + options.buttonLabels.back + '</a>' + '</li>' + '<li class="next">' + '<a href="#' + this.id + '" data-wizard="next" role="button">' + options.buttonLabels.next + '</a>' + '<a href="#' + this.id + '" data-wizard="finish" role="button">' + options.buttonLabels.finish + '</a>' + '</li>' + '</ul></div>';
+                    return '<div class="panel-footer"><ul class="pager">' + '<li class="previous">' + '<a href="#' + this.id + '" data-wizard="back" role="button">' + "Précédent" + '</a>' + '</li>' + '<li class="next">' + '<a href="#' + this.id + '" data-wizard="next" role="button">' + "Suivant" + '</a>' + '<a href="#' + this.id + '" data-wizard="finish" role="button">' + "Enregistrer" + '</a>' + '</li>' + '</ul></div>';
                 }
             },
             onBeforeShow: function(step) {
@@ -449,7 +531,7 @@
                 step.$pane.collapse('hide');
             },
             onFinish: function() {
-                alert('Cliquer Sur le Boutton Soumettre pour Enregistrer la demande');
+                $('form').submit();
             }
         });
 
@@ -590,6 +672,28 @@
         $('#editable-datatable').DataTable();
     });
 </script>
+
+<script>
+    $('#mainTableControle').editableTableWidget().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
+<script>
+    $('#mainTableResponsable').editableTableWidget().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
+<script>
+    $('#mainTableSystem').editableTableWidget().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
 {#
 <script>
     setTimeout(
@@ -630,16 +734,161 @@
 
 
 </script>
+ <script>
+         function poidsnet(tmp){
+                document.getElementById("poids").value = Number(tmp) + Number(document.getElementById("poids").value);
+		  	}
+        
+            function totauxcalibres(tmp){
+                document.getElementById("totaux").value = Number(tmp) + Number(document.getElementById("totaux").value);
+		  	}
+               function nombreCartons(tmp){
+                document.getElementById("nombrecarton").value = Number(tmp) + Number(document.getElementById("nombrecarton").value);
+		  	}
+ </script>
+
+<script>$(function () {
+        jQuery(document).ready(function() {
+            console.log("jQuery est prêt !");
+
+            $(".payclass").change(function() {
+                mafonctionchange('region','pay');
+            }).trigger('change');
+
+            $(".regionclass").change(function() {
+                mafonctionchange('ville','region');;
+            });
+
+            function mafonctionchange(selecteur,selecteurparent)
+            {
+                $.ajax({
+                    url: 'http://localhost/Symfony/web/app_dev.php/form/rempli',
+                    type: 'POST',
+                    data:
+                        {
+                            id : $("select."+selecteurparent+"class option:selected").val(),
+                            select : selecteur
+                        },
+                    dataType: 'json',
+                    success: function(reponse) {
+
+                        $('.'+selecteur+'class').empty();
+                        $.each(reponse, function(index, element) {
+                            $('.' + selecteur + 'class').append('<option value="'+ element.id +'" selected="selected"> '+ element.nom +' </option>');
+                        });
+
+                        if (selecteur == 'region') {
+                            mafonctionchange('ville','region');
+                        }
+                    }
+                });
+            }
+        });
+    });</script>
+
+
+
+
+<script>
+    /*
+      * trigger="true" permet de dire que c'est l'élément le plus haut qui fait varier toutes les autres listes
+      * target=[id_cible] permet de spécifier la liste qui doit varier au changement de la sélection
+      * reference=[id_reference] est l'id de l'élément parent qui déclenche la mise à jour de la liste
+    */
+
+    //Fonction qui s'occupe de la mise à jour des listes
+    function updateSelectBox(object){
+        // Object correspond au input qui déclenche l'action (pays dans notre cas)
+        // On récupère le select (département) qui doit être mise à jour suite au changement du parent (pays)
+        var target = $("#"+object.attr('target'));
+
+        // On récupère tous les optgroup du select cible spécifié avec target (les optgroup du select département)
+        var listGroups = target.find("optgroup");
+
+        // On récupère le optgroup qui correspond à la valeur courante du select parent (pays)
+        var validGroup = target.find("optgroup[reference='"+object.find(':selected').val()+"']");
+
+        //On modifie la valeur courante du select cible (département)
+        target.val(validGroup.find("option").val());
+
+        //On cache tous les optgroup de département
+        listGroups.hide();
+
+        //On affiche uniquement le optgroup de département qui correspond à la valeur courante de pays
+        validGroup.show();
+
+        //On vérifie si la cible (département) doit déclencher une mise à jour d'une autre liste
+        // Département peut par exemple déclencher la mise à jour des villes, et les villes déclenches celle des quartiers...
+        if(target.attr('content-type')=='choices')
+            target.change();
+    }
+
+    //On associe la fonction updateSelectBox à l'événement onchange des listes qui doivent déclencher des mises à jour d'autres listes
+    $("select[content-type='choices']").on('change',function(){
+        updateSelectBox($(this));
+    });
+
+    //On fait la première mise à jour des
+    $(document).ready(function(){
+        updateSelectBox($("select[trigger='true']"));
+    });</script>
+
 
 
 
 <script src="{{ asset('js/tableau.js') }}"></script>
 <script src="{{ asset('template/js/jasny-bootstrap.js') }}"></script>
 <script src="{{ asset('js/siteProduction.js') }}"></script>
+<script src="{{ asset('js/suiviNotification.js') }}"></script>
 <script src="{{ asset('js/representant.js') }}"></script>
+<script src="{{ asset('js/ficheOperateur.js') }}"></script>
 <script src="{{ asset('template/plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
 
+<script>
 
+
+    $('#nb_spec').keyup(function () {
+
+        var nombre=($('#nb_spec').val());
+//        alert(nombre);
+
+
+
+    }).change(function () {
+        var nombre=($('#nb_spec').val());
+//        alert(nombre);
+
+    });
+
+</script>
+<script>
+    $('#mainTable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
+<script>
+    $('.mainTables').editableTableWidget().numericInputExample().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
+<script>
+    $('.mainTabless').editableTableWidget().numericInputExample().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
+<script>
+    $('.mainTablesss').editableTableWidget().numericInputExample().find('td:first').focus();
+    $('#editable-datatable').editableTableWidget().numericInputExample().find('td:first').focus();
+    $(document).ready(function() {
+        $('#editable-datatable').DataTable();
+    });
+</script>
 
 
 </body>

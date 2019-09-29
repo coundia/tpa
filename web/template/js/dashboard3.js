@@ -56,39 +56,39 @@ $(".counter").counterUp({
         element: 'morris-area-chart',
         data: [{
                     period: '2010',
-                    iphone: 0,
-                    ipad: 0,
-                    itouch: 0
+                    arachide: 0,
+                    mangue: 0,
+                    ble: 0
                 }, {
                     period: '2011',
-                    iphone: 50,
-                    ipad: 15,
-                    itouch: 5
+                    arachide: 50,
+                    mangue: 15,
+                    ble: 5
                 }, {
                     period: '2012',
-                    iphone: 20,
-                    ipad: 50,
-                    itouch: 65
+                    arachide: 20,
+                    mangue: 50,
+                    ble: 65
                 }, {
                     period: '2013',
-                    iphone: 60,
-                    ipad: 12,
-                    itouch: 7
+                    arachide: 60,
+                    mangue: 12,
+                    ble: 7
                 }, {
                     period: '2014',
-                    iphone: 30,
-                    ipad: 20,
-                    itouch: 120
+                    arachide: 30,
+                    mangue: 20,
+                    ble: 120
                 }, {
                     period: '2015',
-                    iphone: 25,
-                    ipad: 80,
-                    itouch: 40
+                    arachide: 25,
+                    mangue: 80,
+                    ble: 40
                 }, {
                     period: '2016',
-                    iphone: 10,
-                    ipad: 10,
-                    itouch: 10
+                    arachide: 10,
+                    mangue: 10,
+                    ble: 10
                 }
 
 

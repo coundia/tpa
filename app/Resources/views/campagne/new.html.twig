@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+    {% form_theme form '/bootstrap_3_horizontal_layout.html.twig' %}
+
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<div class="row">
+
+<div class="col-sm-12">
+<div class="white-box">
+<h1  class="box-title m-b-0 text-center">Bordereau de récolte</h1>
+
+<div class="container">
+    <br><br>
+    {{ form_start(form) }}
+    <div class="row">
+            <div class="col-6">
+                 {{ form_row(form.campagne) }}
+            </div>
+             <div class="col-6">
+                {{ form_row(form.dateReception) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.variete) }}
+            </div>
+            <div class="col-6">
+                 {{ form_row(form.nOrdre) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.zoneProduction) }}
+            </div>
+             <div class="col-6">
+                 {{ form_row(form.codeParcelle) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.poidsBrut) }}
+            </div>
+             <div class="col-6">
+                 {{ form_row(form.nomChauffeur) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.heureDepart) }}
+            </div>
+             <div class="col-6">
+                 {{ form_row(form.heureArrivee) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.immatriculationCamion) }}
+            </div>
+              <div class="col-6">
+                 {{ form_row(form.nomResponsableParcelle) }}
+            </div>
+            <div class="col-6">
+                {{ form_row(form.nombreCageots) }}
+            </div>
+             <div class="col-6">
+                 {{ form_row(form.poidsNet) }}
+            </div>
+           
+    </div>
+        {{ form_widget(form) }}
+     <input type="submit" value="Create"  class="btn btn-primary" />
+    {{ form_end(form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('campagne_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+</div>   
+  </div> 
+</div>
+
+{% endblock %}

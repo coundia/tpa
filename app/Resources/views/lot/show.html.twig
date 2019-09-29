@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Lot</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Identifiant</th>
+                <td>{{ lot.identifiant }}</td>
+            </tr>
+            <tr>
+                <th>Codelot</th>
+                <td>{{ lot.codeLot }}</td>
+            </tr>
+            <tr>
+                <th>Nlotrecolte</th>
+                <td>{{ lot.nLotRecolte }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecageots</th>
+                <td>{{ lot.nombreCageots }}</td>
+            </tr>
+            <tr>
+                <th>Poidsbrut</th>
+                <td>{{ lot.poidsBrut }}</td>
+            </tr>
+            <tr>
+                <th>Poidsnet</th>
+                <td>{{ lot.poidsNet }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('lot_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('lot_edit', { 'identifiant': lot.identifiant }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

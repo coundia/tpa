@@ -6,44 +6,44 @@ Morris.Area({
         element: 'morris-area-chart',
         data: [{
             period: '2010',
-            iphone: 50,
-            ipad: 80,
-            itouch: 20
+            arachide: 50,
+            mangue: 80,
+            ble: 20
         }, {
             period: '2011',
-            iphone: 130,
-            ipad: 100,
-            itouch: 80
+            arachide: 130,
+            mangue: 100,
+            ble: 80
         }, {
             period: '2012',
-            iphone: 80,
-            ipad: 60,
-            itouch: 70
+            arachide: 80,
+            mangue: 60,
+            ble: 70
         }, {
             period: '2013',
-            iphone: 70,
-            ipad: 200,
-            itouch: 140
+            arachide: 70,
+            mangue: 200,
+            ble: 140
         }, {
             period: '2014',
-            iphone: 180,
-            ipad: 150,
-            itouch: 140
+            arachide: 180,
+            mangue: 150,
+            ble: 140
         }, {
             period: '2015',
-            iphone: 105,
-            ipad: 100,
-            itouch: 80
+            arachide: 105,
+            mangue: 100,
+            ble: 80
         },
          {
             period: '2016',
-            iphone: 250,
-            ipad: 150,
-            itouch: 200
+            arachide: 250,
+            mangue: 150,
+            ble: 200
         }],
         xkey: 'period',
-        ykeys: ['iphone', 'ipad', 'itouch'],
-        labels: ['iPhone', 'iPad', 'iPod Touch'],
+        ykeys: ['arachide', 'mangue', 'ble'],
+        labels: ['arachide', 'mangue', 'ble'],
         pointSize: 3,
         fillOpacity: 0,
         pointStrokeColors:['#aec9cb', '#cbb2ae', '#85b4d0'],

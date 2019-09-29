@@ -1,0 +1,96 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * InspectionMangue
+ *
+ * @ORM\Table(name="inspection_mangue", indexes={@ORM\Index(name="IDX_6AC7E186A222637", columns={"conditionnement_id"})})
+ * @ORM\Entity
+ */
+class InspectionMangue
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date", type="string", length=20, nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="referenceNotification", type="string", length=20, nullable=true)
+     */
+    private $referencenotification;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="exportateur", type="string", length=20, nullable=true)
+     */
+    private $exportateur;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="numeroEnregistrement", type="string", length=20, nullable=true)
+     */
+    private $numeroenregistrement;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="motifNotification", type="string", length=50, nullable=true)
+     */
+    private $motifnotification;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="quantite", type="string", length=50, nullable=true)
+     */
+    private $quantite;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="refCertifPhyto", type="string", length=50, nullable=true)
+     */
+    private $refcertifphyto;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="refFichInspection", type="string", length=50, nullable=true)
+     */
+    private $reffichinspection;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="equipeInvestig", type="string", length=50, nullable=true)
+     */
+    private $equipeinvestig;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="conditionnement_id", type="integer", nullable=true)
+     */
+    private $conditionnementId;
+
+
+}
+

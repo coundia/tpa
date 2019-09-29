@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gestionqualites list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Systemgesqual</th>
+                <th>Gestioninterne</th>
+                <th>Consultant</th>
+                <th>Autre</th>
+                <th>Noteautre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gestionQualite in gestionQualites %}
+            <tr>
+                <td><a href="{{ path('gestionqualite_show', { 'id': gestionQualite.id }) }}">{{ gestionQualite.id }}</a></td>
+                <td>{{ gestionQualite.systemgesqual }}</td>
+                <td>{{ gestionQualite.gestioninterne }}</td>
+                <td>{{ gestionQualite.consultant }}</td>
+                <td>{{ gestionQualite.autre }}</td>
+                <td>{{ gestionQualite.noteautre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('gestionqualite_show', { 'id': gestionQualite.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('gestionqualite_edit', { 'id': gestionQualite.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gestionqualite_new') }}">Create a new gestionQualite</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <div class="col-md-6">
+        <div class="white-box">
+
+            <div class="row">
+                <div class="col-sm-12 col-xs-12">
+                    {% form_theme form '/bootstrap_3_layout.html.twig' %}
+                    {{ form_start(form,{'attr':{'role':'form','class':'registration-form'}}) }}
+
+
+                  {#{{ form_widget(form.username) }}#}
+                 {# {{ form_widget(form.password) }}
+                  {{ form_widget(form.plainPassword) }}#}
+
+                        <div class="text-right">
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Envoyer</button>
+                            <button type="submit" class="btn btn-inverse waves-effect waves-light">Annuler</button>
+                        </div>
+                 
+
+
+                    {{ form_end(form) }}
+                    {#</form>#}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="white-box">
+            <h2 class="box-title m-b-0">
+                <li>
+                    <a href="{{ path('utilisateur_index') }}">Retour à la liste</a>
+                </li>
+
+            </h2>
+
+        </div>
+    </div>
+
+    <ul>
+
+    </ul>
+{% endblock %}

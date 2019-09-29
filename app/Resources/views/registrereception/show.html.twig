@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registrereception</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Ordrearrive</th>
+                <td>{{ registreReception.ordreArrive }}</td>
+            </tr>
+            <tr>
+                <th>Parcelleorigine</th>
+                <td>{{ registreReception.parcelleOrigine }}</td>
+            </tr>
+            <tr>
+                <th>Daterecolte</th>
+                <td>{% if registreReception.dateRecolte %}{{ registreReception.dateRecolte|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Variete</th>
+                <td>{{ registreReception.variete }}</td>
+            </tr>
+            <tr>
+                <th>Nombrecageots</th>
+                <td>{{ registreReception.nombreCageots }}</td>
+            </tr>
+            <tr>
+                <th>Poidsbrut</th>
+                <td>{{ registreReception.poidsBrut }}</td>
+            </tr>
+            <tr>
+                <th>Poidsnet</th>
+                <td>{{ registreReception.poidsNet }}</td>
+            </tr>
+            <tr>
+                <th>Codeattribue</th>
+                <td>{{ registreReception.codeAttribue }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registrereception_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('registrereception_edit', { 'ordreArrive': registreReception.ordreArrive }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registrereceptions list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Ordrearrive</th>
+                <th>Parcelleorigine</th>
+                <th>Daterecolte</th>
+                <th>Variete</th>
+                <th>Nombrecageots</th>
+                <th>Poidsbrut</th>
+                <th>Poidsnet</th>
+                <th>Codeattribue</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registreReception in registreReceptions %}
+            <tr>
+                <td><a href="{{ path('registrereception_show', { 'ordreArrive': registreReception.ordreArrive }) }}">{{ registreReception.ordreArrive }}</a></td>
+                <td>{{ registreReception.parcelleOrigine }}</td>
+                <td>{% if registreReception.dateRecolte %}{{ registreReception.dateRecolte|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ registreReception.variete }}</td>
+                <td>{{ registreReception.nombreCageots }}</td>
+                <td>{{ registreReception.poidsBrut }}</td>
+                <td>{{ registreReception.poidsNet }}</td>
+                <td>{{ registreReception.codeAttribue }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('registrereception_show', { 'ordreArrive': registreReception.ordreArrive }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('registrereception_edit', { 'ordreArrive': registreReception.ordreArrive }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registrereception_new') }}">Create a new registreReception</a>
+        </li>
+    </ul>
+{% endblock %}

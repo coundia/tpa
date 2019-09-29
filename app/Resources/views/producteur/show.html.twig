@@ -1,104 +1,429 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Data Table</h4> </div>
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
-            <ol class="breadcrumb">
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Table</a></li>
-                <li class="active">Data Table</li>
-            </ol>
-        </div>
-        <!-- /.col-lg-12 -->
+            <h4 class="page-title"></h4> </div>
+
     </div>
+
     <div class="row">
         <div class="col-sm-12">
-            <div class="white-box">
-                <h3 class="box-title m-b-0">Table Producteur</h3>
-                <p class="text-muted m-b-30">Liste des producteurs inscrits</p>
-                <div class="table-responsive">
-                    <table id="myTable" class="table table-striped">
-                        <thead>
-                        <tr>
-                            <th>Id</th>
-                            <th>Nom</th>
-                            <th>Prenom</th>
-                            <th>Statutlegal</th>
-                            <th>Ninea</th>
-                            <th>Siegesocial</th>
-                            <th>Region</th>
-                            <th>Ville</th>
-                            <th>Departement</th>
-                            <th>Commune</th>
-                            <th>Arrondissement</th>
-                            <th>Village</th>
-                            <th>Numtel</th>
-                            <th>Numfixe</th>
-                            <th>Fax</th>
-                            <th>Email</th>
-                            <th>Addresse</th>
-                            <th>Prenomrep</th>
-                            <th>Nomrep</th>
-                            <th>Addresserep</th>
-                            <th>Fonctionrep</th>
-                            <th>Mobilerep_</th>
-                            <th>Fixerep</th>
-                            <th>Faxerep</th>
-                            <th>Emailrep</th>
-                            <th>Nommanager</th>
-                            <th>Prenommanager</th>
-                            <th>Titremanager</th>
-                            <th>Telmanager</th>
-                            <th>Emailmanager</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        {% for producteur in producteur %}
-                            <tr>
-                                <td>{{ producteur.nom }}</td>
-                                <td>{{ producteur.prenom }}</td>
-                                <td>{{ producteur.statutLegal }}</td>
-                                <td>{{ producteur.ninea }}</td>
-                                <td>{{ producteur.siegeSocial }}</td>
-                                <td>{{ producteur.region }}</td>
-                                <td>{{ producteur.ville }}</td>
-                                <td>{{ producteur.departement }}</td>
-                                <td>{{ producteur.commune }}</td>
-                                <td>{{ producteur.arrondissement }}</td>
-                                <td>{{ producteur.village }}</td>
-                                <td>{{ producteur.numTel }}</td>
-                                <td>{{ producteur.numFixe }}</td>
-                                <td>{{ producteur.fax }}</td>
-                                <td>{{ producteur.email }}</td>
-                                <td>{{ producteur.addresse }}</td>
-                                <td>{{ producteur.prenomRep }}</td>
-                                <td>{{ producteur.nomRep }}</td>
-                                <td>{{ producteur.addresseRep }}</td>
-                                <td>{{ producteur.fonctionRep }}</td>
-                                <td>{{ producteur.mobileRep }}</td>
-                                <td>{{ producteur.fixeRep }}</td>
-                                <td>{{ producteur.faxeRep }}</td>
-                                <td>{{ producteur.emailRep }}</td>
-                                <td>{{ producteur.nomManager }}</td>
-                                <td>{{ producteur.prenomManager }}</td>
-                                <td>{{ producteur.titreManager }}</td>
-                                <td>{{ producteur.telManager }}</td>
-                                <td>{{ producteur.emailManager }}</td>
-                            </tr>
-                        {% endfor %}
+            <div class="panel-group wiz-aco" id="accordion" role="tablist" aria-multiselectable="true">
 
-                        </tbody>
-                    </table>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                        <h4 class="panel-primary">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                IDENTIFICATION DE L'OPERATEUR
+                            </a>
+                        </h4> </div>
+                    <div id="collapseOne" class="panel-collapse collapse in panel-body" role="tabpanel" aria-labelledby="headingOne">
+                        <div class="panel-body">
+
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Nom:</label>
+                                        {{ producteur.nom}}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <!--/span-->
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Prénom:</label>
+                                        {{ producteur.prenom}}
+                                        <span class="help-block">  </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Statut Légal :</label>
+                                        {{ producteur.statutLegal}}
+                                        <span class="help-block">  </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Addresse : </label>
+                                        {{ producteur.addresse }}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">NINEA :</label>
+                                        {{producteur.ninea}}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Siège Social :</label>
+                                        {{ producteur.siegeSocial }}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Règion :</label>
+                                        {{ producteur.region }}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Ville :</label>
+                                        {{ producteur.ville}}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Département :</label>
+                                        {{ producteur.departement }}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Commune :</label>
+                                        {{ producteur.commune}}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Arrondissement :</label>
+                                        {{ producteur.arrondissement }}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Village :</label>
+                                        {{ producteur.village }}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Mobile :</label>
+                                        {{ producteur.numTel}}
+                                        <span class="help-block">  </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Fixe :</label>
+                                        {{ producteur.numFixe}}
+                                        <span class="help-block"> </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Fax :</label>
+                                        {{ producteur.fax }}
+                                        <span class="help-block">  </span> </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                        <label class="control-label">Email :</label>
+                                        {{ producteur.email }}
+                                        <span class="help-block">  </span> </div>
+                                </div>
+                              {#  <div class="col-md-2">
+                                    <div class="form-group ">
+                                        <h5 class="m-t-30 m-b-10">Etes vous le représentant légal ?</h5>
+                                        <select class="selectpicker repLegal" data-style="form-control">
+                                            <option>Non</option>
+                                            <option>Oui</option>
+                                        </select>
+                                    </div>
+                                </div>#}
+
+
+                                <!--/span-->
+                            </div>
+
+
+                        </div>
+                    </div>
                 </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Représentant Légal
+                            </a>
+                        </h4> </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                        <div class="panel-body">
+
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Nom du Représentant :</label>
+                                    {{ producteur.nomRep }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Prénom Représentant :</label>
+                                    {{ producteur.prenomRep }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Adresse du Représentant :</label>
+                                    {{ producteur.addresseRep }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Fonction du Représentant :</label>
+                                    {{ producteur.fonctionRep }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Téléphone Mobile :</label>
+                                    {{ producteur.mobileRep }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Téléphone Fixe du Représentant :</label>
+                                    {{ producteur.fixeRep}}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Faxe du Representant : </label>
+                                    {{ producteur.faxeRep}}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Mail du Representant : </label>
+                                    {{ producteur.emailRep }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingThree">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Responsable ou Manager
+                            </a>
+                        </h4> </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                        <div class="panel-body">
+
+
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Nom du Manager :</label>
+                                    {{ producteur.nomManager}}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Prénom du Manager : </label>
+                                    {{ producteur.prenomManager }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+
+
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Titre du Manager : </label>
+                                    {{ producteur.titreManager}}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Téléphone du Manager : </label>
+                                    {{ producteur.telManager}}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label class="control-label">Email du Manager : </label>
+                                    {{ producteur.emailManager }}
+                                    <span class="help-block">  </span> </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingFour">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Activité de Production
+                            </a>
+                        </h4> </div>
+                    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                        <div class="panel-body">
+                            <table id="" style="width: 100%;">
+                                <tr><td>     <h3 class="box-title m-b-0">Production</h3></td></tr>
+                                <tr style="width: 100%;">
+
+
+
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.vulgarisation }}
+                                            <label for="checkbox0"> Vulgarisation : </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.regie }}
+                                            <label for="checkbox0"> Régie : </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note : </label>
+                                            {{ producteur.notePproduction}}
+
+                                        </div>
+
+                                    </td>
+                                </tr>
+                                <tr><td></td></tr>
+                                <tr><td>     <h3 class="box-title m-b-0">Conditionnement</h3></td></tr>
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.bordChamp }}
+                                            <label for="checkbox0"> Bord de Champs :</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.enStation }}
+                                            <label for="checkbox0"> En Station : </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note : </label>
+                                            {{ producteur.noteCond }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr><td>     <h3 class="box-title m-b-0">Exportation :</h3></td></tr>
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.europe }}
+                                            <label for="checkbox0"> Europe :</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.autresr }}
+                                            <label for="checkbox0"> Autres : </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note : </label>
+                                            {{ producteur.noteExportation }}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr><td>     <h3 class="box-title m-b-0" >Prestation :</h3></td></tr>
+                                <tr style="width: 100%;">
+
+                                    <td class="" style="width: 30%; ">
+                                        <div class="checkbox checkbox-success">
+                                            {{ producteur.exportation}}
+                                            <label for="checkbox0"> Exportation :</label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 30%; ">
+
+                                        <div class="checkbox checkbox-success">
+
+                                            {{ producteur.conditionnement}}
+                                            <label for="checkbox0">Conditionnement : </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 40%; ">
+                                        <div>
+                                            <label for="text"> Note : </label>
+                                            {{ producteur.notePprestation }}
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingFive">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Site de Production
+                            </a>
+                        </h4> </div>
+                    <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <div class="form-group ">
+                                    <label for="nb_spec" class="control-label"> Nombre de spéculation : </label>
+                                    <input id="nb_spec" name ="nb_spec" type="number">
+                                    <span class="help-block"> </span> </div>
+                            </div>
+                            <table id="mainTable" class="table editable-table table-bordered table-striped m-b-0">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingSix">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                Calendrier de Production
+                            </a>
+                        </h4> </div>
+                    <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                        <div class="panel-body">
+                            {# <div class="col-md-6">
+                                 <div class="form-group ">
+                                     <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
+                                     <input id="nb_spec" name ="nb_spec" type="number">
+                                     <span class="help-block"> </span> </div>
+                             </div>#}
+
+                            <table id="mainTable1" class="table editable-table table-bordered table-striped m-b-0">
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-success">
+                    <div class="panel-heading" role="tab" id="headingSeven">
+                        <h4 class="panel-primary">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                Site de Conditionnement
+                            </a>
+                        </h4> </div>
+                    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                        <div class="panel-body">
+
+                            <table id="mainTable2" class="table editable-table table-bordered table-striped m-b-0">
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     </div>
 
-    <!-- /.row -->
-    <!-- .right-sidebar -->
 {% endblock %}
-

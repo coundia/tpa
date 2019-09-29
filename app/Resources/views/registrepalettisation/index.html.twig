@@ -1,0 +1,59 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Registrepalettisations list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Npalette</th>
+                <th>Nbrecartons</th>
+                <th>Codelot</th>
+                <th>Totalcartons</th>
+                <th>Heureentreechfroide</th>
+                <th>Heuresortiechfroide</th>
+                <th>Destinataire</th>
+                <th>Parckingliste</th>
+                <th>Paragraphe</th>
+                <th>Produitcalibre</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registrePalettisation in registrePalettisations %}
+            <tr>
+                <td><a href="{{ path('registrepalettisation_show', { 'id': registrePalettisation.id }) }}">{{ registrePalettisation.id }}</a></td>
+                <td>{% if registrePalettisation.date %}{{ registrePalettisation.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ registrePalettisation.nPalette }}</td>
+                <td>{{ registrePalettisation.nbreCartons }}</td>
+                <td>{{ registrePalettisation.codeLot }}</td>
+                <td>{{ registrePalettisation.totalCartons }}</td>
+                <td>{{ registrePalettisation.heureEntreeChFroide }}</td>
+                <td>{{ registrePalettisation.heureSortieChFroide }}</td>
+                <td>{{ registrePalettisation.destinataire }}</td>
+                <td>{{ registrePalettisation.parckingListe }}</td>
+                <td>{{ registrePalettisation.paragraphe }}</td>
+                <td>{{ registrePalettisation.produitCalibre }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('registrepalettisation_show', { 'id': registrePalettisation.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('registrepalettisation_edit', { 'id': registrePalettisation.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('registrepalettisation_new') }}">Create a new registrePalettisation</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Système de Gestion intégré des Exportations Agricoles</title>
+
+    <!-- Google fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,800' rel='stylesheet' type='text/css'>
+
+    <!-- font awesome -->
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- bootstrap -->
+    <link href="{{ asset('assets/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/animate/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('images/favicon.png') }}" rel="shortcut icon" type="image/x-icon">
+    <link href="{{ asset('images/favicon.png') }}" rel=" icon" type="image/x-icon">
+
+    <!-- favicon -->
+    <link href="{{ asset('assets/style.css') }}" rel="stylesheet">
+
+
+</head>
+
+<body id="home">
+<!-- header -->
+
+
+
+<!-- intro -->
+<div class="intro">
+
+        <div class="ab-wrap">
+            <div class="fullpage">
+                <div class="ab-center">
+                    <div class="wowload fadeInDown">
+                        <img src="{{ asset('images/log.jpg') }}" class="wowload rotateIn">
+                        <h1 class="title">Système de Gestion intégré des Exportations Agricoles</h1>
+                        <p><br>
+                            Inscrivez vous ou acceder à votre Compte</p>
+                        <form class="form-inline">
+                            <button type="submit" class="btn btn-success">
+                                <a href="{{ path('producteur_new') }}">Inscription</a></button>
+                            <button type="submit" class="btn btn-success">
+                                <a href="{{ path('fos_user_security_login') }}">Connexion</a></button>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+    {#<a href="#about" class="anchor scroll wowload fadeInDownBig"><i class="fa fa-angle-down  fa-4x"></i></a>#}
+
+</div>
+<!-- intro -->
+
+
+<!-- about -->
+{#<div class="about spacer" id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 wowload fadeInLeftBig">
+                <h3>A propos</h3>
+                <p>
+                    La traçabilité agroalimentaire est l'application des principes de traçabilité à la filière agroalimentaire, afin d'atteindre des objectifs de sécurité sanitaire des aliments.
+
+                    Elle vise à mieux qualifier les produits mis sur le marché, à une meilleure maîtrise des dangers et à abaisser les niveaux de risques. La traçabilité est en effet nécessaire pour remonter à la source d'un problème d'intoxication alimentaire ou d'une fraude.
+
+                    Elle est de plus en plus imposée par les certifications.</p>
+                <a href="#"><img src="{{ asset('images/app-store.png') }}"></a> <a href="#"><img src="{{ asset('images/google-play.png') }}"></a>
+            </div>
+            <div class="col-md-6 text-center"><a href="http://socialsteak.com/" target="_blank" title="credit www.socialsteak.com"><img src="images/iphone.png" class="img-responsive wowload fadeInUp" alt="http://socialsteak.com/"></a></div>
+        </div>
+    </div>
+</div>#}
+<!-- about -->
+
+
+
+<!-- portfolio -->
+{#<div class="portfolio">
+    <div class="spacer">
+        <div class="container">
+            <h2 class="text-center">Screenshots</h2>
+            <div id="carousel-about" class="carousel slide wowload fadeInUp" data-ride="carousel">
+                <div class="carousel-inner" role="listbox">
+                    <div class="item active"><img src="{{ asset('images/photos/1.jpg') }}" class="img-responsive"></div>
+                    <div class="item"><img src="{{ asset('images/photos/2.jpg') }}" class="img-responsive"></div>
+                    <div class="item"><img src="{{ asset('images/photos/3.jpg') }}" class="img-responsive"></div>
+                </div>
+                <!-- Controls -->
+                <a class="left carousel-control" href="#carousel-about" role="button" data-slide="prev"><i class="fa fa-3x fa-angle-left"></i></a>
+                <a class="right carousel-control" href="#carousel-about" role="button" data-slide="next"><i class="fa fa-3x fa-angle-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>#}
+<!-- portfolio -->
+
+
+<!-- contact -->
+{#/*  <div class="contact wowload fadeIn">
+
+    #}{#<div class="container">
+        <h2 class="text-center">Contact us</h2>
+        <div class="row">
+            <div class="col-sm-6 col-sm-offset-3">
+                <form>
+                    <div class="form-group">
+                        <input id="name" name="name" type="text" class="form-control" placeholder="Name">
+                    </div>
+                    <div class="form-group">
+                        <input id="email" name="email" type="email" class="form-control" placeholder="Email address">
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" class="form-control" placeholder="Your Message" rows="5"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-warning"><i class="fa fa-send-o"></i> Submit</button>
+                </form>
+
+            </div>
+        </div>
+    </div>#}{#
+</div> */#}
+<!-- contact -->
+
+
+<!-- footer -->
+<div class="footer text-center wowload fadeIn">
+    <div class="social">
+        <a href="#"><i class="fa fa-facebook fa-2x"></i></a>
+        <a href="#"><i class="fa fa-instagram fa-2x"></i></a>
+        <a href="#"><i class="fa fa-twitter fa-2x"></i></a>
+        <a href="#"><i class="fa fa-pinterest fa-2x"></i></a>
+    </div>
+    {#Powered by: <a href="http://thebootstrapthemes.com">Nan NDIAYE</a>#}
+</div>
+<!-- footer -->
+
+
+{#<a href="#home" class="gototop scroll"><i class="fa fa-angle-up  fa-3x"></i></a>#}
+
+<!-- jquery -->
+<script src="{{ asset('assets/jquery.js') }}"></script>
+<script src="{{ asset('assets/wow/wow.min.js') }}"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.js') }}"></script>
+<!-- wow script -->
+<script src="{{ asset('assets/mobile/touchSwipe.min.js') }}"></script>
+<script src="{{ asset('assets/respond/respond.js') }}"></script>
+<script src="{{ asset('assets/bootstrap/js/bootstrap.js') }}"></script>
+<!-- jquery mobile -->
+<script src="assets/mobile/touchSwipe.min.js"></script>
+<script src="assets/script.js"></script>
+
+
+<!-- custom script -->
+
+
+</body>
+</html>

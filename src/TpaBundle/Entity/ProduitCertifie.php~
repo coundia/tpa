@@ -1,0 +1,120 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * ficheOperateur
+ *
+ * @ORM\Table(name="ficheOperateur")
+ * @ORM\Entity(repositoryClass="TpaBundle\Repository\ficheOperateurRepository")
+ */
+
+class ProduitCertifie
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="produitCertifie", type="string", nullable=true)
+     */
+    private $produitCertifie;
+
+    /**
+     * Many Users have Many Groups.
+     * @ORM\ManyToMany(targetEntity="TpaBundle\Entity\ficheOperateur")
+     * @ORM\JoinTable(name="produitcertifie",
+     *      joinColumns={@ORM\JoinColumn(name="produit_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="fiche_operateur_id", referencedColumnName="id")}
+     *      )
+     */
+    private $ficheOperateur;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->producteur = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+
+    /**
+     * Add ficheOperateur
+     *
+     * @param \TpaBundle\Entity\ficheOperateur $ficheOperateur
+     *
+     * @return ProduitCertifie
+     */
+    public function addFicheOperateur(\TpaBundle\Entity\ficheOperateur $ficheOperateur)
+    {
+        $this->ficheOperateur[] = $ficheOperateur;
+
+        return $this;
+    }
+
+    /**
+     * Remove ficheOperateur
+     *
+     * @param \TpaBundle\Entity\ficheOperateur $ficheOperateur
+     */
+    public function removeFicheOperateur(\TpaBundle\Entity\ficheOperateur $ficheOperateur)
+    {
+        $this->ficheOperateur->removeElement($ficheOperateur);
+    }
+
+    /**
+     * Get ficheOperateur
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getFicheOperateur()
+    {
+        return $this->ficheOperateur;
+    }
+
+    /**
+     * Set produitCertifie
+     *
+     * @param string $produitCertifie
+     *
+     * @return ProduitCertifie
+     */
+    public function setProduitCertifie($produitCertifie)
+    {
+        $this->produitCertifie = $produitCertifie;
+
+        return $this;
+    }
+
+    /**
+     * Get produitCertifie
+     *
+     * @return string
+     */
+    public function getProduitCertifie()
+    {
+        return $this->produitCertifie;
+    }
+}

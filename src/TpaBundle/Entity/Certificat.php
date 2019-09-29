@@ -1,83 +1,64 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: LENOVO
- * Date: 18/05/2018
- * Time: 11:06
- */
 
 namespace TpaBundle\Entity;
+
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * Certificat
  *
- * @ORM\Table(name="certificat")
- * @ORM\Entity(repositoryClass="TpaBundle\Repository\CertificatRepository")
+ * @ORM\Table(name="certificat", indexes={@ORM\Index(name="IDX_27448F77AB9BB300", columns={"producteur_id"})})
+ * @ORM\Entity
  */
-
 class Certificat
 {
     /**
-     * @ORM\Column(type="string")
+     * @var integer
      *
-     * @Assert\NotBlank(message="Please, upload the product brochure as a PDF file.")
-     * @Assert\File(mimeTypes={ "certificat/pdf" })
-     */
-    private $brochure;
-
-    public function getBrochure()
-    {
-        return $this->brochure;
-    }
-
-    public function setBrochure($brochure)
-    {
-        $this->brochure = $brochure;
-
-        return $this;
-    }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="Producteur")
-     * @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
-     */
-    private $producteur;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="numero_cert", type="integer", length=50, nullable=true)
+     * @ORM\Column(name="numero_cert", type="integer", nullable=true)
      */
-    private $numero_cert;
+    private $numeroCert;
+
     /**
-     * @var date
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_cert", type="date", length=50, nullable=true)
+     * @ORM\Column(name="date_cert", type="date", nullable=true)
      */
-    private $date_cert;
+    private $dateCert;
+
     /**
-     * @var date
+     * @var \DateTime
      *
-     * @ORM\Column(name="date_exp", type="date", length=100, nullable=true)
+     * @ORM\Column(name="date_exp", type="date", nullable=true)
      */
-    private $date_exp;
+    private $dateExp;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="certificat", type="string")
+     * @ORM\Column(name="certificat", type="string", length=255, nullable=true)
      */
     private $certificat;
+
+    /**
+     * @var \Producteur
+     *
+     * @ORM\ManyToOne(targetEntity="Producteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
+     * })
+     */
+    private $producteur;
+
 
 
     /**
@@ -99,7 +80,7 @@ class Certificat
      */
     public function setNumeroCert($numeroCert)
     {
-        $this->numero_cert = $numeroCert;
+        $this->numeroCert = $numeroCert;
 
         return $this;
     }
@@ -111,7 +92,7 @@ class Certificat
      */
     public function getNumeroCert()
     {
-        return $this->numero_cert;
+        return $this->numeroCert;
     }
 
     /**
@@ -123,7 +104,7 @@ class Certificat
      */
     public function setDateCert($dateCert)
     {
-        $this->date_cert = $dateCert;
+        $this->dateCert = $dateCert;
 
         return $this;
     }
@@ -135,7 +116,7 @@ class Certificat
      */
     public function getDateCert()
     {
-        return $this->date_cert;
+        return $this->dateCert;
     }
 
     /**
@@ -147,7 +128,7 @@ class Certificat
      */
     public function setDateExp($dateExp)
     {
-        $this->date_exp = $dateExp;
+        $this->dateExp = $dateExp;
 
         return $this;
     }
@@ -159,7 +140,7 @@ class Certificat
      */
     public function getDateExp()
     {
-        return $this->date_exp;
+        return $this->dateExp;
     }
 
     /**

@@ -2,15 +2,15 @@
 
 {% block body %}
     <div class="row bg-title">
-        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-            <h4 class="page-title">Data Table</h4> </div>
-        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+    {#    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title">Data Table</h4> </div>#}
+        {#<div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
             <ol class="breadcrumb">
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#">Table</a></li>
                 <li class="active">Data Table</li>
             </ol>
-        </div>
+        </div>#}
         <!-- /.col-lg-12 -->
     </div>
 <div class="row">
@@ -35,14 +35,7 @@
                 <td>{{ demande.typeDemande }}</td>
                 <td>{% if demande.dateDepot %}{{ demande.dateDepot|date('Y-m-d H:i:s') }}{% endif %}</td>
                 <td>
-                    <ul>
-                        <li>
-                            <a href="{{ path('demande_show', { 'id': demande.id }) }}">show</a>
-                        </li>
-                        <li>
-                            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">edit</a>
-                        </li>
-                    </ul>
+                            <a  class="btn btn-danger" href="{{ path('demande_show', { 'id': demande.id }) }}">Détails</a>                       
                 </td>
             </tr>
         {% endfor %}

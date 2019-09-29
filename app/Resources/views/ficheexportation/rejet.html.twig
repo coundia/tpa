@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<div class="row">
+
+<div class="col-sm-12">
+<div class="white-box">
+{% if statut==1 %}
+    <h1 class="box-title m-b-0 text-center">Liste des exportations réceptionnées</h1>
+{% else %}
+   <h1 class="box-title m-b-0 text-center">Liste des exportations rejetées</h1>
+{% endif %}
+<div class="table-responsive">
+
+  <br/><br/>
+        
+    <table  id="myTable" class="table table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>Id</th>
+                <th>Numero exporation</th>
+                <th>Date exportation</th>
+                <th>Date exportation</th>
+                <th>Destination</th>
+                <th>Nom compagnie</th>
+                <th>Variete</th>
+                <th>Commentaires</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for ficheExportation in ficheExportations %}
+            <tr>
+                <td><a href="{{ path('ficheexportation_show', { 'id': ficheExportation.id }) }}">{{ ficheExportation.id }}</a></td>
+                <td>{{ ficheExportation.numeroExporation }}</td>
+                <td>{% if ficheExportation.dateExportation %}{{ ficheExportation.dateExportation|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if ficheExportation.dateReception %}{{ ficheExportation.dateReception|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ ficheExportation.paysExportation }}</td>
+                <td>{{ ficheExportation.nomCompagnie }}</td>
+                <td>{{ ficheExportation.variete }}</td>
+                <td>{{ ficheExportation.commentaire }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+ </div>   
+  </div> 
+</div>
+    
+{% endblock %}

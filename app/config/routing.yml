@@ -1,3 +1,8 @@
+nos_formulaires:
+    resource: "@NosFormulairesBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
 tpa:
     resource: "@TpaBundle/Controller/"
     type:     annotation

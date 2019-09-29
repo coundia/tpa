@@ -8,16 +8,16 @@ use Doctrine\ORM\Mapping as ORM;
  * Producteur
  *
  * @ORM\Table(name="producteur")
- * @ORM\Entity(repositoryClass="TpaBundle\Repository\ProducteurRepository")
+ * @ORM\Entity
  */
 class Producteur
 {
     /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
@@ -27,12 +27,7 @@ class Producteur
      * @ORM\Column(name="nom", type="string", length=100, nullable=true)
      */
     private $nom;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="date", type="datetime", length=100, nullable=true)
-     */
-    private $date;
+
     /**
      * @var string
      *
@@ -43,200 +38,193 @@ class Producteur
     /**
      * @var string
      *
+     * @ORM\Column(name="addresse", type="string", length=255, nullable=true)
+     */
+    private $addresse;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="statutLegal", type="string", length=255, nullable=true)
      */
-    private $statutLegal;
+    private $statutlegal;
+
     /**
      * @var string
      *
      * @ORM\Column(name="ninea", type="string", length=255, nullable=true)
      */
     private $ninea;
+
     /**
      * @var string
      *
      * @ORM\Column(name="siegeSocial", type="string", length=255, nullable=true)
      */
-    private $siegeSocial;
+    private $siegesocial;
+
     /**
      * @var string
      *
      * @ORM\Column(name="region", type="string", length=255, nullable=true)
      */
     private $region;
+
     /**
      * @var string
      *
      * @ORM\Column(name="ville", type="string", length=255, nullable=true)
      */
     private $ville;
+
+
     /**
      * @var string
      *
      * @ORM\Column(name="departement", type="string", length=255, nullable=true)
      */
     private $departement;
+
     /**
      * @var string
      *
      * @ORM\Column(name="commune", type="string", length=255, nullable=true)
      */
     private $commune;
+
     /**
      * @var string
      *
      * @ORM\Column(name="arrondissement", type="string", length=255, nullable=true)
      */
     private $arrondissement;
+
     /**
      * @var string
      *
      * @ORM\Column(name="village", type="string", length=255, nullable=true)
      */
     private $village;
+
     /**
      * @var string
      *
      * @ORM\Column(name="numTel", type="string", length=255, nullable=true)
      */
-    private $numTel;
+    private $numtel;
+
     /**
      * @var string
      *
      * @ORM\Column(name="numFixe", type="string", length=255, nullable=true)
      */
-    private $numFixe;
+    private $numfixe;
+
     /**
      * @var string
      *
      * @ORM\Column(name="fex", type="string", length=255, nullable=true)
      */
-    private $fax;
+    private $fex;
+
     /**
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255, nullable=true)
      */
     private $email;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="addresse", type="string", length=255, nullable=true)
-     */
-    private $addresse;
-//    Partie du representant legal
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenomRep", type="string", length=255, nullable=true)
      */
-    private $prenomRep;
+    private $prenomrep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nomRep", type="string", length=255, nullable=true)
      */
-    private $nomRep;
+    private $nomrep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="addresseRep", type="string", length=255, nullable=true)
      */
-    private $addresseRep;
+    private $addresserep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fonctionRep", type="string", length=255, nullable=true)
      */
-    private $fonctionRep;
+    private $fonctionrep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="mobileRep", type="string", length=255, nullable=true)
      */
-    private $mobileRep_;
+    private $mobilerep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="fixeRep", type="string", length=255, nullable=true)
      */
-    private $fixeRep;
+    private $fixerep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="faxeRep", type="string", length=255, nullable=true)
      */
-    private $faxeRep;
+    private $faxerep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="emailRep", type="string", length=255, nullable=true)
      */
-    private $emailRep;
-//    Partie responsable manager
+    private $emailrep;
 
     /**
      * @var string
      *
      * @ORM\Column(name="nomManager", type="string", length=255, nullable=true)
      */
-    private $nomManager;
+    private $nommanager;
 
     /**
      * @var string
      *
      * @ORM\Column(name="prenomManager", type="string", length=255, nullable=true)
      */
-    private $prenomManager;
+    private $prenommanager;
 
     /**
      * @var string
      *
      * @ORM\Column(name="titreManager", type="string", length=255, nullable=true)
      */
-    private $titreManager;
+    private $titremanager;
 
     /**
      * @var string
      *
      * @ORM\Column(name="telManager", type="string", length=255, nullable=true)
      */
-    private $telManager;
+    private $telmanager;
 
     /**
      * @var string
      *
      * @ORM\Column(name="emailManager", type="string", length=255, nullable=true)
      */
-    private $emailManager;
-    //Activités
+    private $emailmanager;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="noteProduction", type="string", length=255, nullable=true)
-     */
-    private $notePproduction;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="noteExportation", type="string", length=255, nullable=true)
-     */
-    private $noteExportation;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="noteCond", type="string", length=255, nullable=true)
-     */
-    private $noteCond;
     /**
      * @var string
      *
@@ -254,13 +242,6 @@ class Producteur
     /**
      * @var string
      *
-     * @ORM\Column(name="notePrestation", type="string", length=255, nullable=true)
-     */
-    private $notePprestation;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="vulgarisation", type="string", length=255, nullable=true)
      */
     private $vulgarisation;
@@ -270,7 +251,7 @@ class Producteur
      *
      * @ORM\Column(name="bordChamp", type="string", length=255, nullable=true)
      */
-    private $bordChamp;
+    private $bordchamp;
 
     /**
      * @var string
@@ -291,22 +272,22 @@ class Producteur
      *
      * @ORM\Column(name="enStation", type="string", length=255, nullable=true)
      */
-    private $enStation;
+    private $enstation;
 
     /**
      * @var string
      *
      * @ORM\Column(name="autre", type="string", length=255, nullable=true)
      */
-    private $autresr;
-    //gestion de la qualité
- 
+    private $autre;
+
     /**
      * @var string
      *
      * @ORM\Column(name="gestionInterne", type="string", length=255, nullable=true)
      */
-    private $gestionInterne;
+    private $gestioninterne;
+
     /**
      * @var string
      *
@@ -315,9 +296,46 @@ class Producteur
     private $consultant;
 
     /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="datetime", nullable=true)
+     */
+    private $date;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noteProduction", type="string", length=255, nullable=true)
+     */
+    private $noteproduction;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noteExportation", type="string", length=255, nullable=true)
+     */
+    private $noteexportation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="noteCond", type="string", length=255, nullable=true)
+     */
+    private $notecond;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="notePrestation", type="string", length=255, nullable=true)
+     */
+    private $noteprestation;
+
+
+
+    /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -397,27 +415,27 @@ class Producteur
     }
 
     /**
-     * Set statutLegal
+     * Set statutlegal
      *
-     * @param string $statutLegal
+     * @param string $statutlegal
      *
      * @return Producteur
      */
-    public function setStatutLegal($statutLegal)
+    public function setStatutlegal($statutlegal)
     {
-        $this->statutLegal = $statutLegal;
+        $this->statutlegal = $statutlegal;
 
         return $this;
     }
 
     /**
-     * Get statutLegal
+     * Get statutlegal
      *
      * @return string
      */
-    public function getStatutLegal()
+    public function getStatutlegal()
     {
-        return $this->statutLegal;
+        return $this->statutlegal;
     }
 
     /**
@@ -445,27 +463,27 @@ class Producteur
     }
 
     /**
-     * Set siegeSocial
+     * Set siegesocial
      *
-     * @param string $siegeSocial
+     * @param string $siegesocial
      *
      * @return Producteur
      */
-    public function setSiegeSocial($siegeSocial)
+    public function setSiegesocial($siegesocial)
     {
-        $this->siegeSocial = $siegeSocial;
+        $this->siegesocial = $siegesocial;
 
         return $this;
     }
 
     /**
-     * Get siegeSocial
+     * Get siegesocial
      *
      * @return string
      */
-    public function getSiegeSocial()
+    public function getSiegesocial()
     {
-        return $this->siegeSocial;
+        return $this->siegesocial;
     }
 
     /**
@@ -613,75 +631,75 @@ class Producteur
     }
 
     /**
-     * Set numTel
+     * Set numtel
      *
-     * @param string $numTel
+     * @param string $numtel
      *
      * @return Producteur
      */
-    public function setNumTel($numTel)
+    public function setNumtel($numtel)
     {
-        $this->numTel = $numTel;
+        $this->numtel = $numtel;
 
         return $this;
     }
 
     /**
-     * Get numTel
+     * Get numtel
      *
      * @return string
      */
-    public function getNumTel()
+    public function getNumtel()
     {
-        return $this->numTel;
+        return $this->numtel;
     }
 
     /**
-     * Set numFixe
+     * Set numfixe
      *
-     * @param string $numFixe
+     * @param string $numfixe
      *
      * @return Producteur
      */
-    public function setNumFixe($numFixe)
+    public function setNumfixe($numfixe)
     {
-        $this->numFixe = $numFixe;
+        $this->numfixe = $numfixe;
 
         return $this;
     }
 
     /**
-     * Get numFixe
+     * Get numfixe
      *
      * @return string
      */
-    public function getNumFixe()
+    public function getNumfixe()
     {
-        return $this->numFixe;
+        return $this->numfixe;
     }
 
     /**
-     * Set fax
+     * Set fex
      *
-     * @param string $fax
+     * @param string $fex
      *
      * @return Producteur
      */
-    public function setFax($fax)
+    public function setFex($fex)
     {
-        $this->fax = $fax;
+        $this->fex = $fex;
 
         return $this;
     }
 
     /**
-     * Get fax
+     * Get fex
      *
      * @return string
      */
-    public function getFax()
+    public function getFex()
     {
-        return $this->fax;
+        return $this->fex;
     }
 
     /**
@@ -709,339 +727,315 @@ class Producteur
     }
 
     /**
-     * Set prenomRep
+     * Set prenomrep
      *
-     * @param string $prenomRep
+     * @param string $prenomrep
      *
      * @return Producteur
      */
-    public function setPrenomRep($prenomRep)
+    public function setPrenomrep($prenomrep)
     {
-        $this->prenomRep = $prenomRep;
+        $this->prenomrep = $prenomrep;
 
         return $this;
     }
 
     /**
-     * Get prenomRep
+     * Get prenomrep
      *
      * @return string
      */
-    public function getPrenomRep()
+    public function getPrenomrep()
     {
-        return $this->prenomRep;
+        return $this->prenomrep;
     }
 
     /**
-     * Set nomRep
+     * Set nomrep
      *
-     * @param string $nomRep
+     * @param string $nomrep
      *
      * @return Producteur
      */
-    public function setNomRep($nomRep)
+    public function setNomrep($nomrep)
     {
-        $this->nomRep = $nomRep;
+        $this->nomrep = $nomrep;
 
         return $this;
     }
 
     /**
-     * Get nomRep
+     * Get nomrep
      *
      * @return string
      */
-    public function getNomRep()
+    public function getNomrep()
     {
-        return $this->nomRep;
+        return $this->nomrep;
     }
 
     /**
-     * Set addresseRep
+     * Set addresserep
      *
-     * @param string $addresseRep
+     * @param string $addresserep
      *
      * @return Producteur
      */
-    public function setAddresseRep($addresseRep)
+    public function setAddresserep($addresserep)
     {
-        $this->addresseRep = $addresseRep;
+        $this->addresserep = $addresserep;
 
         return $this;
     }
 
     /**
-     * Get addresseRep
+     * Get addresserep
      *
      * @return string
      */
-    public function getAddresseRep()
+    public function getAddresserep()
     {
-        return $this->addresseRep;
+        return $this->addresserep;
     }
 
     /**
-     * Set fonctionRep
+     * Set fonctionrep
      *
-     * @param string $fonctionRep
+     * @param string $fonctionrep
      *
      * @return Producteur
      */
-    public function setFonctionRep($fonctionRep)
+    public function setFonctionrep($fonctionrep)
     {
-        $this->fonctionRep = $fonctionRep;
+        $this->fonctionrep = $fonctionrep;
 
         return $this;
     }
 
     /**
-     * Get fonctionRep
+     * Get fonctionrep
      *
      * @return string
      */
-    public function getFonctionRep()
+    public function getFonctionrep()
     {
-        return $this->fonctionRep;
+        return $this->fonctionrep;
     }
 
     /**
-     * Set mobileRep
+     * Set mobilerep
      *
-     * @param string $mobileRep
+     * @param string $mobilerep
      *
      * @return Producteur
      */
-    public function setMobileRep($mobileRep)
+    public function setMobilerep($mobilerep)
     {
-        $this->mobileRep_ = $mobileRep;
+        $this->mobilerep = $mobilerep;
 
         return $this;
     }
 
     /**
-     * Get mobileRep
+     * Get mobilerep
      *
      * @return string
      */
-    public function getMobileRep()
+    public function getMobilerep()
     {
-        return $this->mobileRep_;
+        return $this->mobilerep;
     }
 
     /**
-     * Set fixeRep
+     * Set fixerep
      *
-     * @param string $fixeRep
+     * @param string $fixerep
      *
      * @return Producteur
      */
-    public function setFixeRep($fixeRep)
+    public function setFixerep($fixerep)
     {
-        $this->fixeRep = $fixeRep;
+        $this->fixerep = $fixerep;
 
         return $this;
     }
 
     /**
-     * Get fixeRep
+     * Get fixerep
      *
      * @return string
      */
-    public function getFixeRep()
+    public function getFixerep()
     {
-        return $this->fixeRep;
+        return $this->fixerep;
     }
 
     /**
-     * Set faxeRep
+     * Set faxerep
      *
-     * @param string $faxeRep
+     * @param string $faxerep
      *
      * @return Producteur
      */
-    public function setFaxeRep($faxeRep)
+    public function setFaxerep($faxerep)
     {
-        $this->faxeRep = $faxeRep;
+        $this->faxerep = $faxerep;
 
         return $this;
     }
 
     /**
-     * Get faxeRep
+     * Get faxerep
      *
      * @return string
      */
-    public function getFaxeRep()
+    public function getFaxerep()
     {
-        return $this->faxeRep;
+        return $this->faxerep;
     }
 
     /**
-     * Set emailRep
+     * Set emailrep
      *
-     * @param string $emailRep
+     * @param string $emailrep
      *
      * @return Producteur
      */
-    public function setEmailRep($emailRep)
+    public function setEmailrep($emailrep)
     {
-        $this->emailRep = $emailRep;
+        $this->emailrep = $emailrep;
 
         return $this;
     }
 
     /**
-     * Get emailRep
+     * Get emailrep
      *
      * @return string
      */
-    public function getEmailRep()
+    public function getEmailrep()
     {
-        return $this->emailRep;
+        return $this->emailrep;
     }
 
     /**
-     * Set nomManager
+     * Set nommanager
      *
-     * @param string $nomManager
+     * @param string $nommanager
      *
      * @return Producteur
      */
-    public function setNomManager($nomManager)
+    public function setNommanager($nommanager)
     {
-        $this->nomManager = $nomManager;
+        $this->nommanager = $nommanager;
 
         return $this;
     }
 
     /**
-     * Get nomManager
+     * Get nommanager
      *
      * @return string
      */
-    public function getNomManager()
+    public function getNommanager()
     {
-        return $this->nomManager;
+        return $this->nommanager;
     }
 
     /**
-     * Set prenomManager
+     * Set prenommanager
      *
-     * @param string $prenomManager
+     * @param string $prenommanager
      *
      * @return Producteur
      */
-    public function setPrenomManager($prenomManager)
+    public function setPrenommanager($prenommanager)
     {
-        $this->prenomManager = $prenomManager;
+        $this->prenommanager = $prenommanager;
 
         return $this;
     }
 
     /**
-     * Get prenomManager
+     * Get prenommanager
      *
      * @return string
      */
-    public function getPrenomManager()
+    public function getPrenommanager()
     {
-        return $this->prenomManager;
+        return $this->prenommanager;
     }
 
     /**
-     * Set titreManager
+     * Set titremanager
      *
-     * @param string $titreManager
+     * @param string $titremanager
      *
      * @return Producteur
      */
-    public function setTitreManager($titreManager)
+    public function setTitremanager($titremanager)
     {
-        $this->titreManager = $titreManager;
+        $this->titremanager = $titremanager;
 
         return $this;
     }
 
     /**
-     * Get titreManager
+     * Get titremanager
      *
      * @return string
      */
-    public function getTitreManager()
+    public function getTitremanager()
     {
-        return $this->titreManager;
+        return $this->titremanager;
     }
 
     /**
-     * Set telManager
+     * Set telmanager
      *
-     * @param string $telManager
+     * @param string $telmanager
      *
      * @return Producteur
      */
-    public function setTelManager($telManager)
+    public function setTelmanager($telmanager)
     {
-        $this->telManager = $telManager;
+        $this->telmanager = $telmanager;
 
         return $this;
     }
 
     /**
-     * Get telManager
+     * Get telmanager
      *
      * @return string
      */
-    public function getTelManager()
+    public function getTelmanager()
     {
-        return $this->telManager;
+        return $this->telmanager;
     }
 
     /**
-     * Set emailManager
+     * Set emailmanager
      *
-     * @param string $emailManager
+     * @param string $emailmanager
      *
      * @return Producteur
      */
-    public function setEmailManager($emailManager)
+    public function setEmailmanager($emailmanager)
     {
-        $this->emailManager = $emailManager;
+        $this->emailmanager = $emailmanager;
 
         return $this;
     }
 
     /**
-     * Get emailManager
+     * Get emailmanager
      *
      * @return string
      */
-    public function getEmailManager()
+    public function getEmailmanager()
     {
-        return $this->emailManager;
-    }
-
-    /**
-     * Set noteProduction
-     *
-     * @param string $noteProduction
-     *
-     * @return Producteur
-     */
-    public function setProduction($noteProduction)
-    {
-        $this->production = $noteProduction;
-
-        return $this;
-    }
-
-    /**
-     * Get noteProduction
-     *
-     * @return string
-     */
-    public function getProduction()
-    {
-        return $this->noteProduction;
+        return $this->emailmanager;
     }
 
     /**
@@ -1093,30 +1087,6 @@ class Producteur
     }
 
     /**
-     * Set prestation
-     *
-     * @param string $prestation
-     *
-     * @return Producteur
-     */
-    public function setPrestation($prestation)
-    {
-        $this->prestation = $prestation;
-
-        return $this;
-    }
-
-    /**
-     * Get prestation
-     *
-     * @return string
-     */
-    public function getPrestation()
-    {
-        return $this->prestation;
-    }
-
-    /**
      * Set vulgarisation
      *
      * @param string $vulgarisation
@@ -1141,27 +1111,27 @@ class Producteur
     }
 
     /**
-     * Set bordChamp
+     * Set bordchamp
      *
-     * @param string $bordChamp
+     * @param string $bordchamp
      *
      * @return Producteur
      */
-    public function setBordChamp($bordChamp)
+    public function setBordchamp($bordchamp)
     {
-        $this->bordChamp = $bordChamp;
+        $this->bordchamp = $bordchamp;
 
         return $this;
     }
 
     /**
-     * Get bordChamp
+     * Get bordchamp
      *
      * @return string
      */
-    public function getBordChamp()
+    public function getBordchamp()
     {
-        return $this->bordChamp;
+        return $this->bordchamp;
     }
 
     /**
@@ -1213,79 +1183,75 @@ class Producteur
     }
 
     /**
-     * Set enStation
+     * Set enstation
      *
-     * @param string $enStation
+     * @param string $enstation
      *
      * @return Producteur
      */
-    public function setEnStation($enStation)
+    public function setEnstation($enstation)
     {
-        $this->enStation = $enStation;
+        $this->enstation = $enstation;
 
         return $this;
     }
 
     /**
-     * Get enStation
+     * Get enstation
      *
      * @return string
      */
-    public function getEnStation()
+    public function getEnstation()
     {
-        return $this->enStation;
+        return $this->enstation;
     }
 
     /**
-     * Set autresr
+     * Set autre
      *
-     * @param string $autresr
+     * @param string $autre
      *
      * @return Producteur
      */
-    public function setAutresr($autresr)
+    public function setAutre($autre)
     {
-        $this->autresr = $autresr;
+        $this->autre = $autre;
 
         return $this;
     }
 
     /**
-     * Get autresr
+     * Get autre
      *
      * @return string
      */
-    public function getAutresr()
+    public function getAutre()
     {
-        return $this->autresr;
+        return $this->autre;
     }
 
-
-
-
-
     /**
-     * Set gestionInterne
+     * Set gestioninterne
      *
-     * @param string $gestionInterne
+     * @param string $gestioninterne
      *
      * @return Producteur
      */
-    public function setGestionInterne($gestionInterne)
+    public function setGestioninterne($gestioninterne)
     {
-        $this->gestionInterne = $gestionInterne;
+        $this->gestioninterne = $gestioninterne;
 
         return $this;
     }
 
     /**
-     * Get gestionInterne
+     * Get gestioninterne
      *
      * @return string
      */
-    public function getGestionInterne()
+    public function getGestioninterne()
     {
-        return $this->gestionInterne;
+        return $this->gestioninterne;
     }
 
     /**
@@ -1315,7 +1281,7 @@ class Producteur
     /**
      * Set date
      *
-     * @param datetime $date
+     * @param \DateTime $date
      *
      * @return Producteur
      */
@@ -1329,107 +1295,106 @@ class Producteur
     /**
      * Get date
      *
-     * @return date
+     * @return \DateTime
      */
     public function getDate()
     {
         return $this->date;
     }
 
-
     /**
-     * Set notePproduction
+     * Set noteproduction
      *
-     * @param string $notePproduction
+     * @param string $noteproduction
      *
      * @return Producteur
      */
-    public function setNotePproduction($notePproduction)
+    public function setNoteproduction($noteproduction)
     {
-        $this->notePproduction = $notePproduction;
+        $this->noteproduction = $noteproduction;
 
         return $this;
     }
 
     /**
-     * Get notePproduction
+     * Get noteproduction
      *
      * @return string
      */
-    public function getNotePproduction()
+    public function getNoteproduction()
     {
-        return $this->notePproduction;
+        return $this->noteproduction;
     }
 
     /**
-     * Set noteExportation
+     * Set noteexportation
      *
-     * @param string $noteExportation
+     * @param string $noteexportation
      *
      * @return Producteur
      */
-    public function setNoteExportation($noteExportation)
+    public function setNoteexportation($noteexportation)
     {
-        $this->noteExportation = $noteExportation;
+        $this->noteexportation = $noteexportation;
 
         return $this;
     }
 
     /**
-     * Get noteExportation
+     * Get noteexportation
      *
      * @return string
      */
-    public function getNoteExportation()
+    public function getNoteexportation()
     {
-        return $this->noteExportation;
+        return $this->noteexportation;
     }
 
     /**
-     * Set noteCond
+     * Set notecond
      *
-     * @param string $noteCond
+     * @param string $notecond
      *
      * @return Producteur
      */
-    public function setNoteCond($noteCond)
+    public function setNotecond($notecond)
     {
-        $this->noteCond = $noteCond;
+        $this->notecond = $notecond;
 
         return $this;
     }
 
     /**
-     * Get noteCond
+     * Get notecond
      *
      * @return string
      */
-    public function getNoteCond()
+    public function getNotecond()
     {
-        return $this->noteCond;
+        return $this->notecond;
     }
 
     /**
-     * Set notePprestation
+     * Set noteprestation
      *
-     * @param string $notePprestation
+     * @param string $noteprestation
      *
      * @return Producteur
      */
-    public function setNotePprestation($notePprestation)
+    public function setNoteprestation($noteprestation)
     {
-        $this->notePprestation = $notePprestation;
+        $this->noteprestation = $noteprestation;
 
         return $this;
     }
 
     /**
-     * Get notePprestation
+     * Get noteprestation
      *
      * @return string
      */
-    public function getNotePprestation()
+    public function getNoteprestation()
     {
-        return $this->notePprestation;
+        return $this->noteprestation;
     }
 }

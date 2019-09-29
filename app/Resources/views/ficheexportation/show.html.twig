@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> 
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<div class="row">
+
+<div class="col-sm-12">
+<div class="white-box">
+
+
+    <h1 class="box-title m-b-0 text-center">Fiche d'exportation</h1>
+
+    <table class="table">
+        <tbody>
+          <!--  <tr>
+                <th>Id</th>
+                <td>{{ ficheExportation.id }}</td>
+            </tr>  -->
+            <tr>
+                <th>Numéro d'exportation</th>
+                <td>{{ ficheExportation.numeroExporation }}</td>
+            </tr>
+            <tr>
+                <th>Date d'exportation</th>
+                <td>{% if ficheExportation.dateExportation %}{{ ficheExportation.dateExportation|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Moyen utilise</th>
+                <td>{{ ficheExportation.moyenUtilise }}</td>
+            </tr>
+            <tr>
+                <th>Pays exportation</th>
+                <td>{{ ficheExportation.paysExportation }}</td>
+            </tr>
+            <tr>
+                <th>Nom compagnie</th>
+                <td>{{ ficheExportation.nomCompagnie }}</td>
+            </tr>
+            <tr>
+                <th>Nom recepteur</th>
+                <td>{{ ficheExportation.nomRecepteur }}</td>
+            </tr>
+            <tr>
+                <th>Date reception</th>
+                <td>{% if ficheExportation.dateReception %}{{ ficheExportation.dateReception|date('Y-m-d H:i:s') }}{% endif %}</td>
+            </tr>
+            <tr>
+                <th>Variete</th>
+                <td>{{ ficheExportation.variete }}</td>
+            </tr>
+            <tr>
+                <th>Spéculation</th>
+                <td>{{ speculation }}</td>
+            </tr>
+        </tbody>
+    </table> 
+     <div class="row">
+                        
+                                <div class="col-sm-6 col-md-4">
+                                    <div class="thumbnail">
+                                    <img class="img-rounded" src="{{ asset('uploads/brochures/' ~ ficheExportation.photo) }}" > 
+                                    <div class="caption">
+                                        <h3>Piéce jointe</h3>
+                                    </div>
+                                    </div>
+                                </div>    
+     </div>
+
+    </div>
+ </div>   
+  </div> 
+</div>
+
+{% endblock %}

@@ -8,7 +8,8 @@ security:
         ROLE_EXPORTATEUR: ROLE_USER
         ROLE_CONTROLEUR:  ROLE_USER
         ROLE_DPV:         ROLE_USER
-        ROLE_ADMIN:       [ROLE_USER, ROLE_PRODUCTEUR,ROLE_EXPORTATEUR,ROLE_CONTROLEUR,ROLE_CLIENT]
+        ROLE_INSPECTEUR:  ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_PRODUCTEUR,ROLE_EXPORTATEUR,ROLE_CONTROLEUR,ROLE_CLIENT,ROLE_INSPECTEUR]
         ROLE_SUPER_ADMIN: ROLE_ADMIN
 
     providers:
@@ -42,4 +43,8 @@ security:
         - { path: ^/smart, role: ROLE_ADMIN }
         - { path: ^/produit, role: ROLE_ADMIN }
         - { path: ^/personne/new, role: ROLE_ADMIN }
-#        - { path: ^/, role: ROLE_GERANT }
+        - { path: ^/dpv/, role: ROLE_ADMIN }
+        - { path: ^/producteur/, role: ROLE_PRODUCTEUR }
+        - { path: ^/campagne/, role: [ROLE_PRODUCTEUR, ROLE_EXPORTATEUR] }
+        - { path: ^/lot/, role: [ROLE_PRODUCTEUR, ROLE_EXPORTATEUR] }
+        - { path: ^/registrepalettisation, role: ROLE_DPV }

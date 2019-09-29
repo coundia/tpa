@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% form_theme form '/bootstrap_3_horizontal_layout.html.twig' %}
+    
+
+  <div class="container-fluid">
+    <h1 class="text-center">Registre de palettisation</h1>
+    <br><br>
+ {{ form_start(form) }}  
+ {{ form_row(form.campagne) }} 
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Date</th>
+      <th scope="col">Numéro Palette</th>
+      <th scope="col">Nombre Cartons</th>
+      <th scope="col" style="widht:500px;">Code lot</th>
+      <th scope="col">Total Cartons</th>
+      <th scope="col">heure Entree Ch Froide</th>
+      <th scope="col">heure Sortie Ch Froide</th>
+      <th scope="col">destinataire</th>
+      <th scope="col">parckingListe</th>
+      <th scope="col">paragraphe</th>
+      <th scope="col">produitCalibre</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+        {% for tag in form.registrepalettisation %}
+        <tr>
+           
+            <td> {{ form_widget(tag.date) }} </td>
+            <td> {{ form_widget(tag.nPalette) }} </td>
+            <td> {{ form_widget(tag.nbreCartons) }} </td>
+             <td> {{ form_widget(tag.codeLot) }} </td>
+            <td> {{ form_widget(tag.totalCartons) }} </td>
+             <td> {{ form_widget(tag.heureEntreeChFroide) }} </td>
+             <td> {{ form_widget(tag.heureSortieChFroide) }} </td>
+
+              <td >{{ form_widget(tag.destinataire) }} </td>
+              <td >{{ form_widget(tag.parckingListe) }} </td>
+              <td >{{ form_widget(tag.paragraphe) }} </td>
+              <td >{{ form_widget(tag.produitCalibre) }} </td>
+        </tr>
+        {% endfor %}
+  
+   
+  </tbody>
+</table>
+<input  type="submit" value="Enregistrer"  class="btn btn-primary" />
+  {{ form_end(form) }}
+</div>
+{% endblock %}

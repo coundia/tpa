@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Gestionqualite</h1>
+
+    <table>
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gestionQualite.id }}</td>
+            </tr>
+            <tr>
+                <th>Systemgesqual</th>
+                <td>{{ gestionQualite.systemgesqual }}</td>
+            </tr>
+            <tr>
+                <th>Gestioninterne</th>
+                <td>{{ gestionQualite.gestioninterne }}</td>
+            </tr>
+            <tr>
+                <th>Consultant</th>
+                <td>{{ gestionQualite.consultant }}</td>
+            </tr>
+            <tr>
+                <th>Autre</th>
+                <td>{{ gestionQualite.autre }}</td>
+            </tr>
+            <tr>
+                <th>Noteautre</th>
+                <td>{{ gestionQualite.noteautre }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('gestionqualite_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('gestionqualite_edit', { 'id': gestionQualite.id }) }}">Edit</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+                <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}

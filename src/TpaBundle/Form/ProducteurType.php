@@ -3,8 +3,11 @@
 namespace TpaBundle\Form;
 
 use Doctrine\DBAL\Types\TextType;
+use Doctrine\ORM\Query\Expr\Select;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\CountryType;
@@ -22,14 +25,35 @@ class ProducteurType extends AbstractType
     {
         $builder->add('nom')
             ->add('prenom')
-            ->add('statutLegal')
+            //->add('statutLegal')
             ->add('ninea')
             ->add('siegeSocial')
-            ->add('ville')
-            ->add('departement')
-            ->add('commune')
-            ->add('arrondissement')->add('village')->add('numTel')->add('numFixe')->add('fax')->add('email')->add('addresse')->add('prenomRep')->add('nomRep')->add('addresseRep')->add('fonctionRep')->add('mobileRep_')->add('fixeRep')->add('faxeRep')->add('emailRep')->add('nomManager')->add('prenomManager')->add('titreManager')->add('telManager')->add('emailManager')->add('notePproduction')->add('conditionnement',CheckboxType::class)->add('exportation',CheckboxType::class)->add('notePprestation')->add('vulgarisation',CheckboxType::class)->add('bordChamp',CheckboxType::class)->add('europe',CheckboxType::class)->add('regie',CheckboxType::class)->add('enStation',CheckboxType::class)->add('autresr',CheckboxType::class)->add('noteExportation')->add('noteCond');
-        $builder->add('region', ChoiceType::class, array(
+//            ->add('ville')
+//            ->add('departement')
+//            ->add('commune')
+//            ->add('arrondissement')
+           // ->add('village')
+            ->add('numTel')->add('numFixe')
+            //->add('faxerep')
+            ->add('email', EmailType::class)
+            //->add('addresse')
+            ->add('prenomRep')->add('nomRep')
+            //->add('addresseRep')
+            ->add('fonctionRep')->add('mobileRep_')
+            //->add('fixeRep')->add('faxeRep')
+            ->add('emailRep', EmailType::class)
+//            ->add('nomManager')->add('prenomManager')->add('titreManager')->add('telManager')
+//            ->add('emailManager', EmailType::class)
+            ->add('noteproduction')
+           // ->add('conditionnement',CheckboxType::class)->add('exportation',CheckboxType::class)
+            //->add('noteprestation')
+            ->add('vulgarisation',CheckboxType::class)
+           // ->add('bordChamp',CheckboxType::class)
+            ->add('regie',CheckboxType::class )
+            //->add('enStation',CheckboxType::class)
+            ->add('noteexportation');
+            //->add('notecond');
+        /*$builder->add('region', ChoiceType::class, array(
            'choices'=>array(
                'Dakar'=>'Dakar',
                'Diourbel'=>'diourbel',
@@ -45,9 +69,25 @@ class ProducteurType extends AbstractType
                'Tamabcounda'=>'Tambacounda',
                'Thiès'=>'Thiès',
                'Ziguinchor'=>'Zigunchor'
+           )*/
+
+//        ));
+$builder->add('europe', ChoiceType::class, array(
+           'choices'=>array(
+                'FRANCE'=>'France',
+                'Hollande'=>'Hollande',
+               ' Angleterre'=>'Angleterre',
+               ' Allemagne'=>'Allemagne',
+                'ITALIE'=>'Italie',
+                'ESPAGNE'=>'Espagne',
+                'Belgique'=>'Belgique',
+                'RUSSIE'=>'Russie',
+                'AUTRE'=>'Autre'
+
            )
 
         ));
+
 //        $builder->add('date', DateTime::class);
 
 

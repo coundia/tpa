@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+{% form_theme form '/bootstrap_3_horizontal_layout.html.twig' %}
+   
+    {% set i = 1 %}
+   <div class="container">
+    <h1 class="text-center">Registre quotidien de réception</h1>
+    <br><br>
+ {{ form_start(form) }}  
+ {{ form_row(form.campagne) }} 
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Ordre Arrive</th>
+      <th scope="col">Parcelle d'origine</th>
+      <th scope="col">Date récolte</th>
+      <th scope="col">Variete</th>
+      <th scope="col">Nombre Cageots</th>
+      <th scope="col">Poids Brut</th>
+      <th scope="col">Poids Net</th>
+      <th scope="col">Code Attribue</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+        {% for tag in form.registrereception %}
+        <tr>
+            <td scope="row">{{i}}</td>
+            <td> {{ form_widget(tag.parcelleOrigine) }} </td>
+            <td> {{ form_widget(tag.dateRecolte) }} </td>
+            <td> {{ form_widget(tag.variete) }} </td>
+             <td> {{ form_widget(tag.nombreCageots) }} </td>
+            <td> {{ form_widget(tag.poidsBrut) }} </td>
+             <td> {{ form_widget(tag.poidsNet) }} </td>
+             <td> {{ form_widget(tag.codeAttribue) }} </td>
+             {% set i = i+1 %}
+        </tr>
+        {% endfor %}
+  
+   
+  </tbody>
+</table>
+  <input type="submit" value="Enregistrer"  class="btn btn-primary" />
+  {{ form_end(form) }}
+</div>
+    <ul>
+        <li>
+            <a href="{{ path('registrereception_index') }}">Back to the list</a>
+        </li>
+    </ul>
+{% endblock %}

@@ -7,62 +7,71 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CalendrierProduction
  *
- * @ORM\Table(name="calendrier_production")
- * @ORM\Entity(repositoryClass="TpaBundle\Repository\CalendrierProductionRepository")
+ * @ORM\Table(name="calendrier_production", indexes={@ORM\Index(name="IDX_C8483468AB9BB300", columns={"producteur_id"})})
+ * @ORM\Entity
  */
 class CalendrierProduction
 {
     /**
-     * @ORM\ManyToOne(targetEntity="Producteur")
-     * @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
-     */
-    private $producteur;
-
-    /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="speculation", type="string", length=50)
+     * @ORM\Column(name="speculation", type="string", length=50, nullable=true)
      */
     private $speculation;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="destination", type="string", length=50)
-     */
-    private $destination;
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="surfaceCultive", type="string", length=100)
-     */
-    private $surfaceCultive;
 
     /**
-     * @var date
+     * @var string
      *
-     * @ORM\Column(name="date_debut", type="string")
+     * @ORM\Column(name="surfaceCultive", type="string", length=100, nullable=true)
      */
-    private $date_debut;
+    private $surfacecultive;
+
     /**
-     * @var date
+     * @var string
      *
-     * @ORM\Column(name="date_fin", type="string")
+     * @ORM\Column(name="date_debut", type="string", length=255, nullable=true)
      */
-    private $date_fin;
+    private $dateDebut;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="date_fin", type="string", length=255, nullable=true)
+     */
+    private $dateFin;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="destination", type="string", length=50, nullable=true)
+     */
+    private $destination;
+
+    /**
+     * @var \Producteur
+     *
+     * @ORM\ManyToOne(targetEntity="Producteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
+     * })
+     */
+    private $producteur;
+
+
 
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -94,102 +103,76 @@ class CalendrierProduction
     }
 
     /**
-     * Set surfaceCultive
+     * Set surfacecultive
      *
-     * @param string $surfaceCultive
+     * @param string $surfacecultive
      *
      * @return CalendrierProduction
      */
-    public function setSurfaceCultive($surfaceCultive)
+    public function setSurfacecultive($surfacecultive)
     {
-        $this->surfaceCultive = $surfaceCultive;
+        $this->surfacecultive = $surfacecultive;
 
         return $this;
     }
 
     /**
-     * Get surfaceCultive
+     * Get surfacecultive
      *
      * @return string
      */
-    public function getSurfaceCultive()
+    public function getSurfacecultive()
     {
-        return $this->surfaceCultive;
+        return $this->surfacecultive;
     }
 
     /**
-     * Set date_debut
+     * Set dateDebut
      *
-     * @param string $date_debut
+     * @param string $dateDebut
      *
      * @return CalendrierProduction
      */
-    public function setDateDebut($date_debut)
+    public function setDateDebut($dateDebut)
     {
-        $this->date_debut = $date_debut;
+        $this->dateDebut = $dateDebut;
 
         return $this;
     }
 
     /**
-     * Get date_debut
+     * Get dateDebut
      *
      * @return string
      */
     public function getDateDebut()
     {
-        return $this->date_debut;
+        return $this->dateDebut;
     }
 
     /**
-     * Set date_fin
+     * Set dateFin
      *
-     * @param string $date_fin
+     * @param string $dateFin
      *
      * @return CalendrierProduction
      */
-    public function setDateFin($date_fin)
+    public function setDateFin($dateFin)
     {
-        $this->date_fin = $date_fin;
+        $this->dateFin = $dateFin;
 
         return $this;
     }
 
     /**
-     * Get date_fin
+     * Get dateFin
      *
      * @return string
      */
     public function getDateFin()
     {
-        return $this->date_fin;
+        return $this->dateFin;
     }
-
-    /**
-     * Set producteur
-     *
-     * @param string $producteur
-     *
-     * @return SiteProduction
-     */
-    public function setProducteur($producteur)
-    {
-        $this->producteur = $producteur;
-
-        return $this;
-    }
-
-    /**
-     * Get $producteur
-     *
-     * @return string
-     */
-    public function getProducteur()
-    {
-        return $this->producteur;
-    }
-
-
 
     /**
      * Set destination
@@ -213,5 +196,29 @@ class CalendrierProduction
     public function getDestination()
     {
         return $this->destination;
+    }
+
+    /**
+     * Set producteur
+     *
+     * @param \TpaBundle\Entity\Producteur $producteur
+     *
+     * @return CalendrierProduction
+     */
+    public function setProducteur(\TpaBundle\Entity\Producteur $producteur = null)
+    {
+        $this->producteur = $producteur;
+
+        return $this;
+    }
+
+    /**
+     * Get producteur
+     *
+     * @return \TpaBundle\Entity\Producteur
+     */
+    public function getProducteur()
+    {
+        return $this->producteur;
     }
 }

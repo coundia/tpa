@@ -1,0 +1,119 @@
+<?php
+
+namespace TpaBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * FicheExportation
+ *
+ * @ORM\Table(name="fiche_exportation", indexes={@ORM\Index(name="FK_F3E43E25A255zza", columns={"id_producteur"}), @ORM\Index(name="FK_F3E43E25A2bff47", columns={"id_campage"}), @ORM\Index(name="FK_F3E43E25A25dd58d4", columns={"id_palettisation"})})
+ * @ORM\Entity
+ */
+class FicheExportation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $id;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="numero_exporation", type="integer", nullable=false)
+     */
+    private $numeroExporation;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_exportation", type="datetime", nullable=false)
+     */
+    private $dateExportation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="moyen_utilise", type="string", length=75, nullable=false)
+     */
+    private $moyenUtilise;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="pays_exportation", type="string", length=100, nullable=false)
+     */
+    private $paysExportation;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_compagnie", type="string", length=200, nullable=false)
+     */
+    private $nomCompagnie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="nom_recepteur", type="string", length=100, nullable=true)
+     */
+    private $nomRecepteur;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date_reception", type="datetime", nullable=true)
+     */
+    private $dateReception;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="statut", type="integer", nullable=false)
+     */
+    private $statut = '0';
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="variete", type="string", length=50, nullable=false)
+     */
+    private $variete;
+
+    /**
+     * @var \Producteur
+     *
+     * @ORM\ManyToOne(targetEntity="Producteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_producteur", referencedColumnName="id")
+     * })
+     */
+    private $idProducteur;
+
+    /**
+     * @var \RegistrePalettisation
+     *
+     * @ORM\ManyToOne(targetEntity="RegistrePalettisation")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_palettisation", referencedColumnName="id")
+     * })
+     */
+    private $idPalettisation;
+
+    /**
+     * @var \Campagne
+     *
+     * @ORM\ManyToOne(targetEntity="Campagne")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="id_campage", referencedColumnName="identifiant")
+     * })
+     */
+    private $idCampage;
+
+
+}
+

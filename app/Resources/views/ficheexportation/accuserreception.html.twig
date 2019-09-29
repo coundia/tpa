@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {% form_theme form '/bootstrap_3_horizontal_layout.html.twig' %}
+
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+            <h4 class="page-title"></h4> </div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+                
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="white-box">
+
+    <h1 class="text-center">Accuser de réception </h1> <br/><br/>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+</div>
+    </div>
+</div>
+
+    
+{% endblock %}

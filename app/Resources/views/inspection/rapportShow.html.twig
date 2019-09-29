@@ -1,0 +1,180 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <br/> <br/>
+    <div class="row">
+        <div class="col-md-4 col-md-offset-8">
+            <a href="{{ path('valider_inspection', { 'id': id }) }}" class="btn btn-success">Valider</a>
+           <a href="{{ path('rejeter_inspection', { 'id': id }) }}" class="btn btn-danger">Rejeter</a>
+            <a href="{{ path('rapport_inspection_index') }}" class="btn btn-primary">Retour à la liste</a>
+        </div>
+    </div>
+
+{% for exportation in exportation %}
+    <h1 class="text-center"> Nom de l'Entreprise: {{exportation.denomEntreprise}}</h1>
+{% endfor %}
+    <table class="table">
+        {% for exportation in exportation %}
+        <tbody>
+
+        <tr>
+            <th>Id</th>
+            <td>{{ exportation.id }}</td>
+
+        </tr>
+
+        <tr>
+            <th>Date d'inspection</th>
+            <td>{% if exportation.dateInspection %}{{ exportation.dateInspection|date('Y-m-d ') }}{% endif %}</td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+
+
+
+
+
+
+    <div class="panel panel-primary">
+        {#<div class="panel-heading">Les certificats</div>#}
+        <div class="panel-body">
+            <div class="row">
+                {% for exportation in exportation %}
+
+                    <div class="col-sm-6 col-md-4">
+                        <div class="thumbnail">
+                            {#<img class="img-rounded" src="{{ asset('uploads/brochures/' ~ certificat.certificat) }}" width="140" height="140"> #}
+                            <div class="caption">
+                               <table>
+                                   <tr>
+                                       <td>
+                                           <p><b>Nom de l'inspecteur:</b> {{exportation.prenoNomInspecteur}}</p>
+                                       </td></tr>
+                                       <tr><td>  <p><b>Lieu de l'inspection :</b> {{exportation.lieuInspection}}</p></td>
+                                       </tr>
+                                   <tr>
+                                 <td>     <p><b>Personne Rencontré:</b> {{exportation.personneRencontre}}</p></td>
+                                   </tr>
+                            
+
+                             <tr>
+                                 <td>     <p><b>Fonction de la personne rencontrée: </b>{{exportation.fonctionpersonneRencontre}}</p></td>
+                             </tr> 
+                             
+                              <tr>
+                                 <td>     <p><b>Varieté: </b>{{exportation.variete}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Catégorie: </b>{{exportation.categorie}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Quantité déclarée: </b>{{exportation.qteDeclare}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>nombre de colis: </b>{{exportation.nbColis}}</p></td>
+                             </tr> 
+                             
+                              <tr>
+                                 <td>     <p><b>Type de transport: </b>{{exportation.typeTransport}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Taille echantillon: </b>{{exportation.tailleEchantillon}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Nombre de colis controlé: </b>{{exportation.nbColiControle}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Nombre de mangue controlées: </b>{{exportation.nbMangueControle}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Registre de reception de mangue: </b>{{exportation.registreReceptionMangue}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Déclaration supplémentaire: </b>{{exportation.declarationSupp}}</p></td>
+                             </tr> 
+                             
+                             
+                             
+                              <tr>
+                                 <td>     <p><b>Marque colis: </b>{{exportation.marqueColis}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Conformité colis: </b>{{exportation.conformiteColis}}</p></td>
+                             </tr> 
+                             
+                              <tr>
+                                 <td>     <p><b>Numéro du lot: </b>{{exportation.numeroLot}}</p></td>
+                             </tr> 
+
+                              <tr>
+                                 <td>     <p><b>Conformité lot: </b>{{exportation.conformiteLot}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Muméro palette: </b>{{exportation.numeroPalette}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Conformité palette: </b>{{exportation.conformitePalette}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Maturité: </b>{{exportation.maturite}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Piqure Mouche fruit: </b>{{exportation.piqureMoucheFruit}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Pourriture pédonculaire: </b>{{exportation.pourriturePendonculaire}}</p></td>
+                             </tr> 
+                              <tr>
+                                 <td>     <p><b>Charancon du noyaux: </b>{{exportation.charanconNoyaux}}</p></td>
+                             </tr> 
+                               <tr>
+                                 <td>     <p><b>trace Arthrocnose	: </b>{{exportation.traceArthrocnose	}}</p></td>
+                             </tr>
+                             
+                             
+                             
+                             
+                             
+                              <tr>
+                                 <td>     <p><b>marquage NIMP15	: </b>{{exportation.marquageNIMP15	}}</p></td>
+                             </tr>
+                              <tr>
+                                 <td>     <p><b>etat Sanitaire General	: </b>{{exportation.etatSanitaireGeneral	}}</p></td>
+                             </tr>
+                              <tr>
+                                 <td>     <p><b>Commentaire	: </b>{{exportation.commentaire	}}</p></td>
+                             </tr>
+                             
+                             
+                             </table>
+                                {#<h3>{{certificat.numeroCert}}</h3>#}
+
+
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <ul>
+        {#<li>
+            <a href="{{ path('demande_index') }}">Back to the list</a>
+        </li>
+        <li>
+            <a href="{{ path('demande_edit', { 'id': demande.id }) }}">Edit</a>
+        </li>#}
+        {# <li>
+             {{ form_start(delete_form) }}
+                 <input type="submit" value="Delete">
+             {{ form_end(delete_form) }}
+         </li>#}
+    </ul>
+{% endblock %}

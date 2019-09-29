@@ -1,0 +1,199 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="row bg-title">
+        <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12"></div>
+        <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12"> <a href="http://wrappixel.com/templates/pixeladmin/" target="_blank" class="btn btn-danger pull-right m-l-20 btn-rounded btn-outline hidden-xs hidden-sm waves-effect waves-light">Buy Now</a>
+            <ol class="breadcrumb">
+               
+            </ol>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+<div class="row">
+
+<div class="col-sm-12">
+<div class="white-box">
+<h1  class="box-title m-b-0 text-center">Bordereau de récolte</h1>
+
+<div class="container-fluid">
+    <h1 class="text-center">Détails Campagne</h1>
+    <br/><br/>
+    <table class="table">
+        <tbody>
+            <tr class="thead-dark">
+                <th>Identifiant</th>
+                <th>Campagne</th>
+                <th>Varieté</th>
+                <th>Numéro ordre</th>
+                <th>Zone de production</th>
+            </tr>
+            <tr>
+                <td>{{ campagne.identifiant }}</td>
+                <td>{{ campagne.campagne }}</td>
+                 <td>{{ campagne.variete }}</td>
+                  <td>{{ campagne.nOrdre }}</td>
+                  <td>{{ campagne.zoneProduction.localisation  }}</td>
+            </tr>
+            <tr class="thead-dark">
+                <th>Code parcelle</th>
+               
+                <th>Nom du chauffeur</th>
+                <th>Heure départ</th>
+                <th>Heure arrivee</th>
+                <th>Immatriculation camion</th>
+            </tr>
+            <tr>
+                <td>{{ campagne.codeParcelle }}</td>
+                <td>{{ campagne.nomChauffeur }}</td>
+                <td>{{ campagne.heureDepart }}</td>
+                <td>{{ campagne.heureArrivee }}</td>
+                <td>{{ campagne.immatriculationCamion }}</td>
+                 
+            </tr>
+            <tr class="thead-dark">
+                <th>Nom responsable parcelle</th>
+                <th>Nombre cageots</th>
+                 <th>Poids brut</th>
+                <th>Poids net</th>
+                <th>Date réception</th>
+            </tr>
+            <tr>
+                <td>{{ campagne.nomResponsableParcelle }}</td>
+                <td>{{ campagne.nombreCageots }}</td>
+                <td>{{ campagne.poidsBrut }}</td>
+                <td>{{ campagne.poidsNet }}</td>
+                <td>{% if campagne.dateReception %}{{ campagne.dateReception|date('Y-m-d') }}{% endif %}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br/><br/>
+
+    
+    {% if receptions %}
+            <h2> Fiche de réception</h2>
+            <table class="table">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Ordrearrive</th>
+                        <th>Parcelleorigine</th>
+                        <th>Daterecolte</th>
+                        <th>Variete</th>
+                        <th>Nombrecageots</th>
+                        <th>Poidsbrut</th>
+                        <th>Poidsnet</th>
+                        <th>Codeattribue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for registreReception in receptions %}
+                    <tr>
+                        <td><a href="{{ path('registrereception_show', { 'ordreArrive': registreReception.ordreArrive }) }}">{{ registreReception.ordreArrive }}</a></td>
+                        <td>{{ registreReception.parcelleOrigine }}</td>
+                        <td>{% if registreReception.dateRecolte %}{{ registreReception.dateRecolte|date('Y-m-d') }}{% endif %}</td>
+                        <td>{{ registreReception.variete }}</td>
+                        <td>{{ registreReception.nombreCageots }}</td>
+                        <td>{{ registreReception.poidsBrut }}</td>
+                        <td>{{ registreReception.poidsNet }}</td>
+                        <td>{{ registreReception.codeAttribue }}</td>
+                {% endfor %}
+                </tbody>
+            </table>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Campagne pas encore disponible
+        </div>
+    {% endif %}
+
+    {% if  lots %}
+             <h2>Lot</h2>
+            <table class="table">
+                <thead class="thead-dark">
+            <tr>
+                <th>Identifiant</th>
+                <th>Code lot</th>
+                <th>Numéro lot récolte</th>
+                <th>Nombre cageots</th>
+                <th>Poids brut</th>
+                <th>Poids net</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for lot in lots %}
+            <tr>
+                <td><a href="{{ path('lot_show', { 'identifiant': lot.identifiant }) }}">{{ lot.identifiant }}</a></td>
+                <td>{{ lot.codeLot }}</td>
+                <td>{{ lot.nLotRecolte }}</td>
+                <td>{{ lot.nombreCageots }}</td>
+                <td>{{ lot.poidsBrut }}</td>
+                <td>{{ lot.poidsNet }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Campagne non conditionné
+        </div>
+    {% endif %}
+
+     {% if palettisations %}
+             <h2>Registre de palettisation</h2>
+            <table class="table">
+                <thead class="thead-dark">
+               <tr>
+                <th>Id</th>
+                <th>Date</th>
+                <th>Numéro palette</th>
+                <th>Nbrecartons</th>
+                <th>Codelot</th>
+                <th>Totalcartons</th>
+                <th>Heureentreechfroide</th>
+                <th>Heuresortiechfroide</th>
+                <th>Destinataire</th>
+                <th>Parckingliste</th>
+                <th>Paragraphe</th>
+                <th>Produitcalibre</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for registrePalettisation in palettisations %}
+            <tr>
+                <td><a href="{{ path('registrepalettisation_show', { 'id': registrePalettisation.id }) }}">{{ registrePalettisation.id }}</a></td>
+                <td>{% if registrePalettisation.date %}{{ registrePalettisation.date|date('Y-m-d') }}{% endif %}</td>
+                <td>{{ registrePalettisation.nPalette }}</td>
+                <td>{{ registrePalettisation.nbreCartons }}</td>
+                <td>{{ registrePalettisation.codeLot }}</td>
+                <td>{{ registrePalettisation.totalCartons }}</td>
+                <td>{{ registrePalettisation.heureEntreeChFroide }}</td>
+                <td>{{ registrePalettisation.heureSortieChFroide }}</td>
+                <td>{{ registrePalettisation.destinataire }}</td>
+                <td>{{ registrePalettisation.parckingListe }}</td>
+                <td>{{ registrePalettisation.paragraphe }}</td>
+                <td>{{ registrePalettisation.produitCalibre }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <div class="alert alert-danger" role="alert">
+            Lot non palettisé
+        </div>
+    {% endif %}
+
+    
+
+    <ul>
+        <li>
+            <a href="{{ path('campagne_index') }}">Back to the list</a>
+        </li>
+    </ul>
+</div>
+  </div> 
+</div>
+</div>
+{% endblock %}

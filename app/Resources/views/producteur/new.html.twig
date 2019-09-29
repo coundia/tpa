@@ -4,9 +4,7 @@
     <div class="row bg-title">
         <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
             <h4 class="page-title"></h4> </div>
-
     </div>
-
     <div class="row">
         <div class="col-sm-12">
             <div class="panel-group wiz-aco" id="accordion" role="tablist" aria-multiselectable="true">
@@ -25,104 +23,322 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
+                                        <label class="control-label">Type de demande</label>
+                                        <select class="form-control" name="typeDemande">
+                                            <option value="Nouvelle">Nouvelle</option>
+                                            <option value="Mise à jour">Mise à jour</option>
+
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
                                         <label class="control-label">Nom</label>
-                                        {{ form_widget(form.nom ,{'attr':{'class':'form-control recupNom'}}) }}
+                                        {{ form_widget(form.producteur[0].nom ,{'attr':{'class':'form-control recupNom'}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
                                 <!--/span-->
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Prénom</label>
-                                        {{ form_widget(form.prenom,{'attr':{'class':'form-control recupPrenom'}}) }}
+                                        {{ form_widget(form.producteur[0].prenom,{'attr':{'class':'form-control recupPrenom'}}) }}
                                          <span class="help-block">  </span> </div>
                                 </div>
-                                <div class="col-md-6">
+                               {# <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Statut Légal</label>
-                                        {{ form_widget(form.statutLegal,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.producteur[0].statutLegal,{'attr':{'class':'form-control'}}) }}
                                         <span class="help-block">  </span> </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div>#}
+                              {#  <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Addresse</label>
-                                        {{ form_widget(form.addresse,{'attr':{'class':'form-control recupAddr'}}) }}
+                                        {{ form_widget(form.producteur[0].addresse,{'attr':{'class':'form-control recupAddr'}}) }}
                                         <span class="help-block"> </span> </div>
-                                </div>
+                                </div>#}
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label class="control-label">NINEA</label>
-                                        {{ form_widget(form.ninea,{'attr':{'class':'form-control'}}) }}
+                                        <label class="control-label">RC/NINEA</label>
+                                        {{ form_widget(form.producteur[0].ninea,{'attr':{'class':'form-control'}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Siège Social</label>
-                                        {{ form_widget(form.siegeSocial,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.producteur[0].siegeSocial,{'attr':{'class':'form-control '}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
-                                <div class="col-md-6">
+                               {# <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Règion</label>
-                                        {{ form_widget(form.region,{'attr':{'class':'form-control'}}) }}
+                                        {{ form_widget(form.producteur[0].region,{'attr':{'class':'form-control'}}) }}
                                         <span class="help-block"> </span> </div>
+                                </div>#}
+                                <div class="col-md-6">
+                                    <div class="form-group ">
+                                       {# <label class="control-label">Ville</label>
+                                        {{ form_widget(form.producteur[0].ville,{'attr':{'class':'form-control'}}) }}
+                                        <span class="help-block"> </span> #}
+                                        <div>
+                                            <label for="region" class="required control-label ">Règion :</label>
+                                            <select id="region" class="form-control" name="region" content-type="choices" trigger="true" target="department">
+                                                <option value="Dakar" >Dakar</option>
+                                                <option value="Diourbel" >Diourbel</option>
+                                                <option value="Fatick" >Fatick</option>
+                                                <option value="Kaffrine" >Kaffrine</option>
+                                                <option value="Kaolack" >Kaolack</option>
+                                                <option value="Kedougou" >Kédougou</option>
+                                                <option value="Kolda" >Kolda</option>
+                                                <option value="Louga" >Louga</option>
+                                                <option value="Matam" >Matam</option>
+                                                <option value="Saint-louis" >Saint-louis</option>
+                                                <option value="Sedhiou" >Sédhiou</option>
+                                                <option value="Tambacounda" >Tambacounda</option>
+                                                <option value="Thies" >Thiès</option>
+                                                <option value="Ziguinchor" >Ziguinchor</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label class="control-label">Ville</label>
-                                        {{ form_widget(form.ville,{'attr':{'class':'form-control'}}) }}
-                                        <span class="help-block"> </span> </div>
+
+                                        <label for="department" class="required">Départements </label>
+                                        <select id="department" name="department" class="form-control" content-type="choices" trigger="true" target="arrondissement">
+                                            <optgroup reference="Dakar">
+                                                <option value="Rufisque" >Rufisque</option>
+                                                <option value="Dakar" >Dakar</option>
+                                                <option value="Pikine" >Pikine</option>
+                                                <option value="Gédiawaye" >Gédiawaye</option>
+                                            </optgroup>
+                                            <optgroup reference="Diourbel">
+                                                <option value="Mbacke" >Mbacké</option>
+                                                <option value="Diourbel" >Diourbel</option>
+                                                <option value="Bambey" >Bambey</option>
+                                            </optgroup>
+                                            <optgroup reference="Fatick">
+                                                <option value="Fatick" >Fatick</option>
+                                                <option value="Gossas" >Gossas</option>
+                                                <option value="Foundiougne" >Foundiougne</option>
+                                            </optgroup>
+                                            <optgroup reference="Kaffrine">
+                                                <option value="Kaffrine" >Kaffrine</option>
+                                                <option value="Birkelane" >Birkelane</option>
+                                                <option value="Malem Hoddar" >Malem Hoddar</option>
+                                                <option value="Koungheul" >Koungheul</option>
+                                            </optgroup>
+                                            <optgroup reference="Kaolack">
+                                                <option value="Kaolack" >Kaolack</option>
+                                                <option value="Guinguineo" >Guinguineo</option>
+                                                <option value="Nioro du Rip" >Nioro du Rip</option>
+                                            </optgroup>
+                                            <optgroup reference="Kedougou">
+                                                <option value="Kedougou" >Kedougou</option>
+                                                <option value="saraya" >saraya</option>
+                                                <option value="Salemata" >Salemata</option>
+                                            </optgroup>
+                                            <optgroup reference="Kolda">
+                                                <option value="Velingara" >Vélingara</option>
+                                                <option value="Medina Yoro Foulah" >Medina Yoro Foulah</option>
+                                                <option value="Kolda" >Kolda</option>
+                                            </optgroup>
+                                            <optgroup reference="Louga">
+                                                <option value="Louga" >Louga</option>
+                                                <option value="Linguere" >Linguere</option>
+                                                <option value="Kebemer" >Kébemer</option>
+                                            </optgroup>
+                                            <optgroup reference="Matam">
+                                                <option value="Kanel" >Kanel</option>
+                                                <option value="Ranerou" >Ranerou</option>
+                                                <option value="Matam" >Matam</option>
+                                            </optgroup>
+                                            <optgroup reference="Saint-louis">
+                                                <option value="Saint-louis" >Saint-louis</option>
+                                                <option value="Dagana" >Dagana</option>
+                                                <option value="Podor" >Podor</option>
+                                            </optgroup>
+                                            <optgroup reference="Sedhiou">
+                                                <option value="Sedhiou" >Sédhiou</option>
+                                                <option value="Goudomp" >Goudomp</option>
+                                                <option value="Bounkiling" >Bounkiling</option>
+                                            </optgroup>
+                                            <optgroup reference="Tambacounda">
+                                                <option value="Bakel" >Bakel</option>
+                                                <option value="Goudiri" >Goudiri</option>
+                                                <option value="Koumpentoum" >Koumpentoum</option>
+                                                <option value="Tambacounda" >Tambacounda</option>
+                                            </optgroup>
+                                            <optgroup reference="Thies">
+                                                <option value="Mbour" >Mbour</option>
+                                                <option value="Thies" >Thiès</option>
+                                                <option value="Tivaoune" >Tivaoune</option>
+                                            </optgroup>
+                                            <optgroup reference="Ziguinchor">
+                                                <option value="Oussouye" >Oussouye</option>
+                                                <option value="Bignona" >Bignona</option>
+                                                <option value="Ziguinchor" >Ziguinchor</option>
+                                            </optgroup>
+                                        </select>
+                                        {# <label class="control-label">Département</label>
+                                         {{ form_widget(form.producteur[0].departement,{'attr':{'class':'form-control'}}) }}
+                                         <span class="help-block"> </span> #}
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    <div class="form-group ">
-                                        <label class="control-label">Département</label>
-                                        {{ form_widget(form.departement,{'attr':{'class':'form-control'}}) }}
-                                        <span class="help-block"> </span> </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group ">
+                               {# <div class="col-md-6">
+
+
+
+                                    #}{#<div class="form-group ">
+
+                                        <label for="arrondissement" class="required">Arrondissements</label>
+                                        <select id="arrondissement" name="arrondissement" class="form-control" content-type="choices" trigger="true" target="commune">
+                                            <optgroup reference="1">
+                                                <option value="1" >Sangalkam</option>
+
+                                            </optgroup>
+                                            <optgroup reference="2">
+                                                <option value="2" >Dakar Plateau</option>
+                                                <option value="3" >Grand Dakar </option>
+                                                <option value="4" >Parcelles Assainies </option>
+                                                <option value="5" >Almadies </option>
+
+                                            </optgroup>
+                                            <optgroup reference="3">
+                                                <option value="5" >Niayes</option>
+                                                <option value="6" >Thiaroye</option>
+                                                <option value="7" >Rufisque Ouest</option>
+                                                <option value="8" >Rufisque centre Nord</option>
+                                                <option value="9" >Rufisque Est Nord</option>
+                                                <option value="10" >Pikine Dagoudane</option>
+
+                                            </optgroup>
+                                            <optgroup reference="4">
+                                                <option value="11" >Gédiawaye</option>
+                                            </optgroup>
+                                            <optgroup reference="5">
+                                                <option value="12" >Ndame</option>
+                                                <option value="13" >Taif</option>
+                                                <option value="14" >Kael</option>
+                                                <option value="15" >Ndindi</option>
+                                            </optgroup>
+                                            <optgroup reference="6">
+                                                <option value="16" >Ndoulo</option>
+                                                <option value="17" >Ndindy</option>
+
+                                            </optgroup>
+                                            <optgroup reference="7">
+                                                <option value="18" >Ngoye</option>
+                                                <option value="19" >Bambey</option>
+                                                <option value="20" >Lambay</option>
+                                                <option value="21" >Lambay Peye</option>
+                                                <option value="22" >Baba Garage</option>
+                                            </optgroup>
+                                            <optgroup reference="8">
+                                                <option value="23" >Ndiob</option>
+                                                <option value="24" >Diakhao</option>
+                                                <option value="25" >Niakhar</option>
+                                                <option value="26" >Tattaguine</option>
+                                                <option value="27" >Tattaguine Escale</option>
+                                                <option value="28" >Fimela</option>
+                                            </optgroup>
+                                            <optgroup reference="9">
+                                                <option value="29" >Ouadiour</option>
+                                                <option value="30" >Colobane</option>
+                                                <option value="31" >Gossas</option>
+                                            </optgroup>
+                                            <optgroup reference="10">
+                                                <option value="32" >Niodior</option>
+                                                <option value="33" >Djilor</option>
+                                                <option value="34" >Foudiougne</option>
+                                                <option value="35" >ToubaCouta</option>
+                                            </optgroup>
+                                            <optgroup reference="11">
+                                                <option value="36" >Nganda</option>
+                                                <option value="37" >Gniby</option>
+                                                <option value="38" >Kataguel</option>
+                                                <option value="39" >Kaffrine</option>
+                                            </optgroup>
+                                            <optgroup reference="12">
+                                                <option value="40" >Mabo</option>
+                                                <option value="41" >Keur Mboucki</option>
+
+                                            </optgroup>
+                                            <optgroup reference="13">
+                                                <option value="42" >Sagna</option>
+                                                <option value="43" >Nganda</option>
+                                                <option value="44" >Malem Hoddar</option>
+                                                <option value="45" >Darou Minam II</option>
+                                            </optgroup>
+                                            <optgroup reference="14">
+                                                <option value="46" >Missirah Wadene</option>
+                                                <option value="47" >Lour Escale</option>
+                                                <option value="48" >Ida Mouride</option>
+                                                <option value="49" >Nganda</option>
+                                            </optgroup>
+                                        </select>
+                                        #}{##}{# <label class="control-label">Département</label>
+                                         {{ form_widget(form.producteur[0].departement,{'attr':{'class':'form-control'}}) }}
+                                         <span class="help-block"> </span> #}{##}{#
+                                    </div>#}{#
+
+
+
+
+
+
+
+                                   #}{# <div class="form-group ">
                                         <label class="control-label">Commune</label>
-                                        {{ form_widget(form.commune,{'attr':{'class':'form-control'}}) }}
-                                        <span class="help-block"> </span> </div>
-                                </div>
-                                <div class="col-md-6">
+                                        {{ form_widget(form.producteur[0].commune,{'attr':{'class':'form-control'}}) }}
+                                        <span class="help-block"> </span> </div>#}{#
+                                </div>#}
+                              {#  <div class="col-md-6">
                                     <div class="form-group ">
-                                        <label class="control-label">Arrondissement</label>
-                                        {{ form_widget(form.arrondissement,{'attr':{'class':'form-control'}}) }}
+                                        <label class="control-label">Communes</label>
+                                        {{ form_widget(form.producteur[0].arrondissement,{'attr':{'class':'form-control'}}) }}
                                         <span class="help-block"> </span> </div>
-                                </div>
-                                <div class="col-md-6">
+                                </div>#}
+                                {#<div class="col-md-6">
                                     <div class="form-group ">
-                                        <label class="control-label">Village</label>
-                                        {{ form_widget(form.village,{'attr':{'class':'form-control'}}) }}
-                                        <span class="help-block"> </span> </div>
-                                </div>
+                                        <div>
+                                            <label for="localite" class="required">Localité</label>
+                                            <select id="localite" class="form-control" name="localite" content-type="choices" trigger="true" target="ville">
+
+                                            </select>
+                                        </div>
+                                        #}{#<label class="control-label">Village</label>
+                                        {{ form_widget(form.producteur[0].village,{'attr':{'class':'form-control'}}) }}
+                                        <span class="help-block"> </span> #}{#
+                                    </div>
+                                </div>#}
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Mobile</label>
-                                        {{ form_widget(form.numTel,{'attr':{'class':'form-control recupMobile'}}) }}
+                                        {{ form_widget(form.producteur[0].numTel,{'attr':{'class':'form-control recupMobile'}}) }}
                                         <span class="help-block">  </span> </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Fixe</label>
-                                        {{ form_widget(form.numFixe,{'attr':{'class':'form-control recupFixe'}}) }}
+                                        {{ form_widget(form.producteur[0].numFixe,{'attr':{'class':'form-control recupFixe'}}) }}
                                         <span class="help-block"> </span> </div>
                                 </div>
-                                <div class="col-md-6">
+                              {#  <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Fax</label>
-                                        {{ form_widget(form.fax,{'attr':{'class':'form-control recupFaxe'}}) }}
+                                        {{ form_widget(form.producteur[0].faxerep,{'attr':{'class':'form-control recupFaxe'}}) }}
                                         <span class="help-block">  </span> </div>
-                                </div>
+                                </div>#}
                                 <div class="col-md-6">
                                     <div class="form-group ">
                                         <label class="control-label">Email</label>
-                                        {{ form_widget(form.email,{'attr':{'class':'form-control recupMail'}}) }}
+                                        {{ form_widget(form.producteur[0].email,{'attr':{'class':'form-control recupMail'}}) }}
                                         <span class="help-block">  </span> </div>
                                 </div>
                                 <div class="col-md-2">
                                     <div class="form-group ">
-                                        <h5 class="m-t-30 m-b-10">Etes vous le représentant légal ?</h5>
+                                        <h5 class="m-t-30 m-b-10">Etes vous le représentant légal ou le manager?</h5>
                                         <select class="selectpicker repLegal" data-style="form-control">
                                             <option>Non</option>
                                             <option>Oui</option>
@@ -142,7 +358,7 @@
                     <div class="panel-heading" role="tab" id="headingTwo">
                         <h4 class="panel-primary">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Représentant Légal
+                                Représentant Légal ou Manager
                             </a>
                         </h4> </div>
                     <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
@@ -151,55 +367,55 @@
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Nom du Représentant</label>
-                                    {{ form_widget(form.nomRep,{'attr':{'class':'form-control setNom'}}) }}
+                                    {{ form_widget(form.producteur[0].nomRep,{'attr':{'class':'form-control setNom'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Prénom Représentant</label>
-                                    {{ form_widget(form.prenomRep,{'attr':{'class':'form-control setPrenom'}}) }}
+                                    {{ form_widget(form.producteur[0].prenomRep,{'attr':{'class':'form-control setPrenom'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
-                            <div class="col-md-6">
+                            {#<div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Adresse du Représentant</label>
-                                    {{ form_widget(form.addresseRep,{'attr':{'class':'form-control setAddr'}}) }}
+                                    {{ form_widget(form.producteur[0].addresseRep,{'attr':{'class':'form-control setAddr'}}) }}
                                     <span class="help-block">  </span> </div>
-                            </div>
+                            </div>#}
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Fonction du Représentant</label>
-                                    {{ form_widget(form.fonctionRep,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.producteur[0].fonctionRep,{'attr':{'class':'form-control'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Téléphone Mobile</label>
-                                    {{ form_widget(form.mobileRep_,{'attr':{'class':'form-control setMobile'}}) }}
+                                    {{ form_widget(form.producteur[0].mobileRep_,{'attr':{'class':'form-control setMobile'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
-                            <div class="col-md-6">
+                           {# <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Téléphone Fixe du Représentant</label>
-                                    {{ form_widget(form.fixeRep,{'attr':{'class':'form-control setFixe'}}) }}
+                                    {{ form_widget(form.producteur[0].fixeRep,{'attr':{'class':'form-control setFixe'}}) }}
                                     <span class="help-block">  </span> </div>
-                            </div>
-                            <div class="col-md-6">
+                            </div>#}
+                          {#  <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Faxe du Representant </label>
-                                    {{ form_widget(form.faxeRep,{'attr':{'class':'form-control setFaxe'}}) }}
+                                    {{ form_widget(form.producteur[0].faxeRep,{'attr':{'class':'form-control setFaxe'}}) }}
                                     <span class="help-block">  </span> </div>
-                            </div>
+                            </div>#}
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Mail du Representant </label>
-                                    {{ form_widget(form.emailRep,{'attr':{'class':'form-control setMail'}}) }}
+                                    {{ form_widget(form.producteur[0].emailRep,{'attr':{'class':'form-control setMail'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-success">
+              {#  <div class="panel panel-success">
                     <div class="panel-heading" role="tab" id="headingThree">
                         <h4 class="panel-primary">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
@@ -213,13 +429,13 @@
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Nom du Manager</label>
-                                    {{ form_widget(form.nomManager,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.producteur[0].nomManager,{'attr':{'class':'form-control'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Prénom du Manager </label>
-                                    {{ form_widget(form.prenomManager,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.producteur[0].prenomManager,{'attr':{'class':'form-control'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
 
@@ -227,29 +443,29 @@
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Titre du Manager </label>
-                                    {{ form_widget(form.titreManager,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.producteur[0].titreManager,{'attr':{'class':'form-control'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Téléphone du Manager </label>
-                                    {{ form_widget(form.telManager,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.producteur[0].telManager,{'attr':{'class':'form-control'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group ">
                                     <label class="control-label">Email du Manager </label>
-                                    {{ form_widget(form.emailManager,{'attr':{'class':'form-control'}}) }}
+                                    {{ form_widget(form.producteur[0].emailManager,{'attr':{'class':'form-control'}}) }}
                                     <span class="help-block">  </span> </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>#}
                 <div class="panel panel-success">
                     <div class="panel-heading" role="tab" id="headingFour">
                         <h4 class="panel-primary">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                Activité de Production
+                                Activités Réalisées
                             </a>
                         </h4> </div>
                     <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
@@ -263,96 +479,76 @@
                                     <td class="" style="width: 30%; ">
 
                                         <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.vulgarisation,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].vulgarisation,{'attr':{'class':'form-control'}}) }}
                                             <label for="checkbox0"> Vulgarisation </label>
                                         </div>
                                     </td>
                                     <td class="" style="width: 30%; ">
 
                                         <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.regie,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].regie,{'attr':{'class':'form-control'}}) }}
                                             <label for="checkbox0"> Régie </label>
                                         </div>
                                     </td>
                                     <td class="" style="width: 40%; ">
                                         <div>
                                             <label for="text"> Note </label>
-                                            {{ form_widget(form.notePproduction,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].noteproduction,{'attr':{'class':'form-control'}}) }}
 
                                         </div>
 
                                     </td>
                                 </tr>
                                 <tr><td></td></tr>
-                                <tr><td>     <h3 class="box-title m-b-0">Conditionnement</h3></td></tr>
-                                <tr style="width: 100%;">
+                                {#<tr><td>     <h3 class="box-title m-b-0">Conditionnement</h3></td></tr>#}
+                              {#  <tr style="width: 100%;">
 
                                     <td class="" style="width: 30%; ">
                                         <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.bordChamp,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].bordChamp,{'attr':{'class':'form-control'}}) }}
                                             <label for="checkbox0"> Bord de Champs</label>
                                         </div>
                                     </td>
                                     <td class="" style="width: 30%; ">
 
                                         <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.enStation,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].enStation,{'attr':{'class':'form-control'}}) }}
                                             <label for="checkbox0"> En Station </label>
                                         </div>
                                     </td>
                                     <td class="" style="width: 40%; ">
                                         <div>
                                             <label for="text"> Note </label>
-                                            {{ form_widget(form.noteCond,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].notecond,{'attr':{'class':'form-control'}}) }}
                                         </div>
                                     </td>
-                                </tr>
+                                </tr>#}
                                 <tr><td>     <h3 class="box-title m-b-0">Exportation</h3></td></tr>
                                 <tr style="width: 100%;">
 
                                     <td class="" style="width: 30%; ">
-                                        <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.europe,{'attr':{'class':'form-control'}}) }}
-                                            <label for="checkbox0"> Europe</label>
+                                        <div>
+
+                                            {{ form_widget(form.producteur[0].europe,{'attr':{'class':'selectpicker', 'multiple data-style':'form-control' }}) }}
+
                                         </div>
                                     </td>
                                     <td class="" style="width: 30%; ">
 
-                                        <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.autresr,{'attr':{'class':'form-control'}}) }}
+                                       {# <div class="checkbox checkbox-success">
+                                           {{ form_widget(form.producteur[0].autre,{'attr':{'class':'form-control'}}) }}
                                             <label for="checkbox0"> Autres </label>
-                                        </div>
+                                        </div>#}
                                     </td>
                                     <td class="" style="width: 40%; ">
                                         <div>
                                             <label for="text"> Note </label>
-                                            {{ form_widget(form.noteExportation,{'attr':{'class':'form-control'}}) }}
+                                            {{ form_widget(form.producteur[0].noteexportation,{'attr':{'class':'form-control'}}) }}
                                         </div>
                                     </td>
                                 </tr>
-                                <tr><td>     <h3 class="box-title m-b-0" >Prestation</h3></td></tr>
-                                <tr style="width: 100%;">
+                                {#<tr><td>     <h3 class="box-title m-b-0" >Prestation</h3></td></tr>#}
 
-                                    <td class="" style="width: 30%; ">
-                                        <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.exportation,{'attr':{'class':'form-control'}}) }}
-                                            <label for="checkbox0"> Exportation</label>
-                                        </div>
-                                    </td>
-                                    <td class="" style="width: 30%; ">
-
-                                        <div class="checkbox checkbox-success">
-                                            {{ form_widget(form.conditionnement,{'attr':{'class':'form-control'}}) }}
-                                            <label for="checkbox0">Conditionnement </label>
-                                        </div>
-                                    </td>
-                                    <td class="" style="width: 40%; ">
-                                        <div>
-                                            <label for="text"> Note </label>
-                                            {{ form_widget(form.notePprestation,{'attr':{'class':'form-control'}}) }}
-                                        </div>
-                                    </td>
-                                </tr>
                             </table>
 
                         </div>
@@ -369,11 +565,67 @@
                         <div class="panel-body">
                             <div class="col-md-6">
                                 <div class="form-group ">
-                                    <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
+                                    <h2>Vergers en propore</h2>
+                                    <label for="nb_spec" class="control-label nb_specu"> Nombre de spéculation </label>
                                     <input id="nb_spec" name ="nb_spec" type="number">
                                     <span class="help-block"> </span> </div>
                             </div>
+                            {#<div class="col-md-6">#}
+                                {#<div class="form-group ">#}
+                                {##}
+                                {#</div>#}
+                            {#</div>#}
                             <table id="mainTable" class="table editable-table table-bordered table-striped m-b-0">
+
+                            </table>
+                            <table>  <h2> Approvisionnement avec des producteurs associés</h2>
+                                <tr>
+
+                                    <td class="" style="width: 70%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            Liste des producteurs associés
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 15%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="oui_pr" name ="oui_prod" type="checkbox" class="form-control">
+                                            <label for="oui_pr"> Oui </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 15%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="non_pr" name ="non_prod" type="checkbox" class="form-control">
+                                            <label for="non_pr"> Non </label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td class="" style="width: 50%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            Liste des pistes associés
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 25%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="oui_pis" name ="oui_piste" type="checkbox" class="form-control">
+                                            <label for="oui_pis"> Oui </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 25%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="non_pis" name ="non_piste" type="checkbox" class="form-control">
+                                            <label for="non_pis"> Non </label>
+                                        </div>
+                                    </td>
+                                </tr>
 
                             </table>
                         </div>
@@ -383,17 +635,11 @@
                     <div class="panel-heading" role="tab" id="headingSix">
                         <h4 class="panel-primary">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                              Calendrier de Production
+                                PLANNING PREVISIONNEL D'EXPORTATION
                             </a>
                         </h4> </div>
                     <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
                         <div class="panel-body">
-                           {# <div class="col-md-6">
-                                <div class="form-group ">
-                                    <label for="nb_spec" class="control-label"> Nombre de spéculation </label>
-                                    <input id="nb_spec" name ="nb_spec" type="number">
-                                    <span class="help-block"> </span> </div>
-                            </div>#}
 
                             <table id="mainTable1" class="table editable-table table-bordered table-striped m-b-0">
 
@@ -413,8 +659,305 @@
                         <div class="panel-body">
 
                             <table id="mainTable2" class="table editable-table table-bordered table-striped m-b-0">
+                                <thead>
+
+                                                              <tr>
+
+                                                                       <th>ZONES</th>
+
+                                                                        <th>LOCALISATIONS</th>
+                                                                       <th>LOCALITES</th>
+                                                                   </tr>
+                                                              </thead>
+                                {% for i in 0..3 %}
+                                <tbody>
+                                <tr>
+                                    {#'<td > <input  class="form-control" style="margin: 0px; width: 100%; outline: none; " id="zone_'+i+'" name="zones_'+i+'"  /></td>'+#}
+                                    <td>
+                                        <select style="margin: 0px; width: 100%; outline: none;" id="zones_{{ i }}" name="zones_{{ i }}"  class="form-control" content-type="choices" trigger="true" target="sitesCond_{{ i }}">
+
+                                                                                              <option value="1">SUD</option>
+                                                                                              <option value="CENTRE">CENTRE</option>
+                                                                                               <option value="NIAYES">NIAYES</option>
+                                                                                          <option value="NORD">NORD</option>
+                                                                                          <option value="AUCUNE">AUCUNE</option>
+                                                                               </select>
+                                    </td>
+                                    <td>
+                                        <select style="margin: 0px; width: 30%; outline: none;" id="sitesCond_{{ i }}"  name="siteCond_{{ i }}"  class="form-control" content-type="choices" trigger="true" target="localisation_{{ i }}">
+                                                                                        <optgroup reference="1">
+                                                                                               <option value="KATABA 1">KATABA 1</option>
+                                                                                                <option value="PLATEFORME BIGNONA" >PLATEFORME BIGNOMA </option>
+                                                                                                <option value="APAD">APAD </option>
+                                                                                            </optgroup>
+                                                                                       <optgroup reference="CENTRE">
+                                                                                                <option value="ET&DS">ET&DS</option>
+                                                                                                <option value="SANDIARA" >SANDIARA </option>
+                                                                                                <option value="SABOR">SABOR</option>
+                                                                                                <option value="FALILOU ATTA  SOMAG">FALILOU ATTA  SOMAG </option>
+                                                                                                <option value="GUIDI SENEGAL">GUIDI SENEGAL </option>
+                                                                                                <option value="HORTICA">HORTICA </option>
+                                                                                                <option value="AGULLO">AGULLO </option>
+                                                                                            </optgroup>
+                                                                                            <optgroup reference="NIAYES">
+                                                                                                <option value="SAFINA">SAFINA </option>
+                                                                                                <option value="INSPIRE">INSPIRE </option>
+                                                                                                <option value="VAN OERS">VAN OERS</option>
+                                                                                                <option value="MINAME">MINAME</option>
+                                                                                                <option value="ECOPAIX">ECOPAIX </option>
+                                                                                                <option value="DOMAINE AGRICOLES DE THIES">DOMAINE AGRICOLES DE THIES</option>
+
+
+                                                                                                <option value="SOLEDIVE SEN FRUIT  TOUBA FRUIT">SOLEDIVE SEN FRUIT  TOUBA FRUIT </option>
+                                                                                                <option value="FEDERATION BOXE 1">FEDERATION BOXE 1 </option>
+                                                                                                <option value="FEDERATION BOXE 2">FEDERATION BOXE 2</option>
+                                                                                                <option value="FELTIPLEX / A">FELTIPLEX / A</option>
+                                                                                                <option value="FELTIPLEX / B">FELTIPLEX / B </option>
+                                                                                                <option value="FELTIPLEX / C">FELTIPLEX / C </option>
+                                                                                                <option value="FELTIPLEX / D">FELTIPLEX / D </option>
+                                                                                                <option value="SANGALKAM 1">SANGALKAM 1 </option>
+                                                                                                <option value="NOFLAYE">NOFLAYE </option>
+                                                                                                <option value="RUFISQUE">RUFISQUE </option>
+                                                                                                <option value="HLM">HLM </option>
+                                                                                                <option value="CADA">CADA </option>
+                                                                                                <option value="NOTTO AI">NOTTO AI </option>
+                                                                                                <option value="BLUE SKIES">BLUE SKIES </option>
+                                                                                                <option value="KEUR MBIR 1">KEUR MBIR 1 </option>
+                                                                                                <option value="KEUR MBIR 2">KEUR MBIR 2</option>
+                                                                                                <option value="COPROFEL">COPROFEL </option>
+                                                                                                <option value="BAYAKH">BAYAKH </option>
+                                                                                                <option value="MINAME SARL">Miname SARL</option>
+                                                                                                <option value="MINAME EXPORT">MINAME EXPORT </option>
+                                                                                                <option value="GLORIA">GLORIA </option>
+                                                                                                <option value="SOLEIL VERT">SOLEIL VERT </option>
+                                                                                                <option value="SEMAF">SEMAF </option>
+                                                                                                <option value="SEPAM">SEPAM </option>
+                                                                                                <option value="EXOPRIM">EXOPRIM</option>
+                                                                                                <option value="MEDINE">MEDINE</option>
+                                                                                            </optgroup>
+                                                                                            <optgroup reference="NORD">
+                                                                                                <option value="GDS">GDS</option>
+                                                                                                <option value="SOLDIV">SOLDIV </option>
+                                                                                                <option value="AFRICA MILLO / MARKE">AFRICA MILLO / MARKE</option>
+                                                                                                <option value="SCL">SCL </option>
+                                                                                                <option value="WAF">WAF </option>
+                                                                                            </optgroup>
+                                                                             </select>
+
+                                        </td>
+                                    <td>
+                                        <select style="margin: 0px; width: 30%; outline: none;" id="localisation_{{ i }}"  name="localisation_{{ i }}"  class="form-control" content-type="choices" trigger="true" target="">
+                                            <optgroup reference="KATABA 1">
+                                                <option value="Arrondissement de Kataba 1" >Arrondissement de Kataba 1 </option>
+                                            </optgroup>
+
+                                            <optgroup reference="PLATEFORME BIGNONA">
+                                                <option value="Bignona" >Bignona </option>
+
+                                            </optgroup>
+                                            <optgroup reference="APAD">
+                                                <option value="Diouloulou" >Diouloulou</option>
+
+                                            </optgroup>
+                                            <optgroup reference="ET&DS">
+                                                <option value="village de fimla" >village de fimla</option>
+                                            </optgroup>
+                                            <optgroup reference="SANDIARA">
+                                                <option value="SANDIARA, sur la route de mbour" >SANDIARA, sur la route de mbour </option>
+                                            </optgroup>
+                                            <optgroup reference="SABOR">
+                                                <option value="Comune de fendene" >Comune de fendene </option>
+                                            </optgroup>
+                                            <optgroup reference="FALILOU ATTA  SOMAG">
+                                                <option value="Croisement Ngoudiane" >Croisement Ngoudiane  </option>
+                                            </optgroup>
+                                            <optgroup reference="GUIDI SENEGAL">
+                                                <option value="Djilakh Route De Tene Toubab , Mbour " >Djilakh Route De Tene Toubab , Mbour   </option>
+                                            </optgroup>
+                                            <optgroup reference="HORTICA">
+                                                <option value="Sindia à la sortie du peage  " >Sindia à la sortie du peage    </option>
+                                            </optgroup>
+                                            <optgroup reference="AGULLO">
+                                                <option value="Kiniabour, vers popoguingue" >Kiniabour, vers popoguingue    </option>
+                                            </optgroup>
+                                            <optgroup reference="SAFINA">
+                                                <option value="SEBIKOTANE vers la SDE" >SEBIKOTANE vers la SDE    </option>
+                                            </optgroup>
+                                            <optgroup reference="INSPIRE">
+                                                <option value="Garrage MBENTEGNE " >Garrage MBENTEGNE    </option>
+                                            </optgroup>
+                                            <optgroup reference="VAN OERS">
+                                                <option value="KIRENE" >KIRENE     </option>
+                                            </optgroup>
+                                            <optgroup reference="MINAME">
+                                                <option value="POUT vers la station" >POUT vers la station     </option>
+                                            </optgroup>
+                                            <optgroup reference="ECOPEX">
+                                                <option value="Pout , village de bayouth" >Pout , village de bayouth    </option>
+                                            </optgroup>
+                                            <optgroup reference="DOMAINE AGRICOLES DE THIES">
+                                                <option value="Thies" >Thiès    </option>
+                                            </optgroup>
+                                            <optgroup reference="SOLEDIVE SEN FRUIT  TOUBA FRUIT">
+                                                <option value="Tassette sur la route de thies" >Tassette sur la route de thies   </option>
+                                            </optgroup>
+                                            <optgroup reference="FEDERATION BOXE 1">
+                                                <option value="Sangalkam, près de la gendarmerie " >Sangalkam, près de la gendarmerie     </option>
+                                            </optgroup>
+                                            <optgroup reference="FEDERATION BOXE 2">
+                                                <option value="Sangalkam, près de la gendarmerie" >Sangalkam, près de la gendarmerie     </option>
+                                            </optgroup>
+                                            <optgroup reference="FELTIPLEX / A">
+                                                <option value="Noflaye" >Noflaye     </option>
+                                            </optgroup>
+                                            <optgroup reference="FELTIPLEX / B">
+                                                <option value="Noflaye" >Noflaye     </option>
+                                            </optgroup>
+                                            <optgroup reference="FELTIPLEX / C">
+                                                <option value="Noflaye" >Noflaye     </option>
+                                            </optgroup>
+                                            <optgroup reference="FELTIPLEX / D">
+                                                <option value="Noflaye" >Noflaye     </option>
+                                            </optgroup>
+                                            <optgroup reference="SANGALKAM 1">
+                                                <option value="En face de la Fédération" >En face de la Fédération    </option>
+                                            </optgroup>
+                                            <optgroup reference="NOFLAYE">
+                                                <option value="A 500 m de feltiplex " >A 500 m de feltiplex    </option>
+                                            </optgroup>
+                                            <optgroup reference="RUFISQUE">
+                                                <option value="Derriere le centre commercial de rufisque ouest" >Derriere le centre commercial de rufisque ouest    </option>
+                                            </optgroup>
+                                            <optgroup reference="HLM">
+                                                <option value="Aux HLM de rufisque" >Aux HLM de rufisque   </option>
+                                            </optgroup>
+                                            <optgroup reference="CADA">
+                                                <option value="Notto" >Notto  </option>
+                                            </optgroup>
+                                            <optgroup reference="NOTTO AI">
+                                                <option value="Notto" >Notto  </option>
+                                            </optgroup>
+                                            <optgroup reference="BLUE SKIES">
+                                                <option value="Notto" >Notto  </option>
+                                            </optgroup>
+                                            <optgroup reference="KEUR MBIR 1">
+                                                <option value="KEUR MBIR" >KEUR MBIR   </option>
+                                            </optgroup>
+                                            <optgroup reference="KEUR MBIR 2">
+                                                <option value="KEUR MBIR" >KEUR MBIR   </option>
+                                            </optgroup>
+                                            <optgroup reference="COPROFEL">
+                                                <option value="Keur mbir sur la route" >Keur mbir sur la route   </option>
+                                            </optgroup>
+                                            <optgroup reference="BAYAKH">
+                                                <option value="Sur la route de cayar" >Sur la route de cayar   </option>
+                                            </optgroup>
+                                            <optgroup reference="MINAME SARL">
+                                                <option value="MOND ROLANG" >MOND ROLANG  </option>
+                                            </optgroup>
+                                            <optgroup reference="MINAME EXPORT">
+                                                <option value="NGOMENE" >NGOMENE </option>
+                                            </optgroup>
+                                            <optgroup reference="GLORIA">
+                                                <option value="Notto" >Notto </option>
+                                            </optgroup>
+                                            <optgroup reference="SOLEIL VERT">
+                                                <option value="Gorom 1" >Gorom 1 </option>
+                                            </optgroup>
+                                            <optgroup reference="SEMAF">
+                                                <option value="Keur ndiaye lo" >Keur ndiaye lo  </option>
+                                            </optgroup>
+                                            <optgroup reference="SEPAM">
+                                                <option value="Keur ndiaye lo" >Keur ndiaye lo  </option>
+                                            </optgroup>
+                                            <optgroup reference="EXOPRIM">
+                                                <option value="" >   </option>
+                                            </optgroup>
+                                            <optgroup reference="MEDINE">
+                                                <option value="Rufisque" >  Rufisque </option>
+                                            </optgroup>
+                                            <optgroup reference="GDS">
+                                                <option value="Saint louis /  ndiawdoune " >Saint louis /  ndiawdoune   </option>
+                                            </optgroup>
+                                            <optgroup reference="SOLDIV">
+                                                <option value="Saint louis" >Saint louis   </option>
+                                            </optgroup>
+                                            <optgroup reference="AFRICA MILLO / MARKE">
+                                                <option value="Saint louis" >Saint louis   </option>
+                                            </optgroup>
+                                            <optgroup reference="SCL">
+                                                <option value="Saint louis" >Saint louis   </option>
+                                            </optgroup>
+                                            <optgroup reference="WAF">
+                                                <option value="Saint louis" >Saint louis   </option>
+                                            </optgroup>
+
+
+                                        </select>
+                                    </td>
+
+                                    </tr>
+
+                                <tbody>
+                                {% endfor %}
+
+
 
                             </table>
+
+
+                            <table>  <h2> Contrat de prestation et de location</h2>
+                                <tr>
+
+                                    <td class="" style="width: 70%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            Contrat de prestation
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 15%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="oui_prest" name ="oui_prest" type="checkbox" class="form-control">
+                                            <label for="oui_prest"> Oui </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 15%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="non_prest" name ="non_prest" type="checkbox" class="form-control">
+                                            <label for="non_prest"> Non </label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                                <tr>
+
+                                    <td class="" style="width: 50%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            Contrat de location
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 25%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="oui_location" name ="oui_location" type="checkbox" class="form-control">
+                                            <label for="oui_location"> Oui </label>
+                                        </div>
+                                    </td>
+                                    <td class="" style="width: 25%; ">
+
+                                        <div class="checkbox checkbox-success">
+                                            <input id="non_location" name ="non_location" type="checkbox" class="form-control">
+                                            <label for="non_location"> Non </label>
+                                        </div>
+                                    </td>
+                                </tr>
+
+                            </table>
+
+
                         </div>
                     </div>
                 </div>
@@ -438,135 +981,64 @@
                                             <td> N° duCertificat </td>
                                             <td>Date dernière certification </td>
                                             <td>Dated'expiration</td>
-                                            <td>Déposer certificat</td>
-                                        </tr>
-                                        <tr>
-                                            <td rowspan="2" > GLOBALGAP </td>
-                                            <td> Option 1 </td>
-                                            <td><input  type="checkbox" name="opt1">  </td>
-                                            <td> <input type="text"  name="num_1"></td>
-                                            <td> <input type="text" name="date_cert_1"> </td>
-                                            <td> <input type="text" name="date_exp_1"> </td>
+                                            {#<td>Déposer certificat</td>#}
+                                      </tr>
+                                      {% set valeur=1 %}
+                                      {% set counter=0 %}
+                                       {% for certificats in form.certificat %}
+                                            {% if valeur==1 %}
+                                                    {% set valeur=valeur+1 %}
+                                                    <tr>
+                                                        <td rowspan="2" > GLOBALGAP </td>
+                                                        <td> Option 1 </td>
+                                                        <td><input  type="checkbox" name="opt1">  </td>
+                                                        <td> {{ form_widget(certificats.numero_cert) }}</td>
+                                                        <td> {{ form_widget(certificats.date_cert) }} </td>
+                                                        <td> {{ form_widget(certificats.date_exp) }} </td>
 
-                                            <td>
-                                                <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_1">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div>
+                                                      {#  <td>
+                                                            <div class="file-field big">
+                                                                <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                                    {{ form_widget(certificats.certificat) }}
+                                                                </a>
+                                                            </div>
 
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Option 2  </td>
-                                            <td> <input type="checkbox" name="opt2">  </td>
-                                            <td> <input type="text" name="num_2"></td>
-                                            <td> <input type="text" name="date_cert_2"> </td>
-                                            <td> <input type="text" name="date_exp_2"> </td>
-                                            <td>   <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_2">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"> Tesco Nature's Choice </td>
-                                            <td> <input type="text" name="num_3"></td>
-                                            <td> <input type="text" name="date_cert_3"> </td>
-                                            <td> <input type="text" name="date_exp_3"> </td>
-                                            <td>   <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_3">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"> Agriculture Biologique </td>
-                                            <td> <input type="text" name="num_4"></td>
-                                            <td> <input type="text" name="date_cert_4"> </td>
-                                            <td> <input type="text" name="date_exp_4"> </td>
-                                            <td>  <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_4">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div> </td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"> BRC</td>
-                                            <td> <input type="text" name="num_5"></td>
-                                            <td> <input type="text" name="date_cert_5"> </td>
-                                            <td> <input type="text" name="date_exp_5"> </td>
-                                            <td>   <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_5">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"> IFS</td>
-                                            <td> <input type="text" name="num_6"></td>
-                                            <td> <input type="text" name="date_cert_6"> </td>
-                                            <td> <input type="text" name="date_exp_6"> </td>
-                                            <td>   <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_6">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"> IS0 22000</td>
-                                            <td> <input type="text" name="num_7"></td>
-                                            <td> <input type="text" name="date_cert_7"> </td>
-                                            <td> <input type="text" name="date_exp_7"> </td>
-                                            <td>   <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_7">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div></td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="3"> Autres (à préciser)</td>
-                                            <td> <input type="text" name="num_8"></td>
-                                            <td> <input type="text" name="date_cert_8"> </td>
-                                            <td> <input type="text" name="date_exp_8"> </td>
-                                            <td>   <div class="file-field big">
-                                                    <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
-                                                        {#<i class="fa fa-paperclip" aria-hidden="true"></i>#}
-                                                        <input type="file" multiple name="certificat_8">
-                                                    </a>
-                                                    {#<div class="file-path-wrapper">
-                                                        <input class="file-path validate" type="text" placeholder="Upload one or more files">
-                                                    </div>#}
-                                                </div> </td>
-                                        </tr>
+                                                        </td>#}
+                                                    </tr>
+                                            {% elseif valeur==2 %}
+                                                    {% set valeur=valeur+1 %}
+                                                    <tr>
+                                                    <td>Option 2  </td>
+                                                    <td> <input type="checkbox" name="opt2">  </td>
+                                                    <td> {{ form_widget(certificats.numero_cert) }}</td>
+                                                    <td> {{ form_widget(certificats.date_cert) }} </td>
+                                                    <td> {{ form_widget(certificats.date_exp) }}</td>
+                                                   {# <td>   <div class="file-field big">
+                                                            <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                                {{ form_widget(certificats.certificat) }}
+                                                            </a>
+                                                            
+                                                        </div> </td>#}
+                                                </tr>
+                                            {% else %}
+
+                                                    <tr>
+                                                        <td colspan="3"> {{liste[counter]}} </td>
+                                                        {% set counter=counter+1 %}
+                                                        <td> {{ form_widget(certificats.numero_cert) }}</td>
+                                                        <td> {{ form_widget(certificats.date_cert) }} </td>
+                                                        <td> {{ form_widget(certificats.date_exp) }} </td>
+                                                       {# <td>   <div class="file-field big">
+                                                                <a class="btn-floating btn-lg pink lighten-1 mt-0 float-left">
+                                                                    {{ form_widget(certificats.certificat) }}
+                                                                </a>
+                                                                #}{#<div class="file-path-wrapper">
+                                                                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                                                                </div>#}{#
+                                                            </div></td>#}
+                                                    </tr>
+                                            {% endif %}
+                                       {% endfor %}
 
                                     </table>
                                 </div>
@@ -575,7 +1047,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="panel panel-success">
+
+               {# <div class="panel panel-success">
                     <div class="panel-heading" role="tab" id="headingNine">
                         <h4 class="panel-primary">
                             <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
@@ -584,7 +1057,7 @@
                         </h4> </div>
                     <div id="collapseNine" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingNine">
                         <div class="panel-body">
-                            <table id="" style="width: 100%;">
+                         #}{#   <table id="" style="width: 100%;">
                                 <tr><td>     <h3 class="box-title m-b-0">Système de gestion de la qualité</h3></td></tr>
                                 <tr style="width: 100%;">
 
@@ -607,7 +1080,8 @@
                                     <td class="" style="width: 40%; ">
                                         <div>
                                             <label for="noteQualite"> Note </label>
-                                            <input type="text" name="noteQualite">
+                                            {{ form_widget(form.qualite[0].systemgesqual,{'attr':{'class':'form-control'}}) }}
+          
 
                                         </div>
 
@@ -619,39 +1093,38 @@
 
                                     <td class="" style="width: 30%; ">
                                         <div class="checkbox checkbox-success">
-                                           <input type="checkbox" name="gstionInterne">
-                                            <label for="gstionInterne"> Gestion Interne</label>
+                                            {{ form_row(form.qualite[0].gestioninterne) }}
                                         </div>
                                     </td>
                                     <td class="" style="width: 30%; ">
 
                                         <div class="checkbox checkbox-success">
-                                           <input type="checkbox" name="consultant">
-                                            <label for="consultant"> Consultant</label>
+                                            {{ form_row(form.qualite[0].consultant) }}
                                         </div>
                                     </td>
                                     <td class="" style="width: 20%;">
                                         <div>
-                                            <label for="autre"> Autres</label>
-                                            <input type="checkbox" name="autre">
+                                            {{ form_row(form.qualite[0].autre) }}
                                         </div>
                                     </td>
                                     <td class="" style="width: 30%; ">
                                         <div>
                                             <label for="note">Notes</label>
-                                            <input type="text" name="note">
+                                            {{ form_widget(form.qualite[0].noteautre) }}
                                         </div>
                                     </td>
                                 </tr>
 
 
 
-                            </table>
+                            </table>#}{#
+
+
 
 
                         </div>
                     </div>
-                </div>
+                </div>#}
                 <div class="panel" >
                 <button class="btn btn-success  col-sm-2"  type="submit" align="center" >SOUMETTTRE
                 </button></div>
@@ -659,5 +1132,6 @@
             </div>
         </div>
     </div>
+
 
 {% endblock %}

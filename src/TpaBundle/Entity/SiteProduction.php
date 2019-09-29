@@ -7,67 +7,89 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * SiteProduction
  *
- * @ORM\Table(name="site_production")
- * @ORM\Entity(repositoryClass="TpaBundle\Repository\SiteProductionRepository")
+ * @ORM\Table(name="site_production", indexes={@ORM\Index(name="FK_F3E43E25AB9BB3002558", columns={"producteur_id"})})
+ * @ORM\Entity
  */
 class SiteProduction
 {
-
     /**
-     * @ORM\ManyToOne(targetEntity="Producteur")
-     * @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
-     */
-    private $producteur;
-
-
-
-    /**
-     * @var int
+     * @var integer
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
-     * @ORM\GeneratedValue(strategy="AUTO")
+     * @ORM\GeneratedValue(strategy="IDENTITY")
      */
     private $id;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="perimetre", type="string", length=50)
+     * @ORM\Column(name="perimetre", type="string", length=50, nullable=true)
      */
     private $perimetre;
-
     /**
      * @var string
      *
-     * @ORM\Column(name="superficie", type="string", length=50)
+     * @ORM\Column(name="prod_associe", type="string", length=5, nullable=true)
      */
-    private $superficie;
+    private $prod_associe;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="piste_associe", type="string", length=5, nullable=true)
+     */
+    private $piste_associe;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="localisation", type="string", length=100)
+     * @ORM\Column(name="localisation", type="string", length=50, nullable=true)
      */
     private $localisation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="speculation", type="string", length=100)
+     * @ORM\Column(name="superficie", type="string", length=50, nullable=true)
+     */
+    private $superficie;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="speculation", type="string", length=100, nullable=true)
      */
     private $speculation;
 
     /**
      * @var string
      *
-     * @ORM\Column(name="regie", type="string", length=100)
+     * @ORM\Column(name="nb_spec", type="string", length=255, nullable=true)
+     */
+    private $nb_spec;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="regie", type="string", length=100, nullable=true)
      */
     private $regie;
+
+    /**
+     * @var \Producteur
+     *
+     * @ORM\ManyToOne(targetEntity="Producteur")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="producteur_id", referencedColumnName="id")
+     * })
+     */
+    private $producteur;
+
+
+
     /**
      * Get id
      *
-     * @return int
+     * @return integer
      */
     public function getId()
     {
@@ -98,29 +120,58 @@ class SiteProduction
         return $this->perimetre;
     }
 
+
     /**
-     * Set superficie
+     * Set prod_associe
      *
-     * @param string $superficie
+     * @param string $prod_associe
      *
      * @return SiteProduction
      */
-    public function setSuperficie($superficie)
+    public function setProd_associe($prod_associe)
     {
-        $this->superficie = $superficie;
+        $this->prod_associe = $prod_associe;
 
         return $this;
     }
 
     /**
-     * Get superficie
+     * Get prod_associe
      *
      * @return string
      */
-    public function getSuperficie()
+    public function getProd_associe()
     {
-        return $this->superficie;
+        return $this->prod_associe;
     }
+
+
+
+    /**
+     * Set piste_associe
+     *
+     * @param string $piste_associe
+     *
+     * @return SiteProduction
+     */
+    public function setPiste_associe($piste_associe)
+    {
+        $this->piste_associe = $piste_associe;
+
+        return $this;
+    }
+
+    /**
+     * Get prod_associe
+     *
+     * @return string
+     */
+    public function getPiste_associe()
+    {
+        return $this->piste_associe;
+    }
+
+
 
     /**
      * Set localisation
@@ -147,6 +198,30 @@ class SiteProduction
     }
 
     /**
+     * Set superficie
+     *
+     * @param string $superficie
+     *
+     * @return SiteProduction
+     */
+    public function setSuperficie($superficie)
+    {
+        $this->superficie = $superficie;
+
+        return $this;
+    }
+
+    /**
+     * Get superficie
+     *
+     * @return string
+     */
+    public function getSuperficie()
+    {
+        return $this->superficie;
+    }
+
+    /**
      * Set speculation
      *
      * @param string $speculation
@@ -159,7 +234,6 @@ class SiteProduction
 
         return $this;
     }
-
     /**
      * Get speculation
      *
@@ -170,32 +244,6 @@ class SiteProduction
         return $this->speculation;
     }
 
-
-
-    /**
-     * Set producteur
-     *
-     * @param string $producteur
-     *
-     * @return SiteProduction
-     */
-    public function setProducteur($producteur)
-    {
-        $this->producteur = $producteur;
-
-        return $this;
-    }
-
-    /**
-     * Get $producteur
-     *
-     * @return string
-     */
-    public function getProducteur()
-    {
-        return $this->producteur;
-    }
-
     /**
      * Set regie
      *
@@ -203,7 +251,7 @@ class SiteProduction
      *
      * @return SiteProduction
      */
-    public function setregie($regie)
+    public function setRegie($regie)
     {
         $this->regie = $regie;
 
@@ -219,7 +267,50 @@ class SiteProduction
     {
         return $this->regie;
     }
+    /**
+     * Set nb_spec
+     *
+     * @param string $nb_spec
+     *
+     * @return Producteur
+     */
+    public function setnb_spec($nb_spec)
+    {
+        $this->nb_spec = $nb_spec;
 
+        return $this;
+    }
+    /**
+     * Get nb_spec
+     *
+     * @return string
+     */
+    public function getnb_spec()
+    {
+        return $this->nb_spec;
+    }
 
+    /**
+     * Set producteur
+     *
+     * @param \TpaBundle\Entity\Producteur $producteur
+     *
+     * @return SiteProduction
+     */
+    public function setProducteur(\TpaBundle\Entity\Producteur $producteur = null)
+    {
+        $this->producteur = $producteur;
 
+        return $this;
+    }
+
+    /**
+     * Get producteur
+     *
+     * @return \TpaBundle\Entity\Producteur
+     */
+    public function getProducteur()
+    {
+        return $this->producteur;
+    }
 }
