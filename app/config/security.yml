@@ -36,15 +36,26 @@ security:
             anonymous:    true
 
     access_control:
-        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/register/confirmed, role: ROLE_GERANT }
-        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
-        - { path: ^/caissier, role: ROLE_ADMIN }
-        - { path: ^/smart, role: ROLE_ADMIN }
-        - { path: ^/produit, role: ROLE_ADMIN }
-        - { path: ^/personne/new, role: ROLE_ADMIN }
-        - { path: ^/dpv/, role: ROLE_ADMIN }
-        - { path: ^/producteur/, role: ROLE_PRODUCTEUR }
-        - { path: ^/campagne/, role: [ROLE_PRODUCTEUR, ROLE_EXPORTATEUR] }
-        - { path: ^/lot/, role: [ROLE_PRODUCTEUR, ROLE_EXPORTATEUR] }
-        - { path: ^/registrepalettisation, role: ROLE_DPV }
+#        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+#        - { path: ^/utilisateur/, role: ROLE_ADMIN }
+#        - { path: ^/register/confirmed, role: ROLE_GERANT }
+#        - { path: ^/caissier, role: ROLE_ADMIN }
+#        - { path: ^/smart, role: ROLE_ADMIN }
+#        - { path: ^/produit, role: ROLE_ADMIN }
+#        - { path: ^/personne/new, role: ROLE_ADMIN }
+#        - { path: ^/dpv/, role: ROLE_ADMIN }
+#        - { path: ^/producteur/, role: ROLE_PRODUCTEUR }
+#        - { path: ^/campagne/, role: [ROLE_PRODUCTEUR, ROLE_EXPORTATEUR] }
+#        - { path: ^/lot/, role: [ROLE_PRODUCTEUR, ROLE_EXPORTATEUR] }
+#        - { path: ^/registrepalettisation, role: ROLE_DPV }
+        # app/config/security.yml //DESC ROLES
+        - { path: ^/inscription, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/home, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(css|js), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/(_wdt|_profiler), roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/, roles: ROLE_USER }

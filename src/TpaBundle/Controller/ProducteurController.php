@@ -23,14 +23,13 @@ use TpaBundle\Form\CertificatType;
 /**
  * Producteur controller.
  *
- * @Route("producteur")
  */
 class ProducteurController extends Controller
 {
     /**
      * Lists all producteur entities.
      *
-     * @Route("/", name="producteur_index")
+     * @Route("/producteur/", name="producteur_index")
      * @Method("GET")
      */
     public function indexAction()
@@ -49,7 +48,7 @@ class ProducteurController extends Controller
 
     /**
      *
-     * @Route("/rapport", name="rapport")
+     * @Route("/producteur/rapport", name="rapport")
      */
     public function rapport()
     {
@@ -60,7 +59,7 @@ class ProducteurController extends Controller
 
     /**
      *
-     * @Route("/{id}/inscription", name="inscription")
+     * @Route("/producteur/{id}/inscription", name="inscription")
      */
     public function Inscription($id)
     {
@@ -72,7 +71,7 @@ class ProducteurController extends Controller
 
     /**
      *
-     * @Route("/listeProducteur", name="liste_producteur")
+     * @Route("/producteur/listeProducteur", name="liste_producteur")
      */
     public function listerAction()
     {
@@ -83,7 +82,7 @@ class ProducteurController extends Controller
     }
     /**
      *
-     * @Route("/lister", name="producteur_maj")
+     * @Route("/producteur/lister", name="producteur_maj")
      */
 
     public function majAction()
@@ -94,7 +93,7 @@ class ProducteurController extends Controller
     }
     /**
      *
-     * @Route("/saisiIntrant", name="intrant")
+     * @Route("/producteur/saisiIntrant", name="intrant")
      * @Method("GET")
      */
     public function saisiIntrantAction()
@@ -105,7 +104,7 @@ class ProducteurController extends Controller
     /**
      * Creates a new producteur entity.
      *
-     * @Route("/new", name="producteur_new")
+     * @Route("/inscription", name="producteur_new")
      * @Method({"GET", "POST"})
      */
     public function newAction(Request $request)
@@ -282,7 +281,7 @@ class ProducteurController extends Controller
     /**
      * Finds and displays a producteur entity.
      *
-     * @Route("/{id}", name="producteur_show")
+     * @Route("/producteur/{id}", name="producteur_show")
      * @Method("GET")
      */
     public function showAction(Producteur $producteur)
@@ -303,7 +302,7 @@ class ProducteurController extends Controller
     /**
      * Displays a form to edit an existing producteur entity.
      *
-     * @Route("/{id}/edit", name="producteur_edit")
+     * @Route("/producteur/{id}/edit", name="producteur_edit")
      * @Method({"GET", "POST"})
      */
     public function editAction(Request $request, Producteur $producteur)
@@ -334,7 +333,7 @@ class ProducteurController extends Controller
     /**
      * Deletes a producteur entity.
      *
-     * @Route("/{id}", name="producteur_delete")
+     * @Route("/producteur/{id}", name="producteur_delete")
      * @Method("DELETE")
      */
     public function deleteAction(Request $request, Producteur $producteur)
